@@ -10,3 +10,25 @@
 `HTML`,`CSS`,`JavaScript`,`Jquery`,`Ajax`,`SCSS`,`Vue.js`의 학습내용 및 팀프로젝트로 제작한 페이지의 코드입니다.
 
 ---
+
+### `html`, `css`, `html2`
+
+```
+html,css 파일은 가장 초기에 배웠던 html 기초 태그 및 기초 css에 대한 내용이 담겨있습니다.
+html2 파일은 html&css 기초 수업 이후 미디어쿼리 및 반응형에 대한 학습내용이 담겨있습니다.
+```
+
+### `js`, `jq`, `ajax`
+
+```
+js 및 jq 파일은 JavaScript 및 Jquery 학습내용이 담겨 있습니다.
+함수 및 배열, API, 통신등이 내용을 학습하였습니다.
+ajax 파일은 js와 jq에서의 ajax 통신을 학습하였습니다.(JSON,XML)
+```
+
+### `vue`
+
+```
+vue 파일은 Vue 엔진은 2.X를 기반으로 CDN을 이용하여 기초를 학습하였습니다.
+
+```
