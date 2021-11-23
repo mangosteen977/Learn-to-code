@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery Jquery 7일차(3) - 초급코드 응용 </title>
+        <script src="./jquery.js"></script>
+        <script src="./jquery-ui.js?v=25"></script>
+        <link rel="stylesheet" type="text/css" href="./jquery-ui.css?v=2">
+        <!-- jquery-ui-css에서 제공하는 부분. : datepicker(); -->
+        <script>
+             $(document).ready(function(){ //확장함수 from JS_select_onchange
+                $.fn.color_hex = function($color,$node){
+                    $("#box>li").eq($node).css("background-color",$color);
+                };
+                $.fn.color_word = function($color,$node){
+                    $("#box>li").eq($node).css("background-color",$color);
+                    var $ck = $("#box>li").eq($node).css("background-color");
+                    console.log($ck);
+                    var $ck2 = $ck.match(/rgba/g);
+                    if($ck2!=null){
+                        alert("입력하신 색상과 일치하는 색상이 없습니다.");
+                        $("#colors").val("");
+                    }
+                };
+        /*달력용 JQ함수*/
+                $("#cal").datepicker();//달력제공하는 ui (jquery-ui-css에서 디자인 가져옴)
+
+             });
+            //  JS로 색상유형 및 색상명 검토 후 확장함수로 JQ넘김
+             function bgcolor(node){//select - onchange
+                var c = document.getElementById("colors").value;
+                if(c==""){
+                    alert("색상코드를 입력하시오!");
+                    document.getElementById("colors").focus();
+                }
+                else{
+                    var m = c.match(/#/g);
+                    if(m!=null){//헥사코드
+                        $.fn.color_hex(c,node);
+                    }
+                    else{//color이름
+                        $.fn.color_word(c,node);
+                    }
+                }
+             }
+             function wn(selectcolor){
+                    document.getElementById("colors").value=selectcolor;
+                }
+        </script>
+        <style>
+            ol{list-style: none; margin: 0; padding: 0;}
+            #box>li{
+               width: 100px; height: 100px;
+               border: 1px solid black;
+               display: inline-block; margin-top: 10px;
+               text-align: center; line-height: 100px;
+            }
+            #colors{width: 100px; height: 15px;}
+            #boxselect, #colorselect{width: 100px;}
+        </style>
+    </head>
+    <body>
+        <!-- 색상유형 선택 -->
+        <select id="colorselect" onclick="wn(this.value);">
+            <option value="">[색상유형선택▼]</option>
+            <option value="#">#코드색상</option>
+            <option value="">색상명</option>
+        </select>
+        <!-- 색상명 입력 -->
+        <input type="text" id="colors" placeholder="색상코드입력">
+        <!-- 상자선택 -->
+        <select id="boxselect" onchange="bgcolor(this.value);">
+            <option value="">[상자선택▼]</option>
+            <option value="0">상자1</option>
+            <option value="1">상자2</option>
+            <option value="2">상자3</option>
+        </select>
+        <ol id="box">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ol>
+        <p>달력에 표시할 색상을 선택하시오.</p>
+        <span>예시 달력 : <input type="text" id="cal"></span>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/index28.html -->

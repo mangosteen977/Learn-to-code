@@ -1,0 +1,64 @@
+<meta charset="UTF-8">
+<article class="adm_main">
+    <span>배너 관리 리스트</span>
+    <ol class="admin_main_ul">
+        <li onclick="fontclass('1');"><img src="../image/ts01.gif" alt="../img/ts01.gif" title="보통"></li>
+        <li onclick="fontclass('2');"><img src="../image/ts02.gif" alt="../img/ts02.gif" title="크게"></li>
+        <li onclick="fontclass('3');"><img src="../image/ts03.gif" alt="../img/ts03.gif" title="더크게"></li>
+    </ol>
+</article>
+<!-- 제작 -->
+<!-- vue로 json출력 -->
+<article class="banner_setting">
+    <div class="bn_effect_btns">
+        <label>메인 배너 효과 : </label>
+        <label><input type="radio" name="effect" id="effect0" value="R"> Rolling</label>
+        <label><input type="radio" name="effect" id="effect1" value="F"> FadeIn&Out</label>
+        <button type="button" id="banner_effect">효과적용</button>
+    </div>
+    <table border="0" cellpadding="0" cellspacing="0">
+        <!-- 헤드 -->
+        <thead>
+            <tr>
+                <!--1200px 맞춰서 알아서-->
+                <td>번호</td>
+                <td>이미지</td>
+                <!--img 태그 출력 누르면 크게 보이도록 할 것.-->
+                <td>링크 주소</td>
+                <td>배너 타이틀</td>
+                <td>배너 순서</td>
+                <!--셀렉트로 출력할 것 1~10까지 선택.-->
+                <td>등록일자</td>
+                <td>삭제</td>
+            </tr>
+        </thead>
+        <!-- 배너 리스트 -->
+        <tbody id="b_list">
+            {{list}}
+            <!-- 배너없음 -->
+            <tr class="no_bn_list" v-if="no_data=='no'">
+                <td colspan="7">등록 된 배너가 없습니다.</td>
+            </tr>
+            <!-- 배너 있음 (뷰반복)-->
+            <tr v-for="vals in array_bn" v-if="no_data=='yes'">
+                <td v-text="vals.num"></td>
+                <td><img :src="vals.img" @click="popup_img(vals.img)"></td>
+                <td><input type="text" name="linkurls[]" :value="vals.link"></td>
+                <td v-text="vals.title">배너 타이틀</td>
+                <td>
+                    <select id="output_data">
+                        <option :value="vals.no" v-text="vals.no"></option>
+                        <option v-for="number in array_num" :value="number" v-text="number"></option>
+                    </select>
+                </td>
+                <!--셀렉트로 출력할 것 1~10까지 선택.-->
+                <td v-text="vals.date"></td>
+                <td class="banner_del">
+                    <!-- banner_del.php 파라미터 키 값 del_idx값으로 보냄. -->
+                    <div><a @click="del_bn_btn(vals.index)">삭제</a></div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="button" class="add_bn_btn" id="add_bn_btn" onclick="banner_input()">배너등록</button>
+</article>

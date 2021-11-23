@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Ajax 4일차(1) - Ajax POST 통신 (아이디중복확인) </title>
+        <script>
+            // name : mid, POST Ajax로 비동기 통신하시오.
+            // 비동기 통신파일은 index9.php입니다.
+            function abc(){
+                var a = "mid="+document.getElementById("mid").value;
+                // "mid=" name값에 해당 사용자의 입력값을 태움.
+                // 예시) http://naver.com/index.php?mid=hong
+                // 파라미터 값으로 만들어 보냄.
+                // cf) ?mid= 으로 태워 보내면 (GET), mid= 는 POST
+                ajaxpost(a);//확장함수로 보냄
+
+            };
+            let data;
+            function ajaxpost(formdata){
+                function windowsck(){
+                    if(window.XMLHttpRequest){
+                        return new XMLHttpRequest();
+                    }
+                };
+                function post(){
+                    if(data.readyState==XMLHttpRequest.DONE && data.status==200){
+                        resp(this.response);
+                    }
+                };
+                data = windowsck();
+                data.onreadystatechange = post;
+                data.open("POST","./index9.php",true);
+                data.setRequestHeader("content-type","application/x-www-form-urlencoded");
+                //ajax POST로 데이터 전송 시 데이터를 암호화(인코딩)해야한다.
+                //urlencode가 적용안 될 경우 값을 서로 통신못함
+                data.send(formdata);
+                //send 부분은 POST전송 시 값을 태워 보내야만 name값이 전달된다.
+            };
+            function resp(e){//백엔드에서 받은 통신값으로 alert로 출력함.
+            // 통신코드는 다음입니다. (코드는 임의로 Back-End가 정함)
+            // Error(값 전달 X), No(아이디값 중복), Yes(아이디 중복없음), stop(휴면아이디)
+                if(e=="error"){
+                    alert("데이터 값이 올바르게 전달되지 않음");
+                }
+                else if(e=="no"){
+                    alert("이미 사용중인 아이디입니다.");
+                }
+                else if(e=="yes"){
+                    alert("사용가능한 아이디입니다.");
+                }
+                /*else if(e=="stop"){
+                    alert("휴면아이디 입니다.");
+                }*/
+            };
+        </script>
+    </head>
+    <body>
+        <!-- name, form을 html에 안쓰고 POST Ajax로 보내기 -->
+        <!-- 
+            form은 페이지를 이동.(백엔드로부터 데이터반송X)
+            Ajax는 데이터만 전송시킴(GET,POST)
+            name 데이터를 적용시킨 후 Ajax 통신
+            (비동기 : 호출을 해야 벡앤드로 부터 결과값이 반송됨.)
+         -->
+        <input type="text" id="mid" value="">
+        <input type="button" value="아이디중복확인" onclick="abc();">
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/ajax/index10.html -->

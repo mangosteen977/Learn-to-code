@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HTML&CSS 3일차(2) 중급 반응형 (transform) </title>
+        <script>
+           
+        </script>
+        <style>
+            .box{width: 100px; height: 100px; background: lightgreen;}
+            .box:hover{transform:translate(100px,100px)}
+            /* 
+            transform : CSS3, 변경을 사용함.
+            transform:translate(x,y) : position이 없는상태에서 이동시킴 
+            */
+            .box2{width: 100px; height: 100px; background: lightskyblue;
+                transform: rotate(30deg);}
+            /* transform: rotate(deg); : 오브젝트의 각도를 조정(deg)*/
+            .box3{width: 100px; height: 100px; background: lightsalmon;}
+            .box3:hover{transform: scale(1.5,0.5);}
+            /* transform: scale(x가로,y세로) : 오브젝트의 배수(크기) 조정 */
+            .box4{width: 100px; height: 100px; background: lightsteelblue;
+                transform: skew(0,3deg);}
+            /* transform: skew(); : x,y의 기울기 조정 */
+        </style>
+    </head>
+    <body>
+        <div class="box"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4"></div>
+    </body>
+</html>

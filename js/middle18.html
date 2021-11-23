@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Javascript 6일차 (1) - 중급 (외부 배열 파일) </title>
+    </head>
+    <body>
+        <!--문제. ul>li에 외부배열값 출력하시오.-->
+        <p>[간단 회원정보]</p>
+        <ul>
+            <li id="name"></li>
+            <li id="id"></li>
+            <li id="age"></li>
+            <li id="city"></li>
+        </ul>
+    </body>
+    <script>
+        // 백엔드 파일로 받은 배열을 받음, 백엔드와 공유하는 함수명으로 배열을 불러옴 (함수명 : test)
+        // 받아온 벡엔드 파일의 script src는 함수보다 아래에 위치한다.
+        // body에 적용하려면 html이 script보다 먼저 만들어져야해서 body 아래에 위치
+        function test(a){
+            //console.log(a);//{id: "hong", name: "홍길동", age: 30, city: "서울"}
+            let f;
+            for(f in a){
+                //console.log(f) //id name age city
+                //console.log(a[f]) //hong 홍길동 30 서울
+                document.getElementById(f).innerText = a[f];
+            }
+        };
+    </script>
+    <!-- 외부 script 파일 body, script 아래에. -->
+    <!-- CORS(크로스 도메인)이슈 : 교차 리소스 공유시 실도메인(www 無)-가상도메인(www 有) 다르게 인식해서??? 오류가 남(?)-->
+    <script src="http://lovertvtest.dothome.co.kr/js/middle18.php"></script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/middle18.html -->

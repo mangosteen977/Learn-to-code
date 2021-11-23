@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible">
+        <title>Javascript 7일차(1) - 초급코드(DOM객체-radio) </title>
+        <script>
+            var use = "no"; //전역변수 :  반복문으로 검토한 check사항을 반영
+    //NODE객체 형태
+            function abc(){
+                var ea = document.getElementById("poll").children; //자식노드 확인
+                var a = ea.length;//자식노드의 갯수
+                var w = 0;//반복문 초기값
+                do{
+                    var g = "ip"+w; //id값 = 문자+반복문숫자
+                    var checks = document.getElementById(g).checked;
+                    //해당 아이디 check true/false 검토, ""쓰지 않음.
+                    if(checks==true){//check가 한 개라도 true면 if조건 적용
+                        use = "yes"; //전역변수 값 변경.
+                    }
+                    w++;
+                }while(w<a)
+                if(use=="yes"){ //전역변수가 yes일 때 
+                    alert("설문조사에 참여해주셔서 감사합니다.");
+                }
+                else{ //전역변수가 변동없이 no일 때
+                    alert("선택해주세요.");
+                }
+            }
+    //DOM객체 형태
+            function bbb(){
+                var ea = document.getElementsByClassName("aaa").length;
+                //var cc = document.getElementsByClassName("aaa")[0].checked;
+                var w = 0;
+                while(w<ea){
+                    var ck = document.getElementsByClassName("aaa")[w].checked;
+                    if(ck==true){
+                        use = "yes";
+                    }
+                    w++;
+                }
+                    if(use=="yes"){ //전역변수가 yes일 때 
+                    alert("설문조사에 참여해주셔서 감사합니다.");
+                    }
+                    else{ //전역변수가 변동없이 no일 때
+                        alert("선택해주세요.");
+                    }
+                //console.log(cc);
+            }
+    //DOM객체는 순서가..
+    /*DOM 객체모델 - CSS
+    (HTML 문서확인 후 트리형태로 데이터 구조를 만듬.)
+    
+    NODE = 태그기준 (0부터 시작)-중복없음
+    부모노드 parent
+    자식노드 child*/
+            function ccc(){
+                var ck = document.getElementsByClassName("bb")[1].checked;
+                console.log(ck);
+            }
+        </script>
+        <style>
+            label{display: block;}
+        </style>
+    </head>
+    <body>
+        <p>[다음 프론트엔드 과정 중 가장 어려운 과목은?]</p>
+        <div id="poll"> <!--MarkUp신경쓰기-Node-->
+            <label for="ip0"><input type="radio" name="n" id="ip0" class="aaa bb">HTML</label>
+            <label for="ip1"><input type="radio" name="n" id="ip1" class="aaa">CCS</label>
+            <label for="ip2"><input type="radio" name="n" id="ip2" class="aaa">Javascript</label>
+            <label for="ip3"><input type="radio" name="n" id="ip3" class="aaa bb">Jquery</label>
+            <label for="ip4"><input type="radio" name="n" id="ip4" class="aaa">Ajax</label>
+            <label for="ip5"><input type="radio" name="n" id="ip5" class="aaa">Scss</label>
+        </div>
+        <input type="button" value="참여하기" onclick="ccc();">
+    </body>
+    <script>
+    </script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/index38.html -->

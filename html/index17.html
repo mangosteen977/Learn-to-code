@@ -1,0 +1,58 @@
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>HTML 4.0 6일차 - CSS 2.0 style 응용</title>
+        <style>
+            body{margin: 0; padding:0;}
+            .menu{width: 330px; height: 90px; border: 1px solid yellow;}
+            .icon{width: 110px; height: 45px;}
+            .no3{margin: -45px 0 0 220px;}
+        </style>
+        <!-- 
+            span, img 태그를 연속으로 사용할 경우 에디터 특성상 공백 발생
+            공백을 없애기 위해서 태그를 연속적으로 붙여서 사용
+            예)<span></span><span></span>(O)
+            예)<span></span>
+                <span></span>(X)
+            혹은 <div>태그로 <img>태그를 감싸준다.
+        -->
+        <!-- 
+            border사용 시 좌우상단 px또한 width,height 반영이 된다.
+                
+        -->
+    </head>
+    <body>
+        <div class="menu">
+            <a href="https://www.gmarket.co.kr/" target="_blank"><img src="./images/logo_quick_01.png" class="icon"></a><a href="http://www.auction.co.kr/" target="_blank"><img src="./images/logo_quick_02.png" class="icon"></a><a href="http://www.halfclub.com/" target="_blank"><img src="./images/logo_quick_03.png" class="icon no3"></a><a href="https://www.11st.co.kr/" target="_blank"><img src="./images/logo_quick_04.png" class="icon"></a><a href="https://front.wemakeprice.com/" target="_blank"><img src="./images/logo_quick_05.png" class="icon"></a><a href="https://www.coupang.com/" target="_blank"><img src="./images/logo_quick_06.png" class="icon no3"></a>
+        </div>
+    </body>
+</html>
+
+<!-- 선생님 버전
+    <html lang="Ko">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-compatible" content="IE-Edge, chrome=1">
+            <title>HTML 4.0 6일차 - CSS 2.0 style 응용</title>
+        <style>
+            body{margin: 0; padding:0;}
+            .box{width: 328px; height: 88px; border: 2px solid black;}
+            img{width: 110px; height: 45px; border:1px solid black}
+            .imgdiv{width: 110px; height: 45px; background-color:blue;}
+            .b{margin-top: -45px; margin-left: 110px;}
+            .c{margin-top: -45px; margin-left: 220px;}
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <div class="imgdiv"><a href="https://www.gmarket.co.kr/" target="_blank"><img src="./images/logo_quick_01.png"></a></div>
+            <div class="imgdiv b"><a href="http://www.auction.co.kr/" target="_blank"><img src="./images/logo_quick_02.png"></a></div>
+            <div class="imgdiv c"><a href="http://www.halfclub.com/" target="_blank"><img src="./images/logo_quick_03.png"></a></div>
+            <div class="imgdiv"><a href="https://www.11st.co.kr/" target="_blank"><img src="./images/logo_quick_04.png"></a></div>
+            <div class="imgdiv b"><a href="https://front.wemakeprice.com/" target="_blank"><img src="./images/logo_quick_05.png"></a></div>
+            <div class="imgdiv c"><a href="https://www.coupang.com/" target="_blank"><img src="./images/logo_quick_06.png"></a></div>
+        </div>
+    </body>
+</html>
+ -->

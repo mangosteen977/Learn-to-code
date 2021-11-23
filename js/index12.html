@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>JavaScript 2일차(5) -선택문1 (종합응용) </title>
+        <script>
+            //switch~case (설문조사,투표,통신사,지역번호(위치),레벨(등급))
+           /* var aa = "홍길동";
+            switch(aa){ //해당 변수값을 대입
+                case "홍길동": //선택값과 비교하여 동일하면 출력
+                document.write("가입자 고객입니다.");
+                break; //break; case와 동일 값이면 더이상 조회 하지 않고 정지.
+
+                case "이순신":
+                document.write("휴면고객입니다.");
+                break;
+
+                default: //선택값과 일치하는 값이 없으면 출력
+                document.write("가입되지 않은 고객입니다.");
+                break;
+
+            }
+            //switch : 속도 느리다.
+            //case : 20개 이상은 사용하지 않음.
+            var bb = 1;
+            switch(bb){
+                case 1:
+                document.write("일반 등급 회원입니다.");
+                break;
+
+                case 2:
+                document.write("실버 등급 회원입니다.");
+                break;
+
+                default:
+                document.write("비회원입니다.");
+                break;
+            } */
+
+            var c = "card";
+            switch(c){
+                //멀티케이스 :여러 케이스를 하나에 적용.
+                case"card":
+                case "Card":
+    //            document.write("신용카드로 결제를 선택하셨습니다.")      
+                break;
+                
+                case "bank":
+    //            document.write("계좌이체를 선택하셨습니다.")
+                break;
+
+                default:
+    //            document.write("무통장 입금을 선택하셨습니다.")
+                break;
+            }
+
+            var d =4;
+            switch(d){
+                case 1: case 2: case 3: case 4:
+                if(d%2==0){
+     //           document.write("5미만의 짝수 숫자를 입력하셨습니다.");
+                }
+                else{
+    //            document.write("5미만의 홀수 숫자를 입력하셨습니다.")
+                }
+                break;
+
+
+                default:
+     //           document.write("5이상의 숫자를 입력하셨습니다.");
+                break;
+            }
+/*  반복문안에 switch (O),
+    switch안에 case안에 if/for/while/do~while반복문 (O),
+     */
+
+     /*
+     응용문제9.
+     switch+if 결합.
+     변수값 : card:
+     하위 if 문 롯데,현대,삼성으로 구분,
+     단, 사용자가 현대를 선택할 경우 "시스템 점검으로 인하여 결제가 되지 않습니다."출력
+     롯데,삼성을 선택 시 "결제 진행 하겠습니까?" 출력.
+     카드 의외의 값은 "올바른 값이 아닙니다." 출력
+     */
+    /*var ccc = "card";
+    var cccc ="삼성";
+     switch(ccc){
+        case "card":
+            if(cccc=="삼성" || cccc=="롯데"){
+                document.write("결제를 진행 하겠습니까?");
+            }
+
+            else if(cccc="현대"){
+                document.write("시스템 점검으로 인하여 결제가 되지 않습니다.");
+            }
+        break;
+
+        default:
+        document.write("올바른 값이 아닙니다.");
+        break;
+
+     }*/
+    /* 응용문제10.
+    switch로 구구단 만들기. 변수에 문자로 2단 입력 시 2단 출력,
+    2단, 4단 출력되도록.
+    */
+   var gugu = "2단"; //입력 받을 변수 자리
+   var dan; //곱하는 값(1~9)
+   var gu; //결과값
+   switch(gugu){
+        case "4단":
+        for(dan=1;dan<10;dan++){
+            gu = dan*4;
+            document.write(4+"X"+dan+"="+gu+"<br>");
+        }
+        break;
+
+        case "2단":
+        for(dan=1;dan<10;dan++){
+            gu = dan*2;
+            document.write(2+"X"+dan+"="+gu+"<br>");
+        }
+        break;
+
+        default:
+        document.write("죄송합니다. 구구단은 2단, 4단만 지원합니다.");
+        break;
+   }
+
+        </script>
+    </head>
+    <body>
+        <!-- http://mangsteen977.dothome.co.kr/js/index12.html -->
+    </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Vuejs 2일차 - 반복문</title>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+<section id="box">
+   <ul> <!-- 1. 반복시킬 태그를 선택  (반복하고자 하는 태그에 v-for를 이용하게 된다. 자바의 for in과 같은 역할!!)-->
+     <li v-for="(user,index) in abc">{{user.names}}{{index}}</li> 
+     <!--3.for in 문 형태로 찍힌다.  user는 임의로 정할수 있다.
+          index는 꼭 써줘야 한다 괄호를 꼭 써주는것이 좋다.
+           <li v-for="user in abc">{{user}}</li>  이렇게 출력시는 배열이 나온다. 
+           <li v-for="user in abc">{{user.names}}</li> 이름이 나온다.
+           이건 자리가 2개만 가능하다. 
+      --> 
+   </ul>
+</section>
+<section id="box2">
+   <ol>
+       <li v-for="test,key,index in abc">{{test}}{{key}}{{index}}</li>
+       <!-- 
+           제이쿼리의 foreach 와 비슷!
+           <li v-for="test,index in abc">{{test}}{{index}}</li> 쓰면 키값이 나온다.
+           <li v-for="test in abc">{{test}}</li>  안에 값이 나온다.
+           "test,key,index in abc"  자리는 무조건 3개 만들어야 한다. 출력은 안시키고 싶으면 안쓰면 된다.
+           test : abc배열을 받는 값 
+           key : 배열에 등록된 각각의 키값
+           index : 배열 키 번호
+       -->
+   </ol>
+</section>
+</body>
+<script>
+    let a = new Vue({
+    el:"#box",
+    data:{
+      abc : [  //[] 은 배열로 인식  출력하는 방식이 다르다. {}그룹형태의 names라는 키를 가지고 있음.
+            { names : "홍길동"},   //2. 출력할 내용을 배열 형태로 써준다.
+            { names : "강감찬"},
+            { names : "유관순"}
+          ] 
+    }
+    
+    });
+    let b = new Vue({
+        el:"#box2",
+        data:{
+           abc:{  //{}도 배열로 인식  출력하는 방식이 다르다. 각각의 키로 구분하는 형태
+               user_name:"김은진",
+               user_test:"정보처리기사",
+               user_score:"100점 합격!!"
+              }
+        }
+    });
+</script>
+</html>

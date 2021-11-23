@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECMA Script 2일차(1) - ES class + 확장 함수 </title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: coral;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" class="box"></div>
+</body>
+<!-- ES용 Script -->
+<script type="module">
+    import { aaa, bbb } from "./index7.js?v=1";
+    let mid = new aaa("망고스틴");
+    console.log(mid.errors()) // aaa 클래스의 errors함수로 값을넘김
+    console.log(mid) // aaa의값 배열로 출력됨
+
+    // aaa 클래스의 sign값으로 출력할값을 조절함.
+    if (mid.sign == "ok") {
+        console.log(mid.login());// aaa 클래스의 login함수로 값을넘김
+    }
+    else {
+        console.log(mid.errors());// aaa 클래스의 errors함수로 값을넘김
+    }
+
+    let zz = new bbb();
+</script>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>문제 2번</title>
+        <style>
+            body{margin: 0; padding: 0; box-sizing: border-box; box-sizing: border-box;}
+            ul,ol,dl{margin: 0; padding: 0; list-style: none;}
+            span,label,main{display: block;}
+            a{text-decoration: none;}
+            
+            .box{
+                margin: 0 auto;
+                width: 1000px;
+                height: 70px;
+                background-color: blue;
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-top: 15px;
+                box-sizing: border-box;
+            }
+            .ul1{
+                width: 200px;
+                height: 40px;
+                background-color: gray;
+                display: inline-block;
+            }
+            .ol1{
+                width: 400px;
+                height: 40px;
+                float: right;
+            }
+            .ol1 > li{
+                width: 100px;
+                height: 40px;
+                display: inline-block;
+                background-color: black;
+            }
+            .ol1 > li:nth-child(odd){
+                background-color: yellow;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+                <ul class="ul1">
+                    <li></li>
+                </ul>
+                <ol class="ol1">
+                    <li></li><li></li><li></li><li></li>
+                </ol>
+            </div>
+    </body>
+</html>

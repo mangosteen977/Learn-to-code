@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HTML&CSS 4일차(4) 중급 반응형 (full banner) </title>
+        <script src="../jq/jquery.js"></script>
+        <script>
+            $(document).ready(function(){
+                /*$("#banner0").fadeOut(2000);
+                $("#banner1").fadeIn(2000);*/
+                var $node = 0;
+                var $ea = $("#banner>label").length;
+                $(".l").click(function(){
+                    
+                    $("#banner"+$node).stop().fadeOut(2000);
+                    if($node==0){$node=$ea-1;}
+                    else if($node!=0){$node=$node-1;}
+                    $("#banner"+$node).stop().fadeIn(2000);
+                });
+                $(".r").click(function(){
+                    $("#banner"+$node).stop().fadeOut(2000);
+                    $node = $node+1;
+                    if($node==$ea){$node=0;}
+                    $("#banner"+$node).stop().fadeIn(2000);
+                });
+
+
+
+                $("#banner").mouseenter(function(){
+                    $(".l").css({"left":"100px","opacity":"1"});
+                    $(".r").css({ "right":"100px","opacity":"1"});
+                });
+                $("#banner").mouseleave(function(){
+                    $(".l").css({"left":"","opacity":""});
+                    $(".r").css({ "right":"","opacity":""});
+                });
+               
+            });
+        </script>
+        <style>
+            *{box-sizing: border-box;}
+            body{margin: 0; padding: 0;}
+            span, label, main{display: block;}
+            ol,ul,dl{list-style: none; margin: 0; padding: 0;}
+            /*banner*/
+            .banner{
+                height: 613px; max-width: 2560px; margin: 0 auto; 
+                position: relative; /* overflow: hidden; */
+            }
+            .banner>label{
+                position: absolute;
+            }
+                /* [background-size]
+                    background-size: cover; : 가로세로 크기가 다를경우 화면에 맞춤. 빈 공간(X).
+                    background-size: contain; : 가로세로 크기가 서로 다를 경우 이미지 비율에 맞춤. 빈 공간(O).
+                */
+            .b{
+                height: inherit; width: 100%; max-width: inherit;
+                background-image: url("./full_banner0.jpg");
+                background-position: 50%;
+                background-repeat: no-repeat;
+                background-size: cover;
+                
+            }
+            .c{
+                height: inherit; width: 100%; max-width: inherit;
+                background-image: url("./full_banner1.jpg");
+                background-position: 50%;
+                background-repeat: no-repeat;
+                background-size: cover;
+                display: none;
+            }
+            .btn{
+                position: absolute;
+                height: inherit; width: 100%; max-width: inherit;
+                display: flex;
+                align-items: center;
+            }
+            .btn>img{
+                object-fit:cover;
+                opacity: 0;
+                transition-duration: 2s;
+                width: 50px; height: 50px;
+                position: absolute; z-index: 15; cursor: pointer;
+            }
+            /*object-fit:cover;*/
+            .l{left: 0;}
+            .r{right: 0;}
+
+        </style>    
+    </head>
+    <body>
+        <section class="banner" id="banner">
+            <div class="btn">
+                <img class="l" src="./leftbtn.svg">
+                <img class="r" src="./rightbtn.svg">
+            </div>
+            <label class="b" id="banner0"></label>
+            <label class="c" id="banner1"></label>
+        </section>
+        
+    </body>
+</html>

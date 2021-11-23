@@ -1,0 +1,68 @@
+<?php
+    $v = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+    <title> Vue ,vuejs 4일차 (2) vue 외장 컴퍼넌트 ??? components template 템플릿 가짜 태그 ?????????</title>
+    <script src="../jq/jquery.js"></script>
+    <!-- vue 버전 1.6.4 ???????? -->
+    <script src="http://cdn.jsdelivr.net/npm/vue"></script>
+    <!--상용버전 값 가져옴^_~-->
+    <style>
+    </style>
+</head>
+
+<body>
+    <!-- 외장 컴퍼넌트 템플릿은 v-bind @click 사용 가능하다. -->
+    <div id="box">
+        <abc v-bind:aaa="msg"></abc>
+        <in v-on:cc="test"></in>
+    </div>
+</body>
+<script>
+    Vue.component("abc", { //여기는 외부 컴퍼넌트 이다. 태그명을 넣는다.
+        //props : bind 태그 불러옴. 속성값 === attr
+        props: ["aaa"],//v-bind 이름을 넣는다. 이름은 맘대로.
+        template: "<button @click='zzz'>{{aaa}}</button>", //@click도 사용 가능
+        methods: { //vue 핸들링 함수 methods는 외부 컴퍼넌트에 둔다. 내부는 불가능~
+            zzz: function () {
+                alert("D")
+            }
+        }
+    });
+    Vue.component("in", {
+        template: "<input type='button' @click='zzz' v-model='btn_nm'>",
+        data() { //컴퍼넌트에는 data가 존재 X, data(){}형식으로 쓴다.
+            return { btn_nm: "click" } //무조건 리턴으로 값을 반환한다.
+            //실제 data 파트는 vue에서만 사용하며 component에는 없다.
+        },
+        methods: {
+            zzz: function () {
+                this.$emit("cc");
+                //$emit : 해당 핸들링의 본 이름을 가져온다. ??????????????????????
+                //zzz함수에 $emit를 이용해 test로 핸들링 명을 바꿈... ?????????
+            }
+        }
+    })
+    let a = new Vue({
+        el: "#box",
+        data: {
+            msg: "test"
+        },
+        components: {
+            //여기는 내부 컴퍼넌트 이다.
+        },
+        methods: {
+            test: function () {
+                alert("외부컴퍼넌트 연결");
+            }
+
+        }
+    });
+</script>
+
+</html>

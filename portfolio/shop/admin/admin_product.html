@@ -1,0 +1,43 @@
+<?php
+    $v = date("YmdHis");
+    include "check.php";
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="imagetoolbar" content="no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+    <title>쇼핑몰 관리자 페이지</title>
+    <script src="../../js/jquery.js"></script>
+    <script src="./config.js?v=<?=$v?>"></script>
+    <script src="http://cdn.jsdelivr.net/npm/vue"></script>
+    <link rel="stylesheet" type="text/css" href="./admin.css?v=<?=$v?>">
+    <link rel="stylesheet" type="text/css" href="./main.css?v=<?=$v?>">
+    <link rel="stylesheet" type="text/css" href="./product.css?v=<?=$v?>">
+    <script>
+        let level = "<?php echo $alevel?>";
+    </script>
+</head>
+
+<body>
+    <header class="header">
+        <?php include "admin_top.html"; ?>
+    </header>
+    <section class="section" id="pd">
+        <?php include "product_list.html"; ?>
+    </section>
+    <footer class="footer">
+        <?php include "admin_bottom.html"; ?>
+    </footer>
+</body>
+<script>
+    if (level != "M") {
+        document.getElementById("go_to_input_pd_btn").style.display = "none";
+        document.querySelector(".del_btnss").style.display = "none";
+    }
+</script>
+<script src="./product_list.js?v=<?=$v?>"></script>
+
+</html>

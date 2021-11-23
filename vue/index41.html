@@ -1,0 +1,63 @@
+<?php
+    $v = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 8일차 (2) vue + JS + JQ + ajax </title>
+        <script src="../jq/jquery.js"></script>
+        <script src="http://cdn.jsdelivr.net/npm/vue"></script><!-- vue 버전 1.6.4 ???????? -->
+        <script>
+            function handel(){
+                
+            }
+            // handel();
+            $(function(){
+               
+            })
+        </script>
+    </head>
+    <body>
+        <section id="box">
+            <select v-model="abc">
+                <!-- v-model은 실시간으로 값을 인식한다. 함수로 값을 바로바로 인식한다. -->
+                <!-- 
+                    v-model은 value와 비슷한 형태이지만
+                    vue에서 함수를 거치지 않고 실시간 반영이 가능하다.
+                    ==> 실시간 입력값=>input에 적용 등 가능하다.
+                    단, back-end로 값이 넘어가지 않는다.
+                    form 태그로 넘길 때는 v-bind:value사용
+
+                    v-bind : 속성을 적용할 때 사용. attr과 비슷한 형태, 실시간 반영한다.
+                 -->
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+            <input type="text"  :value="a.abc">
+            <input type="button" @click="aaa" value="클릭">
+        </section>
+    </body>
+    <script>
+        let vues = new Vue({
+            el:"#box",
+            data:{
+                abc:""
+            },
+            methods:{
+                aaa(){
+                    console.log(this.abc);
+                }
+            },
+            components:{
+
+            },
+            computed:{
+
+            }
+        })
+    </script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/vue/index41.html -->

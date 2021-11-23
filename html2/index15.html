@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HTML&CSS 4일차(2) 중급 반응형 (flex) </title>
+        <script src="../jq/jquery.js"></script>
+        <script>
+           $(document).ready(function(){
+
+            
+           });
+        </script>
+        <style>
+            .box{width: 100px; height: 300px; background-color: black;
+                display: flex;
+                /*flex: 레이아웃 IE(△) cf. grid : IE(X)*/
+                flex-wrap: wrap;
+                /*
+                    flex-wrap : 줄바꿈 설정.
+                    wrap : 줄바꿈 (O), nowrap : 줄바꿈(X) 
+                */
+                /* align-content는 flex-wrap: wrap상태에서만 작동 */
+                /* align-content: center; */
+                /* align-items: center; */
+                /*align-item : 세로기준 위치 (start맨 위/center중간/flex-end아래)*/
+                align-content: space-between;
+                justify-content: center;
+                /* justify-content: 가로기준 위치 */
+                flex-direction:row;
+                /* 
+                    flex-direction : 자식객체 정렬방식, IE작동안함(X)
+                    row : 자식객체 가로정렬(float:left;), 기본은 row
+                    column : 자식객체 세로정렬(float:none;)
+                */
+
+            }
+        /* [display : flex] 정리
+        *IE에서 세로 정렬은 가능(O) 가로는 (X)
+        0. align-content/items : 세로기준 위치 조정, justify-content : 가로기준 위치 조정
+        1. align-content : flex-wrap과 함께 사용해야 함.
+                           1줄 이상일 때 사용한다. (==vertical-align)
+        2. align-items : flex-wrap과 관계없이 작동
+                            1줄일 때만 사용. (==line-height)
+        3. justify-content : (수평)가로기준 위치 조정
+                            flex-start = left;
+                            center = text-align:center or margin:0 auto;
+                            flex-end = right or bottom;
+                            space-around : 객체들 공백을 균등히 함. IE(X)
+                            space-between : 양 끝은 공백(X), 중앙 객체는 균등히 공백. IE(X)
+        4. flex-direction : 자식객체 정렬방식, IE작동안함(X)
+                            row : 자식객체 가로정렬(float:left;)
+                            column : 자식객체 세로정렬(float:none;)
+        5. flex-wrap : 줄바꿈 설정.
+                            wrap : 줄바꿈 (O), nowrap : 줄바꿈(X)
+                            nowrap; = 화면을 줄이면 자식 객체 width값이 줄어듬
+                            wrap; = 화면을 줄이면 자식 객체 width값이 유지되며 줄바꿈이 됨
+        */
+            .sbox{width: 50px; height: 50px;  background-color: deeppink;}
+
+        </style>    
+    </head>
+    <body>
+        <div class="box">
+            <div class="sbox"></div>
+            <div class="sbox"></div>
+            <div class="sbox"></div>
+        </div>
+        
+    </body>
+</html>

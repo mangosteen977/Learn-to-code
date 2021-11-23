@@ -1,0 +1,69 @@
+.top_menus {
+  width: 1200px;
+  height: 100px;
+  background-color: none;
+  margin: 0 auto;
+}
+
+.top_menus > .top1 {
+  width: 100%;
+  height: 70px;
+  background-color: none;
+}
+
+.top_menus > .top1 > .top_banner {
+  width: 100%;
+  height: 70px;
+  background-color: none;
+  cursor: pointer;
+}
+
+.top_menus > .top1 > .top_banner > li {
+  width: 490px;
+  height: 70px;
+  background-color: none;
+  float: left;
+}
+
+.top_menus > .top1 > .top_banner > li:last-child {
+  width: 220px;
+  position: relative;
+}
+
+.top_menus > .top1 > .top_banner > li:last-child > .close {
+  height: 70px;
+  font-size: 25px;
+  font-weight: bold;
+  line-height: 70px;
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+}
+
+.top_menus > .top2 {
+  width: 100%;
+  height: 30px;
+  background-color: #ccc;
+  position: relative;
+}
+
+.top_menus > .top2 > .topmenu_left, .top_menus > .top2 > .topmenu_right {
+  font-size: 12px;
+  position: absolute;
+}
+
+.top_menus > .top2 > .topmenu_left > li, .top_menus > .top2 > .topmenu_right > li {
+  height: 30px;
+  font-size: inherit;
+  font-weight: 400;
+  line-height: 30px;
+  position: none;
+  display: inline-block;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.top_menus > .top2 > .topmenu_right {
+  right: 0;
+}
+/*# sourceMappingURL=top.css.map */

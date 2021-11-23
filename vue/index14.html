@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Vuejs 2일차 - Vue html 출력</title>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+<div id="box">
+    <span v-text="texts"></span>  <!-- v-text : innerText와 같음.-->
+    <span v-html="htmls"></span>  <!-- v-html : innerHtml과 같음.-->
+</div>
+
+<div id="box2">
+    <ul v-html="lists">  <!-- v-model사용시 밑에 methods에서 innerHtml써줘야 핸들링 가능하다.-->
+        
+    </ul>
+    <button v-on:click="bbb">출력</button>
+</div>
+</body>
+<script>
+    let a = new Vue({
+        el:"#box",
+        data:{
+           texts:"홍길동", //innerText와 같은 형태로 찍힌다.
+           htmls:"<input type='text'>"  //input 태그도 들어가진다.
+        }
+    });
+
+    let b = new Vue({
+         el:"#box2",
+         data:{
+            lists:"",  //data안에 내용을 넣는것보다 함수 핸들링으로 안에다 넣어서 출력시킬수 있다!
+            lists2:"<li>세종대왕</li>"
+         },           //Vue는 javascript언어를 쓸수 있다.
+         methods:{
+             bbb:function(){
+             this.lists = "<li>홍길동</li><li>강감찬</li><li>유관순</li>" + this.lists2;
+                //이런기능으로 상품을 계속 추가하는 형태에 응용할수 있다.
+            }
+         }
+    });
+    
+</script>
+</html>

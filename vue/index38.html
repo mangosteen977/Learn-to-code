@@ -1,0 +1,124 @@
+<?php
+    $v = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 7일차 (2) vue + JS + JQ + ajax </title>
+        <script src="../jq/jquery.js"></script>
+        <script src="http://cdn.jsdelivr.net/npm/vue"></script>
+        <!-- lodash js src -->
+        <Script src="http://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></Script>
+        <style>
+            #box{width: 600px; height: auto;}
+            .m1{
+                width: inherit; height: 70px;
+                display: flex; flex-direction: row; justify-content: space-between; align-items: center;
+            }
+            .m1>span{
+                width: 22%; height: 50px; border: 1px solid black;
+                text-align: center; line-height: 50px;
+            }
+            .m2{border: 1px solid black;}
+            .m2, .m3{width: inherit; height: auto;}
+            .m3>li{width: 100%; height: 30px; line-height: 30px;}
+        </style>
+        <script>
+            function handel(){
+                const arr= [
+                    {seq:0, product:"삼성 모니터 27인치 60Hz", price:"195000", vote:"119"},
+                    {seq:1, product:"LG 모니터 27인치 144Hz", price:"270000", vote:"709"},
+                    {seq:2, product:"esys 모니터 27인치 와이드 144Hz", price:"228000", vote:"870"},
+                    {seq:3, product:"삼성 모니터 27인치 70Hz", price:"190000", vote:"99"},
+                    {seq:4, product:"한성 모니터 32인치 60Hz QHD", price:"315000", vote:"221"}
+                ]
+                return arr;
+            }
+            $(function(){
+               
+            })
+        </script>
+    </head>
+    <body>
+        <section id="box">
+            {{abc}}
+            <div class="m1">
+                <span @click="btn_vote">인기상품순</span>
+                <span @click="btn_lo">낮은가격순</span>
+                <span @click="btn_hi">높은가격순</span>
+                <span @click="btn_ori">등록순</span>
+            </div>
+            <div class="m2">
+                <ul class="m3">
+                    <!-- <pd :p1="val.product" :p2="val.price" :p3="val.vote" v-for="val in aaa"></pd> -->
+                    <!-- 기본 렌딩 -->
+                    <li v-if="all && part==1" v-for="val in aaa">{{val.product}} : {{Number(val.price).toLocaleString()}}원 [추천수 : {{val.vote}}]</li>
+                    <!-- 인기~높은순 렌딩 -->
+                    <!-- <li v-if="part==2" v-for="val in aaa">2. {{val.product}} : {{Number(val.price).toLocaleString()}}원 [추천수 : {{val.vote}}]</li> -->
+                    <li v-if="part==2" v-for="list in reproduct">{{list.product}} : {{Number(list.price).toLocaleString()}}원 [추천수 : {{list.vote}}]</li>
+                </ul>
+            </div>
+        </section>
+    </body>
+    <script>
+        // Vue.component("pd",{
+        //     props:["p1","p2","p3"],
+        //     template:"<li>{{p1}} : {{p2}} [추천수 : {{p3}}]</li>"
+        // })
+        let vues = new Vue({
+            el:"#box",
+            data:{
+                aaa:"",
+                allproduct:[],
+                all:true,
+                part:1,
+                order:"", //desc 내림차순, asc 오름차순
+                reproduct:""
+            },
+            methods:{
+                pd:function(jdata){
+                    var f;
+                    for(f in jdata){
+                        this.allproduct.push({
+                            product : jdata[f]["product"],
+                            price: Number(jdata[f]["price"]),
+                            vote:Number(jdata[f]["vote"])
+                        })
+                    }
+                },
+                btn_ori(){//등록순
+                    this.part = 1;
+                },
+                btn_vote(){//추천순
+                    this.order = "desc";
+                    this.part = 2;
+                    this.reproduct = _.orderBy(this.allproduct,["vote"],this.order);
+                },
+                btn_lo(){//내림
+                    this.order = "asc";
+                    this.part = 2;
+                    this.reproduct = _.orderBy(this.allproduct,["price"],this.order);
+                },
+                btn_hi(){//오름
+                    this.order = "desc";
+                    this.part = 2;
+                    this.reproduct = _.orderBy(this.allproduct,["price"],this.order);
+                }
+
+            },
+            components:{
+            },
+            //일반 함수 (this:바인딩할 객체 (전역객체)), 
+            //화살표 함수 (this : 상위 함수 , 기본 : return)
+            computed:{
+                abc:function(){
+                    this.aaa = handel();
+                    this.pd(this.aaa);
+                }
+            }
+        })
+    </script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/vue/index38.html -->

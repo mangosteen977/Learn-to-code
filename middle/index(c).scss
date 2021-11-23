@@ -1,0 +1,75 @@
+@charset "UTF-8";
+%base{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+*, body {
+    @extend %base;
+}
+img{width: 100%; object-fit: cover;}
+@mixin object($min-w,$max-w,$h,$display,$position){
+    min-width: $min-w;
+    max-width: $max-w;
+    height: $h;
+    display: $display;
+    position: $position;
+}
+.product { 
+    @include object(360px,480px,160px,block,relative);
+    background-color: cadetblue;
+    &>.product_head{
+        @include object(360px,480px,45px,flex,relative);
+        flex-flow: nowrap row;
+        justify-content: center;
+        background-color: rgb(97, 215, 219);
+        &>label{
+            @include object(30px,50px,inherit,block,relative);
+            line-height: 45px;
+            text-align: center;
+        }
+        &>div{
+            @include object(150px,50px,inherit,block,relative);
+            line-height: 45px;
+            text-align: center;
+        }
+    }
+    &>.product_view{
+        @include object(360px,480px,205px,flex,relative);
+        flex-flow: nowrap row;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(89, 118, 119);
+        padding-left: 10px;
+        padding-right: 10px;
+        &>.product_list{
+            @include object(340px,340px,130px,block,relative);
+            overflow: hidden;
+            &>.dtc{
+                @include object(1200px,1200px,130px,block,relative);
+                background-color: ivory;
+                &>.product_ea{
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+                    width: 100%;
+                    display: flex;
+                    flex-flow: nowrap row;
+                    &>li{
+                        @include object(100px,100px,130px,block,relative);
+                        margin-right: 20px;
+                        &>div:nth-of-type(1){
+                            @include object(100px,100px,100px,block,relative);
+                        }
+                        &>div:nth-of-type(2){
+                            @include object(100px,100px,30px,block,relative);
+                            font-size: 12px;
+                            text-align: center;
+                            line-height: 30px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>JavaScript 3일차(2) - 기초 함수(명령어) </title>
+        <script>
+// Number (N 대문자) : 문자 중 "숫자"로 된 것을 타입 변경이 가능
+            /*
+            var aa = Number("15");
+            var bb = Number("15");
+            */
+// String (S 대문자) : 숫자를 문자로 타입 변경이 가능
+            var aa = String(15);
+            var bb = String(15);
+            var cc = aa+bb;
+            //console.log(cc);
+
+            var zz = 1;
+            var xx = "1";
+// typeof() :해당 값이 숫자인지 문자인지 확인하는 명령어
+           // console.log(typeof(xx));
+            
+// window.open : 다른 html 파일을 팝업 형태로 띄우는 명령어.
+// window.open("파일주소","팝업창 title이었는데 지금은 안사용해서 비워둠","width= height="); : width/height 팝업창 크기
+           //window.open("./popup.html","","width=200 height=200");
+            var k;
+            /*for(k=1;k<3;k++){
+                window.open("./popup.html","","width=200 height=200");
+            }*/
+//for문 안에 window.open 써서 여러개의 팝업을 한 번에 띄울 수도 있다.
+
+
+
+            //var mm = "연습"; // : 전역변수 , 모든 함수에서 사용이 가능하다.
+// 이벤트/일반 함수, 함수안에 내용은 읽기만 하고 실행은 하지 않음
+            function aaa(){
+                alert("안녕하세요");
+            }
+            function bbb(){
+                var mm = "연습"; //지역변수(mm) : funtion 속 함수는 해당 function안에서만 사용가능하다.
+                console.log("bbb함수입니다.");
+            }
+            ///bbb(); //함수를 호출하는 형태. 호출이 있어야 출력이 된다.
+            //함수명은 절대 중복 사용하지 않는다.
+
+// 버블링 핸들러 함수
+            function ccc(a, b){ //<-함수의 변수를 선언
+                console.log(mm);
+                var f ;
+                for(f= a;f<b;f++){
+                    console.log(f);
+                }
+            }
+            ccc(5, 15); //ccc함수를 호출하며, 숫자 5와 15를 할당하여 호출
+
+        </script>
+    </head>
+    <body>
+        <!-- http://mangsteen977.dothome.co.kr/js/index14.html -->
+    </body>
+</html>

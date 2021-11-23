@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title> Jquery Ajax 6일차(2) - Jquery Ajax ( 공지 게시판 A파트 ) </title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(function(){
+                let $tr;
+                $.ajax({
+                    url:"./notice.json",
+                    cache:false,
+                    type:"GET",
+                    dataType:"JSON",
+                    success:function($wirteData){
+                        $.fn.make_tr($wirteData);
+                    },
+                    error:function(){
+                        alert("데이터 로드 실패");
+                    }
+                });
+                $.fn.make_tr = function($wirteData){
+                    let $data_leng = $wirteData.length; // 데이터 갯수
+
+                    $.each($wirteData, function($a,$b){
+                        console.log($b) // 데이터
+                        // 제목 50자이상 말줄임
+                        var $tit_leng = $b["nsubject"].length;
+                        var $nsubject = $b["nsubject"];
+                        if($tit_leng > 50){
+                            $nsubject = $nsubject.substr(0,50)+"…";
+                        }
+
+                        // 날짜 연일월만 출력
+                        var $nindate = $b["nindate"];
+                        $nindate = $nindate.substr(0,10); // 총글자 19개
+
+                        $tr = '<tr>\
+                                <td>'+$data_leng+'</td>\
+                                <td>'+$nsubject+'</td>\
+                                <td>'+$b["nwriter"]+'</td>\
+                                <td>'+$nindate+'</td>\
+                                <td>'+$b["ncount"]+'</td>\
+                                </tr>';
+                        $("#tbody").append($tr);
+                        $data_leng--;
+                    });
+                };
+                $("#btn_notice_write").click(function(){
+                    location.href = "http://mangsteen977.dothome.co.kr/ajax/notice_write.html";
+                });
+            });
+        </script>
+        <style>
+            *{box-sizing: border-box; padding:0; margin:0; font-family:'Malgun Gotic';}
+            ul, ol{list-style: none;}
+            .wrap{width:1000px; margin:0 auto;}
+            .title{text-align:center; font-size:24px; font-weight: normal; margin:30px 0;}
+            .ntc{width:1000px; border-top:1px solid #DDD; border-spacing:0;}
+            .ntc th, .ntc td{height:30px; font-size:13px; text-align:center;}
+            .ntc th{background-color:#6acbff; color:#FFF; font-weight: normal;}
+            .ntc td{border-bottom:1px solid #ddd; border-right:1px solid #DDD;}
+            .ntc td:nth-child(2){text-align: left; text-indent:10px;}
+            .ntc td:last-child{border-right:0;}
+            .pagging_wrap{width: inherit; text-align: center; margin-top:30px;}
+            .pagging_wrap li{display:inline-block; width:30px; height:30px; line-height:30px; cursor:pointer; border-radius:50%;}
+            .pagging_wrap li:first-child{background-color:#6acbff; color:#FFF;}
+            .pagging_wrap li:hover{background-color:#6acbff; color:#FFF;}
+            .btn_wrap{margin:20px 0; text-align:right;}
+            .btn_wrap .btn_notice_write{width:100px; height:30px; background-color:black; color:#FFF; border:0; cursor: pointer;}
+            .no_list{display:none}
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <h2 class="title">공지사항</h2>
+            <table class="ntc" id="ntc">
+                <colgroup>
+                    <col style="width:80px">
+                    <col style="width:600px">
+                    <col style="width:100px">
+                    <col style="width:120px">
+                    <col style="width:100px">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>제목</th>
+                        <th>글쓴이</th>
+                        <th>날짜</th>
+                        <th>조회수</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                    <!--
+                    <tr>
+                        <td>1</td>
+                        <td>제목</td>
+                        <td>글쓴이</td>
+                        <td>2020-12-12</td>
+                        <td>조회수</td>
+                    </tr>-->
+                    <tr id="no_list" class="no_list">
+                        <td colspan="5">등록된 게시물이 없습니다.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <ul class="pagging_wrap" id="pagging_wrap">
+                <li>1</li>
+                <li>2</li>
+            </ul>
+            <div class="btn_wrap">
+                <button type="button" class="btn_notice_write" id="btn_notice_write">등록</button>
+            </div>
+        </div>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/ajax/notice_list.html -->
+<!-- jndex -->
+<!-- 05/26 조별활동(정윤경 님)코드! -->

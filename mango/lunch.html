@@ -1,0 +1,74 @@
+<?php
+    $data = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <meta name="viewport" content="width= device-width, initial-scale=1.0">
+        <title> 오늘은 또 뭐 먹지 </title>
+        <script src="../jq/jquery.js"></script>
+        <script>
+            $(function(){
+                
+            });
+        </script>
+        <style>
+            *{box-sizing: border-box;}
+            span{display: block;}
+            .lunch{
+                width: 100%; height: auto;
+                background-color: bisque;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            .board{
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: rgb(245, 245, 245);
+            }
+            .board>span{
+                position: absolute;
+            }
+            .board, .spin_board{
+                width: 500px;
+                height: 500px;
+            }
+            .spin_board{
+                border-radius: 100%;
+                border: 5px solid crimson;
+                background-image: url();
+                background-size: cover;
+            }
+            .picker{
+                width: 20px; height: 100px;
+                background-color: tomato;
+                border-radius: 100% 100% 5px 5px;
+                margin-top: -100px;
+            }
+            .dot{
+                width: 30px;
+                height:30px;
+                border-radius: 100%;
+                background-color: purple;
+            }
+        </style>
+    </head>
+    <body>
+        <section class="lunch">
+            <div class="board">
+                <span class="spin_board"></span>
+                <span class="picker"></span>
+                <span class="dot"></span>
+            </div>
+            <div class="btns">
+                <span>돌려라 돌림판</span>
+            </div>
+        </section>
+    </body>
+</html>

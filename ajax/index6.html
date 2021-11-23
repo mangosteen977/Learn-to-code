@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Ajax 2일차(2) - Javascript( json - 회원리스트 검색 ) </title>
+        <style>
+            .datalist { height:auto; }
+            .member_list { width:1000px; height:auto; border:1px solid #ccc;
+            margin: 0 auto;
+            }
+            .ulcss { list-style: none; margin: 0; padding: 0; 
+            width: 100%; height: 30px; font-size: 13px;
+            background-color: azure;
+            }
+            .ulcss > li { float: left; height: 30px; line-height: 30px; 
+                text-align: center; }
+            .ulcss > li:nth-of-type(1) { width:50px; }
+            .ulcss > li:nth-of-type(2) { width:150px; }
+            .ulcss > li:nth-of-type(3) { width:150px; }
+            .ulcss > li:nth-of-type(4) { width:350px; }
+            .ulcss > li:nth-of-type(5) { width:200px; }
+            .ulcss > li:nth-of-type(6) { height: 30px; }
+            /* 고객정보 리스트 출력 css 부분 */
+            .viewcss { list-style: none; margin: 0; padding: 0; 
+            width: 100%; height: auto;
+            }
+            .viewcss > li { width: 100%; height:30px; 
+            border-bottom: 1px dashed #ccc;}
+            .viewcss > li:nth-of-type(even) { background-color:cornsilk; }
+            .viewcss > li:last-child { border: 0;}
+            .viewcss > li > span { display: block; float: left;
+            height: 30px; line-height: 30px; text-align: center;
+            font-size: 13px; }
+            .viewcss > li > span:nth-of-type(1){width:50px;}
+            .viewcss > li > span:nth-of-type(2){width:150px;}
+            .viewcss > li > span:nth-of-type(3){width:150px;}
+            .viewcss > li > span:nth-of-type(4){width:350px;}
+            .viewcss > li > span:nth-of-type(5){width:200px;}
+            .viewcss > li > span:nth-of-type(6){height:30px;}
+            /*검색파트*/
+            .headercss{
+                height: 60px; background-color: rgb(255, 0, 157);
+                text-align: center; line-height: 60px;
+                margin: 10px; box-sizing: border-box;
+            }
+            /*총 가입자 수 출력*/
+            .total{
+                width: 150px; height: 30px; line-height: 30px;
+                text-align: right; display: inline-block; font-weight: bold;
+                font-size: 11px; color: white;
+            }
+        </style>   
+    </head>
+    <body>
+        <!-- 검색파트 -->
+        <form name="f" id="f" method="GET" action="./index6.html" enctype="application/x-www-form-urlencoded">
+            <header class="headercss">
+                <select class="spart" id="spart" name="spart">
+                    <option value="1">아이디</option>
+                    <option value="2" selected>이름</option>
+                </select>
+                <input type="text" id="searchw" class="searchw" name="searchw" placeholder="검색 단어 입력">
+                <input type="submit" value="회원검색" class="btn">
+                <label id="total" class="total"><!--총 가입자 수 출력--></label>
+            </header>
+        </form>
+        <!-- 회원리스트파트 -->
+        <section class="datalist">
+            <div class="member_list">
+                <ul class="ulcss">
+                    <li>NO</li>
+                    <li>아이디</li>
+                    <li>고객명</li>
+                    <li>이메일</li>
+                    <li>전화번호</li>
+                    <li>지역</li>
+                </ul>
+                <ul class="viewcss" id="viewcss">
+                </ul>
+            </div>
+        </section>
+    </body>
+    <script>
+        //회원리스트 출력파트 : 출력 관련 코드들은 index5참고
+        let mdata;
+        function windowck(){
+            if(window.XMLHttpRequest){
+                return new XMLHttpRequest();
+            };
+        };
+        function membersget(){
+            if(mdata.readyState==XMLHttpRequest.DONE && mdata.status==200){
+                member_list(this);
+            };
+        };
+        mdata = windowck();
+        mdata.onreadystatechange = membersget;
+        mdata.open("GET","./index5.json",true);
+        mdata.send();
+
+        function member_list(data){
+            /*검색파트*/
+            //decodeURI : 암호화 값 풀기 (복호화)
+            let sdata = decodeURI(location.search);
+            let sdata2 = sdata.split("&searchw=");
+            if(sdata2[1]!=undefined){
+               document.getElementById("searchw").value = sdata2[1]; 
+            };
+
+            const list = JSON.parse(data.response);
+            var total = list.members.length;
+            /*총 가입자 수 출력*/
+            document.getElementById("total").innerText = "총 가입자 수는 "+total+"명입니다.";
+
+            for (let i in list.members) {
+                let li = document.createElement("li");
+                var html;
+                li.innerHTML = "<span>"+total+"</span>";
+                /*검색파트, 데이터 중 검색어가 있을 경우 출력 조건문(span을 찍는 작은 반복문을 감쌈)*/
+                if(list.members[i]["name"]==sdata2[1]){
+                    for (let j in list.members[i]) {
+
+                        let span = document.createElement("span");
+                        if(j=="area"){
+                            j = "phone";
+                        }
+                        else if(j=="phone"){
+                            j = "area";
+                        }
+                        span.append(list.members[i][j]);
+                        li.append(span);
+                        document.getElementById("viewcss").append(li);
+                    };
+                total--;
+                }
+                else if(!sdata2[1]){
+                    for (let j in list.members[i]) {
+                    let span = document.createElement("span");
+                    if(j=="area"){
+                        j = "phone";
+                    }
+                    else if(j=="phone"){
+                        j = "area";
+                    }
+                    span.append(list.members[i][j]);
+                    li.append(span);
+                    document.getElementById("viewcss").append(li);
+                    };
+                    total--;
+                }
+            };
+        };
+        
+
+    </script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/ajax/index6.html -->

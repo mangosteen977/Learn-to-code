@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HTML&CSS 4일차(3) 중급 반응형 (flex 응용) </title>
+        <script src="../jq/jquery.js"></script>
+        <script>
+
+        </script>
+        <style>
+            .img{filter: hue-rotate(5deg);}
+        /* [filter 효과] : IE작동(X)
+            filter: blur(px); : 블러효과
+            filter: grayscale(%); : 흑백효과
+            filter: contrast(%); : 대비효과
+            filter: hue-rotate(deg); : 색그래프 변환
+        */
+            .box{ /*삼각형 만들기*/
+                width: 0px; height: 0px;
+                border-top: 20px solid transparent;
+                border-bottom: 20px solid transparent;
+                border-right: 20px solid deeppink;
+                /* border-left: 10px solid none; */
+            }
+        </style>    
+    </head>
+    <body>
+        <img class="img" src="../js/banners/banner0.png">
+        <div class="box"></div>
+    </body>
+</html>

@@ -1,0 +1,139 @@
+<?php
+    $date = date("YMDHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Ajax 2일차(3) - Javascript (json - 회원가입) </title>
+        <link rel="stylesheet" type="text/css" href="./index7.css?v=<?=$date?>">
+        <script>
+            function join_mem(){
+                //입력값 가져오기
+                let ids = fm.user_id.value;
+                let pws = fm.user_pw.value;
+                let emails = fm.user_email.value;
+                let tels = fm.user_tel.value;
+                let tels2 = isNaN(Number(tels));
+                let areas = fm.user_area.value;
+                let ages= fm.user_age.value;
+                let n = 0;//반복문용 변수
+                let ok = 0;//체크박수 갯수 변수
+                let ea = fm.user_field.length;//checkbox갯수
+                while(n<ea){ //체크박스 갯수 파악
+                    if(document.getElementById("ck"+n).checked == true){
+                        ok += 1;
+                    };
+                    n++
+                }
+                console.log(ok)
+                //입력값 검토
+                if(!ids){alert("아이디를 입력하세요");}
+                else if(!pws){alert("비밀번호를 입력하세요");}
+                else if(!emails){alert("이메일을 입력하세요");}
+                else if(!tels){alert("전화번호를 입력하세요");}
+                else if(tels2==true){alert("전화번호는 숫자로 입력하세요");}
+                else if(tels.length!=11){alert("전화번호 11자리를 입력하세요");}
+                else if(!areas){alert("거주지역을 선택하세요");}
+                else if(ok==0){alert("관심분야를 선택하세요");}
+                else if(ok!=1){alert("관심분야를 한가지만 선택하세요");}
+                else if(!ages){alert("현재연령을 선택하세요");}
+                else{
+                    fm.method = "POST";
+                    fm.action = "nhiss_memberok.php";
+                    fm.submit();
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <form id="fm" name="fm" enctype="application/x-www-form-urlencoded">
+        <section class="join" id="join">
+            <div class="title">건강보험 회원가입</div>
+            <table class="fm_join" id="fm_join" cellpadding="0" cellspacing="0">
+                <tr>
+                    <th>아이디</th>
+                    <td class="idpw"><input type="text" name="user_id" placeholder="아이디를 입력하세요."></td>
+                </tr>
+                <tr>
+                    <th>패스워드</th>
+                    <td class="idpw"><input type="password" name="user_pw" placeholder="패스워드를 입력하세요."></td>
+                </tr>
+                <tr>
+                    <th>이메일</th>
+                    <td class="emailtel"><input type="text" name="user_email"  placeholder="이메일을 입력하세요."></td>
+                </tr>
+                <tr>
+                    <th>전화번호</th>
+                    <td class="emailtel"><input type="text" name="user_tel" maxlength="11"  placeholder="전화번호를 입력하세요.(숫자로만 입력하세요.)"></td>
+                </tr>
+                <tr>
+                    <th>거주지역</th>
+                    <td class="sel"><select id="sel0" name="user_area">
+                        <option value="">거주지역 선택</option>
+                    </select></td>
+                </tr>
+                <tr class="tr_ck">
+                    <th>관심분야<br><font style="color: tomato; font-weight: bold; font-size: 13px;">(1개만 선택)</font></th>
+                    <td>
+                        <label><input type="checkbox" name="user_field" id="ck0" value="악성신생물(각종 암)">악성신생물(각종 암)</label>
+                        <label><input type="checkbox" name="user_field" id="ck1" value="정신 및 행동장애">정신 및 행동장애</label>
+                        <label><input type="checkbox" name="user_field" id="ck2" value="순환계통 질환">순환계통 질환</label>
+                        <label><input type="checkbox" name="user_field" id="ck3" value="소화계통 질환">소화계통 질환</label>
+                        <label><input type="checkbox" name="user_field" id="ck4" value="호흡계통 질환">호흡계통 질환</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th>현재연령</th>
+                    <td class="sel"><select id="sel1" name="user_age">
+                        <option value="">현재연령 선택</option>
+                    </select></td>
+                </tr>
+            </table>
+            <input type="button" value="회원가입" class="btn btn0" onclick="join_mem();">
+            <input type="reset" value="가입취소" class="btn">
+        </section>
+        </form>
+    </body>
+    <script>
+        let sel_list;
+        function windowck(){
+            if(window.XMLHttpRequest){
+                return new XMLHttpRequest();
+            };
+        };
+        function sel_ops(){
+            if(sel_list.readyState==XMLHttpRequest.DONE && sel_list.status==200){
+                // console.log(this);
+                select_ops(this);
+            };
+        };
+        sel_list = windowck();
+        sel_list.onreadystatechange = sel_ops;
+        sel_list.open("GET","./member_ship.json",true);
+        sel_list.send();
+
+        function select_ops(op){
+            const ops = JSON.parse(op.response);
+            //거주지역 출력
+            let key1;
+            for(key1 in ops["area"]){
+                let op_area = document.createElement("option");
+                op_area.innerText = ops["area"][key1];
+                op_area.value = ops["area"][key1];
+                document.getElementById("sel0").appendChild(op_area);
+            }
+            //현재연령 출력
+            let key;
+            for(key in ops["age"]){
+                let op_age = document.createElement("option");
+                op_age.innerText = ops["age"][key];
+                op_age.value = ops["age"][key];
+                document.getElementById("sel1").appendChild(op_age);
+            }
+        }
+    </script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/ajax/index7.html A회원가입파트 페이지-->
+<!-- http://dbfla6302.dothome.co.kr/ajax/index8.html 맹유림님 B그래프파트 페이지-->

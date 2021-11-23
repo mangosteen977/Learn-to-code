@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jquery 4일차(2)&5일차(1) - 중급 ( 롤링배너 원리익히기 ) </title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(function(){
+                const $node_ea = $("#banners>li").length; //배너갯수
+                const $node_width = $("#banners>li").eq(0).width(); //배너 한개 width
+                let $null=0; //노드 초기 번호값
+                $("#disc>li").eq(0).css("background-color","red");
+                //타이머 세팅하기
+                var $timer;
+
+                $.fn.auto = function(){
+                    $timer = 0; //다시 클릭 시 setInterval 데이터를 초기화함
+                    $timer = setInterval(function(){
+                        $("#banners").stop().animate({
+                                "left" : -$node_width+"px"
+                        },700,function(){
+                            var $cp = $("#banners>li").eq(0).clone();
+                            $("#banners>li").eq(0).remove();
+                            $("#banners").append($cp);
+                            $("#banners").css("left","0px");
+                        });
+                        //디스크이동
+                        $null = $null + 1;
+                        if($null>$node_ea-1){
+                            $null=0;
+                        }
+                        $("#disc>li").css("background-color","black");
+                        $("#disc>li").eq($null).css("background-color","red");
+                    },4000);
+                }
+                setTimeout($.fn.auto,1000);//처음에 setInterval돌리는 값
+
+            //좌우버튼 클릭 함수
+                $("#right").click(function(){
+                    $("#banners").stop().animate({
+                        "left":-$node_width+"px"
+                    },700,function(){
+                        let $cp = $("#banners>li").eq(0).clone();
+                        $("#banners>li").eq(0).remove();
+                        $("#banners").append($cp);
+                        $("#banners").css("left","0px");
+                        //디스크 이동
+                        let $node_now = Number($("#banners>li").eq(0).attr("node"));//현재0번노드 배너의 임의속성 (고유)node값;)
+                        $("#disc>li").css("background-color","black");
+                        $("#disc>li").eq($node_now).css("background-color","red");
+                    });
+                });
+                $("#left").click(function(){
+                    let $cp2 = $("#banners>li:last-child").clone();
+                    $("#banners>li:last-child").remove();
+                    $("#banners").prepend($cp2);
+                    $("#banners").css("left",-$node_width+"px");
+                    $("#banners").stop().animate({
+                        "left":"0px"
+                    },700);
+                    //디스크 이동
+                    let $node_now = Number($("#banners>li").eq(0).attr("node"));//현재0번노드 배너의 임의속성 (고유)node값;)
+                    $("#disc>li").css("background-color","black");
+                    $("#disc>li").eq($node_now).css("background-color","red");
+                });
+            //banner 함수
+                $("#banners").bind({
+                    "mouseenter":function(){
+                        clearInterval($timer);
+                    },
+                    "mouseleave":function(){
+                        setTimeout($.fn.auto,4000);
+                    } 
+                });
+            //disc 함수
+                $("#disc").bind({
+                    "mouseenter":function(){
+                        clearInterval($timer);
+                    },
+                    "mouseleave":function(){
+                        setTimeout($.fn.auto,4000);
+                    } 
+                });
+            //disc 클릭 함수
+                $("#disc>li").bind({
+                    "click":function(){
+                        var $a = $(this).index(); //클린 된 disc 노드값
+                        $null = $a;
+                        //디스크 색상변경
+                        $("#disc>li").css("background-color","black");//일단 전체 끄고
+                        $("#disc>li").eq($a).css("background-color","red");//클릭된 disc 켜기
+
+                        //디스크 누르면 해당 배너가 나오도록
+                        var $ck;    //배너 전체를 반복시키는 변수
+                        var $nos;   //html에 있는 임의속성node를 입력시키는 변수
+
+                        for($ck=0;$ck<$node_ea;$ck++){  //배너 총 갯수만큼 반복문으로 검토
+                            $nos= $("#banners>li").eq($ck).attr("node");
+                            //반복문으로 해당 node의 실제 번호를 모두 확인함.
+
+                            if($a==$nos){ 
+                                //$a :사용자가 클릭한 디스크 == $nos : 배너 속성node번호 인 경우
+
+                                var $or = Math.ceil($("#banners").offset().left);
+                                //margin : auto; 니깐 정확한 ul(banners)위치를 확인.
+
+                                var $offset =  String(Math.ceil($("#banners>li").eq($ck).offset().left-$or));
+                                //(사용자가 클릭한)노드 li의 현재위치 - ul위치
+                                //숫자 카운터 100,200,300
+
+                                var $substr;
+                                var $left_offset;
+                                var $clickno = $ck;
+                                //$ck는 전역변수인데 지역변수의 값(반복문 속 값)을 유지시킬려면 
+                                //새로운 함수에 값을 넘겨준 뒤 다른 펑션(애니메이션펑션)에서 값을 계속 가지도록 한다.
+                                //substr(n1,n2) : n1노드부터 n2개 출력
+                                //ex) substr(0,1) : 0번노드부터 1개 출력
+                                //cf) substring(Node번호,출력할 끝글자의 순번(1~n));
+                                $substr = Number($offset.substr(0,1)); //$offset의 값을 첫 자리 숫자만 가져옴.(100=>1)
+                                $left_offset = $node_width*$substr; //수식계산 (배너의 width*현재위치의 첫자리값)
+                                //총 움직일 px = 한 개의 배너 사이즈 *노드 위치에 해당되는 값
+                                
+                                $("#banners").stop().animate({
+                                    "left":-$left_offset+"px"
+                                },700,function(){
+                                    var $index_no = $("#banners>li").eq($clickno).index();
+                                    //해당 노드의 위치를 확인해 재카운트 하게 함.
+
+                                    var $n;
+                                    for($n=0;$n<$index_no;$n++){
+                                        var $cp = $("#banners>li").eq(0).clone();
+                                        $("#banners>li").eq(0).remove();
+                                        $("#banners").append($cp);
+                                    };
+                                    $("#banners").css("left","0px");
+                                    //ul left값 되돌림
+
+                                });
+                            }
+                        }
+                    }
+                    
+                });
+                
+            });
+        </script>
+        <style>
+            *{box-sizing: border-box;}
+            .banner_part { height: 100px; }
+            .banner_box{ 
+                width: 100px; height: 100px; border:1px solid red;
+                margin: 0 auto; position:relative;
+            }
+            .banners { 
+                width: 400px; height: 100px; list-style: none; margin: 0;
+                padding: 0; position: absolute; 
+            }
+            .banners>li { width: 100px; height: inherit; float: left; }
+            .b0 { background-color: red;}
+            .b1 { background-color: orange;}
+            .b2 { background-color: yellow;}
+            .b3 { background-color: green;}
+
+            .disc_box { width: 200px; height: 30px; margin: 0 auto; margin-top: 40px; }
+            .disc { list-style: none; margin: 0; padding: 0; display: inline; height: 30px; }
+            .disc > li { 
+                display: inline-block; width: 30px; height: 30px;
+                background-color: black; color: white;  
+            }
+            
+        </style>
+    </head>
+    <body>
+        <section class="banner_part">
+            <aside class="banner_box" id="banner_box">
+                <ul class="banners" id="banners">
+                    <li node="0" class="b0">box0</li>
+                    <li node="1" class="b1">box1</li>
+                    <li node="2" class="b2">box2</li>
+                    <li node="3" class="b3">box3</li>
+                </ul>
+            </aside>
+            <article class="disc_box">
+                <ol class="disc" id="disc">
+                    <li>0</li>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ol>
+            </article>
+            <input type="button" id="left" value="<<">
+            <input type="button" id="right" value=">>">
+        </section>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/middle13.html -->

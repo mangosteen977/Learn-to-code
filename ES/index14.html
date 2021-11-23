@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECMA Script 3일차(2) - ES 모바일 애니메이션 swipe 스와이프 </title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .album {
+            width: 160px;
+            height: 160px;
+            border: 3px solid coral;
+            overflow: hidden;
+        }
+
+        .images {
+            position: relative;
+            border: 1px solid coral;
+            display: flex;
+            width: 640px;
+            height: 160px;
+            transition: all ease 0.5s;
+        }
+
+        img {
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="album">
+        <div class="images" id="images">
+            <img src="../public_html/product/product4.jpg">
+            <img src="../public_html/product/product1.jpg">
+            <img src="../public_html/product/product2.jpg">
+            <img src="../public_html/product/product3.jpg">
+        </div>
+    </div>
+</body>
+<!-- ES용 Script -->
+<script type="module">
+    import { a, b } from "./index14.js?v=150";
+</script>
+
+</html>

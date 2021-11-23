@@ -1,0 +1,116 @@
+@charset "UTF-8";
+/* 환경설정 */
+.config_aticle {
+  width: 1200px;
+  height: 750px;
+  margin: 0 auto;
+  text-align: center;
+}
+.config_aticle_title {
+  font-weight: 500;
+  height: 60px;
+  display: table-cell;
+  vertical-align: middle;
+}
+.config_aticle_memo {
+  display: block;
+  height: 25px;
+  font-size: 12px;
+  text-align: left;
+  text-indent: 5px;
+}
+.red_color {
+  color: #c3222b;
+  font-size: 14px;
+}
+/* form */
+.config_aticle_table {
+  width: 100%;
+  height: auto;
+}
+.config_aticle_table_tr > th {
+  width: 15%;
+  text-align: left;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid white;
+}
+.config_aticle_table_tr > td {
+  height: 35px;
+  text-align: left;
+  border-right: 1px solid white;
+  border-top: 1px solid #ccc;
+}
+.bottom_line {
+  border-bottom: 1px solid #ccc;
+}
+.config_input {
+  width: 200px;
+  height: 20px;
+  border: 1px solid #ccc;
+  background-color: lightgray;
+}
+.config_post_number {
+  width: 70px;
+}
+.config_admin > td {
+  height: 50px;
+}
+.config_admin_input {
+  width: 250px;
+  height: 20px;
+  border: 1px solid #ccc;
+  background-color: lightgray;
+}
+.config_memo {
+  display: block;
+  font-size: 12px;
+  color: rgb(46, 102, 49);
+}
+.config_admin_second_title {
+  font-weight: 500;
+  height: 60px;
+  display: table-cell;
+  vertical-align: bottom;
+  padding-bottom: 10px;
+  box-sizing: border-box;
+}
+.config_setting_btn {
+  width: 60px;
+  height: 30px;
+  border: none;
+  background-color: #c3222b;
+  color: white;
+  margin-top: 20px;
+}
+.config_setting_btn:hover {
+  background-color: #88181e;
+  box-shadow: 0 3px 5px 0 rgba(100, 100, 100, 0.35);
+}
+.point_use_input {
+  display: inline-block;
+  margin-left: 20px;
+}
+/*파빌리온 이미지*/
+.fimg {
+  width: 35px;
+  height: 35px;
+  border: 1px solid #ccc;
+  display: inline-block;
+  margin: 5px 10px 0 0;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.fdel {
+  width: 40px;
+  height: 35px;
+  line-height: 35px;
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer;
+  margin-top: 5px;
+}
+#fimg_on {
+  display: none;
+} /*파비콘 on/off조절*/

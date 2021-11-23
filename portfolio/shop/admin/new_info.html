@@ -1,0 +1,48 @@
+<meta charset="UTF-8">
+<article class="adm_main">
+    <span>관리자 메인</span>
+    <ol class="admin_main_ul">
+        <li onclick="fontclass('1');"><img src="../image/ts01.gif" alt="../img/ts01.gif" title="보통"></li>
+        <li onclick="fontclass('2');"><img src="../image/ts02.gif" alt="../img/ts02.gif" title="크게"></li>
+        <li onclick="fontclass('3');"><img src="../image/ts03.gif" alt="../img/ts03.gif" title="더크게"></li>
+    </ol>
+</article>
+<aside class="tb_box">
+    <!-- 신규회원가입 -->
+    <h2>신규가입회원 <span id="new_member">0</span>건 목록</h2>
+    <h5>총 회원수 <span id="total_member">0</span>명 중 휴면 <span id="reset_member">0</span>명, 탈퇴 <span
+            id="leave_member">0</span>명</h5>
+    <table class="tb_user" id="tb_user" border="1">
+        <tr>
+            <th width="170">회원아이디</th>
+            <th width="170">이름</th>
+            <th width="170">닉네임</th>
+            <th width="90">권한</th>
+            <th width="170">포인트</th>
+            <th width="80">수신</th>
+            <th width="80">공개</th>
+            <th width="80">인증</th>
+            <th width="80">휴면</th>
+            <th width="110">그룹</th>
+        </tr>
+        <!--포인트 td : class="user_point"(1,000콤마)-->
+    </table>
+    <div class="no_user">등록 된 회원이 없습니다.</div>
+    <button type="button" class="view_all_user" id="view_all_user">회원 전체보기</button>
+</aside>
+<aside class="tb_box">
+    <!-- Q&A 게시물 -->
+    <h2>FAQ 신규 게시물 <span id="new_q">0</span>건 목록</h2>
+    <table class="tb_qna" id="tb_qna" border="1">
+        <tr>
+            <th width="170">카테고리</th>
+            <th width="680">문의내용</th>
+            <th width="150">첨부파일</th>
+            <th width="105">작성자</th>
+            <th width="165">작성일자</th>
+        </tr>
+        <!--문의내용 td : class="qna"(50자말줄임)-->
+    </table>
+    <div class="no_user">등록 된 문의 내용이 없습니다.</div>
+    <button type="button" class="view_all_user" id="view_all_faq">FAQ 전체보기</button>
+</aside>

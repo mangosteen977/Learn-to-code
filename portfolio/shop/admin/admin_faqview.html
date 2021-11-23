@@ -1,0 +1,59 @@
+<?php
+    $v = date("YmdHis");
+    include "check.php";
+    include "faq_viewdata.php";
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="imagetoolbar" content="no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+    <title>쇼핑몰 관리자 페이지</title>
+    <script src="../../js/jquery.js"></script>
+    <script src="./config.js?v=<?=$v?>"></script>
+    <script src="./faq_view.js?v=<?=$v?>"></script>
+    <link rel="stylesheet" type="text/css" href="./admin.css?v=<?=$v?>">
+    <link rel="stylesheet" type="text/css" href="./main.css?v=<?=$v?>">
+    <link rel="stylesheet" type="text/css" href="./faq.css?v=<?=$v?>">
+</head>
+<script>
+    //faq 상세보기
+    const faqdata = '<?php echo $faq_view ?>';
+    let f_json = JSON.parse(faqdata);
+    let level = "<?php echo $alevel?>";
+</script>
+
+<body>
+    <header class="header">
+        <?php include "admin_top.html"; ?>
+    </header>
+    <section class="section" id="faq">
+        <?php include "faq_view.html"; ?>
+    </section>
+    <footer class="footer">
+        <?php include "admin_bottom.html"; ?>
+    </footer>
+</body>
+<script src="http://cdn.jsdelivr.net/npm/vue"></script>
+<script src="./ckeditor/ckeditor.js"></script>
+<script type="module">//script for ES
+    import { faq_modify, faq_del, faqink, print_faq } from "./faq_write.js?v=<?=$v?>";
+    print_faq(f_json);
+</script>
+<script>
+    //script for print fidx value
+    let fidx_num = location.search.split("?fidx=")[1];
+    document.getElementById("fidx_input").value = fidx_num;
+    //script for ckeditor
+    CKEDITOR.replace("fatext", { height: 300 })
+    CKEDITOR.instances.fatext.setData(f_json[0]["fatext"]);
+    //admin
+    if (level != "M") {
+        document.getElementById("faq_modifyok").style.display = "none";
+        document.getElementById("faq_delok").style.display = "none";
+    }
+</script>
+
+</html>

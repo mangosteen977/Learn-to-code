@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible">
+        <title>Javascript 6일차(6) - 초급코드(split-select사용) </title>
+        <script>
+            var cj = "브랜드바로가기,Mnet,Mwave,TVN,TVND,Otvn,Xtvn";
+            var cj_name = cj.split(",");
+            var ea = cj_name.length;
+            function abc(){
+                var b = document.getElementById("company");
+                b.innerHTML = ""; //버튼누를 때마다 무한대로 생성되는거 방지용.
+                var a = 0;
+                do{
+                    var op = "<option value='"+a+"'>"+cj_name[a]+"</option>"
+                    //힌트 : link()함수에 숫자로 1,2,3,
+                    //option value 값은 무얼까.
+                    b.innerHTML += op;
+                    a++;
+                }while(a<ea);
+            }
+            function link(w){
+                //console.log(typeof(w));
+                switch(Number(w)){
+                    case 1:
+                    location.href="http://mnet.com";
+                    break;
+
+                    case 2:
+                    location.href="http://nate.com";
+                    break;
+
+                    case 3:
+                    location.href="http://naver.com";
+                }
+            }
+        </script>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <select id="company" onchange="link(this.value);"></select> 
+        <!-- onchange="함수이름(this.value);" -->
+        <input type="button" value="실행" onclick="abc();">
+    </body>
+    <script>
+        
+    </script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/index37.html -->

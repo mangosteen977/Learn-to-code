@@ -1,0 +1,94 @@
+<?php
+    $v = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 8일차 (4) 실무 싱글페이지 뷰 라우터 </title>
+        <script src="../jq/jquery.js"></script>
+        <script src="http://cdn.jsdelivr.net/npm/vue"></script><!-- vue 버전 1.6.4 ???????? -->
+        <!-- vue router 뷰 라우터-->
+        <script src="http://unpkg.com/vue-router/dist/vue-router.js"></script>
+        <style>
+            .ulcss{
+                width: 300px; height: 40px; list-style: none;
+                margin: 0; padding: 0;
+            }
+            .ulcss li{
+                width: 100px; height: 40px; line-height: 40px; text-align: center;
+                border: 1px solid black; box-sizing: border-box; font-size: 12px;
+                float: left;
+            }
+            .login, .event{
+                width: 300px; height: 300px; border: 1px solid red;
+            }
+            .event{border: 1px solid seagreen;}
+            .divcss{
+                width: 600px; height: 600px; border: 1px solid green;
+            }
+            iframe{
+                width: inherit; height: inherit;
+            }
+        </style>
+    </head>
+    <body>
+        <section id="box">
+            <ul class="ulcss">
+                <!-- router-link => 뷰 라우터 통신 태그 -->
+                <router-link to="/shop" v-html="menu1"></router-link>
+                <router-link to="/review" v-html="menu2"></router-link>
+                <router-link to="/page" v-html="menu3"></router-link>
+            </ul>
+            <router-view name="single"></router-view>
+        </section>
+    </body>
+    <script>
+        let login = '<div class="login"><input type="text"><input type="button" value="로그인"></div>';
+        let board = '<div class="event"><ul><li>공지사항1</li><li>공지사항2</li></ul></div>';
+    </script>
+    <script>
+        let web = {template:login};
+        let web2 = {template:board};
+        let web3 = {template:`
+            <div class='divcss'><iframe src='http://www.moel.go.kr'></iframe></div>    
+        `};
+        let r = new VueRouter({
+            routes:[
+                {
+                    path:"/shop",
+                    components:{single:web}
+                },
+                {
+                    path:"/review",
+                    components:{single:web2}
+                },
+                {
+                    path:"/page",
+                    components:{single:web3}
+                    
+                }
+            ]
+        });
+        let a = new Vue({
+            router:r,
+            el:"#box",
+            data:{
+                menu1:"<li>로그인</li>",
+                menu2:"<li>이벤트 게시판</li>",
+                menu3:"<li>노동부 바로가기</li>"
+            },
+            methods:{
+                
+            },
+            components:{
+
+            },
+            computed:{
+
+            }
+        })
+    </script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/vue/index42.html -->

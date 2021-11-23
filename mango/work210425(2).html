@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>210425 JS복습 (2)</title>
+        <script src="../jq/jquery.js"></script>
+        <script>
+            // 1.
+            function makebox(){
+                var width = document.getElementById("box_width").value;
+                var height = document.getElementById("box_height").value;
+                var left = document.getElementById("box_left").value;
+                var top = document.getElementById("box_top").value;
+                document.getElementById("box").style({
+                    "width":width,
+                    "height":height,
+                    "top":top,
+                    "left":left
+                });
+            }
+        </script>
+        <style>
+            *{box-sizing: border-box;}
+            body{margin: 0; padding: 0;}
+            section{height: 250px; border: 2px dashed lightblue; text-align: center;}
+            /* 1. */
+            #box{width: 100px; height: 100px; background-color: navy; margin: 0 auto; position: relative;}
+            .btn1{width: 20%; height: 30px; border: none; background-color: navy; color: white;}
+        </style>
+    </head>
+    <body>
+        <!-- 1. -->
+        <section>
+            <div id="box"></div>
+            <input type="text" id="box_width" placeholder="가로크기">
+            <input type="text" id="box_height" placeholder="세로크기">
+            <input type="text" id="box_left" placeholder="가로위치">
+            <input type="text" id="box_top" placeholder="세로위치">
+            <input type="button" class="btn1" value="적용" onclick="makebox();">
+        </section>
+    </body>
+</html>

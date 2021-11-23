@@ -1,0 +1,45 @@
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>HTML 4.0 5일차 - CSS 2.0 Style  속성</title>
+        <style>
+            body{margin: 0; padding: 0; font-family: 'Courier New', Courier, monospace;}
+            .tel{width: 100px; height: 50px; border: none;
+            border-bottom: 1px solid black;}
+            /* border:none; : 외각선 모두 초기화 */
+            .w{width: 200px;}
+            .tel2{width: 70px; height: 50px; border: none;
+            border-bottom: 1px solid black;}
+            .sp{display:block; margin: 100 0 0 300;
+            border-radius: 20px;
+            width: 100px; height: 100px; border: 1px solid blue;}
+            /* border-radius :  모서리에 대한 원형을 적용, 50px이상부터 원으로 적용됨. 
+               border-radius: 0 0 0 0; : 왼상단, 오른상단, 오른하단, 왼하단*/
+            .sp2{display:block; margin: 100 0 0 300;
+            border-radius: 50px 0 50px 0; width: 100px; height: 100px; border: 1px solid blue;}
+            .bbb{width: 150px; height:150px; background-color: blue;
+            border-radius: 25px 25px 0 0;}
+        </style>
+    </head>
+    <!-- woff, eot, woff2, otf 구닥다리래.. -->
+    <body>
+        <select class="tel">
+            <option>+82</option>
+            <option>+81</option>
+            <option>+80</option>
+        </select> - <input type="text" maxlength="3" class="tel2" placeholder="전화번호"><br>
+        <!-- placholder속성 : helper 메세지, 도움말 -->
+        <select class="tel w">
+            <option>[메일주소 선택]</option>
+            <option>naver.com</option>
+            <option>nate.com</option>
+            <option>daum.com</option>
+        </select>
+        <br>
+        <!-- 응용문제1. span 객체 100*100, 외각선 파란색 -->
+        <span class="sp"></span>
+        <span class="sp2"></span>
+        <div class="bbb"></div>
+    </body>
+</html>

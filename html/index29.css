@@ -1,0 +1,38 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+span, label, main{display: block;}
+.header{
+    background-color: thistle;
+    height: 30px;
+}
+.nav{
+    background-color: teal;
+    height: 80px;
+}
+.main{
+    background-color: violet;
+    height: 450px;
+}
+.section1{
+    background-color: pink;
+    position: relative;
+    height: 500px;
+}
+.aside{
+    width: 50%;
+    height: 400px;
+    background-color: plum;
+    position: absolute;
+    right: 0;
+    top: 50px;
+}
+.article1{
+    height: 150px;
+    background-color: black;
+}
+.footer{
+    height: 100px;
+    background-color: grey;
+}

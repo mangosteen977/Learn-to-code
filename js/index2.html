@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>JavaScript 1일차(2) -</title>
+        <script>
+            var a; //undefined : 값이 없음. 비어있음. 혹은 설정하지 못할 때.
+            a = 5;
+            a = 50;
+            //a 변수가 두번 사용 될 경우, 마지막에 사용 된 값만 적용.
+            //document.write(a);
+            var b;
+            b = "망고스틴"; //"쌍따옴표" 속의 값은 문자로 인식함.
+            var c;
+            c = "님 환영합니다.";
+            var d;
+            d = b + c // + 기호는 숫자계산 기능 및 문자+문자 연결 기능을 함.
+            //document.write(d);
+            var aa;
+            var bb;
+            aa = 20;
+            bb = "5";
+            var cc;
+            cc = aa+bb;
+            //document.write(cc);
+            
+            var z = "홍길동";
+            var x = "2021-03-22";
+            var h = z+"님 이벤트에 신청되었습니다. <br> 당첨 결과 발표는 "+ x + "입니다.";
+            //document.write(h);
+
+            /* 응용문제
+            문제1. 총 4개의 숫자가 있다.
+            25, 16, 11, 33
+            
+            25와 16 값을 곱하고, 11과 33을 더한다.
+            두 값의 결과를 곱해서 출력하라.*/
+
+            var q = 25;
+            var w = 16;
+            var e = q*w;
+            
+            var r = 11;
+            var t = 33;
+            var y = r+t;
+
+            //var u = e*y;
+            var u = q*w*(r+t);
+            document.write(u);
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

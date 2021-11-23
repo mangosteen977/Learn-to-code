@@ -1,0 +1,320 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700;900&display=swap");
+/* font-family: 'Noto Sans KR', sans-serif; (100, 400, 700, 900) */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+}
+
+/*product list*/
+.p_list {
+  width: 1200px;
+  height: auto;
+  background-color: none;
+  margin: 0 auto;
+}
+
+.p_list > .search_pd_box {
+  width: 100%;
+  height: 50px;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.p_list > .search_pd_box > input:nth-child(1) {
+  width: 200px;
+  height: 30px;
+  background-color: none;
+  border: 1px solid #ccc;
+}
+
+.p_list > .search_pd_box > .pd_list_search_btn {
+  width: 100px;
+  height: 30px;
+  background-color: #c3222b;
+  color: white;
+  border: none;
+  margin-left: 5px;
+  font-size: 100%;
+}
+
+.p_list > .search_pd_box > .pd_list_search_btn:hover {
+  background-color: #88181e;
+}
+
+.p_list > .go_to_input_pd_btn {
+  width: 100px;
+  height: 30px;
+  background-color: #c3222b;
+  color: white;
+  border: none;
+  margin: 30px 0;
+  font-size: 100%;
+}
+
+.p_list > .go_to_input_pd_btn:hover {
+  background-color: #88181e;
+}
+
+.p_list > .p_tb {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 40px;
+  color: unset;
+  text-align: center;
+  font-weight: unset;
+  font-size: 100%;
+}
+
+.p_list > .p_tb > thead > tr > td {
+  height: 40px;
+  border-bottom: 2px solid #ccc;
+}
+
+.p_list > .p_tb > thead > tr > td:nth-child(1), .p_list > .p_tb > thead > tr > td:nth-child(7), .p_list > .p_tb > thead > tr > td:nth-child(8) {
+  width: 5%;
+}
+
+.p_list > .p_tb > thead > tr > td:nth-child(3) {
+  width: 25%;
+}
+
+.p_list > .p_tb > thead > tr > td:nth-child(2), .p_list > .p_tb > thead > tr > td:nth-child(6) {
+  width: 15%;
+}
+
+.p_list > .p_tb > thead > tr > td:nth-child(4), .p_list > .p_tb > thead > tr > td:nth-child(5) {
+  width: 15%;
+}
+
+.p_list > .p_tb > tbody tr {
+  width: 100%;
+  height: 200px;
+  background-color: none;
+  border-bottom: 2px solid #ccc;
+}
+
+.p_list > .p_tb > tbody tr > td:nth-child(2),
+.p_list > .p_tb > tbody tr > td:nth-child(3) {
+  cursor: pointer;
+}
+
+.p_list > .p_tb > tbody tr > td:nth-child(5) select {
+  width: 80%;
+  height: 30px;
+  background-color: none;
+}
+
+.p_list > .p_tb > tbody tr > td:nth-child(6) {
+  cursor: pointer;
+}
+
+.p_list > .p_tb > tbody tr > td:nth-child(8) > button {
+  width: 90%;
+  height: 90%;
+  background-color: black;
+  border: none;
+  color: white;
+}
+
+.p_list > .p_tb > tbody > .no_bn_list {
+  background-color: #ccc;
+  border-radius: 5px;
+}
+
+.product_page {
+  width: 100%;
+  height: 50px;
+  background-color: none;
+  margin: 10px 0;
+}
+
+.product_page > ul {
+  width: 100%;
+  height: inherit;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.product_page > ul > li {
+  width: 30px;
+  height: 30px;
+  background-color: #dbb0a0;
+  cursor: pointer;
+  margin-left: 5px;
+  text-align: center;
+  line-height: 30px;
+  font-size: 100%;
+}
+
+.product_page > ul > li:hover {
+  background-color: #be9a8d;
+}
+
+/*product input*/
+.p_img {
+  width: 100px;
+}
+
+.p_img:hover {
+  width: 300px;
+}
+
+.del_img_btn {
+  width: 50px;
+  height: 30px;
+  background-color: #ccc;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 30px;
+  color: white;
+  text-align: center;
+  font-weight: unset;
+  font-size: 100%;
+  margin-left: 5px;
+  text-indent: 0;
+  border: none;
+}
+
+.input_pd {
+  width: 1200px;
+  height: auto;
+  background-color: none;
+  padding: 20px 0;
+  margin: 0 auto;
+}
+
+.input_pd > form > .input_pd_tb {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 40px;
+  color: unset;
+  text-align: left;
+  font-weight: unset;
+  font-size: 100%;
+}
+
+.input_pd > form > .input_pd_tb > tbody > tr > td {
+  padding-left: 20px;
+}
+
+.input_pd > form > .input_pd_tb > tbody > tr > td:nth-child(odd) {
+  background-color: #ccc;
+}
+
+.input_pd > form > .input_pd_tb > tbody > tr > td > input {
+  width: 20%;
+  height: 90%;
+  background-color: none;
+  text-indent: 15px;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  font-size: 100%;
+}
+
+.input_pd > form > .input_pd_tb > tbody > tr > td > textarea {
+  width: 80%;
+  height: 120px;
+  background-color: none;
+  border: 2px solid #ccc;
+}
+
+.input_pd > form > .input_pd_tb > tbody > .bin_img_trs > td:nth-child(2) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: unset;
+      -ms-flex-pack: unset;
+          justify-content: unset;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: none;
+}
+
+.input_pd > form > .input_pd_tb > tbody > .bin_img_trs > td:nth-child(3) {
+  background-color: white;
+}
+
+.input_pd > form > .input_pd_tb .small_img_tds > span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: unset;
+      -ms-flex-pack: unset;
+          justify-content: unset;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.input_pd > form > .input_pd_tb .small_img_tds > span > div {
+  width: 100px;
+}
+
+.input_pd > .btns_input_pd {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  text-align: center;
+  padding: 10px;
+}
+
+.input_pd > .btns_input_pd > input {
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 40px;
+  color: unset;
+  text-align: center;
+  font-weight: unset;
+  font-size: 100%;
+  width: 100px;
+  height: 30px;
+  background-color: #c3222b;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.input_pd > .btns_input_pd > input:hover {
+  background-color: #88181e;
+}
+
+.input_pd > .btns_input_pd > input:nth-child(2) {
+  margin-left: 10px;
+}
+/*# sourceMappingURL=product.css.map */

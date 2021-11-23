@@ -1,0 +1,99 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE-Edge, chrome=1">
+        <title>HTML 4.0 - 7일차 CSS 2.0 position</title>
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+            }
+            .p{
+                width: 400px;
+                height: 500px;
+                background-color: black;
+                position: relative;
+            }
+            .s{
+                width: 80px;
+                height: 80px;
+                background-color: yellow;
+                position: absolute;
+                right: 0px;
+                bottom: 0px;
+            }
+            /* 자식객체가 absolute 일 때,
+            부모객체 범위 안에서 이동하려면
+            부모객체는 relative */
+
+            /* 부모가 relative이고 자식이 absoliute
+            left 100%주면 밖으로 나감(팝업 닫기)*/
+            /* .box2{
+                width: 500px;
+                height: 600px;
+                background-color: yellowgreen;
+                position: relative;
+                }
+                .sbox2{
+                width: 50px;
+                height: 50px;
+                background-color: black;
+                position: absolute;
+                left: 100%;
+            } */
+            /* 부모 absolute, 자식 absolute일 때, 부모 absolute인건 비정상적 */
+            .box2{
+            width: 500px;
+            height: 600px;
+            background-color: yellowgreen;
+            position: absolute; left: 100px;
+             }
+            .sbox2{
+                width: 50px;
+                height: 50px;
+                background-color: black;
+                position: relative;
+                left: 100%;
+                color: white; font-size: 30px;
+                font-family: "돋움체";
+                font-weight: bold; /* font-weight : bold(bolder)굵은체 */
+                text-align: center;
+                line-height: 50px;
+            }
+            /* 부모자식 모두 absolute 위치잡기 어렵다. */
+            .box3{
+                width: 500px; height: 500px;
+                background-color: blue;
+                position: relative;
+            }
+            .boxs{
+                width: 80px;
+                height: 80px;
+                position: absolute;
+            }
+            .yellow{
+                background-color: yellow;
+                right: 0;
+            }
+            .black{
+                background-color: black;
+                bottom: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="p">
+            <div class="s"></div>
+        </div>
+        <div class="box2">
+            <div class="sbox2">X</div>
+        </div>
+
+        <!-- 응용문제 -->
+        <div class="box3">
+            <div class="yellow boxs"></div>
+            <div class="black boxs"></div>
+        </div>
+
+    </body>
+</html>

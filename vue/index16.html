@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Vuejs 2일차 - 반복문2 + 배열</title>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+<!-- 1번 배열 -->
+<section id="box">
+  <span v-for="data,index in array">{{data}}</span>
+</section>
+<!-- 2번 배열 -->
+<section id="box2">
+    <span v-for="data,index in array">{{data.text1}}</span>
+</section>
+<!--3번 배열 더블 반복문!!-->
+<section id="box3">  <!--키값을 확인-->
+    <filedset v-for="z,i in array">  <!--1번 돌아간것 object key가 있는 경우!!-->
+    <span v-for="data,key,index in z.members">{{data}}</span>  <!-- <span v-for="data,index in array">{{z}}</span> 이렇게 되면 배열이 찍힌다.-->
+    <!-- 키값 확인후 데이터 갯수만큼 출력시킴.-->
+    <!--
+        <span v-for="data,key,index in z">{{data}}</span>   ["에이핑크","신곡발표"]배열이 출력
+        <span v-for="data,key,index in z">{{key}}</span>     members가 출력됨
+        <span v-for="data,key,index in z">{{index}}</span>    0이 출력된다.
+    --> 
+   </filedset>
+</section>
+
+<!-- 4번 배열  이건 못함.ㅋㅋㅋㅋ-->
+<section id="box4">
+    <div v-for="d,i in array.members">
+    <span v-for="data,key,index in d">{{data}}</span>
+   </div>
+</section>
+</body>
+<script>
+
+//1번 배열
+const json1 = [ "test1", "test2", "test3" ];
+
+    let a = new Vue({
+     el:"#box",
+     data:{
+          array : json1,
+          op:"홍길동1"
+     }
+    });
+//java 와 결합해 vue의 값을 java가 이용가능!!
+   console.log(a.op);  //홍길동이 찍힌다.
+   if(a.op=="홍길동"){
+      console.log("동일한 사용자 입니다.");
+   }
+   else{
+       console.log("가입되지 않은 사용자 입니다.");
+   }
+//op를  지정하여 javascript와 vue를 결합시키는 방식도 있다.
+//vue는 지정된 이름은 무조건 외워야 한다.
+
+    console.log(a.array.length)  //갯수를 바로 띄울수 있다. 
+             // a: vue전체 값을 의미
+             // array : data안에 있는 vue변수를 의미
+             //length를 이용하여 배열의 총 갯수를 파악 가능!!
+
+//위의 형태와는 다른 배열 형태를 지니고 있다. 따라서 for문 작성시도 출력할때 달라지게 된다.
+
+//2번 배열
+const json2 = [{"text1":"Vue 데이터 확인"},{"text1":"Vue 출력확인"}];
+
+  let b = new Vue({ 
+     el:"#box2",
+     data:{
+          array : json2
+         
+     }
+    });
+
+//3번 배열
+const json3 = [ { "members":["에이핑크","신곡발표"]}];
+
+let c = new Vue({ 
+     el:"#box3",
+     data:{
+          array : json3
+         
+     }
+    });
+
+const json4 = {"members":[{"names":"손나은"},
+                            {"names":"박초롱"},
+                            {"names":"정은지"},
+                            {"names":"오하영"},
+                            {"names":"윤보미"},
+                            {"names":"김남주"}
+                            ]}
+let d = new Vue({ 
+     el:"#box4",
+     data:{
+          array : json4
+         
+     }
+    });
+
+
+</script>
+</html>

@@ -1,0 +1,54 @@
+<?php
+    $v = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="imagetoolbar" content="no">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<title>여성 쇼핑몰</title>
+	<script src="./jquery.js"></script>
+	<link rel="stylesheet" href="css/font.css?v=<?php echo $v;?>">
+	<!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+</head>
+
+<style>
+	* {
+		font-family: 'Noto Sans KR', sans-serif;
+	}
+
+	body {
+		margin: 0;
+		padding: 0;
+	}
+
+	.main {
+		width: 100%;
+		max-width: 360px;
+		clear: both;
+		margin: 0 auto;
+		position: relative;
+		overflow: hidden;
+	}
+</style>
+
+<body>
+	<div class="main">
+		<?php include "header_menu.html" ?>
+		<?php include "header_cibi.html" ?>
+		<?php include "pop_menu.html" ?>
+		<?php include "pop_member.html" ?>
+		<?php include "pop_nonmember.html" ?>
+		<?php include "content_cart.html" ?>
+		<?php include "footer_bottom_g.html" ?>
+	</div>
+</body>
+
+</html>

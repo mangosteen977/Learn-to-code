@@ -1,0 +1,147 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700;900&display=swap");
+/* font-family: 'Noto Sans KR', sans-serif; (100, 400, 700, 900) */
+@mixin base {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+@mixin ulol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+@mixin m_sections($width, $height, $bg) {
+  margin: 0 auto;
+  width: 99.99%;
+  min-width: 320px;
+  max-width: $width;
+  height: $height;
+  background-color: $bg;
+}
+@mixin m_widths($min, $max, $bg) {
+  width: 99.99%;
+  min-width: $min;
+  min-height: $min;
+  max-width: $max;
+  max-height: $max;
+  background-color: $bg;
+}
+@mixin sections($width, $height, $bg) {
+  width: $width;
+  height: $height;
+  background-color: $bg;
+}
+@mixin flexs($wrap, $justify, $align) {
+  display: flex;
+  flex-wrap: $wrap;
+  justify-content: $justify;
+  align-content: $align;
+  align-items: $align;
+}
+@mixin font_sans($h, $c, $a, $w, $s) {
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: $h;
+  color: $c;
+  text-align: $a;
+  font-weight: $w;
+  font-size: $s;
+}
+img {
+  object-fit: cover;
+  width: 100%;
+}
+.index_menu {
+  @include m_sections(1200px, auto, none);
+  margin: 0 auto;
+  font-weight: bold;
+  & > .index_menu_ul {
+    @include sections(100%, 50px, none);
+    @include font_sans(50px, unset, center, unset, 15px);
+    @include ulol;
+    & > li {
+      @include sections(100%/6, 50px, none);
+      float: left;
+      cursor: pointer;
+      position: relative;
+      &:hover {
+        color: rgb(90, 154, 184);
+      }
+      & > img {
+        @include sections(20px, 20px, none);
+        margin-left: 5px;
+      }
+      & > ol {
+        @include sections(100%, auto, none);
+        font-size: 13px;
+        position: absolute;
+        z-index: 15;
+        & > li {
+          @include sections(inherit, 35px, white);
+          line-height: 35px;
+          text-align: center;
+          &:hover {
+            color: rgb(46, 79, 94);
+          }
+        }
+        display: none;
+      }
+    }
+  }
+}
+//mobile_menu
+.m_menu_ham{
+  @include sections(93%, auto, rgba(204, 204, 204, 0.97));
+  border-radius: 10px 0 0 10px;
+  padding: 80px 70px;
+  position: absolute;
+  z-index: 50;
+  top: 0;
+  right: -100%;
+  &>.m_menu_close{
+    @include sections(35px, 35px, none);
+    position: absolute;
+    left: 30px;
+    top: 30px;
+  }
+  &>.m_menu_logo{
+    @include sections(150px, auto, none);
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+  &>p{
+    @include sections(100%, 30px, rgba(255, 255, 255, 0.4114));
+    text-indent: 5px;
+    font-size: 17px;
+    font-weight: bold;
+    color: #5a9ab8;
+    border-radius: 5px;
+  }
+  &>.m_per_mennu{
+    @include sections(100%, auto, none);
+    font-size: 15px;
+    &>li{
+      margin-bottom: 5px;
+    }
+  }
+  &>.m_menu_ul{
+    @include sections(100%, auto, none);
+    &>li{
+      @include sections(100%, auto, none);
+      margin-bottom: 5px;
+      font-size: 15px;
+      &>img{
+        @include sections(7px, 7px, none);
+      }
+      &>ol{
+        @include sections(100%, auto, none);
+        padding-left: 20px;
+        &>li{
+          @include sections(100%, 20px, none);
+          color:whitesmoke;
+        }
+      }
+    }
+  }
+  display: none;
+}

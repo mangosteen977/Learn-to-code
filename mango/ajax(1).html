@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+    <title>Javascript - ajax 통신 정리(1)</title>
+</head>
+
+<body>
+    <!-- 
+            통신 => 동기/비동기 통신
+            1. 동기 : node.js 사용. 서버에서 지속적으로 대기상태의 신호를 발생시킴.
+                      계속해서 변하는 데이터 (실시간 지도, 날씨, 비콘출석 등)
+            2. 비동기 : xml, JSON 사용. 클라이언트 요청 > 서버에서 응답, 주로 사용한다.
+                      신호를 보내도 서버에서 응답이 없을경우 계속해서 로딩되는 페이지(신호출결)
+         -->
+    <!-- 
+            XML : Extensible Markup Language
+            xml파일에는 주석(X) : 주석도 함께 출력됨, 통신 시 주석이 방해할 수 O
+            
+            [xml문서 작성]
+            1.시작 태그
+            <?//xml version="1.0" encoding="UTF-8"?> : xml파일 시작 태그
+            version : xml 버전 표기
+            encoding : 사용 언어 표기
+            // : xml태그가 주석안에 넣어도 출력되는걸 막음
+            2.배열 입력
+            xml파일을 마크업으로 배열을 표기함. 태그에 해당하는 부분이 배열의 키처럼 작용.
+            태그 이름은 임의로 정한다.
+            ex.) <tinhtinh>
+                    <vui>행복</vui>
+                    <buon>슬픔</buon>
+                 </tinhtinh>
+          -->
+    <input type="button" value="XML데이터" onclick="ajax1();">
+</body>
+<script>
+    /* XMLhttpRequest 통신형태 + XML ==> ajax/index2.html */
+
+    let data; //ajax에서 데이터를 가지고 올 변수
+    function ajax1() {
+        function windowck() { //현재 적용되어 있는 브라우져
+            if (window.XMLHttpRequest) { //모든 종류의 데이터를 받아서 사용
+                return new XMLHttpRequest();//
+            }
+        }
+        function fileopen() {
+            if (pm.readyState == XMLHttpRequest.DONE && pm.status == 200) {
+                //console.log(this.responseXML);
+                xmlfile(this); //this : 파일로 가져온 배열 데이터
+            }
+        }
+        pm = windowck(); //데이터를 받아오기 위한 통신 연결 준비상태
+        pm.onreadystatechange = fileopen; // 해당 파일상태가 올바른지 파악함
+        pm.open("GET", ".././ajax/index2.xml?v=3", true); //POST,GET,PUT,Delete
+        //open : method를 어떤 파일 형태로 사용하는 지 정함
+        pm.send(); //해당 통신파일을 체크해 적용 = send(비동기)
+    }
+    function xmlfile(a) {//XML파일 배열 출력
+        const x = a.responseXML;//xml,json(태그,배열 시 사용)
+        //const x = a.responseText;//xml,json(태그,배열 아닌경우 사용)
+        var test = x.getElementsByTagName("success");//xml파일의 태그명==배열 키를 가져옴
+        //console.log(test[0].getElementsByTagName("pizza")[0].childNodes[0].nodeValue);
+        //console.log(x.getElementsByTagName("success")[0].getElementsByTagName("pizza")[0].childNodes[0].nodeValue);
+        let productnm, productop, productsp;
+        let html1, html2, html3;
+        let ea = test.length;
+        let f;
+
+        for (f in test) {
+            console.log(test.item(f));
+            if (isNaN(f) == false) {
+                productnm = test[f].getElementsByTagName("pizza")[0].childNodes[0].nodeValue;
+                productop = test[f].getElementsByTagName("chicken")[0].childNodes[0].nodeValue;
+                productsp = test[f].getElementsByTagName("pasta")[0].childNodes[0].nodeValue;
+                html1 = document.createElement("label");
+                html1.className = "li0";
+                html1.innerHTML = productnm;
+                html2 = document.createElement("label");
+                html2.className = "li0";
+                html2.innerHTML = productop;
+                html3 = document.createElement("label");
+                html3.className = "li0";
+                html3.innerHTML = productsp;
+                document.getElementById("product_list").append(html1, html2, html3);
+            }
+        }
+    }
+        // XMLhttpRequest 통신형태 + JSON ==> ajax/index4.html
+</script>
+
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery 3일차(1) - 디스크 노드 사용법 </title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(document).ready(function(){
+                var $n = $(".disc_box > .disc").length;
+        //disc
+                $("#del").click(function(){
+                    if($n>=2){//첫 번째 노드[0]은 남기고 나머지만 지워지는 범위.
+                        $n = $n-1;
+                        $(".disc_box > .disc").eq($n).fadeOut();
+                        //class로 값을 가져와 사용 시, class는 중복이 가능함으로
+                        //더 정확하게 값을 가져오기위해서 부모객체 > 자식객체로 쓴다.
+                        console.log($n);
+                    }
+                    else{
+                        alert("더 이상 삭제할 디스크가 없습니다.");
+                    }
+                });
+                $("#add").click(function(){
+                    if($n<=3){
+                        $(".disc_box > .disc").eq($n).fadeIn();
+                        $n = $n+1;
+                        console.log($n);
+                    }
+                    else{
+                        alert("더 이상 추가할 디스크가 없습니다.");
+                    }
+                });
+        //menu
+                $("#reset").click(function(){
+            //(JS)innerText==(JQ)text("");
+                    //$("#ul_id > li").eq(0).text("menu1");
+            //(JS)innerHtml==(JQ)html("");
+                    //$("#ul_id > li").eq(0).html("<label>menu1</label>");
+
+            /*응용문제1.
+            한글로 되어있는 메뉴1~4를 menu1~4로 바꾸시오.*/
+                    var $nn=$("#ul_id > li").length;
+                    var $num=0; //반복문의 초기값(노드가0부터니깐.)
+                    console.log($nn);
+                    do{
+                        $("#ul_id > li").eq($num).text("menu"+($num+1));
+                        $num++;
+                    }while($num<$nn)
+                });
+            /*응용문제2.
+            메뉴1~4에 밑줄이 나오게 바꾸시오.<u></u>*/
+                $("#reset2").click(function(){
+                    var $nn=$("#ul_id > li").length;
+                    var $num=0;
+                    while($num<$nn){
+                        $("#ul_id > li").eq($num).html("<u>메뉴"+($num+1)+"</u>");
+                        $num++;
+                    }
+                });
+        //가져오기 버튼
+                $("#btn").click(function(){
+                   //var $aa = $("#box1").html();
+                   var $aa = $("#box1").text();
+                   //.html하고 콘솔로 보면 객체 안에 모든 태그+문자 출력
+                   //.text하고 콘솔로 보면 객체 안에 모든 문자들 출력
+                   console.log($aa);
+
+
+                });
+
+            });
+        </script>
+        <style>
+            body{margin: 0; padding: 0;}
+            ul{list-style: none; margin: 0; padding: 0;}
+            .box{
+                width: 300px;
+                height: 80px;
+                text-align: center;
+                background-color: aliceblue;
+            }
+            .disc_box{
+                width: 300px;
+                height: 40px;
+                border: 1px solid cornflowerblue;
+                box-sizing: border-box;
+                line-height: 48px;
+                /*웹표준을 위함, 특히 dl>dd일 때 dl에 margin-block(1em=8px)있기 때문에
+                li/dd에 vertical-align:baseline을 주고, line-height:높이+8px을 준다..*/
+            }
+            .disc_box > li{
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                border-radius: 100%;
+                background-color: cornflowerblue;
+                vertical-align: baseline;/*sub/baseline을 추천, sub=lineheight(높이), baseline=line-height(높이+8px)*/
+                /*baseline: 중앙선, 객체의 top을 기준으로 중앙정렬이기 때문에
+                <ul/ol/dl>에 line-height: 높이+1em(=8px)필요함. baseline이 가장 정확하다.*/
+                /*  vertical-align: sub/middle/super;
+                sub: 객체의 상단(top이 아님)을 기준으로 중앙정렬, 약간 중앙보다 쳐진다.
+                middle : 객체중심의 중앙정렬이 된다. 하지만 브라우져마다 다름.
+                bottom : 부모객체 기준 하단 정렬, 단, 부모객체 line-height가 필요, 혹은 diplay:tablecell 필요
+                super :  */
+                /*특히 <dl>을 사용할 때 <dd>에 vertical-align: baseline;를 사용하고,
+                line-height: 높이+8px을 해야 세로 중앙정렬이 가능하다.
+                <dd>특성상 1em의 margin-block이 잡혀있기 때문(약 8px)*/
+            }
+            .box > input{
+                width: 100px;
+                height: 30px;
+                border: none;
+                background-color: cornflowerblue;
+                color: white;
+                text-align: center;
+                margin-top: 10px;
+            }
+            /* 가져오기 버튼 */
+            .box1{
+                width: 200px;
+                height: 200px;
+                border: 1px solid black;
+                box-sizing: border-box;
+                position: relative;
+            }
+            .sbox{
+                width: 50px;
+                height: 50px;
+                background-color: olivedrab;
+                position: absolute;
+                right: 0;
+            }
+            
+        </style>
+    </head>
+    <body>
+        
+        <!-- 디스크 노드 -->
+        <div class="box">
+            <ul class="disc_box">
+                <li class="disc"></li>
+                <li class="disc"></li>
+                <li class="disc"></li>
+                <li class="disc"></li>
+            </ul>
+            <input type="button" value="디스크 삭제" id="del">
+            <input type="button" value="디스크 추가" id="add">
+        </div>
+        <!-- 메뉴 적용 -->
+        <ul id="ul_id">
+            <li>메뉴1</li>
+            <li>메뉴2</li>
+            <li>메뉴3</li>
+            <li>메뉴4</li>
+        </ul>
+        <input type="button" value="메뉴리셋" id="reset">
+        <input type="button" value="글자밑줄넣기" id="reset2">
+        <br><br>
+        <!-- 만들기 -->
+        <input type="button" value="가져오기" id="btn">
+        <div class="box1" id="box1">
+            <span class="sbox">연습</span>
+        </div>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/index11.html -->

@@ -1,0 +1,100 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700;900&display=swap');
+/* font-family: 'Noto Sans KR', sans-serif; (100, 400, 700, 900) */
+@mixin base{
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans KR', sans-serif;;
+}
+@mixin ulol{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+@mixin m_sections($width,$height,$bg){
+    margin: 0 auto;
+    width: 99.99%;
+    min-width: 360px;
+    max-width: $width;
+    height: $height;
+    background-color: $bg;
+}
+@mixin m_widths($min,$max,$bg){
+    width: 99.99%;
+    min-width: $min;
+    max-width: $max;
+    background-color: $bg;
+}
+@mixin sections($width,$height,$bg){
+    width: $width;
+    height: $height;
+    background-color: $bg;
+}
+@mixin flexs($wrap,$justify,$align){
+    display: flex;
+    flex-wrap: $wrap;
+    justify-content: $justify;
+    align-content: $align;
+    align-items: $align;
+}
+@mixin font_sans($h,$c,$a,$w,$s){
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: $h;
+    color: $c;
+    text-align: $a;
+    font-weight: $w;
+    font-size: $s;
+}
+@mixin font_sans($h,$c,$a,$w,$s){
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: $h;
+    color: $c;
+    text-align: $a;
+    font-weight: $w;
+    font-size: $s;
+}
+*{box-sizing: border-box}
+body{
+    @include base;
+    font-size: 12px;
+}
+label,span{display: block;}
+img{width: 100%; height: inherit; object-fit: cover;}
+.part_B{
+    @include m_widths(340px, 480px, none);
+    &>.title_join{
+        @include sections(80%, 40px, none);
+        @include font_sans(40px, black, center, unset, 15px);
+        margin: 0 auto;
+    }
+    &>.frm_join{
+        @include m_widths(340px, 480px, none);
+        @include flexs(wrap, center, space-around);
+        flex-direction: column;
+        &>input{
+            @include sections(80%, 40px, none);
+            @include font_sans(40px, black, unset, unset, 12px);
+            text-indent: 10px;
+            border: 1px solid #ccc;
+            margin: 20px 0;
+        }
+        &>.keypads{
+            @include sections(80%, 200px, none);
+            @include flexs(wrap, space-evenly, space-evenly);
+            border: 3px solid #ccc;
+            flex-direction: row;
+            &>span{
+                @include sections(33%, 35px, #ccc);
+                @include font_sans(35px, white, center, unset, 12px);
+            }
+            display: none;
+        }
+    }
+    &>.btn_join{
+        @include sections(150px, 40px, black);
+        @include font_sans(40px, white, center, unset, 13px);
+        border: none;
+        display: block;
+        margin: 0 auto;
+    }
+}

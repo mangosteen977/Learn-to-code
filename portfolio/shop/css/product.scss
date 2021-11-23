@@ -1,0 +1,191 @@
+@charset "UTF-8";
+@import "./config.scss";
+label {
+  display: block;
+}
+.pd_view_box {
+  @include sections(1200px, auto, none);
+  padding: 80px 10px;
+  margin: 0 auto;
+  & > form {
+    @include flexs(nowrap, row, space-between, flex-start);
+    & > .pd_view_image_box {
+      @include sections(430px, auto, none);
+      & > label {
+        //이미지 뷰박스
+        &:nth-child(1) {
+          //메인 이미지 뷰박스
+          @include sections(430px, 430px, none);
+          @include flexs(nowrap, row, center, flex-start);
+          max-height: 600px;
+          padding-bottom: 20px;
+          cursor: pointer;
+        }
+        &:nth-child(2) {
+          //상세 이미지 미니뷰박스
+          @include sections(430px, 180px, none);
+          @include flexs(nowrap, row, space-around, center);
+          & > span {
+            @include sections(130px, 130px, none);
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    & > .pd_view_info_box {
+      //상품 상세 설명
+      @include sections(600px, auto, none);
+      & > .pd_view_info_title {
+        //상품 제목
+        @include sections(100%, 80px, none);
+        @include font_sans(80px, black, unset, bold, 25px);
+        text-indent: 5px;
+      }
+      & > .pd_view_price {
+        //가격정보
+        @include sections(100%, auto, none);
+        @include flexs(wrap, column, center, flex-start);
+        & > li {
+          @include sections(100%, 50px, none);
+          @include font_sans(50px, #666666, unset, unset, 13px);
+          text-indent: 5px;
+          &:nth-of-type(1) {
+            //가격문구
+            height: 20px;
+            @include font_sans(20px, #333333, unset, unset, 11px);
+          }
+          &:nth-of-type(2) {
+            //최종판매가격
+            height: 60px;
+            @include flexs(wrap, row, flex-start, center);
+            @include font_sans(60px, black, unset, bold, 25px);
+          }
+        }
+      }
+      & > .pd_view_info_detail {
+        //상품상세정보
+        @include sections(100%, auto, none);
+        @include flexs(wrap, row, flex-start, center);
+        & > li {
+          height: 50px;
+          @include font_sans(50px, #333333, unset, unset, 12px);
+          text-indent: 5px;
+          border-bottom: 1px solid #ccc;
+          &:nth-of-type(odd) {
+            color: #666666;
+            width: 20%;
+          }
+          &:nth-of-type(even) {
+            width: 80%;
+          }
+          & > .product_option {
+            @include sections(200px, 30px, none);
+            @include font_sans(50px, #333333, unset, unset, 12px);
+            border: none;
+            border-bottom: 3px solid #ccc;
+          }
+        }
+        & > .product_ea_count {
+          @include flexs(wrap, row, flex-start, center);
+          & > span {
+            @include sections(20px, 20px, none);
+            cursor: pointer;
+            &:nth-of-type(1) {
+              margin-right: 5px;
+            }
+          }
+          & > input {
+            @include sections(30px, 30px, none);
+            text-align: center;
+            border: none;
+          }
+        }
+      }
+      & > .pd_view_info_btns {
+        @include sections(100%, auto, none);
+        @include flexs(wrap, row, flex-start, center);
+        padding: 5px;
+        & > span {
+          @include sections(100px, 30px, #dbb0a0);
+          @include font_sans(30px, #333333, center, unset, 12px);
+          margin-right: 5px;
+          cursor: pointer;
+          &:hover {
+            background-color: #bd9789;
+            color: black;
+          }
+        }
+      }
+    }
+  }
+}
+//상세페이지>세부정보
+.pd_view_more {
+  @include sections(1200px, auto, none);
+  & > .pd_view_info_tags {
+    @include sections(100%, auto, none);
+    & > li {
+      @include sections(300px, 50px, none);
+      @include font_sans(50px, #333333, center, unset, 13px);
+      float: left;
+      border: 1px solid #eee;
+      border-bottom: 1px solid black;
+      cursor: pointer;
+    }
+    & > .pd_view_more_li {
+      //클릭한 탭을 나오도록.
+      border: 1px solid black;
+      border-bottom: none;
+    }
+  }
+}
+//상세페이지>그 외 탭
+.pd_view_mores {
+  @include sections(1200px, auto, none);
+  min-height: 500px;
+  display: none;
+  margin-top: 50px;
+  & > .pd_view_no_list {
+    @include sections(1200px, 50px, #eee);
+    @include font_sans(50px, #333333, center, unset, 13px);
+    margin-top: 100px;
+  }
+}
+
+//상세페이지>이미지
+.pd_view_more0 {
+  display: block;
+  & > p > img {
+    object-fit: contain;
+  }
+}
+//상세페이지>배송/교환/환불
+.pd_view_more1 {
+  & > table {
+    @include sections(100%, auto, none);
+    margin-top: 100px;
+    & > tbody > tr > td {
+      border-bottom: 3px solid #ccc;
+      padding: 5px;
+      & > ul {
+        @include sections(100%, auto, none);
+        list-style-type: disc;
+        padding-left: 30px;
+        & > li {
+          @include sections(100%, 50px, none);
+        }
+      }
+      &:nth-of-type(1) {
+        background-color: #eee;
+        text-align: center;
+        font-weight: bold;
+      }
+      & > p {
+        @include sections(100%, 50px, none);
+        text-indent: 10px;
+        font-size: 15px;
+        font-weight: bold;
+      }
+    }
+  }
+}

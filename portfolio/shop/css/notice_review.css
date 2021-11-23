@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700;900&display=swap");
+/* font-family: 'Noto Sans KR', sans-serif; (100, 400, 700, 900) */
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 12px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+label,
+span {
+  display: inline-block;
+}
+
+img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+ul,
+ol,
+dl,
+dd {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.notice_review_box {
+  width: 1200px;
+  height: 300px;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: 0 auto;
+}
+
+.notice_review_box > div {
+  width: 400px;
+  height: 180px;
+  background-color: none;
+  padding: 10px;
+  border: 3px solid #ccc;
+}
+
+.notice_review_box > div > p {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.notice_review_box > div > ul {
+  list-style-type: disc;
+  padding: 0 35px;
+}
+
+.notice_review_box > div > ul > li {
+  cursor: pointer;
+}
+
+.notice_review_box > div > ul > li:hover {
+  font-weight: bold;
+}
+
+.notice_review_box > span {
+  width: 370px;
+  height: 180px;
+  background-color: none;
+  overflow: hidden;
+  border: 3px solid #ccc;
+  padding: 20px 20px 20px 30px;
+}
+/*# sourceMappingURL=notice_review.css.map */

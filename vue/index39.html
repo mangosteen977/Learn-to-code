@@ -1,0 +1,139 @@
+<?php
+    $v = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 7일차 (3) vue + JS + JQ + ajax </title>
+        <script src="../jq/jquery.js"></script>
+        <script src="http://cdn.jsdelivr.net/npm/vue"></script><!-- vue 버전 1.6.4 ???????? -->
+        <!-- lodash js src -->
+        <Script src="http://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></Script>
+        <style>
+            *{box-sizing: border-box;}
+            span,label{display: block;}
+            .m1{width: 500px; height: auto;}
+            .m2{width: 100%; height: 40px; margin-bottom: 10px;}
+            .m2>select{ width: 30%; height: 40px; text-indent: 5px; border: 1px solid #ccc;}
+            .m3{border: 1px solid #ccc;}
+            .m3, .m3>ul{width: 100%; height: auto;}
+            .m3>ul>li{
+                width: 90%; height: 40px; border-bottom: 1px solid #ccc;
+                line-height: 40px; font-size: 13px; position: relative;
+                text-indent: 5px;
+            }
+            .m3>ul>li>span{
+                display: inline-block; position: absolute; right: 0;
+            }
+        </style>
+        <script>
+            function handel(){
+                let board = [
+                    {subject:"졸려요~~~",write:"장남혁",upvotes:1},
+                    {subject:"다음 주 금요일 시험... 아",write:"김은진",upvotes:71},
+                    {subject:"다음 주 학원 오프라인 안되요!",write:"김하영",upvotes:32},
+                    {subject:"학원 계단에서 수업들을까요?",write:"김주리",upvotes:94},
+                    {subject:"스크립트랑 제이쿼리랑 뷰랑 모두 어려워요~",write:"민서현",upvotes:103},
+                    {subject:"다음엔 김은진님 셀카로 하시죠",write:"장남혁",upvotes:11}
+                ]
+                return board;
+            }
+            $(function(){
+               
+            })
+        </script>
+    </head>
+    <body>
+        <section id="box">
+            {{start}}
+            <div class="m1">
+                <span class="m2">
+                    <select v-model="search" v-on:change="sh">
+                        <option value="">전체보기</option>
+                        <option v-bind:value="wr.write" v-for="wr in free2" >{{wr.write}}</option>
+                    </select>
+                </span>
+                <span class="m3">
+                    <ul>
+                        <!-- <li v-for="val in arr">{{val.subject}}<span>{{val.upvotes}} 👍 ({{val.write}})</span></li> -->
+                        <li v-for="w in free" v-if="vw && part==1">{{w.subject}} ({{w.vote}})<span>{{w.writer}}</span></li> 
+                        <li v-for="w in sfree" v-if="part==2">{{w.subject}} ({{w.vote}})<span>{{w.writer}}</span></li> 
+                    </ul>
+                </span>
+            </div>
+        </section>
+    </body>
+    <script>
+        let vues = new Vue({
+            el:"#box",
+            data:{
+                arr:"",
+                search:"",
+                free:[],
+                free2:[],
+                sfree:[],
+                vw:true,
+                part:1
+            },
+            methods:{
+                sh:function(){
+                    if(this.search!=""){
+                        this.sfree = [];
+                        this.vw=false;
+                        this.part=2;
+                        var j;
+                        for(let j in this.arr){
+                            if(this.arr[j]["write"]==this.search){   
+                                this.sfree.push({
+                                    subject:this.arr[j]["subject"],
+                                    vote:this.arr[j]["upvotes"],
+                                    writer:this.arr[j]["write"]
+                                });
+                            }
+                        }
+                    }
+                    else{
+                        this.vw=true;
+                        this.part=1;
+                    }
+                    // this.arr.filter(function(aa){
+                    //     if(aa.write == this.search){
+                    //         this.sfree.push({
+                    //             writer:aa[0]["write"];
+                    //         })
+                    //     }
+                    // });
+                },
+                all_list(jdata){
+                    //필터 함수
+                    // var test = jdata.filter(function(a,b,c){
+                    //     return c.indexOf(a) == b;
+                    // })
+                    // console.log(test)
+                    var f;
+                    for(f in jdata){
+                        this.free.push({
+                          subject:jdata[f]["subject"],
+                          vote:jdata[f]["upvotes"],
+                          writer:jdata[f]["write"]
+                        });
+                        //배열 중복값 제거 _.uniqBy
+                        this.free2 = _.uniqBy(jdata,"write");
+                    }
+                }
+            },
+            components:{
+
+            },
+            computed:{
+                start:function(){
+                    this.arr = handel();
+                    this.all_list(this.arr);
+                }
+            }
+        })
+    </script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/vue/index39.html -->

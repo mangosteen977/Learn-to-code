@@ -1,0 +1,44 @@
+<?php
+    $data = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 2일차 (6) vue image 출력 (???)</title>
+        <script src="../jq/jquery.js"></script>
+        <!-- vue 버전 1.6.4??? -->
+        <script src="http://cdn.jsdelivr.net/npm/vue"></script> <!--상용버전 값 가져옴^_~-->
+        <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> --> <!--개발버전 값 못가져옴^.^-->
+        <style>
+            *{box-sizing: border-box;}
+            .a{display: block; width: 100px; height: 30px; border: 1px solid red; font-weight: bold;}
+
+
+        </style>
+    </head>
+    <body>
+        <section id="box">
+            <!-- <input type="text" v-model="msg">사용자 입력값을 msg 밸류값으로 넣음 -->
+            <select v-model="msg">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+            <span class="a">{{msg}}</span><!--입력값 바로 입력함.-->
+        </section>
+        
+    </body>
+    <script>
+        let a = new Vue({
+            el:"#box",
+            data:{
+                msg:""
+            },
+            methods:{
+
+            }
+        });
+    </script>
+</html>

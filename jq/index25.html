@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery 6일차(5) - 초급코드 오브젝트 연결하기(Jquery-ui) </title>
+        <script src="./jquery.js"></script>
+        <script src="./jquery-ui.js"></script><!-- jquery ui 엔진 -->
+        <script>
+             $(document).ready(function(){
+                 var $ea = $(".f").length;
+                 var $w = 1;
+                 while($w<=$ea){
+                    $("#color"+$w).draggable();
+                    //draggable jqueryui전용 핸들링함수, 해당 오브젝트를 드래그.
+                    //마우스로 객체 끌어서 움직이기
+                    $w++;
+                 }
+                 $("#box").droppable({
+                     //객체를 특정 객체 위에 드롭, 올렸을 때,
+                    //dropable : jquery ui 전용 핸들링, 해당 오브젝트 안에
+                    //다른객체가 들어오면 세부핸들링으로 나눠짐 
+                     "over":function(){//새로운 오브젝트가 오버되었을 때
+                         $(this).css("background-color","crimson");
+                     },
+                     "out":function(){//새로운 오브젝트가 나갔을 때
+                         $(this).css("background-color","");
+                     }
+                 })
+             });
+        </script>
+        <style>
+            #box{width: 100px; height: 100px; border: 1px solid black;}
+            .f{width: 50px; height: 50px;}
+            #color1{background-color: crimson;}
+            #color2{background-color: olive;}
+            #color3{background-color: goldenrod;}
+            #color4{background-color: darkcyan;}
+            #color5{background-color: palevioletred;}
+        </style>
+    </head>
+    <body>
+        <div id="box"></div>
+        <div id="color1" class="f"></div>
+        <div id="color2" class="f"></div>
+        <div id="color3" class="f"></div>
+        <div id="color4" class="f"></div>
+        <div id="color5" class="f"></div>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/index25.html -->

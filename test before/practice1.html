@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>배너 만들기 연습. 20분 소요.</title>
+        <style>
+            body{margin: 0; padding: 0; box-sizing: border-box;}
+            ul,ol,dl{margin: 0; padding: 0; list-style: none;}
+            span,label,main{display: block;}
+            a{text-decoration: none;}
+
+            .ban{
+                margin: 0 auto;
+                width: 1000px;
+                height: 400px;
+                overflow: hidden;
+                box-sizing: border-box;
+                position: relative;
+            }
+            ol{
+                width: 2000px;
+                height: 400px;
+            }
+            ol > li{
+                width: 1000px;
+                height: 400px;
+                float: left;
+            }
+            ul{
+                width: 1000px;
+                height: 30px;
+                text-align: center;
+                position: absolute;
+                bottom: 15px;
+            }
+            ul >li{
+                width: 30px;
+                height: 30px;
+                border-radius: 30px;
+                background-color: black;
+                display: inline-block;
+                cursor: pointer;
+            }
+            ul > li:first-child{
+                background-color: red;
+            }
+            span{
+                width: auto;
+                height: 400px;
+                line-height: 400px;
+                position: absolute;
+                cursor: pointer;
+            }
+            .r{
+                right: 0;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="ban">
+            <span><img src=".././test/image/left.png"></span>
+            <span class="r"><img src=".././test/image/right.png"></span>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <ol>
+                <li><img src=".././test/image/background.png"></li>
+                <li><img src=".././test/image/background.png"></li>
+            </ol>
+        </div>
+    </body>
+</html>

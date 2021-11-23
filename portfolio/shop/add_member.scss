@@ -1,0 +1,198 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap");
+/*font-family: 'Nanum Gothic', sans-serif;*/
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+// font-family: 'Roboto', sans-serif;
+@mixin base {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+@mixin ulol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+@mixin sections($width, $height, $bg) {
+  width: $width;
+  height: $height;
+  background-color: $bg;
+}
+@mixin m_sections($width, $height, $bg) {
+  margin: 0 auto;
+  width: 99.99%;
+  min-width: 320px;
+  max-width: $width;
+  height: $height;
+  background-color: $bg;
+}
+@mixin flexs($wrap, $justify, $align) {
+  display: flex;
+  flex-wrap: $wrap;
+  justify-content: $justify;
+  align-content: $align;
+  align-items: $align;
+}
+@mixin font_sans($h, $c, $a, $w, $s) {
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: $h;
+  color: $c;
+  text-align: $a;
+  font-weight: $w;
+  font-size: $s;
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  @include base;
+  font-size: 12px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+label,
+span {
+  display: inline-block;
+}
+img {
+  width: 100%;
+  object-fit: cover;
+}
+.join_detail {
+  @include sections(1000px, auto, none);
+  margin: 0 auto;
+  & > article > div:nth-of-type(1) {
+    @include sections(100%, 50px, none);
+    @include font_sans(50px, #c3222b, left, bold, 16px);
+    @include flexs(nowrap, start, center);
+    flex-direction: row;
+    border-bottom: 3px solid #c3222b;
+    text-indent: 15px;
+    margin: 30px 0;
+  }
+  //세부파트 조정
+  & > article:nth-of-type(1) {
+    @include sections(1000px, auto, none);
+    margin: 20px 0 20px 0;
+    & > table {
+      @include sections(800px, auto, none);
+      font-size: 12px;
+      font-family: "Noto Sans KR", sans-serif;
+      margin: 0 auto;
+      & > tbody > tr > td {
+        @include sections(200px, 50px, none);
+        text-indent: 20px;
+        & > input {
+          @include sections(inherit, 60%, none);
+        }
+      }
+    }
+  }
+  & > article:nth-of-type(2) {
+    @include sections(1000px, auto, none);
+    margin: 20px 0 20px 0;
+    & > table {
+      @include sections(800px, auto, none);
+      font-size: 12px;
+      font-family: "Noto Sans KR", sans-serif;
+      margin: 0 auto;
+      & > tbody > tr > td {
+        @include sections(600px, 50px, none);
+        text-indent: 20px;
+        &:nth-of-type(1) {
+          @include sections(200px, 50px, none);
+        }
+        & > input {
+          @include sections(200px, 60%, none);
+        }
+        & > .small_size {
+          width: 100px;
+          &:nth-of-type(2) {
+            background-color: #c3222b;
+            color: white;
+            border: 0;
+            cursor: pointer;
+            margin-left: 5px;
+            &:hover {
+              background-color: #a11d23;
+            }
+          }
+        }
+        & > .middle_size {
+          width: 300px;
+        }
+        & > .big_size {
+          width: 80%;
+        }
+      }
+    }
+  }
+  & > article:nth-of-type(3) {
+    @include sections(1000px, auto, none);
+    margin: 20px 0 20px 0;
+    & > table {
+      @include sections(800px, auto, none);
+      font-size: 12px;
+      font-family: "Noto Sans KR", sans-serif;
+      margin: 0 auto;
+      & > tbody > tr > td {
+        @include sections(600px, 50px, none);
+        &:nth-of-type(1) {
+          width: 200px;
+          text-indent: 20px;
+        }
+      }
+      & > tbody > tr:nth-of-type(4) > td {
+        @include sections(200px, 50px, none);
+        &:nth-of-type(2) {
+          @include sections(600px, 50px, none);
+          @include flexs(nowrap, start, center);
+          flex-direction: row;
+          & > .sc {
+            @include sections(200px, 100%, none);
+            margin-right: 5px;
+            display: inline-block;
+            overflow: hidden;
+          }
+          & > .refresh_btn {
+            @include sections(25px, 25px, none);
+          }
+          & > input {
+            @include sections(150px, 50px, none);
+          }
+        }
+      }
+      & > tbody > tr:nth-of-type(5) > td {
+        height: 20px;
+        text-indent: unset;
+      }
+    }
+  }
+  & > .btn_new_mem {
+    @include sections(160px, 40px, #c3222b);
+    display: block;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    color: white;
+    border: 0;
+    cursor: pointer;
+    &:hover {
+      background-color: #a11d23;
+    }
+  }
+}
+.txt_s {
+  font-size: 10px;
+  color: rgb(153, 153, 153);
+  display: block;
+}
+.svgs {
+  @include sections(25px, 25px, none);
+  margin-right: 5px;
+  line-height: 0px;
+  & > img {
+    width: 100%;
+    object-fit: contain;
+  }
+}

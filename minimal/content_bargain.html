@@ -1,0 +1,38 @@
+<div class="content_bargain_outline" id="content_bgn">
+	<div_img></div_img>
+	<div class="e-sobanner">
+		<ul>
+			<li_img v-bind:values="vals" v-for="vals in array_li_img"></li_img>
+		</ul>
+	</div>
+</div>
+<script>
+	let array_li_img = [
+		["./img/sobanner1.png", "https://m.bluepops.co.kr/product/list.html?cate_no=75"],
+		["./img/sobanner2.png", "https://m.bluepops.co.kr/product/list.html?cate_no=77"],
+		["./img/sobanner3.png", "https://m.bluepops.co.kr/product/list_thumb.html?cate_no=54"],
+	]
+	let components_for_div_img = {
+		template: '<a href="https://m.bluepops.co.kr/product/list.html?cate_no=65"><div class="e-banner"></div></a>'
+	}
+	let components_for_img_li = {
+		props: ["values"],
+		template: "<li class='click_to_go'><a :href='values[1]'><img :src='values[0]'></a></li>"
+	}
+	let content_bgn = new Vue({
+		el: "#content_bgn",
+		data: {
+
+		},
+		methods: {
+
+		},
+		components: {
+			"li_img": components_for_img_li,
+			"div_img": components_for_div_img
+		},
+		computed: {
+
+		}
+	})
+</script>

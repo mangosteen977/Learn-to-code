@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>자바스크립트 2일차(2) (중급) - object vs Node (요소/노드) </title>
+        <script src="../jq/jquery.js"></script>
+        <script>
+            // 인증메일발송 -> 인증확인칸 생성
+            function email(){
+                var mail = document.createElement("input");
+                mail.type = "text"; //input type 설정
+                mail.setAttribute("name","sc_mail"); //input 속성/값 설정
+
+                var btn = document.createElement("input");
+                btn.type = "button";//input type 설정
+                btn.setAttribute("value","인증확인");//input 속성/값 설정
+
+                //document.getElementById("emailbox").append(mail,btn); //append는 IE(X)
+                document.getElementById("emailbox").appendChild(mail);
+                document.getElementById("emailbox").appendChild(btn);//생성한 객체를 출력함.
+            }
+        </script>
+        <style>
+            body{margin: 0; padding: 0;}
+            .box{width: 100px; height: 100px; border: 1px solid black;}
+            .s{width: 10px; height: 10px; background-color: red;}
+        </style>
+    </head>
+    <body>
+        <div id="box" class="box"></div>
+        <!-- 인증메일발송 -> 인증확인칸 생성 -->
+        <input type="text">@<input type="text">
+        <input type="button" value="인증메일발송" onclick="email();">
+        <div class="emailbox" id="emailbox"></div>
+    </body>
+    <script>
+        var a = document.createElement("div");
+        //createElement(태그생성)-->.className = ""/.id = ""/.setAttribute("속성","값");
+        a.className = "s"; //class name설정
+        a.id = "span_box"; //id 설정
+        a.setAttribute("name","boxs") //name (속성) 설정
+        //JS : .setAttribute("속성","값"); == JQ : .attr("","");
+        document.getElementById("box").append(a);
+
+        //input-type 추가하기
+        var b = document.createElement("input");
+        b.type = "text"; //input type 설정
+        document.getElementById("span_box").append(b);
+    </script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/middle5.html -->

@@ -1,0 +1,80 @@
+<meta charset="UTF-8">
+<section class="pd_section">
+    <article class="pd_box">
+        <p>PET FOODS & TOY</p>
+        <div>펫을 위한 냠냠 맛있는 사료 & 장난감</div>
+        <aside id="pd_sbox">
+            <!-- 좌우이동 버튼 -->
+            <span class="pd_left" @click="move_pro(0)"><img src="./banner/left.svg"></span>
+            <span class="pd_right" @click="move_pro(1)"><img src="./banner/right.svg"></span>
+            <!-- 상품 순서 변경 버튼  -->
+            <div class="pd_list_btns">
+                <span @click="list(2)">가격높은순</span>
+                <span @click="list(1)">가격낮은순</span>
+                <span @click="list(0)">최신등록순</span>
+            </div>
+            <!-- 상품 리스트 vue 출력 -->
+            <div class="pd_sbox">
+                {{jsons}}
+
+                <!-- 최신등록순 -->
+                <span class="pd_ovbox" id="pd_ovbox1">
+                    <div class="pd_imgb" v-for="v in p_arr" v-if="part==1">
+                        <span>
+                            <img v-bind:src="v.product_img">
+                            <!--이미지-->
+                            <label class="product_dc" v-text="v.product_dc" v-if="v.product_dc!=''">
+                                <!--할인율-->
+                            </label>
+                        </span>
+                        <span v-html="v.product_nm">
+                            <!--상품명-->
+                        </span>
+                        <span v-text="v.product_sample">
+                            <!--설명-->
+                        </span>
+                        <span>
+                            <label class="product_money" v-text="v.product_money.toLocaleString('Ko')+'원'">
+                                <!--가격-->
+                            </label>
+                            <label class="product_sales" v-text="v.product_sales.toLocaleString('Ko')+'원'"
+                                v-if="v.product_sales!=''">
+                                <!--할인가-->
+                            </label>
+                        </span>
+                    </div>
+                </span>
+
+                <!-- 가격낮은 순 혹은 높은순 -->
+                <span class="pd_ovbox" id="pd_ovbox2">
+                    <div class="pd_imgb" v-for="v in p_arr2" v-if="part==2">
+                        <span>
+                            <img v-bind:src="v.img">
+                            <!--이미지-->
+                            <label class="product_dc" v-text="v.dc" v-if="v.dc!=''">
+                                <!--할인율-->
+                            </label>
+                        </span>
+                        <span v-html="'2'+v.name">
+                            <!--상품명-->
+                        </span>
+                        <span v-text="v.info">
+                            <!--설명-->
+                        </span>
+                        <span>
+                            <label class="product_money" v-text="v.money.toLocaleString('Ko')+'원'">
+                                <!--가격-->
+                            </label>
+                            <label class="product_sales" v-text="v.sale.toLocaleString('Ko')+'원'" v-if="v.sale!=''">
+                                <!--할인가-->
+                            </label>
+                        </span>
+                    </div>
+                </span>
+
+            </div>
+
+        </aside>
+    </article>
+</section>
+<script>pro_vue();</script>

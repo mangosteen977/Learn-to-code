@@ -1,0 +1,42 @@
+<?php
+  $r = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="imagetoolbar" content="no">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<title>MINIMAL</title>
+	<script src="./js/jquery.js"></script>
+	<script src="./js/indexd.js?v=<?php echo $r;?>"></script>
+	<script src="http://cdn.jsdelivr.net/npm/vue"></script>
+	<link rel="stylesheet" type="text/css" href="font.css?v=<?php echo $r;?>">
+	<link rel="stylesheet" type="text/css" href="./css/index.css?v=<?php echo $r;?>">
+</head>
+
+<body>
+	<header>
+		<?php include "header_menu.html" ?>
+	</header>
+	<section>
+		<?php include "pop_menu.html" ?>
+		<?php include "pop_member.html" ?>
+		<?php include "pop_nonmember.html" ?>
+	</section>
+	<section>
+		<?php include "content_mainbanner.html" ?>
+		<?php include "content_bargain.html" ?>
+		<?php include "content_weekly.html" ?>
+		<?php include "content_new.html" ?>
+		<?php include "content_side.html" ?>
+	</section>
+	<footer>
+		<?php include "footer_bottom.html" ?>
+	</footer>
+</body>
+
+</html>

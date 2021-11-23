@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery 9일차(3) - JQ초급코드 응용 및 최종복습 (리콜페이지) </title>
+        <script src="./jquery.js"></script>
+        <script src="./jquery-ui.js"></script>
+        <link rel="stylesheet" type="text/css" href="./jquery-ui.css">
+        <script>
+             $(document).ready(function(){
+                //리콜 페이지 만들기
+                var $word = location.search; //파라미터 값 = ?name=값&name=값
+                if($word != ""){//값이 있는 경우
+                    var $w = $word.split("?data=");
+                    $("#data").val($w[1]);
+                }
+
+                $("#btn").click(function(){
+                    $("#f").submit();
+                });
+
+                //네이버 검색하기
+                $("#nbtn").click(function(){
+                    $("#ff").submit();
+                });
+
+                //응용문제1 :리콜페이지만들고, 받은 값을 div_bg에 적용
+                var $bg = location.search;
+                var $bgcolor = $bg.split("?color=")
+                $("#box").css("background-color",$bgcolor[1]);
+
+                $("#cbtn").click(function(){
+                    $("#fff").submit();
+                });
+             });
+        </script>
+        <style>
+           .box{width: 100px; height: 100px; border: 1px solid black;}
+        </style>
+    </head>
+    <body>
+        <!-- 리콜페이지 예시 -->
+        <form id="f" method="GET" action="./rejquery3.html"><!--recall: 자기자신에게 값 보냄-->
+            <input type="text" name="data" id="data">
+            <input type="button" value="검색" id="btn" class="ui-button">
+        </form>
+        <br><br>
+        <!-- 네이버 검색하기 -->
+        <form id="ff" method="GET" action="https://search.naver.com/search.naver">
+            <input type="text" id="q" name="query">
+            <input type="button" value="네이버 검색" id="nbtn" class="ui-button">
+        </form>
+        <!-- 응용문제1. 리콜페이지를 이용하시오.
+        사용자가 영문으로 red, blue 등 색상을 입력할 경우,
+        div 100*100에 적용하시오. --><br><br>
+        <div id="box" class="box"></div>
+        <form id="fff" method="GET" action="./rejquery3.html">
+            <input type="text" name="color" placeholder="영문 색상명을 입력하시오">
+            <input type="button" value="박스색 변경" id="cbtn" class="ui-button">
+        </form>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/rejquery3.html -->

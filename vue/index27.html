@@ -1,0 +1,68 @@
+<?php
+    $v = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 4일차 (5) vue 지역 + 내뷰 컴퍼넌트 3 ??? components template 템플릿 가짜 태그 ?????????</title>
+        <script src="../jq/jquery.js"></script>
+        <!-- vue 버전 1.6.4 ???????? -->
+        <script src="http://cdn.jsdelivr.net/npm/vue"></script> <!--상용버전 값 가져옴^_~-->
+        <style>
+        </style>
+    </head>
+    <body>
+        <section id="box3">
+            <ul>
+                <gom v-bind:aaa="list" v-for="list in arrs"></gom>
+            </ul>
+        </section>
+        <section id="box4">
+            <!--
+                 응용문제1. 다음 배열 중에서 이름만 리스트가 출력 되도록 
+                지역 컴퍼넌트로 출력하시오.!!!!!
+            -->
+            <div>
+                <subni v-bind:names="name_list" v-for="name_list in arrs"></subni>
+            </div>
+        </section>
+    </body>
+    <script>
+        const arr = [
+            ["이은미","A형"],
+            ["안찬익","B형"],
+            ["민서현","AB형"],
+            ["이시우","O형"],
+            ["정아름","A형"]
+        ];
+        //지역 컴퍼넌트
+        let area = {
+            props:["aaa"],
+            template : "<li>{{aaa[0]}}-{{aaa[1]}}</li>"
+        }
+        let area2 = {
+            props:["names"],
+            template:"<label>{{names[0]}}</label>"
+        }
+        let a = new Vue({
+            el:"#box3",
+            data:{
+                arrs:arr
+            },
+            components:{
+                "gom":area
+            }
+        });
+        let a2 = new Vue({
+            el:"#box4",
+            data:{
+                arrs:arr
+            },
+            components:{
+                "subni":area2
+            }
+        });
+    </script>
+</html>

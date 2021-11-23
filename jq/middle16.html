@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jquery 5일차(5) - 중급 ( 속성값 추가하기 )</title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(function(){
+                // .add() 객체+또다른 객체 함께 jq적용
+                $("#text1").add("#text3").css("background-color","lightblue");
+                $("#btn").click(function(){
+                    $(".in").prop("readonly",true);
+                    //.prop == setattribute(O), getattribute(X)
+                    //.attr == setattribute(O), getattribute(O)
+                    var $a = $("#text1").prop("data");
+                    console.log($a) //undefined .prop는 값을 가져오지는 못함.
+                });
+
+                
+            });
+        </script>
+        <style>
+            *{box-sizing: border-box;}
+            body{margin: 0;padding: 0;}
+            ul,ol{list-style: none; margin: 0; padding: 0;}
+
+            
+        </style>
+    </head>
+    <body>
+        <input type="text" id="text1" class="in" data="1">
+        <input type="text" id="text2" class="in" data="2">
+        <input type="text" id="text3" class="in" data="3">
+        <input type="button" value="click" id="btn">
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/middle16.html -->

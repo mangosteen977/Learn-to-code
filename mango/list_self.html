@@ -1,0 +1,46 @@
+<?php
+    $v = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+    <title>게시판</title>
+    <script src="../jq/jquery.js"></script>
+    <script src="http://cdn.jsdelivr.net/npm/vue"></script><!-- vue 버전 1.6.4 ???????? -->
+    <!-- vue router 뷰 라우터-->
+    <script src="http://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+
+<body>
+    <article class="qa_list_article" id="qa_list_article">
+        <p>Q&A 상품문의</p>
+        <table class="qa_list_tb" border="1" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                    <td>문의날짜</td>
+                    <td>카테고리</td>
+                    <td>제목</td>
+                    <td>작성자</td>
+                    <td>문의상태</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2021.07.19</td>
+                    <td>카드결제오류</td>
+                    <td>신한카드 결제시 어쩌구 저쩌구</td>
+                    <td>홍길동</td>
+                    <td>답변대기</td>
+                </tr>
+                <tr>
+                    <td colspan="5">게시글이 존재하지 않습니다.</td>
+                </tr>
+            </tbody>
+        </table>
+    </article>
+</body>
+
+</html>

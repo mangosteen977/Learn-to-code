@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Ajax 1일차(3) - Javascript( namedItem + 더블 함수 ) </title>
+        <script>
+            function f(){
+                var a1 =document.getElementsByTagName("label").namedItem("test2").innerText;
+                //namedItem("") : id값이 있어야만 가져올 수 있는 명령어다.
+                //console.log(a1)
+                var a2 =document.getElementsByTagName("label").item(0).innerText;
+                console.log(a2)
+            };
+            function abc(){
+                function bbb(z1,z2){//bbb()함수는 외부에서 한 번에 들어올 수 없다.
+                    //let a = z1+z2;
+                    //a사용 불가능. bbb()입장에서 a는 전역변수임으로 a값이 바뀔 수 있.
+                    //console.log(a)
+                };
+                const a = 25;
+                const b = 40;
+                bbb(a,b);
+            };
+            function bbb(){//abc()>bbb()와 관계없이 독립적으로 작동
+                alert("test");
+            };
+
+            var c = function ccc(){ //변수로 묶인 함수는 onclick="변수();"
+                function ddd(){//더블함수 || 변수로 함수를 묶으면 보안상 (O)
+                    alert("test");
+                }
+                ddd();
+            }
+            fff=(e)=>{//화살표 함수
+                alert(e)
+            }
+        </script>
+        <style></style>
+    </head>
+    <body>
+        <label id="test">Ajax 통신기술 : item, namedItem 두 가지 출력 사항이 있다.</label>
+        <br><label id="test2">데이터 연습 중</label>
+        <br><button type="button" onclick="f();">클릭</button>
+        <br><br>
+        <input type="button" value="출력" onclick="abc();">
+        <input type="button" value="출력" onclick="bbb();">
+        <input type="button" value="출력" onclick="c();">
+        <input type="button" value="출력" onclick="fff('hi');">
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/ajax/index3.html -->

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>JavaScript 3일차(5) - 함수호출(HTML결합) </title>
+        <script>
+            /* 
+            응용문제4.
+            두개의 (input)입력된 값을 더한 후,
+            결과값이 홀수인지 짝수인지 출력하시오.
+            */
+           //내 답안
+           // input 내용은 문자로 인식됨. Number 필요함!
+            function cal(){
+                var a1 = Number(document.getElementById("a").value);
+                var a2 = Number(document.getElementById("b").value);
+                var a3;
+                a3 = a1 + a2;
+                if(a3%2!=1){
+                    alert("계산값이 짝수입니다.");
+                }
+                else{
+                    alert("계산값이 홀수입니다.");
+                }
+            }
+           
+           //선생님답안
+          /*
+           function cal(){
+               var aa = Number(document.getElementById("a").value);
+               var bb = Number(document.getElementById("b").value);
+               var cc = (aa+bb)%2;
+               if(cc==1){
+                   alert("결과값이 홀수입니다.");
+               }
+               else{
+                   alert("결과값이 짝수입니다.");
+               }
+           }
+           */
+          function idcheck(){
+              var aa = document.getElementById("c").value;
+              if(aa==""){ //사용자가 입력하지 않을 경우
+                  alert("아이디를 입력해주세요.");
+              }
+              else{
+                  if(aa=="test"){//사용자가 test를 입력한 경우
+                      alert("사용 중인 아이디 입니다.");
+                  }
+                  else{//사용자가 test이외의 입력한 경우
+                      alert("사용할 수 있는 아이디 입니다.");
+                  }
+              }
+          }
+
+
+        </script>
+    </head>
+    <body>
+
+        <input type="text" id="a">
+        <input type="text" id="b"><!--id-value : 백엔드에 값이 넘어감-->
+        <input type="button" value="계산" onclick="cal();"> <!--button-value : 백엔드에 값이 넘어가지 않음-->
+        <input type="text" id="c"><input type="button" value="중복체크" onclick="idcheck();">
+
+        <!-- http://mangsteen977.dothome.co.kr/js/index17.html -->
+    </body>
+</html>

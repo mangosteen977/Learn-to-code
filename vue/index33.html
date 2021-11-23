@@ -1,0 +1,216 @@
+<?php
+    $v = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 5일차 (5) vue 비회원 주문조회 상품리스트 B파트 </title>
+        <script src="../jq/jquery.js"></script>
+        <!-- vue 버전 1.6.4 ???????? -->
+        <script src="http://cdn.jsdelivr.net/npm/vue"></script>
+        <link rel="stylesheet" type="text/css" href="./index33.css?v=<?=$v?>">
+        <script>
+            const arrays = [
+            {
+                "numbers":"20210707",
+                "product_nm":"그린 도브비누",
+                "product_code":"123445",
+                "product_money":34200,
+                "product_process":"배송중"
+            },
+            {
+                "numbers":"20210707",
+                "product_nm":"바디샴푸 1EA",
+                "product_code":"225566",
+                "product_money":12000,
+                "product_process":"배송중"
+            },
+            {
+                "numbers":"20210708",
+                "product_nm":"제로세정티슈 5EA",
+                "product_code":"030101",
+                "product_money":40000,
+                "product_process":"배송준비중"
+            }
+        ];
+        </script>
+    </head>
+    <body>
+        <div class="o_code">주문내역 리스트</div>
+        <section id="order_list" class="order_list">
+            {{check}}
+            <div>주문코드 : <num v-text="code"></num></div>
+            <table border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td>번호</td>
+                    <td>상품코드</td>
+                    <td>상품명</td>
+                    <td>상품가격</td>
+                    <td>배송상태</td>
+                </tr>
+                <tr v-for="(a,b) in arrays" v-if="code==a.numbers">
+                    <td>{{Number(b)+1}}</td>
+                    <td>{{a.product_code}}</td>
+                    <td>{{a.product_nm}}</td>
+                    <td>{{a.product_money.toLocaleString("Ko")}}원</td>
+                    <td>{{a.product_process}}</td>
+                </tr>
+            </table>
+
+        </section>
+    </body>
+    <script>
+        let num = location.search;
+        // ?name=aaa&number=12345678&pass=123
+        let t = {
+            // template:"<label></label>"
+            template:`<label>
+                </label>`
+            // Vue 에서는 역슬래시 \ 대신에 1번 키 옆에 `역 외따옴표를 넣으면 연결해서 쓸 수 있다.
+        }
+        let order = new Vue({
+            el:"#order_list",
+            data:{
+                code:""
+            },
+            methods:{
+
+            },
+            components:{
+                num:t
+            },
+            computed:{
+                //만약에 반복문으로 배열을 출력한다면, data에 arrays용 변수를 만들어 넣고,
+                //배열 갯수를 length로 찍어서 돌린다.
+                //for in, for each 아무거나 원하는 걸로 찍어내기.
+                check:function(){
+                    let order_codes = atob(num.split("&")[1].split("number=")[1]);
+                    if(num==""){
+                        alert("비정상적 접근입니다.");
+                        location.href = "./index34.html";
+                    }
+                    else{
+                        if(order_codes!="20210707" && order_codes!="20210708"){
+                            alert("주문내역이 존재하지 않습니다.");
+                            location.href = "./index34.html";
+                        }
+                        else{
+                            this.code = order_codes;
+                            let nm = num.split("&")[0].split("name=")[1];
+                            console.log(decodeURI(nm))
+                            let pw = num.split("&")[2].split("pass=")[1];
+                            console.log(atob(pw))
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</html>
+<!-- 선생님.ver
+ <body>
+        <section id="product_list">
+            {{number_ck}}
+            <span v-if="list_views">
+            <p>[주문 내역확인]</p>
+            <pnumbers></pnumbers>
+            <ul v-bind:class="table">
+                <li>번호</li>
+                <li>상품코드</li>
+                <li>상품명</li>
+                <li>상품가격</li>
+                <li>배송상태</li>
+            </ul>
+            <ul v-bind:class="table2" v-for="code in lists">
+                <li>{{code.a1}}</li>
+                <li>{{code.a2}}</li>
+                <li>{{code.a3}}</li>
+                <li>{{code.a4}} 원</li>
+                <li>{{code.a5}}</li>
+            </ul>
+            </span>
+        </section>
+    </body>
+    <script>
+        const urls = window.location.search;
+        let postdata = urls.split(/=|&/g);
+        var order=postdata[3];
+
+        Vue.component("pnumbers",{
+            template:"<label>주문코드: {{ codenumber }}</label>",
+            data:function(){
+                //return [codenumber="123123123"]
+                return { codenumber:order}
+            }
+        });
+        /*
+        let aa = {
+            template:"<label>주문코드: {{ codenumber }}</label>",
+            data(){
+                return{
+                codenumber:"123123123"
+                }
+            }
+        }
+        */
+        let a = new Vue({
+            el:"#product_list",
+            data:{
+                table:"chart1",
+                table2:"chart2",
+                arrs:arrays,
+                lists:[],
+                aw:"",
+                list_views:false
+            },
+            methods:{
+                
+            },
+            components:{
+               // "pnumbers":aa
+            },
+            computed:{
+                number_ck:function(){
+                //order[파라미터로 넘어온 주문번호]
+                 //var ea = this.lists.length;   (배열갯수)
+                 var k;
+                 for(k in this.arrs){
+                    //console.log(this.arrs[k].numbers);
+                    //console.log(this.arrs[k]["numbers"]);
+
+                    if(this.arrs[k]["numbers"]==order){
+                        this.aw = "ok"
+                    }
+                 }
+                 //앞페이지에서 정상적인 입력값이 아닐경우 page를 랜더링할지
+                 //전페이지로 다시 보낼지를 설정하는 조건 부분 입니다.
+                 if(this.aw==""){
+                     alert("주문번호를 다시한번 확인 하세요");
+                     history.go(-1);
+                 }
+                 else{
+                    this.list_views = true;
+                    //배열출력 부분
+                    var j;
+                    let count=1;
+                    for(j in this.arrs){
+                        if(this.arrs[j]["numbers"]==order){
+                        this.lists.push({
+                        a1:count++,
+                        a2:this.arrs[j]["product_code"],
+                        a3:this.arrs[j]["product_nm"],
+                        a4:this.arrs[j]["product_money"].toLocaleString(),
+                        a5:this.arrs[j]["product_process"]
+                        });
+                        }   
+                    }
+                 }
+
+                }
+            }
+        })
+    </script>
+ -->
+<!-- http://dbfla6302.dothome.co.kr/vue/index33.html 유림꺼! -->

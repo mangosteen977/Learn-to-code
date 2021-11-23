@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+	    <meta http-equiv="imagetoolbar" content="no">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <title> HTML&CSS 2일차(1) 중급 - 반응형 로그인 페이지(숙제) </title>
+        <script src="../jq/jquery.js"></script>
+        <!-- 여긴 숙제. index7(2).html참고!!!---선생님코드 -->
+        <style>
+            *{box-sizing: border-box;}
+            body{margin: 0; padding: 0;}
+            #id, #pw{ width: 200px; height: 30px; text-indent: 10px;}
+            /*::placeholder :플레이스 홀더 css 조정*/
+            ::placeholder{color: #ccc;}
+            /* -ms-input-placeholder : IE에서 플레이스 홀더 css 조정 */
+            ::-ms-input-placeholder{color: cornsilk;}
+            #btn_login{
+                border: none; background-color: black; color: white;
+                width: 80px; height: 30px;
+            }
+            /*모바일*/
+            @media screen and (min-width:320px) and (max-width:560px) {
+                .login_box{
+                border: 1px solid black; border-radius: 10px;
+                width: 300px; height: 180px; padding-top: 25px;
+                text-align: center;
+                }
+                #id, #pw { height: 40px; margin-bottom: 10px;}
+                #btn_login{display: block; margin: 0 auto;}
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <section class="login_box">
+                <input type="text" id="id" placeholder="아이디를 입력하세요.">
+                <input type="password" id="pw" placeholder="패스워드를 입력하세요.">
+                <button type="submit" id="btn_login">로그인</button>
+            </section>
+        </form>
+    </body>
+</html>

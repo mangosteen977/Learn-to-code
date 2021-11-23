@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700;900&display=swap");
+/* font-family: 'Noto Sans KR', sans-serif; (100, 400, 700, 900) */
+@mixin base {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+@mixin ulol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+@mixin sections($width, $height, $bg) {
+  width: $width;
+  height: $height;
+  background-color: $bg;
+}
+@mixin m_sections($width, $height, $bg) {
+  margin: 0 auto;
+  width: 99.99%;
+  min-width: 320px;
+  max-width: $width;
+  height: $height;
+  background-color: $bg;
+}
+@mixin flexs($wrap, $d, $justify, $align) {
+  display: flex;
+  flex-wrap: $wrap;
+  justify-content: $justify;
+  align-content: $align;
+  align-items: $align;
+  flex-direction: $d;
+}
+@mixin font_sans($h, $c, $a, $w, $s) {
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: $h;
+  color: $c;
+  text-align: $a;
+  font-weight: $w;
+  font-size: $s;
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  @include base;
+  font-size: 12px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+label,
+span {
+  display: inline-block;
+}
+img {
+  width: 100%;
+  object-fit: cover;
+}
+ul,
+ol,
+dl,
+dd {
+  @include ulol;
+}
+a {
+  text-decoration: none;
+  color: black;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible">
+        <title>Javascript 6일차(2) - 초급코드(타이머 사용법) </title>
+        <script>
+            var a = 0;
+            var timer;
+            //전역변수는 최초 실행 후 해당 값에 각각 반영하며, 변경이 가능하다.
+            //또한 여러 함수에서 사용 가능함.
+            function aa(){
+                a += 1;
+                document.getElementById("box").innerText = a;
+                timer = setTimeout(aa,5000);
+                //1000 = 1초
+                //aa는 함수명aa()
+                //setTimeout(aa,1000); : 1초마다 aa라는 함수를 지속적으로 호출
+                //setTimeout은 한 번만 작동
+            }
+            function bb(){
+                clearTimeout(timer); //해당 setTimeout을 정지 시킴
+
+
+                //a = a -1;
+                //document.getElementById("box").innerText = a;
+            }
+        </script>
+        <style>
+            .box{
+                width: 100px;
+                height: 100px;
+                border: 1px solid red;
+                font-size: 50px;
+                text-align: center;
+                line-height: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box" class="box"></div>
+        <input type="button" value="start" onclick="aa();">
+        <input type="button" value="stop" onclick="bb();">
+    </body>
+    <script>
+
+    </script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/index33.html -->

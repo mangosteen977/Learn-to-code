@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Ajax 4일차(2) - Ajax POST 통신2 (아이디찾기) </title>
+        <style>
+            .box {
+                width: 300px; height: 40px; border: 1px solid #ccc;
+                line-height: 40px; text-align: center;
+            }
+        </style>
+        <script>
+            // 응용문제. name은 다음과 같이 POST ajax로 전송하시오
+            // mname, meamil을 적용하시오.
+            function abc(){
+                let n = "mname="+document.getElementById("mname").value;
+                let e = "&memail="+document.getElementById("memail").value;
+                //파라미터 값을 생각해서 name값을 붙임.
+                //두번 째 값은 &네임값=
+                const data = n+e;
+                //두 값을 합쳐서 보내야한다. (분리해서 보내면 오류)
+                postajax(data);
+            };
+            //ajax POST로 전송 (암호화 ***)
+            let postdata;
+            function postajax(data){
+                function windowck(){
+                    if(window.XMLHttpRequest){
+                        return new XMLHttpRequest();
+                    };
+                };
+                function post(){
+                    if(postdata.readyState==XMLHttpRequest.DONE && postdata.status==200){
+                        search_id(this.response);
+                    };
+                };
+                postdata = windowck();
+                postdata.onreadystatechange = post;
+                postdata.open("POST","./index11.php",true);
+                postdata.setRequestHeader("content-type","application/x-www-form-urlencoded");
+                postdata.send(data);
+            }
+            function search_id(e){
+                if(e=="error"){console.log("데이터 오류");}
+                else if(e=="user_error"){
+                    alert("사용자의 이름과 이메일이 일치하지 않습니다.")
+                }
+                else{
+                    /*앞에서 잘라서 뒤에 특수문자 출력*/
+                    let strlen = e.length; //아이디 글자 갯 수
+                    //let word = e.substring(0,strlen-3)+"***";
+
+                    /*뒤에서부터 잘라서 replace(치환) 후 사용자에게 출력*/
+                    let word = e.substring(strlen-3);
+                    word = e.replace(word,"***");
+                    document.getElementById("box").innerHTML = "가입 아이디는"+word+"입니다.";
+                }
+                
+            };
+        </script>
+    </head>
+    <body>
+        <!-- 홍길동,hong@gmail.com 맞는 값 => 아이디 출력됨.  -->
+        <!-- user_error : 이름/이메일 일치하지않음, error : 두 데이터 모두 없음 -->
+        <p>[아이디 찾기]</p>
+        <input type="text" id="mname" placeholder="name" value="">
+        <input type="text" id="memail" placeholder="email" value="">
+        <input type="button" value="아이디찾기" onclick="abc();">
+        <div class="box" id="box"></div>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/ajax/index11.html -->

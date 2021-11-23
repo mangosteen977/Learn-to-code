@@ -1,0 +1,278 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700;900&display=swap");
+/* font-family: 'Noto Sans KR', sans-serif; (100, 400, 700, 900) */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+}
+
+/*faq list*/
+.faq_list {
+  width: 1200px;
+  height: auto;
+  background-color: none;
+  margin: 0 auto;
+}
+
+.faq_list > .search_faq_box {
+  width: 100%;
+  height: 50px;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.faq_list > .search_faq_box > input:nth-child(1) {
+  width: 200px;
+  height: 30px;
+  background-color: none;
+  border: 1px solid #ccc;
+  font-size: 100%;
+}
+
+.faq_list > .search_faq_box > .faq_list_search_btn {
+  width: 100px;
+  height: 30px;
+  background-color: #c3222b;
+  color: white;
+  border: none;
+  margin-left: 5px;
+  font-size: 100%;
+}
+
+.faq_list > .search_faq_box > .faq_list_search_btn:hover {
+  background-color: #88181e;
+}
+
+.faq_list > form > .faq_tb {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 40px;
+  color: unset;
+  text-align: center;
+  font-weight: unset;
+  font-size: 100%;
+}
+
+.faq_list > form > .faq_tb > thead > tr > td {
+  height: 40px;
+  border-bottom: 2px solid #ccc;
+}
+
+.faq_list > form > .faq_tb > thead > tr > td:nth-child(1) {
+  width: 15%;
+}
+
+.faq_list > form > .faq_tb > thead > tr > td:nth-child(3) {
+  width: 15%;
+}
+
+.faq_list > form > .faq_tb > thead > tr > td:nth-child(2) {
+  width: 55%;
+}
+
+.faq_list > form > .faq_tb > thead > tr > td:nth-child(4) {
+  width: 15%;
+}
+
+.faq_list > form > .faq_tb > tbody tr {
+  width: 100%;
+  height: 40px;
+  background-color: none;
+  border-bottom: 2px solid #ccc;
+}
+
+.faq_list > form > .faq_tb > tbody tr > td:nth-child(2) {
+  text-align: left;
+  position: relative;
+}
+
+.faq_list > form > .faq_tb > tbody tr > td:nth-child(2) > .updown_txt {
+  width: 15px;
+  height: 80%;
+  position: absolute;
+  right: 0;
+}
+
+.faq_list > .add_faq_btn {
+  width: 100px;
+  height: 30px;
+  background-color: #ccc;
+  color: white;
+  border: none;
+}
+
+.faq_a_text {
+  background-color: rgba(204, 204, 204, 0.4);
+  display: none;
+}
+
+.faq_a_text > td:nth-of-type(1) {
+  position: relative;
+}
+
+.faq_a_text > td:nth-of-type(1) > img {
+  width: 20px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.faq_a_text > td:nth-of-type(3) > .modify_buttons {
+  width: 60px;
+  height: 30px;
+  background-color: #dbb0a0;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 30px;
+  color: white;
+  text-align: center;
+  font-weight: unset;
+  font-size: 100%;
+  border: none;
+}
+
+.faq_a_text > td:nth-of-type(3) > .modify_buttons:hover {
+  background-color: #be9a8d;
+}
+
+.faq_page {
+  width: 100%;
+  height: 50px;
+  background-color: none;
+  margin: 10px 0;
+}
+
+.faq_page > ul {
+  width: 100%;
+  height: inherit;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.faq_page > ul > li {
+  width: 30px;
+  height: 30px;
+  background-color: #dbb0a0;
+  cursor: pointer;
+  margin-left: 5px;
+  text-align: center;
+  line-height: 30px;
+}
+
+.faq_page > ul > li:hover {
+  background-color: #be9a8d;
+}
+
+/*faq write*/
+.insert_faq {
+  width: 1200px;
+  height: auto;
+  background-color: none;
+  margin: 0 auto;
+  padding: 50px 0;
+}
+
+.insert_faq > form > .insert_faq_tb {
+  width: 100%;
+  height: auto;
+  background-color: none;
+}
+
+.insert_faq > form > .insert_faq_tb > tbody > tr > td:nth-child(odd) {
+  background-color: #ccc;
+  text-indent: 10px;
+}
+
+.insert_faq > form > .insert_faq_tb > tbody > tr > td > select {
+  width: 200px;
+  height: 40px;
+  background-color: none;
+  font-size: 100%;
+  border: none;
+  border-bottom: 2px solid #ccc;
+}
+
+.insert_faq > form > .insert_faq_tb > tbody > tr > td > input {
+  width: 100%;
+  height: 50px;
+  background-color: none;
+  font-size: 100%;
+  border: none;
+}
+
+.insert_faq > form > .insert_faq_tb > tbody > tr > td > textarea {
+  width: 100%;
+  height: 300px;
+  background-color: none;
+  border: none;
+}
+
+.insert_faq > .faq_btns {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  text-align: center;
+  padding: 10px;
+}
+
+.insert_faq > .faq_btns > input {
+  width: 100px;
+  height: 30px;
+  background-color: #c3222b;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 30px;
+  color: unset;
+  text-align: center;
+  font-weight: unset;
+  font-size: 100%;
+  color: white;
+  border: none;
+}
+
+.insert_faq > .faq_btns > input:nth-child(2) {
+  margin-left: 10px;
+}
+
+.insert_faq > .faq_btns > input:hover {
+  background-color: #88181e;
+}
+
+.add_faq_btn {
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 30px;
+  color: unset;
+  text-align: center;
+  font-weight: unset;
+  font-size: 100%;
+  width: 100px;
+  height: 30px;
+  background-color: #c3222b;
+  margin-bottom: 10px;
+  color: white;
+  border: none;
+}
+/*# sourceMappingURL=faq.css.map */

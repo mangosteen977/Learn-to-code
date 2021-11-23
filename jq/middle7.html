@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jquery 2일차(2) - 중급 (JQ array 배열반복문 each & map) </title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(function(){
+                const $array = {
+                    "members":[{
+                        "id":"ravi",
+                        "name":"박예준",
+                        "email":"ravi@gamil.com",
+                        "area":"서울",
+                        "phone":"010-0101-0101"
+                    }]
+                }
+
+                //key값 속에 다시 key값이 있는 데이터의 $.each 반복문
+                $.each($array["members"][0],function($a,$b){
+                    //console.log($a) //id name email area phone
+                    //console.log($b) //ravi 박예준 ravi@gmail.com ....
+                    $("#m"+$a).text($b);
+                });
+                
+            });
+        </script>
+        <style>
+            .datas{width: 500px; height: auto;}
+            .data_title{
+                width: 100px; height: 30px; line-height: 30px;
+                background-color: black; color: white; text-align: center;
+            }
+            .datas>span{display: block; width: 100%; height: 30px;}
+        </style>
+    </head>
+    <body>
+        <!-- fieldset : 여러 label을 묶어서 그룹화한 태그 -->
+        <fieldset class="datas">
+            <!-- legend : fieldset의 title파트 -->
+            <legend class="data_title">My Info</legend>
+            아이디 : <span id="mid"></span>
+            이름 : <span id="mname"></span>
+            이메일 : <span id="memail"></span>
+            지역 : <span id="marea"></span>
+            전화번호 : <span  id="mphone"></span>
+        </fieldset> 
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/middle7.html -->

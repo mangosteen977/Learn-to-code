@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>익명함수 연습 하기 (function new)</title>
+        <script src="../jq/jquery.js"></script>
+        <script>
+            $(function(){
+                const $array_lang = {
+                    "VN":["Xin chao!","Chao ban!","Rat vui duoc gap ban","choe khong(chu)?","hom nay nong qua!"],
+                    "EN":["Hello","Hey","Happy to meet you","Hows it going?","it's really hot out out there!"]
+                };
+                const $array_pronoun = {
+                    "VN":["씬 짜오","짜오 (반)!","럳(젇) v이 득 갑 반","크오에 커엄(쭈)?","호옴 너이 노옴 꽈아!"],
+                    "EN":["헬로","헤이","해피 투 믿 유","하우s 고잉?","잇s 릴리 헏 아웃 데얼!"]
+                };
+                //dictionary function(익명함수)
+                dictionary = function($lang,$num){
+                    $("#other").val($array_lang[$lang][$num]);
+                };
+                //pronoun function(익명함수)
+                pronoun = function($lang,$num){
+                    $("#view_pronounce").val($array_pronoun[$lang][$num]);
+                };
+                //change event functions
+                let $lang = ""; let $num = "";
+                $("#lang").change(function(){
+                    $lang = $(this).val();
+                });
+                $("#Ko").change(function(){
+                    $num = $(this).val();
+                    if(!$lang){ alert("언어를 먼저 선택해주세요:)"); $("#Ko").val("");}
+                    else{new dictionary($lang,$num);}
+                });
+                //pronounce button
+                $("#pronounce").click(function(){
+                    if(!$lang){ alert("언어를 먼저 선택해주세요:)");}
+                    else if(!$num){ alert("기초회화를 먼저 선택해주세요:)");}
+                    else{
+                        $("#view_pro").slideDown(300);
+                        new pronoun($lang,$num);
+                    }
+                });
+            });
+        </script>
+        <style>
+            *{box-sizing: border-box; font-size: 13px;}
+            body{margin: 0; padding: 0;}
+            span,label{display: inline-block;}
+            .basic{width: 500px; height: auto; margin: 0 auto; text-align: center; border: 1px solid #ccc;}
+            .title{height: 30px; width: inherit; line-height: 30px;}
+            .lang{width: 80px; height: 30px; line-height: 30px; text-indent: 5px;}
+            .korea,.others, .view_pro{width: inherit; height: auto;}
+            .view_pro{display: none;}
+            .Ko,.other,.view_pronounce{width: 180px; height: 30px; margin-bottom: 10px; text-indent: 5px;}
+            .view_pronounce{width: 300px;}
+            .pronounce{width: 80px; height: 30px; border: none; background-color: #ccc; cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <div class="basic">
+            <h3 class="title"><label>
+                <select class="lang" id="lang">
+                    <option value="">언어선택</option>
+                    <option value="VN">베트남어</option>
+                    <option value="EN">영어</option>
+                </select>
+            </label> 회화의 기초</h3>
+            <div class="korea">
+                <span>한국어</span>
+                <select class="Ko" id="Ko">
+                    <option value="">기초회화 선택</option>
+                    <option value="0">안녕하세요</option>
+                    <option value="1">안녕</option>
+                    <option value="2">만나서반가워요</option>
+                    <option value="3">잘지내지?</option>
+                    <option value="4">오늘 진짜 덥다!</option>
+                </select>
+            </div>
+            <div class="others" id="others">
+                <input type="text" value="" class="other" id="other" readonly><!--C-->
+                <button type="button" id="pronounce" class="pronounce">발음보기</button>
+            </div>
+            <div class="view_pro" id="view_pro">
+                <input type="text" value="" class="view_pronounce" id="view_pronounce" readonly><!--D-->
+            </div>
+        </div>
+    </body>
+</html>

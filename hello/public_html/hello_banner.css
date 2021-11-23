@@ -1,0 +1,82 @@
+*{box-sizing: border-box; font-size: 12px}
+.bn_tb{
+    position: relative;
+    width: 100%; max-width: 2560px; height: 600px;
+}
+/*top*/
+.bn_top{
+    width: 100%; max-width: 2560px; height: auto;
+    position: absolute; z-index: 5; margin: 0 auto;
+    padding: 20px 20px 0 20px;
+}
+.bn_hambuger{
+    width: 20px; height: 20px; background-image: url(./ico/burger_btn.png);
+    background-size: cover; display: inline-block; margin-right: 165px;
+    cursor: pointer;
+}
+.bn_top_icons{
+    width: auto; height: 20px; display: inline-block;
+}
+.bn_top_icons>li{
+    width: 20px; height: 20px; float: left;
+    margin-left: 5px; cursor: pointer;
+}
+.bn_top_icons>li>img{
+    width: 20px; height: 20px; object-fit: cover;
+}
+.bn_top_icons>li:first-child{
+    width: 80px; height: 20px; line-height: 20px; text-align: center;
+    cursor: pointer; border-radius: 10px; background-color: white; display: inline-block;
+}
+.bn_top_menu{
+    width: auto; min-width: 320px; height: 20px;
+    display: inline-block; position: absolute; right: 0;
+}
+.bn_top_menu>li{
+    width: 80px; height: inherit; border-left: 1px solid black; cursor: pointer;
+    float: left; font-size: 12px; text-align: center; line-height: 20px;
+}
+.bn_top_menu>li:first-child{border-left: none;}
+.bn_logo{
+    width: 100%; max-width: 2560px; height: 55px; margin: 0 auto; text-align: center; margin-top: 35px;
+}
+.bn_logo>img{
+    width: 275px; height: 55px; cursor: pointer;
+}
+
+/*banner*/
+.bn_banner{
+    width: 100%; max-width: 2560px; height: 600px; position: absolute;
+}
+.bn_imgs{
+    height: 613px; max-width: 2560px; margin: 0 auto; position: relative;
+}
+.bn_1,.bn_2,.bn_0{
+    position: absolute;display: none;
+    height: 600px; width: 100%; max-width: inherit;
+    
+}
+.bn_0{ display: block;}
+
+/*醫뚯슦*/
+.bn_btn{
+    position: absolute;
+    height: inherit; width: 100%; max-width: inherit;
+    display: flex; align-items: center;
+}
+.bn_l, .bn_r{
+    width: 65px; height: 65px; object-fit:cover; cursor: pointer;
+    position: absolute; z-index: 20; cursor: pointer;
+}
+.bn_l{left: 0;}
+.bn_r{right: 0;}
+/*�붿뒪��*/
+.bn_disc{
+    width: 100%; text-align: center; height: 20px;
+    position: absolute; z-index: 35; bottom: 20px;
+}
+.bn_disc>li{
+    width: 20px; height: 20px; margin-left: 5px; cursor: pointer;
+    background-color: #ccc; border-radius: 100%; display: inline-block;
+}
+.bn_disc>li:first-child{background-color: black; margin-left: 0;}

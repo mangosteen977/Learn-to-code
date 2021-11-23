@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>자바스크립트 4일차(2) (중급) - (1차원 배열-반복문) </title>
+        <script>
+        </script>
+        <style>
+            body{margin: 0; padding: 0;}
+            .lists{width: 400px;height: 30px; background-color: lightskyblue;}
+            .lists>label{display: inline-block; width: 190px;
+                        text-align: center; line-height: 30px; height: 30px;}
+            .lists>label:nth-child(odd){border-right: 1px solid navy;}
+            .list2{width: 400px; height: auto; background-color:aliceblue;}
+            .list2>label{
+                display: inline-block; width: 190px; height: 30px;
+                text-align: center; line-height: 30px;
+            }
+            .list2>label:nth-child(odd){border-right: 1px solid navy;}
+        </style>
+    </head>
+    <body>
+        <div class="lists">
+            <label>아이디</label>
+            <label>고객명</label>
+        </div>
+        <div class="list2" id="members"></div>
+    </body>
+    <script>
+        const array = [
+            ["1","one"],
+            ["2","two"],
+            ["3","three"],
+            ["4","four"],
+            ["5","five"]
+        ]
+/* forEach */
+//ver1. 첫번 째 답 == 쌤 왈 : "이거야말로 가내수공업" ^.T;ㅎ
+        /*var n=0;
+        while(n<5){
+            array[n].forEach(function(a,b,c){
+                var label = document.createElement("label");
+                label.innerText = a;
+                document.getElementById("members").append(label);
+            });
+            n++;
+        }*/
+//ver.2 두번 째 답(createElement>innerText.ver)
+        /*array.forEach(function(a,b,c){
+            //아이디
+            var label = document.createElement("label");
+            label.innerText = a[0];
+            //이름
+            var label2 = document.createElement("label");
+            label2.innerText = a[1];
+            document.getElementById("members").append(label, label2);
+        });*/
+//ver.3 선생님답(createElement>createTextNode.ver)
+    /*var html1,html2,la1,la2;
+        array.forEach(function(a,b,c){
+            //아이디 array[b][0] or a[0]
+            //이름 array[b][1] or a[1]
+            html1 = document.createElement("label");
+            html2 = document.createElement("label");
+            la1 = document.createTextNode(a[0]);
+            la2 = document.createTextNode(a[1]);
+            html1.appendChild(la1);
+            html2.appendChild(la2);
+            document.getElementById("members").appendChild(html1);
+            document.getElementById("members").appendChild(html2);
+        });*/
+//ver.4 선생님 답(innerhtml.ver)
+    /*var html3 = "";
+    array.forEach(function(a,b,c){
+            //아이디 array[b][0] or a[0]
+            //이름 array[b][1] or a[1]
+            html3 = html3+"<label>"+a[0]+"</label><label>"+a[1]+"</label>";
+    });
+    document.getElementById("members").innerHTML=html3;*/
+
+/* for in */
+//내 답 (createElement>innerText.ver)
+    var k; //값 : 01234
+    for(k in array){
+        // 아이디 = array[k][0];
+        var label = document.createElement("label");
+        label.innerText = array[k][0];
+        // 이름 = array[k][1];
+        var label2 = document.createElement("label");
+        label2.innerText = array[k][1];
+        document.getElementById("members").append(label, label2);
+        //console.log(k); 01234
+    }
+
+    
+    </script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/middle15.html -->

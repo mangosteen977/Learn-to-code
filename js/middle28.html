@@ -1,0 +1,67 @@
+<?php
+    include "./minfo.php";
+?>
+<!-- mid : 아이디, mname : 고객명 -->
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Javascript 8일차 (3) - 중급 (로그인) </title>
+        <style>
+            *{box-sizing: border-box;}
+            body{margin: 0; padding: 0;}
+            .logout{
+                width: 300px; height: 200px;
+                border: 1px solid deeppink;
+            }
+            .login{
+                width: 300px; height: 200px;
+                border: 1px solid deeppink;
+                display: none;
+            }
+        </style>
+        <script>
+            function logins(){
+                let id = document.getElementById("mid").value;
+                let pw = document.getElementById("mpass").value;
+                if(id==""){alert("아이디를 입력하세요"); return false;}
+                else if(pw==""){alert("비밀번호를 입력하세요"); return false;}
+                else{return true;}
+            };
+            function logouts(){
+                if(confirm("로그아웃 하시겠습니까?")){
+                    location.href="mlogout.php";
+                    //로그아웃은 form을 사용하지않음. 보낼 데이터가 없으니깐..?
+                }
+            };
+        </script>
+    </head>
+    <body>
+        <div class="logout" id="logout">
+            <form enctype="application/x-www-form-urlencoded" onsubmit="return logins();" method="POST" action="middle28.php">
+                <input type="text" name="mid" id="mid" placeholder="아이디를 입력하세요">
+                <input type="password" name="mpass" id="mpass" placeholder="비밀번호를 입력하세요">
+                <input type="submit" value="로그인">
+            </form>
+        </div>
+        <div class="login" id="login">
+            <span id="user"> ○○○님 환영합니다.</span>
+            <input type="button" value="로그아웃"  onclick="logouts();">
+        </div>
+    </body>
+    <script>
+        var mids = "<?php echo $mid?>";
+        var mnames = "<?php echo $mname?>";
+        if(mids!=""){
+            document.getElementById("logout").style.display="none";
+            document.getElementById("login").style.display="block";
+            let name_text = mids+"님 환영합니다.";
+            document.getElementById("user").innerText = name_text;
+        };
+        
+    </script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/middle28.html -->

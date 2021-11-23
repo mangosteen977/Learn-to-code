@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>JavaScript 3일차(3) - 함수호출 </title>
+        <script>
+             /* 응용문제1. abc라는 함수를 이용하여 구구단 3단을 출력하시오.
+            단, 구구단 중 3*7=21까지만 출력되도록 합니다.*/
+            //내 답안
+           /*
+           function abc(a,b,c){
+                while(b<=7){
+                    c=a*b;
+                    console.log(a+"X"+b+"="+c);
+                    b++;
+                }
+            }
+            abc(3, 1, 0);
+            */
+            //선생님 답
+            function abc(a,b){
+                var f =1;
+                var z;
+                while(f<=b){
+                    z=a*f;
+                //console.log(a+"X"+f+"="+z);
+                    f++;
+                }
+            }
+            abc(3,7)
+
+            function bbb(a){
+            //    console.log(a);
+
+            }
+            bbb("hong");
+
+            /* 응용문제2.
+            ccc라는 함수에 사용자 아이디 "kim", 패스워드 "a1234*를 적용합니다.
+            해당 아이디와 패스워드가 동일하면 "로그인 하셨습니다.",
+            아이디/패스워드가 틀리면 "아이디 및 패스워드를 확인하세요."
+            라는 alert를 적용하세요.*/
+            /*
+            function ccc(a,b){
+                if(a=="kim" && b=="a1234"){
+                    alert(a+"님 "+"로그인 하셨습니다.");
+                }
+                else{
+                    alert("아이디 및 패스워드를 확인하세요.");
+                }
+            }
+            ccc("kim","a1234")
+            */
+
+        </script>
+    </head>
+    <body>
+        <!-- http://mangsteen977.dothome.co.kr/js/index15.html -->
+    </body>
+</html>

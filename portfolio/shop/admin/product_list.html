@@ -1,0 +1,70 @@
+<meta charset="UTF-8">
+<article class="adm_main">
+    <span>상품 관리 리스트</span>
+    <ol class="admin_main_ul">
+        <li onclick="fontclass('1');"><img src="../image/ts01.gif" alt="../img/ts01.gif" title="보통"></li>
+        <li onclick="fontclass('2');"><img src="../image/ts02.gif" alt="../img/ts02.gif" title="크게"></li>
+        <li onclick="fontclass('3');"><img src="../image/ts03.gif" alt="../img/ts03.gif" title="더크게"></li>
+    </ol>
+</article>
+<form>
+    <article class="p_list">
+        {{get_pd_list}}
+        <div class="search_pd_box">
+            <input type="text" v-model="s_word" id="s_word2" placeholder="검색어를 입력해주세요">
+            <input type="button" value="상품검색" @click="search_pd_list" class="pd_list_search_btn">
+            <input type="button" value="전체목록" class="pd_list_search_btn" @click="go_to_main_list">
+        </div>
+        <table class="p_tb">
+            <thead>
+                <tr>
+                    <td>no</td>
+                    <td>상품코드</td>
+                    <td>상품명</td>
+                    <td>상품가격</td>
+                    <td>할인가격</td>
+                    <td>대표이미지</td>
+                    <td>출력</td>
+                    <td>삭제</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="pd_val in pd_arr" v-if="view_list=='yes'">
+                    <td v-text="pd_val.no"></td>
+                    <td @click="view_product(pd_val.idxs)" v-text="pd_val.code"></td>
+                    <td @click="view_product(pd_val.idxs)" v-text="pd_val.name"></td>
+                    <td v-text="pd_val.price1"></td>
+                    <td v-text="pd_val.price2" v-if="pd_val.price2!='0원'"></td>
+                    <td v-if="pd_val.price2=='0원'">-</td>
+                    <td links="pd_val.img" @click="pd_img_open(pd_val.img)"><img :src="pd_val.img" class="pdimg"></td>
+                    <td v-text="pd_val.print"></td>
+                    <td class="del_btnss">
+                        <button type="button" @click="del_products(pd_val.idxs)" class="pd_list_del_btn">삭제</button>
+                    </td>
+                </tr>
+                <tr class="no_bn_list" v-if="view_list=='no'">
+                    <td colspan="8">등록된 상품이 없습니다</td>
+                </tr>
+                <tr v-for="re_val in re_arr" v-if="view_list=='re'">
+                    <td v-text="re_val.no"></td>
+                    <td @click="view_product(re_val.idxs)" v-text="re_val.code"></td>
+                    <td @click="view_product(re_val.idxs)" v-text="re_val.name"></td>
+                    <td v-text="re_val.price1"></td>
+                    <td v-text="re_val.price2" v-if="re_val.price2!='0원'"></td>
+                    <td v-if="re_val.price2=='0원'">-</td>
+                    <td links="re_val.img" @click="re_img_open(re_val.img)"><img :src="re_val.img" class="reimg"></td>
+                    <td v-text="re_val.print"></td>
+                    <td class="del_btnss">
+                        <button type="button" @click="del_products(re_val.idxs)" class="re_list_del_btn">삭제</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</form>
+<div class="product_page">
+    <ul>
+        <li v-for="p_num in page_num" v-text="p_num" @click="gopage(p_num)"></li>
+    </ul>
+</div>
+<input type="button" value="상품등록" onclick="go_to_input_pd()" id="go_to_input_pd_btn" class="go_to_input_pd_btn">
+</article>

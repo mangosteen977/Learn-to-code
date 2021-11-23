@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery 4일차(4) - 정지함수와 배너슬라이드 응용 </title>
+        <script src="./jquery.js"></script>
+        <script>
+            /*수업 중에 선생님 코드로 만든 배너는 index17(2) 참고!!!!*/
+            //늘어나는네모
+           $(document).ready(function(){
+                $("#box").mouseenter(function(){
+                    $(this).stop().animate({
+                        "width":"600px"
+                    },1000);    
+            //stop()함수는 이벤트 핸들링시 애니메이션 적용 여부는 확인하는 함수 입니다.
+                });
+                $("#box").mouseleave(function(){
+                    $(this).stop().animate({
+                        "width":"100px"
+                    },1000);
+                });
+            //ul width 자동 계산용
+                var $banner_ea = $("#ulcss>li").length; // li갯수
+                var $banner_width = $("#ulcss>li").width(); // 배너 1개당 가로길이
+                var $total = $banner_ea*$banner_width // li갯수*길이
+                $("#ulcss").css("width",$total+"px"); // 구한 값을 ul 가로길이에 적용    
+            //배너만들기(clone,append,prepend,css 이용함)
+                var $n = 0;
+                var $nn = $("#ulcss>li").length-1;
+                $("#left").click(function(){//왼버튼
+                    //배너 eq(마지막n번)을 복사해서 앞에 붙임
+                    var $bb = $("#ulcss>li:eq("+$nn+")").clone();
+                    $("#ulcss>li:eq("+$nn+")").remove();
+                    $("#ulcss").prepend($bb);
+                    //아이콘을 움직임
+                    if($n==0){
+                        $("#olcss>li:eq("+$n+")").css("background-color","black");
+                        $n = $nn;
+                        $("#olcss>li:eq("+$n+")").css("background-color","crimson");
+                    }
+                    else{
+                        $("#olcss>li:eq("+$n+")").css("background-color","black");
+                        $n = $n-1;
+                        $("#olcss>li:eq("+$n+")").css("background-color","crimson");
+                    }
+                });
+                $("#right").click(function(){//오른버튼
+                    //배너 eq(0)을 복사해서 뒤에 붙임
+                    var $bb = $("#ulcss>li:eq(0)").clone();
+                    $("#ulcss>li:eq(0)").remove();
+                    $("#ulcss").append($bb);
+                    //아이콘을 움직임
+                    if($n>=$nn){
+                        $("#olcss>li:eq("+$n+")").css("background-color","black");
+                        $n = 0;
+                        $("#olcss>li:eq("+$n+")").css("background-color","crimson");
+                    }
+                    else{
+                        $("#olcss>li:eq("+$n+")").css("background-color","black");
+                        $n = $n+1;
+                        $("#olcss>li:eq("+$n+")").css("background-color","crimson");
+                    }
+                });
+                
+
+            });
+        </script>
+        <style>
+            body{margin: 0; padding: 0;}
+            ul,ol{list-style: none; margin: 0;padding: 0;}
+            .box{width: 100px; height: 30px; background-color: cornflowerblue;}
+            /*banner*/
+            .banner{
+                width:1000px; height: 490px;
+                border: 1px solid black;
+                box-sizing: border-box;
+                overflow: hidden;
+                position: relative;
+            }
+            .ulcss{height: 490px;}
+            .ulcss >li{
+                float: left;
+                width: 1000px;
+                height: 490px;
+            }
+            .olcss{
+                position: absolute; bottom: 10px;
+                width: 100%;
+                height: 20px;
+                text-align: center;
+            }
+            .olcss > li:first-child{
+                margin-left: 0px;
+                background-color: crimson;
+                }
+            .olcss > li{
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                border-radius: 100%;
+                background-color: black;
+                margin-left: 5px;
+            }
+            .bbox{width: 1000px; height: 30px; text-align: center; margin-top: 10px;}
+            .bbox > button{
+                width: 30px;
+                height: 30px;
+                background-color: cornflowerblue;
+                color: beige; border: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box" id="box"></div>
+        <div class="banner" id="banner">
+            <ol class="olcss" id="olcss">
+                <li class="view"></li><li></li><li></li>
+            </ol>
+            <ul class="ulcss" id="ulcss">
+                <li><img src="../js/banners/banner0.png"></li>
+                <li><img src="../js/banners/banner1.png"></li>
+                <li><img src="../js/banners/banner2.png"></li>
+            </ul>
+        </div>
+        <div class="bbox" id="bbox">
+            <button type="button" id="left"><</button>
+            <button type="button" id="right">></button>
+        </div>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/index17.html -->

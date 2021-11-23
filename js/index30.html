@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible">
+        <title>Javascript 5일차(6) - 초급코드 (input 객체 생성)</title>
+        <script>
+            function aaa(){
+            //onclick이라는 이벤트 없이 함수 쓰는 법
+            //해당 함수는 실행을 하지 않고 대기했다가, body 아래 스크립트에서 작동함.
+                var n = 1;
+                var check = "<input type='checkbox'>";
+                while(n<6){
+                    var li = check+n+"<br>";
+                    document.getElementById("list").innerHTML += li;
+                    n++;}
+            }
+            function ck(){
+               var nm = document.getElementById("list");
+               var all = document.getElementById("all").checked; //전체선택(true,false 값 확인)
+               var ea = nm.childNodes.length; //하위 자식 노드가 몇 개인지 파악
+               
+        //chiledNodes : 해당 아이디의 자식노드 종류/갯수 파악
+        //node[0~15] : 해당 노드가 가진 텍스트, 태그명을 확인
+        //console.log(ea);
+               var f;
+               for(f=0;f<ea;f++){
+                var node = nm.childNodes;
+                //console.log(node[f].nodeName);
+                if(node[f].nodeName=="INPUT"){
+                    if(all==true){  
+                    node[f].checked = true;
+                    }
+                    else{
+                        node[f].checked = false;
+                    }
+                 }  
+               }
+            
+               //node[1].checked = true;
+            }
+        </script>
+    </head>
+    <body>
+        <input id="all" type="checkbox" onclick="ck();">전체선택
+        <div id="list"></div>
+    </body>
+    <script>
+        aaa();//해당 함수호출은 HTML
+    //혹은 그냥 밑에 스크립트에 둬도 됨.
+        /*var n = 1;
+        var check = "<input type='checkbox'>";
+        while(n<6){
+            var li = check+n+"<br>";
+            document.getElementById("list").innerHTML += li;
+            n++;}*/
+    </script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/index30.html -->

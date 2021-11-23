@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head> 
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Jquery Ajax 6일차(3) - Jquery Ajax ( 공지 게시판 B파트 ) </title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(function(){
+                //보안코드 받아오기
+                $.fn.code_ajax =function(){
+                    $.ajax({
+                        url:"./notice_number.php",
+                        cache:false,
+                        type:"GET",
+                        dataType:"JSON",
+                        success:function($data,$ok){
+                            $.fn.put_code($data);
+                        },
+                        error:function(){
+                            console.log("data error");
+                        }
+                    });
+                };
+                $.fn.code_ajax();//최초 보안코드함수 실행
+                //보안코드 val에 넣기
+                $.fn.put_code = function($data){
+                    $("#code_num").val($data);
+                };
+                //보안코드 새로고침
+                $("#re_code").click(function(){
+                    $.fn.code_ajax();
+                });
+                /* 여러 개 함수 묶어 쓰기
+                    $.extend({
+                        wcheck:function(){},
+                        wcheck2:function(){}
+                    });
+                    $.wcheck(); == 함수 사용 명령
+                    $.extend 확장함수 => 여러 개. (≒ bind)
+                    $.fn 확장함수 => 1개.
+                */
+                //등록완료 버튼
+                $("#btn_write").click(function(){
+                    let $title = $("#title").val();
+                    let $author = $("#author").val();
+                    let $pw = $("#pw").val();
+                    let $contents = $("#contents").val();
+                    let $code_num = $("#code_num").val();
+                    let $code_user = $("#code").val();
+                    //데이터검토
+                    if(!$title){alert("제목을 입력해주세요"); $("#title").focus();}
+                    else if(!$author){alert("글쓴이를 입력해주세요"); $("#author").focus();}
+                    else if(!$pw){alert("패스워드를 입력해주세요"); $("#pw").focus();}
+                    else if($pw.length<4 || $pw.length>10){
+                        alert("패스워드는 최소 4자 ~ 최대 10자입니다."); $("#contents").focus();
+                    }
+                    else if(!$contents){alert("내용을 입력해주세요"); $("#contents").focus();}
+                    else if(!$code_user){alert("보안코드를 입력해주세요"); $("#code").focus();}
+                    else{
+                        if($code_num!=$code_user){
+                            alert("입력하신 보안코드를 다시 확인해주세요.");
+                            $("#code").val(""); $("#code").focus();
+                        }
+                        else{
+                            list_fm.method="POST";
+                            list_fm.action="./notice_ok.php";
+                            list_fm.submit(); 
+                        }
+                    }
+                });
+                //목록 버튼
+                $("#btn_golist").click(function(){
+                    window.open("http://mangsteen977.dothome.co.kr/ajax/notice_list.html","_blank");
+                });
+            }); 
+        </script>
+        <style>
+            *{box-sizing: border-box;}
+            body{margin: 0; padding: 0;}
+            ul,ol,dl{list-style: none; margin: 0; padding: 0;}
+            .write{height: auto; margin: 0 auto;}
+            .title_ul{width: 1000px; height: 100px; font-size: 20px;text-align: center; line-height: 100px; margin: 0 auto;}
+            .list_w{width: 1000px; height: auto; margin: 0 auto; border-top: 1px solid #ccc; }
+            .list_w>li{
+                height: 50px; border-bottom: 1px solid #ccc; font-size: 13px;
+                float: left; line-height: 50px; text-indent: 10px;
+            }
+            .list_w>li:nth-of-type(7),.list_w>li:nth-of-type(8){height: 250px; line-height: 250px;}
+            .hide_ck{display: table-cell; vertical-align: -1px;}/*체크박스 높이 조절*/
+            .list_w>li:nth-of-type(odd){width: 15%; background-color: #6acbff; color: white;}
+            .list_w>li:nth-of-type(even){width: 85%;}
+            .inputs{width: 50%; height: 40px;}
+            .inputs2{width: 30%; height: 40px;}
+            .inputs3{width: 98%; height: 99%;}
+            .btns{width: 1000px; height: 50px; line-height: 50px; margin: 0 auto; text-align: right;}
+            .btn{width: 100px; height: 40px; border: none;background-color: #6acbff; color: white;}
+            .code_num{width: 100px; height: 40px; text-align: center; border: 1px solid #ccc;}
+            .blank{clear: both; display: block;}/*빈 태그*/
+        </style>
+    </head>
+    <body>
+        <section class="write" id="write">
+            <p class="title_ul">[공지사항 게시판 - 글쓰기]</p>
+            <form name="list_fm" enctype="application/x-www-form-urlencoded">
+            <ul class="list_w" id="list_w">
+                <li>제목</li>
+                <li>
+                    <input type="text" name="notice_subject" class="inputs" id="title" maxlength="100"> 최대 100자까지 입력가능합니다.
+                </li>
+                <li>글쓴이</li>
+                <li>
+                    <input type="text" name="notice_writer" class="inputs2" id="author"> 
+                </li>
+                <li>패스워드</li>
+                <li>
+                    <input type="password" name="notice_pass" class="inputs2" id="pw" maxlength="10"> 최소 4자 ~ 최대 10자입니다.
+                </li>
+                <li>내용</li>
+                <li>
+                    <textarea name="notice_text" class="inputs3" id="contents"></textarea>
+                </li>
+                <li>비밀글</li>
+                <li>
+                    <label><input type="checkbox" class="hide_ck" value="Y" namd="nhide">비공개</label>
+                </li>
+                <li>보안코드</li>
+                <li>
+                    <input type="text" class="code_num" id="code_num" readonly><!--val() == ajax출력 -->
+                    <input type="text" class="inputs2" id="code" maxlength="6" placeholder="보안코드는 6자리입니다.">
+                    <input type="button" value="새로고침" id="re_code" class="btn">
+                    <input type="hidden" name="domain" value="http://mangsteen977.dothome.co.kr"><!--등록완료 후 해당 도메인_list로 이동-->
+                </li>
+            </ul>
+            <span class="blank"></span><!--빈 태그-->
+            <div class="btns">
+                <input type="button" value="등록완료" class="btn" id="btn_write">
+                <input type="button" value="목록" class="btn" id="btn_golist">
+            </div>
+            </form>
+        </section>
+    </body>
+</html>
+<!-- 05/26 조별활동(모수빈) B파트 : http://mangsteen977.dothome.co.kr/ajax/notice_write.html -->
+<!-- 05/26 조별활동(정윤경 님) A파트 : http://imnotfresh.dothome.co.kr/05_ajax/notice_list.html -->

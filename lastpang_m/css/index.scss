@@ -1,0 +1,272 @@
+@mixin base {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+@mixin ulol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+@mixin m_sections($width, $height, $bg) {
+  margin: 0 auto;
+  width: 99.99%;
+  min-width: 320px;
+  max-width: $width;
+  height: $height;
+  background-color: $bg;
+}
+@mixin m_widths($min, $max, $bg) {
+  width: 99.99%;
+  min-width: $min;
+  min-height: $min;
+  max-width: $max;
+  max-height: $max;
+  background-color: $bg;
+}
+@mixin sections($width, $height, $bg) {
+  width: $width;
+  height: $height;
+  background-color: $bg;
+}
+@mixin flexs($wrap, $justify, $align) {
+  display: flex;
+  flex-wrap: $wrap;
+  justify-content: $justify;
+  align-content: $align;
+  align-items: $align;
+}
+@mixin font_sans($h, $c, $a, $w, $s) {
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: $h;
+  color: $c;
+  text-align: $a;
+  font-weight: $w;
+  font-size: $s;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  @include base;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 12px;
+  width: 100%;
+  height: auto;
+  max-width: 360px;
+}
+header,
+nav,
+section,
+footer {
+  @include sections(100%, auto, none);
+}
+img {
+  object-fit: cover;
+  width: 100%;
+}
+//header_menu.html
+//top_menu
+.header_menu_outline {
+  @include sections(100%, 25px, black);
+  & > ul {
+    @include ulol;
+    @include sections(100%, inherit, none);
+    @include flexs(nowrap, flex-end, center);
+    color: white;
+    & > li {
+      display: inline-block;
+      position: relative;
+      padding: 0 10px;
+      &:after {
+        content: "|";
+        position: absolute;
+        right: 0;
+      }
+      &:nth-child(3):after {
+        content: "";
+      }
+    }
+  }
+}
+//top_menu_logo
+.header_cibi_outline {
+  @include sections(100%, 40px, none);
+  margin-top: 15px;
+  & > .c_cibidiv {
+    @include sections(100%, inherit, none);
+    & > ul {
+      @include ulol;
+      @include sections(100%, inherit, none);
+      @include flexs(nowrap, space-between, center);
+      & > li {
+        @include sections(30px, auto, none);
+        &:nth-child(2) {
+          @include sections(180px, auto, none);
+        }
+      }
+    }
+  }
+  & > form > .c_searchdiv {
+    @include sections(100%, 60px, #dbb098);
+    display: none;
+    position: absolute;
+    z-index: 100;
+    & > ul {
+      @include sections(100%, inherit, none);
+      @include ulol;
+      @include flexs(nowrap, center, center);
+      & > li {
+        @include sections(265px, 50px, none);
+        &:nth-child(2) {
+          width: 50px;
+        }
+        & > input,
+        & > button {
+          @include sections(inherit, inherit, white);
+          border: none;
+        }
+        & > button {
+          background-color: #d77772;
+        }
+      }
+    }
+  }
+}
+//pop_menu.html
+.pop_menu_bg_outline {
+  width: 360px;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+}
+.pop_menu_outline {
+  width: 340px;
+  background-color: white;
+  z-index: 1000;
+}
+.pop_menu_out {
+  width: 340px;
+}
+
+.c_contents {
+  width: 100%;
+  height: 80px;
+  background-color: white;
+  position: relative;
+  margin: 15px 0px;
+}
+.c_contents > ul {
+  width: 100%;
+  height: 80px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.c_contents > ul > li {
+  float: left;
+  width: 85px;
+  height: 80px;
+  border-right: 1px solid #ccc;
+  box-sizing: border-box;
+  text-align: center;
+}
+.c_contents > ul > li:last-child {
+  border: 0;
+}
+.c_contents > ul > li > span {
+  display: inline-block;
+}
+.c_icoli1 {
+  width: 35px;
+  height: 35px;
+  margin-top: 10px;
+}
+.c_icoli2 {
+  width: 85px;
+  height: 35px;
+  font-size: 13px;
+}
+
+.c_menudiv {
+  width: 320px;
+  height: auto;
+  margin: 0 auto;
+}
+.c_menuul {
+  width: 100%;
+  height: auto;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.c_menuul > li {
+  width: 320px;
+  margin-bottom: 1px;
+  text-indent: 10px;
+  font-size: 13px;
+  background-color: #ce9e83;
+  line-height: 30px;
+  color: white;
+  font-weight: bold;
+}
+
+.c_arimg {
+  position: relative;
+  float: right;
+  margin-right: 10px;
+}
+
+.c_submenus {
+  clear: both;
+  position: relative;
+  width: 320px;
+  background-color: white;
+  display: none;
+  z-index: 2500;
+}
+.c_subol {
+  width: 220px;
+  padding: 0px;
+  height: auto;
+  box-sizing: border-box;
+  list-style: none;
+  margin: 0;
+  float: left;
+  color: black;
+}
+
+.c_subli2 {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  font-size: 12px;
+  text-indent: 10px;
+  margin: 0 auto;
+}
+.c_submenus > img {
+  right: 10px;
+  position: relative;
+  top: 5px;
+}
+
+//content_mainbanner.html
+.content_mainbanner_outline {
+  @include sections(100%, 150px, #ccc);
+  margin-top: 15px;
+  & > .c_mbandiv {
+    @include sections(100%, inherit, none);
+    position: relative;
+    overflow: hidden;
+    & > ul {
+      @include ulol;
+      @include sections(auto, inherit, none);
+      position: absolute;
+      & > li {
+        @include sections(360px, inherit, none);
+        float: left;
+      }
+    }
+  }
+}
+//

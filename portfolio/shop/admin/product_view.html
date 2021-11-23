@@ -1,0 +1,131 @@
+<meta charset="UTF-8">
+<article class="adm_main">
+    <span>등록 상품 수정</span>
+    <ol class="admin_main_ul">
+        <li onclick="fontclass('1');"><img src="../image/ts01.gif" alt="../img/ts01.gif" title="보통"></li>
+        <li onclick="fontclass('2');"><img src="../image/ts02.gif" alt="../img/ts02.gif" title="크게"></li>
+        <li onclick="fontclass('3');"><img src="../image/ts03.gif" alt="../img/ts03.gif" title="더크게"></li>
+    </ol>
+</article>
+{{view_arrays}}
+<article class="input_pd" v-for="pds in pd_view_arr">
+    <form name="pd_input_frm" action="./modify_productok.php" enctype="multipart/form-data">
+        <input type="hidden" name="domain" value="http://mangsteen977.dothome.co.kr">
+        <input type="hidden" name="product_key" value="modify_product">
+        <input type="hidden" name="pidx" v-model="pds.pidx">
+        <input type="hidden" v-model="img_view_part">
+        <!--대표 이미지 검증-->
+        <table class="input_pd_tb" border="1" cellpadding="0" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td style="width: 20%; height: 40px;">상품코드</td>
+                    <td style="width: 80%;"><input type="text" name="goodsno" v-model="pds.goodsno" readonly>*해당 상품 코드는
+                        8자리 자동생성 됩니다</td>
+                </tr>
+                <tr>
+                    <td>상품명</td>
+                    <td><input type="text" name="product_nm" v-model="pds.productnm" maxlength="150">※ 상품명은 150자까지 등록이
+                        가능합니다.
+                    </td>
+                </tr>
+                <tr>
+                    <td>간편설명</td>
+                    <td><input type="text" name="product_nmdtc" v-model="pds.productnm_dtc" maxlength="200">※ 최대 200자 이내
+                    </td>
+                </tr>
+                <tr>
+                    <td>소비자가격</td>
+                    <td><input type="text" name="product_money" v-model="pds.product_money" :id="rp">원</td>
+                </tr>
+                <tr>
+                    <td>상품할인 유뮤</td>
+                    <td>
+                        <label><input type="radio" name="product_dc" value="Y" v-model="dcs" @click="dc_yes_fun(1)">
+                            적용</label>
+                        <label><input type="radio" name="product_dc" value="N" v-model="dcs" @click="dc_yes_fun(0)"
+                                checked>
+                            미적용</label>
+                    </td>
+                </tr>
+                <tr v-if="dc_yes==1 || pds.product_dc=='Y'">
+                    <td>상품할인율</td>
+                    <td>
+                        <label><input type="radio" name="product_dcpart" value="P" v-model="ways" checked>%단위</label>
+                        <label><input type="radio" name="product_dcpart" value="M"
+                                v-model="ways">원단위</label>&nbsp;|&nbsp;
+                        할인율 : <input type="text" name="product_dcnum" v-model="pds.product_dcnum"
+                            @input="total()">&nbsp;|&nbsp;
+                        할인 최종금액 : <input type="text" name="product_sales" v-model="pds.product_sales">원
+                    </td>
+                </tr>
+                <tr>
+                    <td>상품제한 수량</td>
+                    <td><input type="text" name="product_ea" v-model="pds.product_ea"> EA ※ 최대수량은 99999개 입니다 </td>
+                </tr>
+                <tr class="bin_img_trs">
+                    <td>상품대표 이미지</td>
+                    <td v-show="img_view_part==true && pds.product_img!=''">
+                        <div class="p_img">
+                            <img :src="pds.product_img">
+                        </div>
+                        <input type="button" value="삭제" id="del_img_btn1" fieldnm="product_img" class="del_img_btn"
+                            @click="del_img(pds.pidx,'product_img')">
+                    </td>
+                    <td v-show="img_view_part==false || pds.product_img==''" id="file_upload1">
+                        <input type="file" name="product_img">
+                        ※JPG,BMP,PNG,JPEG,GIF 2MB 이하만 업로드 가능합니다.(500 * 500)
+                    </td>
+                </tr>
+                <tr>
+                    <td>상품옵션명</td>
+                    <td>옵션명1<input type="text" name="product_option1" v-model="pds.product_option1">
+                        옵션명2<input type="text" name="product_option2" v-model="pds.product_option2">
+                        옵션명<input type="text" name="product_option3" v-model="pds.product_option3">※ 미입력시 옵션은 출력되지 않습니다
+                    </td>
+                </tr>
+                <tr>
+                    <td>제품 상세보기 URL</td>
+                    <td><input type="text" name="product_url" v-model="pds.product_url"></td>
+                </tr>
+                <tr>
+                    <td>상품추가 이미지</td>
+                    <td class="small_img_tds">
+                        <span>
+                            <div class="p_img"><img :src="pds.product_simg1"></div><input type="button" value="삭제"
+                                id="del_img_btn2" class="del_img_btn" fieldnm="product_img"
+                                @click="del_img(pds.pidx,'product_simg1')">
+                            <input type="file" name="product_img1" id="file_upload2">※ JPG,BMP,PNG,JPEG,GIF 2MB 이하만
+                            업로드 가능합니다. (500 * 500)
+                        </span>
+                        <span>
+                            <div class="p_img"><img :src="pds.product_simg2"></div><input type="button" value="삭제"
+                                id="del_img_btn3" class="del_img_btn" fieldnm="product_img"
+                                @click="del_img(pds.pidx,'product_simg2')">
+                            <input type="file" name="product_img2" id="file_upload3">※ JPG,BMP,PNG,JPEG,GIF 2MB 이하만
+                            업로드 가능합니다. (500 * 500)
+                        </span>
+                        <span>
+                            <div class="p_img"><img :src="pds.product_simg3"></div><input type="button" value="삭제"
+                                id="del_img_btn4" class="del_img_btn" fieldnm="product_img"
+                                @click="del_img(pds.pidx,'product_simg3')">
+                            <input type="file" name="product_img3" id="file_upload4">※ JPG,BMP,PNG,JPEG,GIF 2MB 이하만
+                            업로드 가능합니다. (500 * 500)
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>상품상세설명</td>
+                    <td>
+                        <textarea name="product_contents1" id="product_contents1"
+                            v-model="pds.product_contents1"></textarea>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <div class="btns_input_pd">
+        <input type="button" value="상품수정" @click="pmodify()" id="pd_modify_btns">
+        <input type="button" value="상품목록" @click="go_to_list()">
+    </div>
+</article>

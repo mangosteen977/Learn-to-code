@@ -1,0 +1,57 @@
+@charset "UTF-8";
+@import "./config.scss";
+.shop_login_box {
+  @include sections(450px, auto, none);
+  margin: 0 auto;
+  margin-top: 100px;
+  & > .login_mem {
+    margin-bottom: 100px;
+    & > form {
+      @include sections(100%, auto, none);
+      & > p {
+        @include sections(200px, 50px, none);
+        @include font-sans(50px, #c3222b, center, bold, 20px);
+        margin: 0 auto;
+        margin-bottom: 50px;
+        border-bottom: 3px solid #c3222b;
+      }
+      & > label {
+        @include sections(100%, 30px, none);
+        @include font-sans(30px, #aaa, center, unset, 11px);
+      }
+      & > span {
+        @include sections(100%, auto, none);
+        & > input[type="text"],
+        & > input[type="password"] {
+          @include sections(100%, 50px, none);
+          @include font-sans(50px, unset, unset, unset, 12px);
+          text-indent: 10px;
+          margin-bottom: 10px;
+          border: none;
+          border-bottom: 1px solid #ccc;
+        }
+        & > input[type="submit"] {
+          @include sections(100%, 50px, none);
+          background-color: #c3222b;
+          @include font-sans(50px, white, center, unset, 15px);
+          text-indent: 0px;
+          margin-bottom: 10px;
+          border: none;
+          cursor: pointer;
+        }
+      }
+      & > .shop_login_btnbox {
+        @include sections(100%, auto, none);
+        @include flexs(nowrap, row, space-between, center);
+        border: none;
+        & > input[type="button"] {
+          @include sections(33%, 50px, none);
+          @include font-sans(50px, unset, center, unset, 12px);
+          text-indent: 0px;
+          border: none;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

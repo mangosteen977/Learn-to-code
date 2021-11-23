@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery mouse 핸들링 연습 </title>
+        <script src="../jq/jquery.js"></script>
+        <script>
+            $(document).ready(function(){
+                $(".ulcss>li").mouseenter(function(){
+                    $node = $(this).index();
+                    //console.log($node) 0 1 2
+                    $(".li"+$node+">.olcss").slideDown(1000);
+                });
+                $(".ulcss>li").mouseleave(function(){
+                    $node = $(this).index();
+                    //console.log($node) 0 1 2
+                    $(".li"+$node+">.olcss").slideUp(1000);
+                });
+
+
+            });
+        </script>
+        <style>
+            /*메뉴들*/
+            .ulcss{width: 300px; height: 35px; display: block;}
+            .olcss{width: 100px; height: 90px;  display: block; display: none;}
+            .ulcss, .olcss{list-style: none; margin: 0; padding: 0;}
+            .ulcss > li{box-sizing: border-box; float: left; text-align: center; width: 100px; height: auto; border: 1px solid black;}
+            .olcss > li{box-sizing: border-box; text-align: center; width: 100px; height: 30px; border: 1px solid black; }
+        </style>
+    </head>
+    <body>
+        <ul class="ulcss">
+            <li class="li0">menu1
+                <ol class="olcss">
+                    <li class="ol_li1">smenu1</li>
+                    <li class="ol_li2">smenu2</li>
+                    <li class="ol_li3">smenu3</li>
+                </ol>
+            </li>
+            <li class="li1">menu2
+                <ol class="olcss">
+                    <li class="ol_li1">smenu1</li>
+                    <li class="ol_li2">smenu2</li>
+                    <li class="ol_li3">smenu3</li>
+                </ol>
+            </li>
+            <li class="li2">menu3
+                <ol class="olcss">
+                    <li class="ol_li1">smenu1</li>
+                    <li class="ol_li2">smenu2</li>
+                    <li class="ol_li3">smenu3</li>
+                </ol>
+            </li>
+        </ul>
+    </body>
+</html>

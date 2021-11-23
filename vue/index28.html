@@ -1,0 +1,97 @@
+<?php
+    $v = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 4일차 (6) vue 응용 로그인 제작</title>
+        <script src="../jq/jquery.js"></script>
+        <!-- vue 버전 1.6.4 ???????? -->
+        <script src="http://cdn.jsdelivr.net/npm/vue"></script> <!--상용버전 값 가져옴^_~-->
+        <link rel="stylesheet" type="text/css" href="./index28.css?v=<?=$v?>">
+        <style>
+        </style>
+    </head>
+    <body>
+        <!-- 
+            이메일 memails
+            패스워드 mpass
+            히든 네임 key admaster
+            post 전송 login.php
+
+            실제 id admin@gmail.com
+            패스워드 a123456
+         -->
+        <form id="login" name="lg_fm" enctype="application/x-www-form-urlencoded" @submit.prevent='subs()'>
+            <!-- @submit.prevent ==> vue에서의 submit이 중간에 넘어가지 않게 하려면 prevent를 붙여준다. -->
+        <div class="login">
+            <p>administrator</p>
+            <input v-bind:type="i0" v-model="i1"><em>@</em><input v-bind:type="i0" v-model="i1_1">
+            <input v-bind:type="i2" v-bind:name="i3" v-model="i8">
+            <btn v-text="name" v-bind:type='sub'></btn>
+            <input v-bind:type="i4" v-bind:name="i5" v-bind:id="i5_1">
+            <input v-bind:type="i4" v-bind:name="i6" v-bind:value="i7">
+        </div>
+        </form>
+    </body>
+    <script>
+        Vue.component("btn",{
+            props:["login_btn"],
+            // data(){
+                // return {name:"로그인"}
+            // },
+            template:"<button></button>",
+            // methods:{
+            //     fake:function(){ 
+            //         this.$emit("login_btn");
+            //     }
+            // }
+        })
+        let l = new Vue({
+            el:"#login",
+            data:{
+                i0:"text",
+                i1:"",
+                i1_1:"",
+                i2:"password",
+                i3:"mpass",
+                i4:"hidden",
+                i5:"memails",
+                i5_1:"mids",
+                i6:"key",
+                i7:"admaster",
+                i8:"",
+                name:"로그인",
+                sub:"submit"
+            },
+            methods:{
+                subs:function(){
+                   //id 값 만들기
+                   document.getElementById("mids").value = this.i1 + "@" + this.i1_1;
+                   if(!this.i1){
+                       alert("이메일 아이디를 입력하세요.");
+                   }
+                   else if(!this.i1_1){
+                       alert("이메일 주소를 입력하세요.");
+                   }
+                   else if(!this.i8){
+                       alert("패스워드를 입력하세요.");
+                   }
+                   else{
+                       //form name으로 쓸 때
+                        lg_fm.method = "POST";
+                        lg_fm.action = "./loginok.php";
+                        lg_fm.submit();
+                        // vue submit은 return 이 작동 (X),
+                        // 또한 중간에 submit작동 되지 않게 하려면 prevent를 붙인다.
+
+                        //ref로 사용할 때
+                        // this.$refs.form.submit();
+                   }
+               }
+            }
+        })
+    </script>
+</html>

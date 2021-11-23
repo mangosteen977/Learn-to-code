@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HTML&CSS 2일차(4)&3일차(1) 중급 반응형 ( direction + important )</title>
+        <script>
+           
+        </script>
+        <style>
+            /* !important :  */
+            body{margin: 0; padding: 0;}
+            div{color: purple}
+            .box1{direction: ltr;  width: 200px; height: 30px; border: 1px solid black; color: blue !important;}
+            .box2{direction: rtl;   width: 200px; height: 30px; border: 1px solid black; color: green;}
+        /* direction : 글자의 방향을 지정함. */
+        /* rtl : right to left, 우-왼 맨 뒤 기호-->맨 앞, 맨 앞 기호-->맨 뒤*/
+            .box3{width: 700px; height: 100px;
+                    background: linear-gradient(pink, cornflowerblue );}
+        /* background: linear-gradient(A,B,c) : gradient효과 a,b,c색 그라데이션*/
+            .box4{width: 700px; height: 100px;
+                    background: linear-gradient(to right, pink, cyan);}
+        /* background: linear-gradient(to right, A, B);} : 왼->오 방향으로 그라데이션*/
+            .box5{width: 700px; height: 100px;
+                    background: linear-gradient(45deg, hotpink, darkcyan);}
+        /* background: linear-gradient((num)deg, A, B);} : deg(degree) 각도, 대각선으로 그라데이션*/
+            .box6{width: 700px; height: 100px;
+                    background: linear-gradient(lightyellow 3%, lightgreen 70%);}
+        /* background: linear-gradient(A 40%, B 60%); : A색 40%, B색 60%, (pixel도 가능. 높이기준)*/
+            .box7{width: 1000px; height: 490px; position: relative;
+                   background: linear-gradient(45deg, transparent 96%, darkorange 4%), url("../js/banners/banner1.png");}
+        /* 
+            transparent : 투명
+            background: linear-gradient(45deg,transparent 95%, A 5%)
+                      --> 45각도에 A색만 5%, 우측상단 삼각형
+            background: linear-gradient(), url("이미지 주소")로 두 개 함께 쓸 수 있다.
+         */
+            .plus{position: absolute; right: 10px; color: white; font-size: 25px; cursor:pointer;}
+            .box7:hover{
+                background: linear-gradient(45deg, transparent 96%, orangered 4%), url("../js/banners/banner1.png");
+            }
+            .box8{width: 1000px; height: 490px;
+                    background: repeating-radial-gradient(darkcyan 10%, hotpink 20%);}  
+        /* background: radial-gradient(A, B); : 가로 긴원통형 그라데이션. */
+        /* background: repeating-radial-gradient(A %, B %); :반복 원 */
+            .box8-1{width: 1000px; height: 490px;
+                    background: radial-gradient(circle, cyan, darkcyan, hotpink);}
+        /* background: radial-gradient(A, B); : 원형 그라데이션. */  
+            .box8-2{width: 1000px; height: 490px;
+                    background: radial-gradient(at 5% 5%, cyan, darkcyan, hotpink);}
+            /* radial-gradient(at x축값 y축값, A, B); */
+            
+            .box9{width: 1000px; height: 490px;
+                    background-image: url("../js/banners/banner0.png"),
+                    url("../js/banners/banner2.png"),
+                    url("../js/banners/banner1.png");
+                    background-repeat: no-repeat;
+                    background-size: 50%, 50%, 100%;
+                    background-position:0 0, 500px 0;
+                }
+        /* background-image : 여러 개의 이미지를 사용할 수 있다.
+        background-repeat, size, position으로 조정가능하다.
+        position : x축 y축이며, 콤마(,)로 이전 이미지와 다음 이미지의 조정을 분리함.*/
+        
+        </style>
+    </head>
+    <body>
+        <div class="box1">test! 123 hehehe</div>
+        <div class="box2">?test@</div>
+        <br><br>
+        <div class="box3">linear-gradient(A,B,c)</div>
+        <div class="box4">linear-gradient(to right, A, B);</div>
+        <div class="box5">linear-gradient((num)deg, A, B);</div>
+        <div class="box6">linear-gradient(A 40%, B 60%);</div>
+        <br><br>
+        <div class="box7"><span class="plus" title="상세정보 보기">+</span></div>
+        <div class="box8"> repeating-radial-gradient(A, B);</div>
+        <div class="box8-1"> radial-gradient(circle, A, B, C);</div>
+        <div class="box8-2"> radial-gradient(at x축값 y축값, A, B);</div>
+        <div class="box9"></div>
+    </body>
+</html>

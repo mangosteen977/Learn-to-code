@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>test1.html</title>
+        <style>
+            body{margin: 0; padding: 0; box-sizing: border-box;}
+            ul,ol,dl{margin: 0; padding: 0; list-style: none;}
+            span,label,main{display: block;}
+            a{text-decoration: none;}
+        
+            .box{
+                width: 300px;
+                height: 200px;
+                border: 1px solid black;
+                box-sizing: border-box;
+                margin-top: 20px;
+                margin-left: 20px;
+                padding-left: 25px;
+            }
+            .id{width: 250px; height: 40px; border: 1px solid #ccc;
+            border-radius: 5px; line-height: 40px; text-align: center;
+            font-size: 13px; font-weight: bold;}
+            .id > li:nth-child(1){width: 80px; height: 40px; background-color: #ddd;
+            }
+            .id > li:nth-child(2){width: 170px; height: 40px;}
+            .box > .id:nth-of-type(1){
+                margin-top: 25px;
+                margin-bottom: 10px;
+            }
+            .btn{
+                width: 250px;
+                height: 40px;
+                margin-top: 15px;
+            }
+            .btn > li{
+                float: left;
+                width: 125px;
+                height: 40px;
+            }
+            .b1{
+                width: 100px;
+                height: 40px;
+                background-color: skyblue;
+                font-size: 14px;
+                border-radius: 5px;
+                border: 0;
+                color: white;
+            }
+            .b2{
+                width: 100px;
+                height: 40px;
+                float: right;
+                background-color: gray;
+                font-size: 14px;
+                border-radius: 5px;
+                border: 0;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <ul  class="id">
+                <li>아이디</li>
+                <li></li>
+            </ul>
+            <ul  class="id">
+                <li>패스워드</li>
+                <li></li>
+            </ul>
+            <ol class="btn">
+                <li><input type="submit" value="로그인" class="b1"></li>
+                <li><input type="button" value="회원가입" class="b2"></li>
+            </ol>
+        </div>
+
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/test/test2.html -->

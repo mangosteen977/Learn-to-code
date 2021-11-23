@@ -1,0 +1,447 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700;900&display=swap');
+/* font-family: 'Noto Sans KR', sans-serif; (100, 400, 700, 900) */
+@mixin base{
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans KR', sans-serif;;
+}
+@mixin ulol{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+@mixin m_sections($width,$height,$bg){
+    margin: 0 auto;
+    width: 99.99%;
+    min-width: 360px;
+    max-width: $width;
+    height: $height;
+    background-color: $bg;
+}
+@mixin m_widths($min,$max,$bg){
+    width: 99.99%;
+    min-width: $min;
+    min-height: $min;
+    max-width: $max;
+    max-height: $max;
+    background-color: $bg;
+}
+@mixin sections($width,$height,$bg){
+    width: $width;
+    height: $height;
+    background-color: $bg;
+}
+@mixin flexs($wrap,$justify,$align){
+    display: flex;
+    flex-wrap: $wrap;
+    justify-content: $justify;
+    align-content: $align;
+    align-items: $align;
+}
+@mixin font_sans($h,$c,$a,$w,$s){
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: $h;
+    color: $c;
+    text-align: $a;
+    font-weight: $w;
+    font-size: $s;
+}
+@mixin font_sans($h,$c,$a,$w,$s){
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: $h;
+    color: $c;
+    text-align: $a;
+    font-weight: $w;
+    font-size: $s;
+}
+*{box-sizing: border-box}
+body{
+    @include base;
+    font-size: 12px;
+    position: relative;
+}
+label,span{display: block;}
+img{width: 100%; height: inherit; object-fit: cover;}
+//상단 파트
+.top{
+    @include m_sections(480px, auto, none);
+    margin: 0 auto;
+    &>.top1{
+        @include sections(100%, 50px, none);
+        @include flexs(nowrap, space-between, center);
+        flex-direction: row;
+        padding: 5px;
+        &>div{
+            @include sections(30px, 30px, none);
+            &:nth-of-type(2){@include sections(120px, auto, none);}
+        }
+    }
+    &>.top2{
+        @include sections(100%, auto, none);
+        @include flexs(wrap, center, center);
+        flex-direction: row;
+        &>div{
+            @include sections(33.33%, 40px, none);
+            @include font_sans(40px, black, center, "", 14px);
+        }
+    }
+}
+//배너파트
+.banners{
+    @include m_sections(480px, 350px, none);
+    margin: 0 auto;
+    &>.ba_img_box{
+        @include sections(100%, 350px, none);
+        @include flexs(nowrap, center, center);
+        flex-direction: row;
+        position: relative;
+        &>span{
+            @include sections(100%, 350px, none);
+            position: absolute;
+            display: none;
+            &:nth-of-type(1){display: block;}
+        }
+    }
+}
+//이미지 파트
+.img_box1{
+    @include m_sections(480px, auto, none);
+    @include flexs(wrap, center, center);
+    flex-direction: row;
+    margin: 0 auto;
+    &>div{
+        @include sections(50%, 180px, none);
+        &:nth-of-type(5), &:nth-of-type(6){width: 100%;}
+    }
+}
+//뉴펫 파트
+.img_box2{
+    @include m_sections(480px, auto, none);
+    margin: 0 auto;
+    &>.title{
+        @include sections(100%, auto, none);
+        @include flexs(wrap, space-evenly, center);
+        flex-direction: column;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        &>label{
+            @include sections(200px, 40px, none);
+            @include font_sans(40px, black, center, "", 18px);
+            &:nth-of-type(2){
+                border-top: 1px solid #ccc;
+                font-size: 14px;
+                word-spacing: -2.5px;
+            }
+        }
+    }
+    &>.pets{
+        @include sections(100%, auto, none);
+        @include flexs(wrap, space-evenly, center);
+            flex-direction: column;
+        &>.tags{
+            @include sections(100%, auto, none);
+            @include flexs(wrap, space-between, center);
+            flex-direction: row;
+            &>span{
+                border: 1px solid black;
+                position: relative;
+                top: 1px;
+                @include sections(140px, 50px, white);
+                @include font_sans(50px, black, center, "", 14px);
+                &:nth-of-type(1){border-bottom: 0px;} //파일 크기 조정
+            }
+        }
+        &>.imgs_file{
+            @include m_sections(480px, auto, none);
+            @include flexs(wrap, space-evenly, center);
+            flex-direction: row;
+            border: 1px solid black;
+            display: none;
+            padding: 10px 0 ;
+            &>span{
+                // @include sections(130px, 130px, none);
+                width: 33%;
+                max-width: 130px;
+                max-height: 130px;
+                &>label{@include sections(100%, 117px, none);}
+                &>label:nth-of-type(2){ height: 13px; @include font_sans(13px, black, center, "", 14px);}
+            }
+            &:nth-of-type(2){display: flex;}//파일 이미지 조정
+        }
+    }
+}
+//베스트 프로덕트 파트
+.p_box{
+    @include m_sections(480px, auto, none);
+    margin: 0 auto;
+    &>.p_title{
+        @include sections(100%, auto, none);
+        @include flexs(wrap, space-evenly, center);
+        flex-direction: column;
+        margin-top: 20px;
+        &>label{
+            @include sections(200px, 40px, none);
+            @include font_sans(40px, black, center, "", 18px);
+            &:nth-of-type(2){
+                border-top: 1px solid #ccc;
+                font-size: 14px;
+                word-spacing: -2.5px;
+            }
+        }
+    }
+    &>.p_img{
+        @include sections(100%, auto, none);
+        @include flexs(wrap, space-evenly, center);
+        flex-direction: column;
+        &>div{
+            @include flexs(nowrap, space-evenly,top);
+            flex-direction: row;
+            background-color: rgb(236,234,234);
+            padding: 7px;
+            margin-top: 20px;
+            &>span:nth-of-type(1){
+                @include m_widths(120px, 150px,none);
+            }
+            &>span:nth-of-type(2){
+                min-width: 240px;
+                max-width: 330px;
+                height: auto;
+                &>label{
+                    padding-left: 10px;
+                    &:nth-of-type(1){@include font_sans(30px, black, left, bold, 16px);}
+                    &:nth-of-type(2){@include font_sans(30px, black, left, "", 11px);}
+                    &:nth-of-type(3){@include font_sans(30px, black, left, bold, 14px);}
+                }
+            }
+
+        }
+    }
+    &>.leftright{
+        @include sections(100%, 50px, none);
+        @include flexs(nowrap, space-between, center);
+        flex-direction: row;
+        padding: 0 5px 0 5px;
+        &>label{
+            @include sections(90px, 40px, rgb(230,230,230));
+            @include font_sans(40px, gray, center, "", 14px);
+            border-radius: 15px;
+        }
+    }
+}
+//그 외 하단 파트1
+.bottom{
+    @include m_sections(480px, auto, none);
+    margin: 0 auto;
+    &>.intro{
+        @include sections(100%, 150px, white);
+        margin-bottom: 20px;
+        &>img{object-fit: contain;}
+    }
+    &>.icons{
+        @include sections(100%, 50px, none);
+        @include flexs(nowrap, space-evenly, center);
+        flex-direction: row;
+        margin-bottom: 20px;
+        &>div{@include sections(50px, 50px, none);}
+    }
+    &>.review{
+        @include sections(100%, 50px, rgb(230,230,230));
+        @include flexs(nowrap, space-between, center);
+        flex-direction: row;
+        padding: 5px;
+        margin-bottom: 20px;
+        position: relative;
+        overflow: hidden;
+        &>div:nth-of-type(1){
+            @include sections(auto, 40px, none);
+            @include font_sans(40px, black, center, bold, 16px);
+        }
+        &>div:nth-of-type(2){
+            @include sections(80%, 40px, none);
+            @include font_sans(40px, black, center, bold, 16px);
+            position: relative;
+            top: 0px;
+            &>span{
+                @include sections(100%, 40px, none);
+            }
+        }
+        &>div:nth-of-type(3){
+            @include sections(45px, 20px, rgb(127,127,127));
+            @include font_sans(20px, black, center, bold, 14px);
+            border-radius: 15px;
+        }
+    }
+    &>.bottom_menu{
+        @include sections(100%, auto, none);
+        @include flexs(wrap, center, center);
+        flex-direction: row;
+        margin-bottom: 20px;
+        &>div{
+            @include sections(33.33%, 40px, none);
+            @include font_sans(40px, black, center, "", 14px);
+            border: 1px solid #ccc;
+        }
+    }
+}
+//그 외 하단 파트2
+.copy{
+    @include m_sections(480px, 300px, none);
+    margin: 0 auto;
+    &>.minis{
+        @include sections(100%, 30px, none);
+        @include flexs(wrap, center, center);
+        @include font_sans(30px, black, center, "", 14px);
+        flex-direction: row;
+        margin-bottom: 20px;
+        &>div::before{content: " | ";}
+        &>div:nth-of-type(1)::before{content: "";}
+    }
+    &>.logo2{
+        @include sections(100%, 30px, none);
+        @include flexs(nowrap, center, center);
+        flex-direction: row;
+        margin-bottom: 20px;
+        &>div{
+            @include sections(auto, 30px, none);
+            &>img{object-fit: contain;}
+        }
+    }
+    &>.copyright{
+        @include sections(100%, auto, none);
+        @include flexs(nowrap, center, center);
+        flex-direction: column;
+        &>label{
+            @include sections(100%, 20px, none);
+            @include font_sans(20px, black, center, "", 12px);
+            &:nth-of-type(1),&:nth-of-type(4){margin-bottom: 10px;}
+        }
+    }
+}
+//검색 파트
+.search{
+    @include m_sections(480px, 50px, rgba(0, 0, 0, 0.3));
+    @include flexs(nowrap, center, center);
+    flex-direction: row;
+    position:fixed;
+    top: 130px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    z-index: 30;
+    &>span{
+        @include sections(80%, 30px, none);
+        background-color: white;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: row;
+        &>img{
+            @include sections(50px, 30px, none);
+            background-color:  #ccc;
+            border-radius: 0 5px 5px 0;
+            object-fit: contain;
+            transform: rotateY(180deg)
+        }
+        &>input{
+            width: 80%;
+            border: none;
+            background-color: white;
+        }
+    }
+    display: none;
+}
+//팝업메뉴 파트
+.pop_menu{
+    @include m_sections(480px, 3302px, rgba(0, 0, 0, 0.3));
+    // box-shadow: 0 0 3302px 0 rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 50px;
+    left: -100%;
+    z-index: 50;
+    &>.menus{
+        @include sections(90%, 630px, white);
+        @include flexs(wrap, start, center);
+        flex-direction: column;
+        position: relative;
+        padding: 15px;
+        &>.join{
+            @include sections(100%, 30px, none);
+            @include flexs(nowrap, space-between, center);
+            flex-direction: row;
+            margin-bottom: 20px;
+            &>span{
+                @include sections(100px, 30px, black);
+                @include font_sans(30px, white, center, "", 14px);
+            }
+        }
+        &>.pop_icons{
+            @include sections(100%, auto, none);
+            @include flexs(nowrap, space-evenly, center);
+            flex-direction: row;
+            margin-bottom: 20px;
+            &>span{
+                @include sections(60px, 60px, none);
+                border: 1px solid black;
+                &>label{
+                    @include sections(60px, 30px, none);
+                    @include flexs(nowrap, space-evenly, center);
+                    flex-direction: row;
+                    @include font_sans(30px, black, center, "", 14px);
+                    &>img{
+                        @include sections(20px, 20px, none);
+                    }
+                }
+            }
+        }
+        &>.qna{
+            @include sections(100%, 155px, none);
+            @include font_sans(30px, black, left, "", 14px);
+            margin-bottom: 20px;
+            &>.q_title{width: auto; height: 10%; padding:  0 15px 0 15px;}
+            &>ul{
+                @include sections(100%, 90%, none);
+                margin: 5px 0 5px 0;
+                padding: 0 0 0 20px;
+                &>li{
+                    @include sections(100%, 20%, none);
+                    &>span{
+                        width: 50%;
+                        display: inline-block;
+                        &:nth-of-type(2){
+                            text-align: right;
+                        }
+                    }
+                }
+            }
+        }
+        &>.account{
+            @include sections(100%, 60px, none);
+            @include font_sans(30px, black, left, "", 16px);
+            border: 1px solid black;
+            padding-left: 5px;
+            margin-bottom: 20px;
+        }
+        &>.cs_center{
+            @include sections(100%, 190px, none);
+            padding: 5px;
+            @include font_sans(25px, black, left, "", 13px);
+            border: 1px solid black;
+            &>span:nth-of-type(1){font-size: 15px;}
+            &>span:nth-of-type(2){font-size: 17px; font-weight: bold;}
+            &>a{
+                text-decoration: none;
+                color: black;
+                &>span{
+                    @include sections(200px, 40px, none);
+                    @include flexs(nowrap, center, center);
+                    flex-direction: row;
+                    border: 1px solid black;
+                    font-size: 14px;
+                    margin: 0 auto;
+                    &>img{@include sections(20px, 20px, none);}
+                }
+            }
+        }
+    }
+}
+

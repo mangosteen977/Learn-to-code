@@ -1,0 +1,29 @@
+{
+    "myinfo":[
+        {
+            "id":"hong",
+            "name":"홍길동",
+            "email":"hong@gmail.com",
+            "area":"경기도",
+            "phone":"010-1234-5678"
+        }
+    ],
+    "myinfo2":[
+        {
+            "id":"hong2",
+            "name":"홍길동2",
+            "email":"hong2@gmail.com",
+            "area":"경기도2",
+            "phone":"012-1234-5678"
+        }
+    ],
+    "myinfo3":[
+        {
+            "id":"hong3",
+            "name":"홍길동3",
+            "email":"hong3@gmail.com",
+            "area":"경기도3",
+            "phone":"013-1234-5678"
+        }
+    ]
+}

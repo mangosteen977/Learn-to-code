@@ -1,0 +1,70 @@
+<?php
+    $date = date("Y-m-d H:i:s");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jquery 5일차(2) - 중급 (이벤트핸들링)</title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(function(){
+                var $today = new Date();//로컬시간 컴퓨터 시간임. 임의변경하면 변경됨.
+                console.log($today);
+                //Fri May 14 2021 11:15:49 GMT+0900 (대한민국 표준시)
+                var $today2 = "<?php echo $date ?>"; //서버시간 임의변경 불가함. 백엔드코드로 받아옴
+                console.log($today2);
+                //2021-05-14 11:18:55
+                var $today_y = $today.getFullYear();//년도만 출력
+                var $today_m = $today.getMonth()+1;//월만 출력(0부터 시작해서 +1해줌)
+                var $today_d = $today.getDate();//일만 출력
+                var $today_dw = $today.getDay();//요일만 출력(0==일,1==월...;)
+                var $today_hr = $today.getHours();//시만 출력
+                var $today_min = $today.getMinutes();//분만 출력
+                var $today_sec = $today.getSeconds();//초만 출력
+
+                //비활성화 했다가 5초 뒤 풀기
+                $("#btn").bind({
+                    "click":function abc(){
+                        console.log("click")
+                        $("#btn").unbind("click");//클릭함수 비활성화
+                        setTimeout(function(){//5초 셋타임
+                            $("#btn").click(function(){
+                                abc();//abc(비활성된 클릭함수)재호출
+                            });
+                        },5000);
+                    },
+                    "mouseleave":function(){
+                        //$("#btn").unbind("click",event);
+                        console.log("mouseleave")
+                    }
+
+                });
+                $("#btn2").click(function(){
+                    $("#btn").unbind(); //모든 #btn함수 비활성화
+                    // $("#btn").unbind("mouseleave");//mouseleave함수 비활성화 
+                });
+
+                //이벤트가 중복되어 작동하는 경우 조절하기.
+                $("#btn3").click(function abc(){
+                    console.log("click");
+                    $("#btn3").unbind("click");//click핸들링 삭제
+                    setTimeout(function(){//5초후 settimeout함수 작동
+                        $("#btn3").click(function(){
+                            abc();//click(function abc(){});함수 재구성
+                        });
+                    },5000);
+                });
+                
+            });
+            
+        </script>
+    </head>
+    <body>
+        <input type="button" value="click" id="btn">
+        <input type="button" value="lock_click" id="btn2">
+        <input type="button" value="unlock_click" id="btn3">
+    </body>
+</html>

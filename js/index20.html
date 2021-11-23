@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>JavaScript 4일차(1) - 함수호출(HTML결합-로그인 만들기) </title>
+        <script>
+            function abc(){
+                if(fm.mid.value==""){
+                    alert("아이디를 입력하세요.");
+                    return false;
+                    //각 if 조건별로 false를 사용해야 한다.
+                }
+                else if(fm.mpass.vlaue==""){
+                    alert("비밀번호를 입력하세요.");
+                    return false;
+                }
+                else{
+                    fm.submit();
+                    //action작동시키는 명령
+                    //return; //onsubmit과 연동(?) 전송시키는 명령
+                    //onsubmit="return 함수이름();"일 때, return false이면 전송 안함, return이면 전송
+                    //전송이 되면 action이 작동해 페이지가 이동한다.
+
+                    /*모든 정보를 입력시 return true도 사용할 수 있고, 
+                    return도 사용할 수 있고, submit()이라는 명령어를 입려해 사용가능함.
+                    */
+                   /*return true와 submit()의 차이점*/
+                }
+            }
+
+        </script>
+    </head>
+    <body>
+    <!-- onsubmit 사용시 return명령어를 이용하여 action 작동여부를 판단함.
+         return = reture true와 같은 뜻이다.
+         return false는 실패/거짓으로 판단해 강제오류를 발생시킴.
+         return flase 시 절대 action은 작동하지 않는다. -->
+    <form id="fm" name="fm" method="POST" action="http://naver.com" onsubmit="return abc();">
+        <input type="text" id="mid" name="mid">
+        <input type="password" id="mpass" name="mpass">
+        <input type="submit" value="로그인" >
+    </form>
+    <!-- method : GET(파라미터), POST(페이지를 이동하며 값을 전송) -->
+        
+        <!-- http://mangsteen977.dothome.co.kr/js/index20.html -->
+    </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>자바스크립트 1일차 (중급) - node+insetBefore(3)</title>
+        <script src="../jq/jquery.js"></script>
+        <script>
+            function f(){
+                var a = document.getElementById("list");
+                var b = document.createElement("li");
+                var c = document.createTextNode("C");
+                b.appendChild(c);
+                a.insertBefore(b,a.firstChild);
+            };
+            function b(){
+                var a = document.getElementById("list");
+                var b = document.createElement("li");
+                var c = document.createTextNode("D");
+                b.appendChild(c);
+                a.insertBefore(b,a.lastChild);
+            };
+            function c(){
+                var a = document.getElementById("list");
+                var b = document.createElement("li");
+                var c = document.createTextNode("E");
+                b.appendChild(c);
+                a.insertBefore(b,a.childNodes[2])
+            };
+        </script>
+    </head>
+    <body>
+        <ul id="list">
+            <li>A</li>
+            <li>B</li>
+        </ul>
+        <input type="button" value="노드 앞에 추가" onclick="f();">
+        <input type="button" value="노드 뒤에 추가" onclick="b();">
+        <input type="button" value="노드 중간 추가" onclick="c();">
+
+    </body>
+    <script>
+        var a = document.getElementById("list");
+        console.log(a.childNodes);
+    </script>
+</html>

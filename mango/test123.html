@@ -1,0 +1,32 @@
+<?php
+    $data = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>AJAX 연습</title>
+        <script src="../jq/jquery.js"></script>
+        <script>
+            $(function(){
+                $.ajax({
+                    url:"../middle/json/best_product.json",
+                    cache:false,
+                    data:"GET",
+                    dataType:"JSON",
+                    success:function($data,$ok){
+                        console.log($data["best_product"])
+                     
+                    },
+                    error:function(){
+                        console.log("DATA_ERROR");
+                    }
+                })
+            });
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

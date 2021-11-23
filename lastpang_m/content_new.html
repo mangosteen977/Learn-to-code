@@ -1,0 +1,242 @@
+<script>
+	a_mw.controller("a_mnct",function($scope){
+		$scope.a_mnewp1 = [
+			{	 a_newimg:"./img/mn1.png",
+			 	 a_newtitle:"체온다운 데님팬츠",
+			 	 a_newpd:"31,900원",
+			 	 a_newdp:"7%",
+			 	 a_newap:"29,800원",
+			 	 a_newico:"./img/b.png"
+			},
+			
+			{	 a_newimg:"./img/mn2.png",
+				 a_newtitle:"델리엘 에스닉원피스",
+				 a_newpd:"29,800원",
+				 a_newdp:"7%",
+				 a_newap:"27,900원",
+				 a_newico:"./img/h.png"
+				}
+		];
+		
+		$scope.a_mnewp2 = [	
+			{	 a_newimg:"./img/mn3.png",
+				 a_newtitle:"로멘 린넨팬츠",
+				 a_newpd:"24,800원",
+				 a_newdp:"",
+				 a_newap:"22,900원",
+				 a_newico:"./img/b.png"
+				},
+			
+			{	 a_newimg:"./img/mn4.png",
+				 a_newtitle:"포셀리 반팔티셔츠",
+				 a_newpd:"18,900원",
+				 a_newdp:"7%",
+				 a_newap:"16,500원",
+				 a_newico:"./img/n.png"
+				}
+		];
+				
+		$scope.a_mnewp3 = [
+			
+			{	 a_newimg:"./img/mn5.png",
+				 a_newtitle:"하벨 코튼스커트",
+				 a_newpd:"14,800원",
+				 a_newdp:"7%",
+				 a_newap:"13,900원",
+				 a_newico:"./img/n.png"
+				},
+			
+			{	 a_newimg:"./img/mn6.png",
+				 a_newtitle:"커먼스 플라워원피스",
+				 a_newpd:"29,800원",
+				 a_newdp:"7%",
+				 a_newap:"27,900원",
+				 a_newico:"./img/b.png"
+				}
+		];
+				
+		$scope.a_mnewp4 = [			
+			{	 a_newimg:"./img/mn7.png",
+				 a_newtitle:"언아웃 소가죽샌들힐",
+				 a_newpd:"46,900원",
+				 a_newdp:"7%",
+				 a_newap:"43,300원",
+				 a_newico:"./img/b.png"
+				},
+			
+			{	 a_newimg:"./img/mn8.png",
+				 a_newtitle:"솔렌느 슬링백",
+				 a_newpd:"36,800원",
+				 a_newdp:"10%",
+				 a_newap:"34,600원",
+				 a_newico:"./img/b.png"
+				}
+		];
+	
+		//롤링배너
+		var $a_mnd=2;
+		
+		var $a_mnbanner = setInterval(function(){		
+		var $a_mnwid = "-" + $(".a_mnpoutline3").width();
+		var $a_ndisk = ".a_mndisk ul li:eq(" + $a_mnd + ")";
+		$a_mnd += 1;
+		
+		if($a_mnd==5){
+			$a_mnd = 1;
+		}
+		
+		$(".a_mndisk li").attr({"class":"a_mndli1"});
+		$(".a_mndisk li:first, .a_mndisk li:last").attr({"class":"a_mndli"});
+		$($a_ndisk).attr({"class":"a_mndli0"});
+		
+		$(".a_mnpoutline3").first().animate({"margin-left":$a_mnwid},2000,function(){
+		$(".a_mnpoutline3").first().css({"margin-left":""}).appendTo(".a_mnpoutline2");
+			});
+
+		},10000);	
+		
+		//swipe
+		$(".a_mnpoutline1").swipeleft(function(){
+			var $a_mnw = "-" + window.innerWidth + "px";
+			//console.log($a_mww);
+			
+			var $a_mnwid = "-" + $(".a_mnpoutline3").width();
+			var $a_ndisk = ".a_mndisk ul li:eq(" + $a_mnd + ")";
+			$a_mnd += 1;
+			
+			if($a_mnd==5){
+				$a_mnd = 1;
+			}
+			
+			$(".a_mndisk li").attr({"class":"a_mndli1"});
+			$(".a_mndisk li:first, .a_mndisk li:last").attr({"class":"a_mndli"});
+			$($a_ndisk).attr({"class":"a_mndli0"});
+			
+			
+			$(".a_mnpoutline3").first().animate({"margin-left":$a_mnw},500,function(){
+			$(".a_mnpoutline3").first().css({"margin-left":"0px"}).appendTo(".a_mnpoutline2");
+			});
+		});
+	});	
+</script>
+
+<style>
+	.content_new_outline { width:360px; height:438px; clear:both; }
+	.content_new_outline ul {list-style:none; margin:0; padding:0;}
+
+	.a_mnoutline {width:360px; height:auto; margin:0 auto;}
+	
+	/*타이틀*/
+	.a_mntitle {width:360px; height:60px; margin-bottom:20px;}
+	.a_mntli1 {width:360px; height:25px; font-size:16px; font-weight:bold; text-align:center; line-height:25px; }
+	.a_mntli2 {width:360px; height:20px; font-size:14px; text-align:center; line-height:20px;}
+	
+	/*상품*/
+	.a_mnpoutline1 {width:360px; height:300px; margin-top:24px; overflow:hidden; position:relative;}
+	.a_mnpoutline2 {width:1440px; height:300px;}
+	.a_mnpoutline3 {width:360px; height:300px; float:left;}
+	
+	.a_mnproduct {width:165px; height:300px; margin-left:10px; float:left;}
+	.a_mnproduct > ul > li {float:left; text-align:center;}
+	.a_mnproduct > ul > li:last-child {text-align:right;}
+	.a_mnproduct1 {width:165px; height:200px; position:relative;}
+	.a_mnproduct2 {width:165px; height:50px; font-size:14px; font-weight:bold; background-color:#ebebeb;}
+	.a_mnproduct3 {width:165px; height:20px; font-size:12px; background-color:#ebebeb;}
+	.a_mnproduct4 {width:165px; height:30px; font-size:14px; font-weight:bold; color:red; background-color:#ebebeb;}
+	.a_mnproduct5 {width:155px; height:20px; position:absolute; margin-top:10px; margin-right:10px;}
+	
+	/*디스크*/
+	.a_mndisk {width:360px; height:30px; margin-top:24px; clear:both;}
+	.a_mndisk ul {width:190px; height:30px; margin:0 auto;}
+	.a_mndisk li {float:left;}
+	.a_mndli {width:15px; height:15px; margin-top:7px;}
+	.a_mndli0 {width:15px; height:15px; background-color:#628dc8; border-radius:100%; margin-left:20px; margin-top:7px;}
+	.a_mndli1 {width:15px; height:15px; background-color:#ff8679; border-radius:100%;  margin-top:7px; margin-left:20px;}
+</style>
+
+<div ng-controller="a_mnct" class="content_new_outline">
+	<!-- 아웃라인 -->
+	<div class="a_mnoutline">
+	
+	<!-- 타이틀 -->
+	<div class="a_mntitle">
+	<ul>
+	<li class="a_mntli1">2 DAY NEW 7%</li>
+	<li class="a_mntli2">깐깐하게 고른 퍼플 신상</li>
+	</ul>
+	</div>
+	<!-- 타이틀 -->
+	
+	<!-- 상품출력 -->
+	<div class="a_mnpoutline1">
+	<div class="a_mnpoutline2">
+	<div class="a_mnpoutline3">
+	<div class="a_mnproduct" ng-repeat="a_mnewps1 in a_mnewp1">
+	<ul>
+	<li class="a_mnproduct1"><img ng-src="{{a_mnewps1.a_newimg}}"></li>
+	<li class="a_mnproduct2" >{{a_mnewps1.a_newtitle}}</li>
+	<li class="a_mnproduct3"><strike>{{a_mnewps1.a_newpd}}</strike></li>
+	<li class="a_mnproduct4" style="width:45%;">{{a_mnewps1.a_newdp}}</li>
+	<li class="a_mnproduct4" style="width:55%;">{{a_mnewps1.a_newap}}</li>
+	<li class="a_mnproduct5"><img ng-src="{{a_mnewps1.a_newico}}"></li>
+	</ul>
+	</div>
+	</div>
+	 
+	<div class="a_mnpoutline3">
+	<div class="a_mnproduct" ng-repeat="a_mnewps2 in a_mnewp2">
+	<ul>
+	<li class="a_mnproduct1"><img ng-src="{{a_mnewps2.a_newimg}}"></li>
+	<li class="a_mnproduct2" >{{a_mnewps2.a_newtitle}}</li>
+	<li class="a_mnproduct3"><strike>{{a_mnewps2.a_newpd}}</strike></li>
+	<li class="a_mnproduct4" style="width:45%;">{{a_mnewps2.a_newdp}}</li>
+	<li class="a_mnproduct4" style="width:55%;">{{a_mnewps2.a_newap}}</li>
+	<li class="a_mnproduct5"><img ng-src="{{a_mnewps2.a_newico}}"></li>
+	</ul>
+	</div>
+	</div>
+	<div class="a_mnpoutline3">
+	<div class="a_mnproduct" ng-repeat="a_mnewps3 in a_mnewp3">
+	<ul>
+	<li class="a_mnproduct1"><img ng-src="{{a_mnewps3.a_newimg}}"></li>
+	<li class="a_mnproduct2" >{{a_mnewps3.a_newtitle}}</li>
+	<li class="a_mnproduct3"><strike>{{a_mnewps3.a_newpd}}</strike></li>
+	<li class="a_mnproduct4" style="width:45%;">{{a_mnewps3.a_newdp}}</li>
+	<li class="a_mnproduct4" style="width:55%;">{{a_mnewps3.a_newap}}</li>
+	<li class="a_mnproduct5"><img ng-src="{{a_mnewps3.a_newico}}"></li>
+	</ul>
+	</div>
+	</div>
+	
+	<div class="a_mnpoutline3">
+	<div class="a_mnproduct" ng-repeat="a_mnewps4 in a_mnewp4">
+	<ul>
+	<li class="a_mnproduct1"><img ng-src="{{a_mnewps4.a_newimg}}"></li>
+	<li class="a_mnproduct2" >{{a_mnewps4.a_newtitle}}</li>
+	<li class="a_mnproduct3"><strike>{{a_mnewps4.a_newpd}}</strike></li>
+	<li class="a_mnproduct4" style="width:45%;">{{a_mnewps4.a_newdp}}</li>
+	<li class="a_mnproduct4" style="width:55%;">{{a_mnewps4.a_newap}}</li>
+	<li class="a_mnproduct5"><img ng-src="{{a_mnewps4.a_newico}}"></li>
+	</ul>
+	</div>
+	</div>
+	
+	</div> 
+	</div>
+	<!-- 상품출력 -->
+	
+	<!-- 하단 디스크 -->
+	<div class="a_mndisk"> 
+	<ul>
+	<li class="a_mndli"><img src="../img/arrow1.png"></li>
+	<li class="a_mndli0"></li>
+	<li class="a_mndli1"></li>
+	<li class="a_mndli1"></li>
+	<li class="a_mndli1"></li>
+	<li class="a_mndli" style="margin-left:20px;"><img src="../img/arrow2.png"></li>
+	</ul>
+	</div>
+	
+	<!-- 아웃라인 -->
+	</div>
+</div>

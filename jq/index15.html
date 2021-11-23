@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery 4일차(2) - NODE추가(2) + 복제(1) </title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(document).ready(function(){
+                var $a;
+                //복제
+                $("#btn_copy").click(function(){
+                    $a  = $("#ulcss>li").eq(0).clone();
+        //clone : 해당 노드의 모든 코드를 복사함. 출력은 따로 해야함.
+                    console.log($a);
+                });
+                //추가
+                $("#btn_add").click(function(){
+                    $("#ulcss>li").eq(0).remove();
+                    $("#ulcss").append($a);
+        //append에 $a는 clone으로 노드를 복제한 것을 그대로 노드에 추가한다.
+        //img,속성 등 완전히 다 복제된다.
+                });
+            });
+        </script>
+        <style>
+            .ulcss{list-style: none; margin: 0; padding: 0;
+            display: inline-block;height: 100px;}
+            .ulcss > li{ width: 100px; height: 100px; float: left;}
+            .a0{background-color: red;}
+            .a1{background-color: orange;}
+            .a2{background-color: yellow;}
+            .a3{background-color: green;}
+            img{width: 80px;}
+            .btn{display: block; background-color: black; color: white; width: 90px; height: 30px;}
+        </style>
+    </head>
+    <body>
+        <ul class="ulcss" id="ulcss">
+            <li class="a0">red<img src="./popup.jpg"></li>
+            <li class="a1">orange</li>
+            <li class="a2">yellow</li>
+            <li class="a3">green</li>
+        </ul>
+        <button type="button" id="btn_copy" class="btn">복제</button>
+        <button type="button" id="btn_add" class="btn">추가</button>
+    </body>
+</html>

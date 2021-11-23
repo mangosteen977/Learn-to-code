@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Javascript 7일차 (1) - 중급 (부모, 자식창 통신2) </title>
+        <!-- 자식창 : middle23.html -->
+        <script>
+            function pro(){
+                window.open("./middle23.html","","width = 600 height = 600")
+            };
+            function ea(n){
+                let p = document.getElementById("money").value;
+                p = p.replace(",","");
+                let total = Number(n)*Number(p);
+                document.getElementById("totalmoney").value = total.toLocaleString("Ko");
+                //.toLocaleString(); : ()안에 ("Ko"||"en"||"jp"||"eu") 혹은 ("UTF-8")을 넣음. ()을 비워도 되지만, 오류날 수 (O)
+                //JS에서 자동으로 금액에 , 콤마를 넣어준다. 단, 값이 숫자로 인식된 경우.
+            };
+        </script>
+    </head>
+    <body>
+        <input type="hidden" name="idx" id="idx"><!--상품 고유값 (상품번호)-->
+        <input type="text" name="product" id="product" placeholder="상품을 선택해주세요" readonly onclick="pro();">
+        <input type="text" name="money" id="money" placeholder="상품금액" readonly>
+        <select onchange="ea(this.value);"><!--갯수 클릭시 (금액*갯수)값 최종금액에 적용-->
+            <option value="1">1EA</option>
+            <option value="2">2EA</option>
+            <option value="3">3EA</option>
+        </select>
+        <input type="text" name="totalmoney" id="totalmoney" placeholder="최종금액" readonly>
+        <input type="button" value="결제하기">
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/middle22.html -->

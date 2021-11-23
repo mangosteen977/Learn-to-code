@@ -1,0 +1,62 @@
+<meta charset="UTF-8">
+<article class="adm_main">
+    <span>공지사항 게시글수정</span>
+    <ol class="admin_main_ul">
+        <li onclick="fontclass('1');"><img src="../image/ts01.gif" alt="../img/ts01.gif" title="보통"></li>
+        <li onclick="fontclass('2');"><img src="../image/ts02.gif" alt="../img/ts02.gif" title="크게"></li>
+        <li onclick="fontclass('3');"><img src="../image/ts03.gif" alt="../img/ts03.gif" title="더크게"></li>
+    </ol>
+</article>
+<article class="write_notice">
+    <form name="frm_notice" name="frm_notice" method="POST" enctype="application/x-www-form-urlencoded">
+        <input type="hidden" name="notice_key" value="notice_modify">
+        <input type="hidden" name="notice_sidx" id="notice_sidx">
+        <table class="write_notice_tb" border="1" cellpadding="0" cellspacing="0">
+            <tbody>
+                <tr style="height: 50px;">
+                    <td style="width: 15%;">제목</td>
+                    <td style="width: 85%;">
+                        <input type="text" name="notice_subject" id="notice_m_title">
+                    </td>
+                </tr>
+                <tr style="height: 50px;">
+                    <td>아이디</td>
+                    <td>
+                        <input type="text" name="notice_id" value="<?php echo $aid?>" readonly>
+                    </td>
+                </tr>
+                <tr style="height: 50px;">
+                    <td>이름</td>
+                    <td>
+                        <input type="text" name="notice_name" value="<?php echo $aname?>" readonly>
+                    </td>
+                </tr>
+                <tr style="height: 50px;">
+                    <td>패스워드</td>
+                    <td>
+                        <input type="password" name="notice_pw"> ※최고 관리자의 경우 패스워드 없이 삭제가 가능합니다.
+                    </td>
+                </tr>
+                <tr style="height: 300px;">
+                    <td>내용</td>
+                    <td>
+                        <textarea name="notice_text" style="resize: none;"></textarea>
+                    </td>
+                </tr>
+                <tr style="height: 50px;">
+                    <td>공지출력 유/무</td>
+                    <td>
+                        <label><input type="radio" name="notice_hide" value="Y" checked>Y</label>
+                        <label><input type="radio" name="notice_hide" value="N">N</label>
+                        ※공지출력 N의 경우 쇼핑몰에 공지내용이 출력되지 않습니다.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <div class="write_notice_btns">
+        <input type="button" value="공지사항 수정" id="modify_write_notice">
+        <input type="button" value="공지사항 목록" id="write_notice_list">
+        <input type="hidden" id="add_write_notice">
+    </div>
+</article>

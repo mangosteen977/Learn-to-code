@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="Ko"> 
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jquery 2일차(3) - 중급 (JQ array 배열반복문 each & map) </title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(function(){
+                const $array = [
+                    {"name":"이시우","blood":"O형"},
+                    {"name":"김리후","blood":"B형"},
+                    {"name":"김은진","blood":"O형"},
+                    {"name":"이은미","blood":"O형"},
+                    {"name":"장남혁","blood":"AB형"},
+                    {"name":"정아름","blood":"A형"}
+                ]
+                // console.log($array[4]["blood"]);
+                //세부키만 있을경우는 둘 중 뭘 써도 상관 (X)
+                //기본키가 있을 경우는 다르다. == $.each
+                $.each($array,function($a,$b){
+                    // console.log($a)//0 1 2 3 4 5
+                    // console.log($b)//{"name":"이시우","blood":"O형"}
+                    //console.log(this["blood"])
+                });
+                $($array).each(function($a,$b){
+                    // console.log($a)//0 1 2 3 4 5
+                    // console.log($b)//{"name":"이시우","blood":"O형"}
+                    // console.log($b["name"])
+                    var $olli = "<li><ol class='olcss bg'><li>"+$b["name"]+"</li><li>"+$b["blood"]+"</li></ol></li>";
+                    $("#ulcss").append($olli);
+                });
+            });
+        </script>
+        <style>
+            *{box-sizing: border-box;}
+            ul,ol{list-style: none; margin: 0; padding: 0;}
+            .ulcss{width: 200px; height: auto;}
+            .ulcss>li{width: inherit; height: 30px;}
+            .olcss{width: inherit; height: inherit;}
+            .olcss>li{float: left; width: 50%; background-color: cornflowerblue;
+            height: inherit; line-height: 30px; text-align: center;}
+            .bg>li{background-color: lightblue;}
+        </style>
+    </head>
+    <body>
+        <ul class="ulcss" id="ulcss">
+            <li>
+                <ol class="olcss">
+                    <li>고객명</li>
+                    <li>혈액형</li>
+                </ol>
+            </li>
+            <!--
+            <li>
+                <ol class="olcss bg">
+                    <li>망고</li>
+                    <li>AB</li>
+                </ol>
+            </li>
+            -->
+        </ul>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/middle8.html -->

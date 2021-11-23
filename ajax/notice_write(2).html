@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Ajax (6일차) - 공지사항 글쓰기 (선생님코드) </title>
+<script src="./jquery.js"></script>
+<script>
+    $(function(){
+        $("#listbtn").click(()=>{
+            location.href="";
+        });
+       
+        $.fn.numload = function(){
+            $.ajax({
+            url:"notice_number.php",
+            cache:false,
+            type:"GET",
+            dataType:"JSON", 
+            success:function($number){
+                $.fn.numberview($number);
+            },
+            error:function(){
+                console.log("data error");
+            }
+            });
+        };
+        $.fn.numload();
+        let $snumber;  //보안코드 6자리 임시 저장공간
+        $.fn.numberview = function($number){
+            $snumber = $number;
+            $("#senumber").text($number);
+        }
+
+        $("#reload").click(function(){
+            $.fn.numload();
+        });
+
+        $("#okbtn").click(function(){
+            $.wcheck();
+        });
+        $.extend({  
+            //$.fn과는 다른 여러개의 확장함수를 가질때 사용합니다. bind비슷한 함수입니다/
+            wcheck:function(){
+                if($(".b").eq(0).val()==""){
+                    $(".b").eq(0).focus();
+                    alert("제목을 입력해 주세요");
+                }
+                else if($(".b").eq(1).val()==""){
+                    $(".b").eq(1).focus();
+                    alert("글쓴이를 입력해 주세요");
+                }
+                else if($(".b").eq(2).val()==""){
+                    $(".b").eq(2).focus();
+                    alert("패스워드를 입력해 주세요");
+                }
+                else if($(".b").eq(3).val()==""){
+                    $(".b").eq(3).focus();
+                    alert("내용을 입력해 주세요");
+                }
+                else if($(".b").eq(4).val()==""){
+                    $(".b").eq(4).focus();
+                    alert("보안코드를 입력해 주세요");
+                }
+                else{
+                    if($snumber==$(".b").eq(4).val()){
+                        f.action="";
+                        f.submit();
+                    }
+                    else{
+                        alert("정확한 6자리 보안코드를 입력하세요");
+                        $(".b").eq(4).focus();
+                        $(".b").eq(4).val("");
+                    }
+                }
+            }
+        });
+    });
+</script>
+</head>
+<body>
+<form name="f" id="f" method="POST" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="domain" value="">
+<table border="1">
+    <tbody>
+        <tr>
+            <td>제목</td>
+            <td><input type="text" id="notice_subject" class="b" name="notice_subject" maxlength="100">※ 최대 100자까지만 입력이 가능합니다.</td>
+        </tr>
+        <tr>
+            <td>글쓴이</td>
+            <td><input type="text" id="notice_writer" class="b" name="notice_writer"></td>
+        </tr>
+        <tr>
+            <td>패스워드</td>
+            <td><input type="password" id="notice_pass" class="b" name="notice_pass" maxlength="10">※ 패스워드는 최소 4자~ 최대 10까지 입니다.</td>
+        </tr>
+        <tr>
+            <td>내용</td>
+            <td>
+                <textarea id="notice_text" name="notice_text" class="b" cols="100" rows="20"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>보안코드</td>
+            <td>
+                <div id="senumber" style="border:1px solid black; width:100px; height:40px;"></div>
+                <input type="text" id="checknumber" class="b" maxlength="6" autocomplete="off">
+                <input type="button" value="새로고침" id="reload">
+            </td>
+        </tr>
+    </tbody>
+</table>
+<input type="button" value="등록완료" id="okbtn">
+<input type="button" value="목록" id="listbtn">
+</form>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> JS/JQ 초급 복습6 + backend; </title>
+        <script src="../jq/jquery.js"></script>
+        <script>
+            //jq
+            //응용문제1. JQ rejava6.php, POST전송. 2가지 선택
+            $(document).ready(function(){
+            //반복문 사용 ver.
+                /*$("#btn").click(function(){
+                    var $node = 0;
+                    var $count = 0;
+                    while($node<9){
+                        var $ck = $("#fav>label>input").eq($node).is(":checked");
+                        if($ck==true){ $count += 1; }
+                        $node++;
+                    }
+                    if($count != 2){
+                        alert("과목을 ☆2개☆ 선택해주세요");
+                    }
+                    else{
+                        $("#fav").attr("method","POST");
+                        $("#fav").attr("action","rejava6.php");
+                        $("#fav").submit();
+                    }
+                });*/
+            //반복문 없는 ver. 속도가 더 빠르다.
+                /*var $count = 0;
+                $("#fav>label>input").click(function(){
+                    var $ck = $(this).is(":checked");
+                    if($ck==true){ $count++; }
+                    else{ $count--; }
+                });
+                $("#btn").click(function(){
+                    if($count != 2){
+                        alert("과목을 ☆2개☆ 선택해주세요");
+                    }
+                    else{
+                        $("#fav").attr("method","POST");
+                        $("#fav").attr("action","rejava6.php");
+                        $("#fav").submit();
+                    }
+                });*/
+            });
+            //js
+            //어젠 되더니 오늘은 안되네...(?)모니..
+            //응용문제2. JS rejava6.php, POST전송. 2가지 선택
+            /*function favsub(){
+                var node = 0;
+                var count = 0;
+                while(node<9){
+                    var ck = document.getElementById("fav").childNodes[node].checked;
+                    if(ck==true){ count += 1; }
+                    node++;
+                }
+                if(count != 2){
+                    alert("과목을 ★2개★ 선택해주세요");
+                }
+                else{
+                    document.getElementById("fav").method="POST";
+                    document.getElementById("fav").action="rejava6.php";
+                    document.getElementById("fav").submit();
+                } 
+            };*/
+            //하다가안되서 stop한 내 답안;;^^
+            /*var count = 0;
+            function favsub(){
+                var node = 0;
+                while(node<9){
+                    var ck = document.getElementById("fav").childNodes[node].nodeName=="INPUT".checked;
+                    if(ck==true){ count ++; }
+                    else{count--;}
+                    node++;
+                }
+                if(count != 2){
+                    alert("과목을 ★2개★ 선택해주세요");
+                }
+                else{
+                    document.getElementById("fav").method="POST";
+                    document.getElementById("fav").action="rejava6.php";
+                    document.getElementById("fav").submit();
+                } 
+            };*/
+            //선생님ver. 답 JS로 만들기 반복문 쓰기.
+            function favsub(){
+                var a = 0;
+                var b = 0;
+                var c= document.querySelectorAll("#fav>label").length;
+    /*querySelectorAll("#idname/element").length : 모든 해당 객체의 갯수
+    querySelecto("#idname/element").length : 해당 객체의 갯수*/
+                while(b<c){
+                    var ck = document.getElementById("subject"+b).checked;
+                    if(ck==true){a++;}
+                    b++
+                }
+                if(a==2){
+                    document.getElementById("fav").submit();
+                }
+                else{alert("2개를 고르시오")}
+            };
+            //선생님ver. 답 JS로 만들기 반복문 없이.
+            var aa = 0;
+            function ddd(g){
+                var ck = document.getElementById("subject"+g).checked;
+                if(ck==true){aa++;}
+                else{aa--;}
+            };
+            function bbb(){
+                if(aa==2){
+                    document.getElementById("fav").method="POST";
+                    document.getElementById("fav").action="rejava6.php";
+                    document.getElementById("fav").submit();
+                }
+                else{alert("2개 고르시오");}
+            };
+
+        </script>
+    </head>
+    <body>
+        <!-- checkbox label로 묶기만 해도 텍스트까지 체크박스로 잡힘(?) -->
+        <!-- 응용문제1. JQ rejava6.php, POST전송. 2가지 선택 -->
+        <p>[좋아하는 과목을 2가지 선택하시오]</p>
+        <!-- <form id="fav" enctype="application/x-www-form-urlencoded">
+            <label><input type="checkbox" value="HTML" name="subject0">HTML<br></label>
+            <label><input type="checkbox" value="CSS" name="subject1">CSS<br></label>
+            <label><input type="checkbox" value="Javascript" name="subject2">Javascript<br></label>
+            <label><input type="checkbox" value="Jquery" name="subject3">Jquery<br></label>
+            <label><input type="checkbox" value="Ajax" name="subject4">Ajax<br></label>
+            <label><input type="checkbox" value="Vue" name="subject5">Vue<br></label>
+            <label><input type="checkbox" value="ES9" name="subject6">ES9<br></label>
+            <label><input type="checkbox" value="TS" name="subject7">TS<br></label>
+            <label><input type="checkbox" value="SCSS" name="subject8">SCSS<br></label>
+            <input type="button" value="참여하기" id="btn">
+        </form> -->
+
+        <!-- 응용문제2. JS rejava6.php, POST전송. 2가지 선택 -->
+        <!-- <form id="fav" name="fav" enctype="application/x-www-form-urlencoded">
+            <input type="checkbox" value="HTML" name="subject0">HTML<br>
+            <input type="checkbox" value="CSS" name="subject1">CSS<br>
+            <input type="checkbox" value="Javascript" name="subject2">Javascript<br>
+            <input type="checkbox" value="Jquery" name="subject3">Jquery<br>
+            <input type="checkbox" value="Ajax" name="subject4">Ajax<br>
+            <input type="checkbox" value="Vue" name="subject5">Vue<br>
+            <input type="checkbox" value="ES9" name="subject6">ES9<br>
+            <input type="checkbox" value="TS" name="subject7">TS<br>
+            <input type="checkbox" value="SCSS" name="subject8">SCSS<br>
+            <input type="button" value="참여하기" onclick="favsub();">
+        </form> -->
+
+        <!--선생님ver. JS로 만들기-반복문 -->
+        <!-- <form id="fav" name="fav" enctype="application/x-www-form-urlencoded">
+            <label><input type="checkbox" value="HTML" name="subject0" id="subject0">HTML<br></label>
+            <label><input type="checkbox" value="CSS" name="subject1" id="subject1">CSS<br></label>
+            <label><input type="checkbox" value="Javascript" name="subject2" id="subject2">Javascript<br></label>
+            <label><input type="checkbox" value="Jquery" name="subject3" id="subject3">Jquery<br></label>
+            <label><input type="checkbox" value="Ajax" name="subject4" id="subject4">Ajax<br></label>
+            <label><input type="checkbox" value="Vue" name="subject5" id="subject5">Vue<br></label>
+            <label><input type="checkbox" value="ES9" name="subject6" id="subject6">ES9<br></label>
+            <label><input type="checkbox" value="TS" name="subject7" id="subject7">TS<br></label>
+            <label><input type="checkbox" value="SCSS" name="subject8" id="subject8">SCSS<br></label>
+            <input type="button" value="참여하기" onclick="favsub();">
+        </form> -->
+        <!--선생님ver. JS로 만들기-반복문 없이 -->
+        <form id="fav" name="fav" enctype="application/x-www-form-urlencoded">
+            <label for="subject0"><input type="checkbox" onclick="ddd(0);" value="HTML" name="subject0" id="subject0">HTML<br></label>
+            <label for="subject1"><input type="checkbox" onclick="ddd(1);" value="CSS" name="subject1" id="subject1">CSS<br></label>
+            <label for="subject2"><input type="checkbox" onclick="ddd(2);" value="Javascript" name="subject2" id="subject2">Javascript<br></label>
+            <label for="subject3"><input type="checkbox" onclick="ddd(3);" value="Jquery" name="subject3" id="subject3">Jquery<br></label>
+            <label for="subject4"><input type="checkbox" onclick="ddd(4);" value="Ajax" name="subject4" id="subject4">Ajax<br></label>
+            <label for="subject5"><input type="checkbox" onclick="ddd(5);" value="Vue" name="subject5" id="subject5">Vue<br></label>
+            <label for="subject6"><input type="checkbox" onclick="ddd(6);" value="ES9" name="subject6" id="subject6">ES9<br></label>
+            <label for="subject7"><input type="checkbox" onclick="ddd(7);" value="TS" name="subject7" id="subject7">TS<br></label>
+            <label for="subject8"><input type="checkbox" onclick="ddd(8);" value="SCSS" name="subject8" id="subject8">SCSS<br></label>
+            <input type="button" value="참여하기" onclick="bbb();">
+        </form>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/rejava6.html -->

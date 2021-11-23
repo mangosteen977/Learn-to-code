@@ -1,0 +1,52 @@
+<?php
+    $data = date("YmdHis");
+?>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="./m_magree.css?v=<?=$data?>">
+    <title>한우사랑 모바일 간편회원가입</title>
+</head>
+
+<body>
+    <section class="section">
+        <form id="fm" name="fm">
+            <input type="hidden" name="agree1" id="agree1" value="N">
+            <input type="hidden" name="agree2" id="agree2" value="N">
+            <input type="hidden" name="agree3" id="agree3" value="N">
+
+            <p style="text-align: center;">MEMBERSHIP</p>
+            <div class="servicetext1">
+                <span>이용약관</span>
+                <div>text</div>
+                <div id="btn_div1">
+                    <div id="btn_1"></div>
+                </div>
+            </div>
+            <div class="servicetext1">
+                <span>이메일수신약관</span>
+                <div>text</div>
+                <div id="btn_div2">
+                    <div id="btn_2"></div>
+                </div>
+            </div>
+            <div class="servicetext1">
+                <span>sms수신약관</span>
+                <div>text</div>
+                <div id="btn_div3">
+                    <div id="btn_3"></div>
+                </div>
+            </div>
+            <input type="button" value="댓글등록" id="login_btn" class="btn">
+        </form>
+    </section>
+</body>
+<script type="module">
+    import { btnok } from "./m_magree.js?v=<?=$data?>";
+</script>
+
+</html>

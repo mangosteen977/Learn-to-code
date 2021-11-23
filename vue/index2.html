@@ -1,0 +1,46 @@
+<?php
+    $data = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 1일차 (2) vue bind(이벤트 발생) + value 사용법 </title>
+        <script src="../jq/jquery.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <style>
+            #a{width: 100px; height: 100px; border: 1px solid darkcyan;}
+            .aa{background-color: darkmagenta;}
+            .bb:hover{background-color: darkred;}
+        </style>
+    </head>
+    <body>
+        <!-- v-bind : attr과 비슷함. 속성값을 설정함. -->
+        <div id="a" v-bind:title="msg" v-bind:class="msgcss" v-bind:style="w">
+            {{mtext}}
+            <input v-bind:type="t" v-bind:placeholder="place" v-bind:value="texts" v-model="texts" v-bind:name="name">
+            <!-- v-model="" : value값을 지정함. v-bind:value=""와 동일하게 작동. 사용자 인풋 입력값을 실시간으로 반영할 때 사용함. -->
+            <input v-bind:type="btn1" v-model="btnname">
+        </div>
+    </body>
+    <script>
+        // vue => class title text style 등 뷰로 객체 속성 추가하기
+        let v = new Vue({
+            el:"#a",
+            data:{
+                msg: "타이틀 출력 연습",
+                msgcss:"aa bb",
+                mtext:"예이예이예",
+                w:"width:300px; height:300px; text-align:center; line-height:300px; color:white;",
+                name:"values",
+                t:"text",
+                place:"비밀번호를 입력하시오.",
+                texts:"비밀번호486",
+                btn1:"button",
+                btn2:"submit",
+                btnname:"전송"
+            }
+        });
+    </script>
+</html>

@@ -1,0 +1,254 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+/*font-family: 'Nanum Gothic', sans-serif;*/
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700;900&display=swap');
+/* font-family: 'Noto Sans KR', sans-serif; (100, 400, 700, 900) */
+@mixin base{
+    margin: 0;
+    padding: 0;
+    font-family: "돋움";
+}
+@mixin ulol{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+@mixin sections($width,$height,$bg){
+    width: $width;
+    height: $height;
+    background-color: $bg;
+}
+@mixin flexs($wrap,$justify,$align){
+    display: flex;
+    flex-wrap: $wrap;
+    justify-content: $justify;
+    align-content: $align;
+    align-items: $align;
+}
+@mixin font_sans($h,$c,$a,$w,$s){
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: $h;
+    color: $c;
+    text-align: $a;
+    font-weight: $w;
+    font-size: $s;
+}
+/*@mixin object($w,$h,$display,$position){
+    width: $w;
+    height: $h;
+    display: $display;
+    position: $position;
+}*/
+
+*{box-sizing: border-box}
+body{
+    @include base;
+    font-size: 12px;
+    position: relative;
+}
+label,span{display: inline-block;}
+ul,ol{list-style: none; margin: 0;padding: 0;}
+img{width: 100%; object-fit: cover;}
+.top_part{
+    @include sections(480px, auto, none);
+    margin: 0 auto;
+    &>.top{
+        @include sections(100%, 50px, none);
+        @include flexs(nowrap, space-between, center);
+        flex-direction: row;
+        &>span{
+            @include sections(50px, auto, none);
+            &:nth-of-type(2){
+                @include sections(200px, auto, none);
+            }
+        }
+    }
+    &>.menu{
+        @include sections(100%, auto, none);
+        @include flexs(wrap, center, center);
+        flex-direction: row;
+        &>span{
+            @include sections(33.33%, 50px, none);
+            @include flexs(nowrap, center, center);
+            flex-direction: row;
+            border: 1px solid #ccc;
+        }
+    }
+    &>.banner{
+        @include sections(480px, 480px, none);
+        &>.banner_img{
+            @include sections(1920px, 480px, none);
+            @include flexs(nowrap, center, center);
+            flex-direction: row;
+            &>span{
+                @include sections(480px, 480px, none);
+                &>img{height:480px;}
+            }
+        }
+    }
+}
+.middle_part1{
+    @include sections(480px, auto, yellow);
+    margin: 0 auto;
+    &>.items{
+        @include sections(100%, auto, none);
+        &>.items_box{
+            @include sections(100%, auto, none);
+            @include flexs(wrap, center, center);
+            flex-direction: row;
+            &>span{
+                @include sections(50%, 240px, none);
+                &:nth-of-type(5),&:nth-of-type(6){
+                    width: 100%; overflow: hidden;
+                }
+            }
+        }
+    }
+    &>.items2{
+        @include sections(100%, auto, none);
+        @include flexs(wrap, space-evenly, center);
+            flex-direction: column;
+        &>.tags{
+            @include sections(400px, auto, none);
+            @include flexs(wrap, space-between, center);
+            flex-direction: row;
+            &>span{
+                border: 1px solid black;
+                @include sections(100px, 50px, skyblue);
+            }
+        }
+        &>.imgs{
+            @include sections(400px, auto, skyblue);
+            @include flexs(wrap, space-evenly, center);
+            flex-direction: row;
+            padding: 10px;
+            &>span{
+                border: 1px solid black;
+                @include sections(30%, 150px, skyblue);
+            }
+            &:nth-of-type(2){display: none;}
+        }
+    }
+}
+.last_part{
+    @include sections(480px, 300px, red);
+    margin: 0 auto;
+}
+
+
+/*
+position: relative;
+        &>.items2_title{
+            @include sections(100%, 80px, none);
+            @include flexs(wrap, center, center);
+            flex-direction: column;
+                &>span{
+                    @include sections(50%, 50%, none);
+                    @include flexs(wrap, center, center);
+                    flex-direction: row;
+                    &:nth-of-type(1){border-bottom: 1px solid #ccc;}
+                }
+        }
+        &>.items2_box{
+            @include sections(400px, 500px, none);
+            margin: 0 auto;
+            position: relative;
+            &>.file_items{
+                @include sections(100%, 150px, white);
+                @include flexs(nowrap, space-evenly, center);
+                flex-direction: row;
+                position: absolute;
+                z-index: 5;
+                top: 50px;
+                border: 1px solid #ccc;
+                &>span{
+                    @include sections(100px, 120px, white);
+                    position: relative;
+                    &>label{
+                        width: 100%;
+                        height: 20px;
+                        text-align: center;
+                        line-height: 20px;
+                    }
+                }
+                &>.file_tag{
+                    @include sections(30%, 40px, white);
+                    border: 1px solid #ccc;
+                    border-bottom: 1px solid white;
+                    display: inline-block;
+                    position: absolute;
+                    z-index: 10;
+                    left: 0;
+                    margin-left: -1px;
+                    bottom: 100%;
+                    text-align: center;
+                    line-height: 40px;
+                    &:nth-of-type(2){left: 40px;}
+                }
+            }
+        }
+*/
+/*
+.items2_box{
+            @include sections(480px,200px,none);
+            display:block;
+            position:relative;
+            &>.sidebannerdivdog, &>.item_cat{
+                @include sections(400px,200px,none);
+                display:block;
+                position:relative;
+                margin: 0 auto;
+                & >span:nth-of-type(1){
+                    @include sections(100px,50px,none);
+                    position:relative;
+                    box-sizing: border-box;
+                    background-color: white;
+                    bottom: -1px;
+                    z-index: 60;
+                    text-align: center;
+                    line-height: 50px;
+                    border-radius: 5px 5px 0 0;
+                }
+                & >span:nth-of-type(2){
+                    @include sections(400px,180px,none);
+                    display:flex;
+                    position:relative;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    justify-content:space-around;
+                    align-items:center;
+                    box-sizing: border-box;
+                    background-color: white;
+                    & >span{
+                        @include sections(100px,120px,pink);
+                        position:relative;
+                        & >span:nth-of-type(1){
+                            height: 100px;
+                            position:relative;
+                        }
+                        & >span:nth-of-type(2){
+                            height: 30px;
+                            position:relative;
+                        }
+                    }
+                    
+                }
+            }
+            & > .item_cat{
+                top: -200px;
+                & >span:nth-of-type(1){
+                    @include object(100px,50px,inline-block,relative);
+                    box-sizing: border-box;
+                    background-color: #ccc;
+                    bottom: -1px;
+                    z-index: 10;
+                    float: right;
+                    text-align: center;
+                    line-height: 50px;
+                    border-radius: 5px 5px 0 0;
+                }
+                
+            }
+        }
+            
+*/

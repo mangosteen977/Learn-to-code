@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>Javascript 4일차(5) - display (응용) </title>
+        <script>
+        //하드코딩 ver. 
+            function cell(){ 
+                var t1 = document.getElementById("tel0").value;
+                var t2 = document.getElementById("tel1").value;
+                var t3 = document.getElementById("tel2").value;
+                var t4 = document.getElementById("tel3").value;
+                
+                if(t1==""){
+                    alert("통신사를 선택해주세요.");                      
+                    }
+                else if(t2=="" || t3=="" || t4==""){
+                    alert("휴대폰 번호를 정확하게 입력하세요.");                          
+                    }
+                else{
+                    alert("인증번호가 발송되었습니다.");
+                    document.getElementById("ff").style.display="block";
+                    //js에서 style을 조정 가능하다.
+                    //단, style 조정 시 style명령어 사용 후 css 속성값을 입력,
+                    // 속성값 뒤에 css 적용 코드 입력 ""
+                    }
+                /*
+                var a;
+                for(a=0;a<4;a++){
+                    // var s = f.tel[a].value;
+                    var s = document.getElementById("tel"+a).value;
+                    if(a==1 && s==""){
+                        alert("통신사를 선택해주세요.");
+                    }
+                    else if(a>0 && s==""){
+                        alert("휴대폰 번호를 정확하게 입력하세요.");
+                        break;
+                    }
+                }
+                */
+                
+                /*
+                if(f.tel[0]==""){
+                    alert("통신사를 선택해주세요.");                      
+                    }
+                else if(f.tel[1]=="" || f.tel[2]=="" || f.tel[3]==""){
+                    alert("휴대폰 번호를 정확하게 입력하세요.");                          
+                    }
+                */                
+            }
+            function sc(){
+                if(ff.scn.value==""){
+                    alert("인증번호를 입력해 주세요.");
+                    return false;
+                }
+                else{
+                    alert("인증번호가 확인되었습니다.");
+                    return;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <select id="tel0" name="tel0">
+            <option value="">통신사 선택</option>
+            <option value="SKT">SKT</option>
+            <option value="LGT">LGT</option>
+            <option value="KT">KT</option>
+            <option value="알뜰폰">알뜰폰</option>
+        </select>
+        <input type="text" maxlength="3" id="tel1" name="tel1">-
+        <input type="text" maxlength="4" id="tel2" name="tel2">-
+        <input type="text" maxlength="4" id="tel3" name="tel3">
+        <input type="button" value="인증번호 발송" onclick="cell();">
+        <br><br>
+        <form name="ff" id="ff" onsubmit="return sc();" style="display: none;">
+            <input type="text" maxlength="6" id="scn" name="scn">
+            <input type="submit" value="인증번호 확인">
+        </form>
+    </body>
+</html>
+
+<!-- http://mangsteen977.dothome.co.kr/js/index24.html -->

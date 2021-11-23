@@ -1,0 +1,93 @@
+<?php
+    $v = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 7일차 (1) vue + JS + JQ + ajax </title>
+        <script src="../jq/jquery.js"></script>
+        <script src="http://cdn.jsdelivr.net/npm/vue"></script><!-- vue 버전 1.6.4 ???????? -->
+        <style>
+            .ulcss{
+                width: 300px;
+                height: auto;
+                border: 1px solid black;
+                display: none;
+            }
+            .ulcss>li{
+                width: 100%;
+                height: 30px;
+                line-height: 30px;
+            }
+        </style>
+        <script>
+            let list;
+            function handel(){
+                list = [
+                    {seq:"0",name:"html",level:"1단계"},
+                    {seq:"1",name:"css",level:"2단계"},
+                    {seq:"2",name:"Javascript",level:"4단계"},
+                ]
+            }
+            let $aaa;
+            $(function(){
+                //$.fn확장함수 외의 변수로 사용하는 확장함수는
+                //vue에서 호출이 어렵다.
+                //$.fn 확장함수 > 변수로 묶은 함수 는 가능하다.
+                $.fn.abc = function(e){//vue에서 호출해 사용하는 확장함수
+                    if(e=="slide"){//e값에서 호출시 어떤 효과를 쓸 지 정함.
+                        $("#jq_ul").slideToggle(300);
+                    }
+                    else if(e=="fade"){
+                        $("#jq_ul").fadeToggle(300);
+
+                    }
+                }
+            })
+        </script>
+    </head>
+    <body>
+        <section id="box">
+            {{abc}}
+            <input type="button" value="클릭" v-on:click="ani">
+            <ul class="ulcss" id="jq_ul">
+                <!-- v-bind:abc == :abc 줄여서 쓸 수 있다. -->
+                <rs :seq1="sb.seq" :name="sb.name" :level="sb.level" v-for="sb in arrays"></rs>
+            </ul>
+        </section>
+    </body>
+    <script>
+        Vue.component("rs",{
+            template:"<li>{{seq1}}:{{name}}-{{level}}</li>",
+            props:["seq1","name","level"]
+            //props 여러 개 사용 가능. v-bind 필요함.
+            //=> v-bind:aaa || :aaa 속성 이름 가져와서 템플릿에 출력.
+        })
+        let vues = new Vue({
+            el:"#box",
+            data:{
+                arrays:""
+            },
+            methods:{
+                ani:function(){
+                    $.fn.abc("slide");
+                    //여기서 jq 함수를 호출할 때 값을 넣어
+                    //fadetoggle을 쓸 지, slidetoggle을 쓸 지 정함
+                    //vue는 애니메이션이 어려워, JQ로 확장함수를 사용한다.
+                }
+            },
+            components:{
+
+            },
+            computed:{
+                abc:function(){
+                    handel();
+                    this.arrays=list;
+                }
+            }
+        })
+    </script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/vue/index37.html -->

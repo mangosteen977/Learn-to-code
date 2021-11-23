@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+    <title> Vue 다시 하기 3 - v- 문법 맛보기 </title>
+    <!-- 상용 vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <!-- 개발 vue -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <!-- vue router 뷰 라우터 : 뷰싱글페이지 만들 때-->
+    <!-- <script src="http://unpkg.com/vue-router/dist/vue-router.js"></script> -->
+    <!-- lodash js src -->
+    <!-- <Script src="http://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></Script> -->
+</head>
+
+<body>
+    <div id="example">
+        <span style="border:1px solid black">{{msg}}</span>
+        <!-- v-once : 값이 동적으로 바뀌지 않게 함. -->
+        <span v-once style="border:1px solid black">다시는 변경하지 않습니다: {{ msg }}</span>
+        <input type="text" v-model="msg">
+        <button v-bind:disabled="isButtonDisabled" v-on:click="msg=123">Button</button>
+        <button v-bind:disabled="dbtn" v-on:click="msg=234">Button</button>
+
+        <!-- {{Mustaches}} 중괄호 내에서 JS문법 사용이 가능하다. -->
+        {{ 3 + 1 }}
+        {{ message.split('').reverse().join('') }}
+        <!-- {{ ok ? 'YES' : 'NO' }} -->
+
+        <div v-bind:title="'list-' + msg" style="width: 50px; height: 50px; background-color: red;"></div>
+
+        <p v-if="seen">이제 나를 볼 수 있어요</p>
+        <!-- <a v-on:[eventName]="doSomething"> ... </a> -->
+
+
+        <p>원본 메시지: "{{ message }}"</p>
+        <p>역순으로 표시한 메시지: "{{ reversedMessage }}"</p>
+
+
+        <p>지금 시간: "{{ now_date() }}"</p>
+        <p>로딩 시간: "{{ load_date }}"</p>
+
+    </div>
+
+    <div id="demo">{{ fullName }}</div>
+    <div id="demo2">{{ fullName2 }}</div>
+
+</body>
+<script>
+    let message = "abcdefg";
+    let example = new Vue({
+        el: "#example",
+        data: {
+            msg: '기본값',
+            isButtonDisabled: '',
+            dbtn: '',
+            // disabled: null, undefined, false 일 때 disabled 속성이 해제 됨.,
+            seen: true,
+            // eventName: "focus",
+            message: "hello",
+            msgs: "입니다."
+        },
+        methods: {
+            doSomething() {
+                console.log("d")
+            },
+            now_date() {
+                return new Date() + this.msgs;
+            }
+        },
+        computed: {
+            // example.reversedMessage속성에 대한 getter 함수
+            reversedMessage() {
+                return this.message.split('').reverse().join('');
+                // example.Message값이 바뀔 때 마다 동적으로 반응한다.
+            },
+            load_date() {
+                return new Date() + this.msgs;
+            }
+        }
+    })
+    var vm = new Vue({
+        el: '#demo',
+        data: {
+            firstName: 'Foo',
+            lastName: 'Bar',
+            // fullName: 'Foo Bar'
+        },
+        watch: {
+            // watch 속성은 감시할 데이터를 지정하고
+            //그 데이터가 바뀌면 이런 함수를 실행하라는 방식으로
+            //소프트웨어 공학에서 이야기하는 ‘명령형 프로그래밍’ 방식
+            firstName: function (val) {
+                this.fullName = val + ' ' + this.lastName
+            },
+            lastName: function (val) {
+                this.fullName = this.firstName + ' ' + val
+            }
+        },
+        computed: {
+            fullName: {
+                // getter
+                get: function () {
+                    return this.firstName + ' ' + this.lastName
+                },
+                // setter
+                set: function (newValue) {
+                    var names = newValue.split(' ')
+                    this.firstName = names[0]
+                    this.lastName = names[names.length - 1]
+                }
+            }
+        }
+    });
+    var vm2 = new Vue({
+        el: '#demo2',
+        data: {
+            firstName: 'Foo',
+            lastName: 'Bar'
+        },
+        computed: {
+            //computed 속성은 계산해야 하는 목표 데이터를 정의하는 방식으로
+            //소프트웨어 공학에서 이야기하는 ‘선언형 프로그래밍’ 방식
+            fullName2: function () {
+                return this.firstName + ' ' + this.lastName
+            }
+        }
+    })
+</script>
+
+</html>
+<!-- http://mangsteen977.dothome.co.kr/vue/vue_page.html -->

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>JavaScript 2일차(4) -반복문5 (종합응용) </title>
+        <script>
+            /* 응용문제7. 구구단3~5단 for/while 함께 쓰기 */
+            
+            var b;
+            var c;
+            //밖 while, 안 for
+
+            /*var a=3;
+            while(a<=5){
+                for(b=1; b<10; b++){
+                    c = a * b;
+                    document.write(a+"X"+b+"="+c+"<br>");
+                }
+                a++;
+            }*/
+
+            //안 while, 밖 for
+
+            /*for(b=3; b<6;b++){
+                var g=1;
+                while(g<10){
+                    c = g * b;
+                    document.write(b+"X"+g+"="+c+"<br>");
+                    g++;
+                }
+
+            }*/
+            /* 응용문제8. do~while, for 결합해 작성하시오.
+            결과값 :
+            345678
+            456789
+            5678910 */
+            //내 답안
+            var q =3;
+            var w;
+            var e;
+            do{
+                for(w=0; w<=5; w++){
+                    e = q+w;
+                    document.write(e+",");
+                }
+                q++;
+                document.write("<br>");
+            }while(q<=5)
+            
+            //선생님 답안
+            var j=3;
+            var t; //for문 변수
+            var r; //계산용 변수
+            do{
+                for(t=0; t<=5; t++){
+                    r = t+j;
+                    document.write(r);
+                }
+                document.write("<br>");
+                j++;
+            }while(j<6)
+        </script>
+    </head>
+    <body>
+        <!-- http://mangsteen977.dothome.co.kr/js/index11.html -->
+    </body>
+</html>

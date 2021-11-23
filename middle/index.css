@@ -1,0 +1,1153 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700;900&display=swap");
+/* font-family: 'Noto Sans KR', sans-serif; (100, 400, 700, 900) */
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 12px;
+  position: relative;
+}
+
+label,
+span {
+  display: block;
+}
+
+img {
+  width: 100%;
+  height: inherit;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.top {
+  margin: 0 auto;
+  width: 99.99%;
+  min-width: 360px;
+  max-width: 480px;
+  height: auto;
+  background-color: none;
+  margin: 0 auto;
+}
+
+.top > .top1 {
+  width: 100%;
+  height: 50px;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding: 5px;
+}
+
+.top > .top1 > div {
+  width: 30px;
+  height: 30px;
+  background-color: none;
+}
+
+.top > .top1 > div:nth-of-type(2) {
+  width: 120px;
+  height: auto;
+  background-color: none;
+}
+
+.top > .top2 {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.top > .top2 > div {
+  width: 33.33%;
+  height: 40px;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 40px;
+  color: black;
+  text-align: center;
+  font-weight: "";
+  font-size: 14px;
+}
+
+.banners {
+  margin: 0 auto;
+  width: 99.99%;
+  min-width: 360px;
+  max-width: 480px;
+  height: 350px;
+  background-color: none;
+  margin: 0 auto;
+}
+
+.banners > .ba_img_box {
+  width: 100%;
+  height: 350px;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  position: relative;
+}
+
+.banners > .ba_img_box > span {
+  width: 100%;
+  height: 350px;
+  background-color: none;
+  position: absolute;
+  display: none;
+}
+
+.banners > .ba_img_box > span:nth-of-type(1) {
+  display: block;
+}
+
+.img_box1 {
+  margin: 0 auto;
+  width: 99.99%;
+  min-width: 360px;
+  max-width: 480px;
+  height: auto;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: 0 auto;
+}
+
+.img_box1 > div {
+  width: 50%;
+  height: 180px;
+  background-color: none;
+}
+
+.img_box1 > div:nth-of-type(5), .img_box1 > div:nth-of-type(6) {
+  width: 100%;
+}
+
+.img_box2 {
+  margin: 0 auto;
+  width: 99.99%;
+  min-width: 360px;
+  max-width: 480px;
+  height: auto;
+  background-color: none;
+  margin: 0 auto;
+}
+
+.img_box2 > .title {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.img_box2 > .title > label {
+  width: 200px;
+  height: 40px;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 40px;
+  color: black;
+  text-align: center;
+  font-weight: "";
+  font-size: 18px;
+}
+
+.img_box2 > .title > label:nth-of-type(2) {
+  border-top: 1px solid #ccc;
+  font-size: 14px;
+  word-spacing: -2.5px;
+}
+
+.img_box2 > .pets {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.img_box2 > .pets > .tags {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.img_box2 > .pets > .tags > span {
+  border: 1px solid black;
+  position: relative;
+  top: 1px;
+  width: 140px;
+  height: 50px;
+  background-color: white;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 50px;
+  color: black;
+  text-align: center;
+  font-weight: "";
+  font-size: 14px;
+}
+
+.img_box2 > .pets > .tags > span:nth-of-type(1) {
+  border-bottom: 0px;
+}
+
+.img_box2 > .pets > .imgs_file {
+  margin: 0 auto;
+  width: 99.99%;
+  min-width: 360px;
+  max-width: 480px;
+  height: auto;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  border: 1px solid black;
+  display: none;
+  padding: 10px 0;
+}
+
+.img_box2 > .pets > .imgs_file > span {
+  width: 33%;
+  max-width: 130px;
+  max-height: 130px;
+}
+
+.img_box2 > .pets > .imgs_file > span > label {
+  width: 100%;
+  height: 117px;
+  background-color: none;
+}
+
+.img_box2 > .pets > .imgs_file > span > label:nth-of-type(2) {
+  height: 13px;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 13px;
+  color: black;
+  text-align: center;
+  font-weight: "";
+  font-size: 14px;
+}
+
+.img_box2 > .pets > .imgs_file:nth-of-type(2) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.p_box {
+  margin: 0 auto;
+  width: 99.99%;
+  min-width: 360px;
+  max-width: 480px;
+  height: auto;
+  background-color: none;
+  margin: 0 auto;
+}
+
+.p_box > .p_title {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 20px;
+}
+
+.p_box > .p_title > label {
+  width: 200px;
+  height: 40px;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 40px;
+  color: black;
+  text-align: center;
+  font-weight: "";
+  font-size: 18px;
+}
+
+.p_box > .p_title > label:nth-of-type(2) {
+  border-top: 1px solid #ccc;
+  font-size: 14px;
+  word-spacing: -2.5px;
+}
+
+.p_box > .p_img {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.p_box > .p_img > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -ms-flex-line-pack: top;
+      align-content: top;
+  -webkit-box-align: top;
+      -ms-flex-align: top;
+          align-items: top;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  background-color: #eceaea;
+  padding: 7px;
+  margin-top: 20px;
+}
+
+.p_box > .p_img > div > span:nth-of-type(1) {
+  width: 99.99%;
+  min-width: 120px;
+  min-height: 120px;
+  max-width: 150px;
+  max-height: 150px;
+  background-color: none;
+}
+
+.p_box > .p_img > div > span:nth-of-type(2) {
+  min-width: 240px;
+  max-width: 330px;
+  height: auto;
+}
+
+.p_box > .p_img > div > span:nth-of-type(2) > label {
+  padding-left: 10px;
+}
+
+.p_box > .p_img > div > span:nth-of-type(2) > label:nth-of-type(1) {
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 30px;
+  color: black;
+  text-align: left;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.p_box > .p_img > div > span:nth-of-type(2) > label:nth-of-type(2) {
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 30px;
+  color: black;
+  text-align: left;
+  font-weight: "";
+  font-size: 11px;
+}
+
+.p_box > .p_img > div > span:nth-of-type(2) > label:nth-of-type(3) {
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 30px;
+  color: black;
+  text-align: left;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.p_box > .leftright {
+  width: 100%;
+  height: 50px;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding: 0 5px 0 5px;
+}
+
+.p_box > .leftright > label {
+  width: 90px;
+  height: 40px;
+  background-color: #e6e6e6;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 40px;
+  color: gray;
+  text-align: center;
+  font-weight: "";
+  font-size: 14px;
+  border-radius: 15px;
+}
+
+.bottom {
+  margin: 0 auto;
+  width: 99.99%;
+  min-width: 360px;
+  max-width: 480px;
+  height: auto;
+  background-color: none;
+  margin: 0 auto;
+}
+
+.bottom > .intro {
+  width: 100%;
+  height: 150px;
+  background-color: white;
+  margin-bottom: 20px;
+}
+
+.bottom > .intro > img {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.bottom > .icons {
+  width: 100%;
+  height: 50px;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-bottom: 20px;
+}
+
+.bottom > .icons > div {
+  width: 50px;
+  height: 50px;
+  background-color: none;
+}
+
+.bottom > .review {
+  width: 100%;
+  height: 50px;
+  background-color: #e6e6e6;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding: 5px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bottom > .review > div:nth-of-type(1) {
+  width: auto;
+  height: 40px;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 40px;
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.bottom > .review > div:nth-of-type(2) {
+  width: 80%;
+  height: 40px;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 40px;
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  position: relative;
+  top: 0px;
+}
+
+.bottom > .review > div:nth-of-type(2) > span {
+  width: 100%;
+  height: 40px;
+  background-color: none;
+}
+
+.bottom > .review > div:nth-of-type(3) {
+  width: 45px;
+  height: 20px;
+  background-color: #7f7f7f;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 20px;
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 15px;
+}
+
+.bottom > .bottom_menu {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-bottom: 20px;
+}
+
+.bottom > .bottom_menu > div {
+  width: 33.33%;
+  height: 40px;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 40px;
+  color: black;
+  text-align: center;
+  font-weight: "";
+  font-size: 14px;
+  border: 1px solid #ccc;
+}
+
+.copy {
+  margin: 0 auto;
+  width: 99.99%;
+  min-width: 360px;
+  max-width: 480px;
+  height: 300px;
+  background-color: none;
+  margin: 0 auto;
+}
+
+.copy > .minis {
+  width: 100%;
+  height: 30px;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 30px;
+  color: black;
+  text-align: center;
+  font-weight: "";
+  font-size: 14px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-bottom: 20px;
+}
+
+.copy > .minis > div::before {
+  content: " | ";
+}
+
+.copy > .minis > div:nth-of-type(1)::before {
+  content: "";
+}
+
+.copy > .logo2 {
+  width: 100%;
+  height: 30px;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-bottom: 20px;
+}
+
+.copy > .logo2 > div {
+  width: auto;
+  height: 30px;
+  background-color: none;
+}
+
+.copy > .logo2 > div > img {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.copy > .copyright {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.copy > .copyright > label {
+  width: 100%;
+  height: 20px;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 20px;
+  color: black;
+  text-align: center;
+  font-weight: "";
+  font-size: 12px;
+}
+
+.copy > .copyright > label:nth-of-type(1), .copy > .copyright > label:nth-of-type(4) {
+  margin-bottom: 10px;
+}
+
+.search {
+  margin: 0 auto;
+  width: 99.99%;
+  min-width: 360px;
+  max-width: 480px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  position: fixed;
+  top: 130px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  display: none;
+}
+
+.search > span {
+  width: 80%;
+  height: 30px;
+  background-color: none;
+  background-color: white;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.search > span > img {
+  width: 50px;
+  height: 30px;
+  background-color: none;
+  background-color: #ccc;
+  border-radius: 0 5px 5px 0;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.search > span > input {
+  width: 80%;
+  border: none;
+  background-color: white;
+}
+
+.pop_menu {
+  margin: 0 auto;
+  width: 99.99%;
+  min-width: 360px;
+  max-width: 480px;
+  height: 3302px;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 50px;
+  left: -100%;
+  z-index: 50;
+}
+
+.pop_menu > .menus {
+  width: 90%;
+  height: 630px;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  padding: 15px;
+}
+
+.pop_menu > .menus > .join {
+  width: 100%;
+  height: 30px;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-bottom: 20px;
+}
+
+.pop_menu > .menus > .join > span {
+  width: 100px;
+  height: 30px;
+  background-color: black;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 30px;
+  color: white;
+  text-align: center;
+  font-weight: "";
+  font-size: 14px;
+}
+
+.pop_menu > .menus > .pop_icons {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-bottom: 20px;
+}
+
+.pop_menu > .menus > .pop_icons > span {
+  width: 60px;
+  height: 60px;
+  background-color: none;
+  border: 1px solid black;
+}
+
+.pop_menu > .menus > .pop_icons > span > label {
+  width: 60px;
+  height: 30px;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 30px;
+  color: black;
+  text-align: center;
+  font-weight: "";
+  font-size: 14px;
+}
+
+.pop_menu > .menus > .pop_icons > span > label > img {
+  width: 20px;
+  height: 20px;
+  background-color: none;
+}
+
+.pop_menu > .menus > .qna {
+  width: 100%;
+  height: 155px;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 30px;
+  color: black;
+  text-align: left;
+  font-weight: "";
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.pop_menu > .menus > .qna > .q_title {
+  width: auto;
+  height: 10%;
+  padding: 0 15px 0 15px;
+}
+
+.pop_menu > .menus > .qna > ul {
+  width: 100%;
+  height: 90%;
+  background-color: none;
+  margin: 5px 0 5px 0;
+  padding: 0 0 0 20px;
+}
+
+.pop_menu > .menus > .qna > ul > li {
+  width: 100%;
+  height: 20%;
+  background-color: none;
+}
+
+.pop_menu > .menus > .qna > ul > li > span {
+  width: 50%;
+  display: inline-block;
+}
+
+.pop_menu > .menus > .qna > ul > li > span:nth-of-type(2) {
+  text-align: right;
+}
+
+.pop_menu > .menus > .account {
+  width: 100%;
+  height: 60px;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 30px;
+  color: black;
+  text-align: left;
+  font-weight: "";
+  font-size: 16px;
+  border: 1px solid black;
+  padding-left: 5px;
+  margin-bottom: 20px;
+}
+
+.pop_menu > .menus > .cs_center {
+  width: 100%;
+  height: 190px;
+  background-color: none;
+  padding: 5px;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 25px;
+  color: black;
+  text-align: left;
+  font-weight: "";
+  font-size: 13px;
+  border: 1px solid black;
+}
+
+.pop_menu > .menus > .cs_center > span:nth-of-type(1) {
+  font-size: 15px;
+}
+
+.pop_menu > .menus > .cs_center > span:nth-of-type(2) {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.pop_menu > .menus > .cs_center > a {
+  text-decoration: none;
+  color: black;
+}
+
+.pop_menu > .menus > .cs_center > a > span {
+  width: 200px;
+  height: 40px;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  border: 1px solid black;
+  font-size: 14px;
+  margin: 0 auto;
+}
+
+.pop_menu > .menus > .cs_center > a > span > img {
+  width: 20px;
+  height: 20px;
+  background-color: none;
+}
+/*# sourceMappingURL=index.css.map */

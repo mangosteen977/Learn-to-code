@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jquery 2일차(6) - 중급 ( 통신배열 front-front ) </title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(function(){
+                $("#btn").click(function(){
+                    var $a = abc();
+                    //console.log($a);
+                });
+                $.fn.abc = function(){
+
+                };
+
+                /*자바스크립트 함수가 jq안에 있으면 js->jq값 넘기기 가능.
+                단, jq함수밖으로 js가 나가면 넘길 수 없다.*/
+                /*function bbb(){
+                    var array = ["홍길동","25세"];
+                    $.fn.abc(array);
+                };
+                bbb();*/
+
+                $("#btn2").click(function(){
+                    var $aa = 100;
+                    var $r = ccc($aa);
+                    console.log($r) // 300
+                });
+            });
+
+            //기본 함수를 이용해 jQ와 값교환
+            /*function abc(){
+                var array = ["홍길동","25세"];
+                return array;
+            };*/
+
+            function ccc(data){
+                var h = 3*data; 
+                return h;
+            };
+           
+        </script>
+    </head>
+    <body>
+        <input type="button" value="호출" id="btn">
+        <input type="button" value="JQ>JS>JQ" id="btn2">
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/middle11.html -->

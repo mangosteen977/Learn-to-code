@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+    <title>Jquery 문제3</title>
+    <script src="../jq/jquery.js"></script>
+        <script>
+            $(document).ready(function(){
+               $(".cate").change(function($a){
+                    if($a!=""){$(".brand").css("display","block");}
+               });
+               $(".brand").change(function($b){
+                    if($b!=""){$(".choice").css("display","block");}
+               });
+            });
+        </script>
+    <style>
+   .gogogo select {
+	width:120px;
+	padding:5px;
+    float:left;
+    }
+    .brand { display: none; }
+    .choice { display: none; }
+    </style>
+</head>
+<!--
+    문제3.
+    카테고리를 무조건 선택해야 브랜드가 나옵니다.
+    브랜드 선택 후 혜택이 나오게 됩니다. 순차적으로 각 파트가 나오도록 제작하십시오.
+-->
+<body>
+<div class="gogogo">
+	<select class="cate">
+		<option value="">- 카테고리 -</option>
+        <option value="MicroSD메모리">MicroSD메모리</option>
+        <option value="SD메모리">SD메모리</option>
+        <option value="CF메모리">CF메모리</option>
+        <option value="메모리스틱">메모리스틱</option>
+        <option value="XQD메모리">XQD메모리</option>
+	</select>
+	<select class="brand">
+		<option value="">- 브랜드 -</option>
+        <option value="SAN디스크">SAN디스크</option>
+        <option value="삼성전자">삼성전자</option>
+        <option value="트랜센드">트랜센드</option>
+        <option value="소닉">소닉</option>
+        <option value="랙사">랙사</option>
+        <option value="올바른전자">올바른전자</option>
+        <option value="도시바">도시바</option>
+        <option value="HP">HP</option>
+	</select>
+	<select class="choice">
+		<option value="">- 혜택 -</option>
+        <option value="무료배송">무료배송</option>
+        <option value="카드할인">카드할인</option>
+        <option value="쿠폰">쿠폰</option>
+        <option value="적립">적립</option>
+	</select>
+</div>
+</body>
+</html>

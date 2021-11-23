@@ -1,0 +1,148 @@
+@charset "UTF-8";
+.menucss{
+    width: 1200px;
+    height: 150px;
+    margin: 0 auto;
+    padding-top: 15px;
+    box-sizing: border-box;
+}
+.logo{
+    width: 130px;
+    height: 30px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+.search{
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    box-sizing: border-box;
+    margin: 15px 0 20px 0;
+}
+.text_search{
+    width: 600px;
+    height: 30px;
+    border: 1px solid navy;
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    text-indent: 5px;
+}
+
+.btn_search{
+    width: 100px;
+    height: 30px;
+    box-sizing: border-box;
+    background-color: navy;
+    color: white;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+}
+.mainmenu{
+    width: 1200px;
+    height: 40px;
+    background-color: skyblue;
+    position: relative;
+}
+.mainmenu > li{
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    float: left;
+    color: navy;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    text-align: center;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.mainmenu > li:hover{
+    background-color: steelblue;
+    color: white;
+}
+.mainmenu > li:hover .somenu{
+   display: block;
+}
+/* 소메뉴 : 카테고리-소메뉴 */
+.somenu{
+    display: none;
+    width: 120px;
+    height: auto;
+    background-color:lightsteelblue;
+    color:whitesmoke;
+    position: absolute;
+    z-index: 5;
+}
+.somenu > li{
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+}
+/*선생님 답*/
+/* 
+.menucss{
+    width: 1200px;
+    height: 150px;
+    margin: 0 auto;
+}
+.menucss > label{cursor : pointer;}
+.menu_layout:nth-of-type(1){
+    width: 130px;
+    height: 30px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+.menu_layout:nth-of-type(2){
+    width: 700px;
+    height: 30px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+.menu_layout:nth-of-type(3){
+    width: 100%;
+    height: 40px;
+    background-color: skyblue;
+}
+
+.menu_layout:nth-child(2) > ol{width: 100%; height: 30px;}
+.menu_layout:nth-child(2) > ol > li {height: 30px; float: left;} float: left;쓸 때는 height 필수임
+.search{
+    box-sizing: border-box;
+    width: 600px;
+    height: 30px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    text-indent: 5px;
+}
+.search_btn{
+    box-sizing: border-box;
+    width: 100px;
+    height: 30px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    background-color: darkblue;
+    color: white;
+    border: 1px solid darkblue;
+    cursor: pointer;
+}
+.menu_layout:nth-of-type(3) > ul {
+    width: 100%;
+    height: 40px;
+}
+.menu_layout:nth-of-type(3) > ul > li{
+    width:120px;
+    height: 40px;
+    float: left;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    background-color: darkblue;
+    text-align: center;
+    line-height: 40px;
+}
+.menu_layout:nth-of-type(3) > ul > li:hover{
+    background-color: steelblue;
+}
+*/

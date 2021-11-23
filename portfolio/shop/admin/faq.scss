@@ -1,0 +1,216 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700;900&display=swap");
+/* font-family: 'Noto Sans KR', sans-serif; (100, 400, 700, 900) */
+@mixin base {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+@mixin ulol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+@mixin m_sections($width, $height, $bg) {
+  margin: 0 auto;
+  width: 99.99%;
+  min-width: 320px;
+  max-width: $width;
+  height: $height;
+  background-color: $bg;
+}
+@mixin m_widths($min, $max, $bg) {
+  width: 99.99%;
+  min-width: $min;
+  min-height: $min;
+  max-width: $max;
+  max-height: $max;
+  background-color: $bg;
+}
+@mixin sections($width, $height, $bg) {
+  width: $width;
+  height: $height;
+  background-color: $bg;
+}
+@mixin flexs($wrap, $justify, $align) {
+  display: flex;
+  flex-wrap: $wrap;
+  justify-content: $justify;
+  align-content: $align;
+  align-items: $align;
+}
+@mixin font_sans($h, $c, $a, $w, $s) {
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: $h;
+  color: $c;
+  text-align: $a;
+  font-weight: $w;
+  font-size: $s;
+}
+body {
+  @include base;
+}
+img {
+  object-fit: cover;
+  width: 100%;
+}
+/*faq list*/
+.faq_list {
+  @include sections(1200px, auto, none);
+  margin: 0 auto;
+  & > .search_faq_box {
+    @include sections(100%, 50px, none);
+    display: flex;
+    align-items: center;
+    & > input:nth-child(1) {
+      @include sections(200px, 30px, none);
+      border: 1px solid #ccc;
+      font-size: 100%;
+    }
+    & > .faq_list_search_btn {
+      @include sections(100px, 30px, #c3222b);
+      color: white;
+      border: none;
+      margin-left: 5px;
+      font-size: 100%;
+      &:hover {
+        background-color: #88181e;
+      }
+    }
+  }
+
+  & > form > .faq_tb {
+    @include sections(100%, auto, none);
+    @include font_sans(40px, unset, center, unset, 100%);
+    & > thead > tr > td {
+      height: 40px;
+      border-bottom: 2px solid #ccc;
+      &:nth-child(1) {
+        width: 15%;
+      }
+      &:nth-child(3) {
+        width: 15%;
+      }
+      &:nth-child(2) {
+        width: 55%;
+      }
+      &:nth-child(4) {
+        width: 15%;
+      }
+    }
+    & > tbody tr {
+      @include sections(100%, 40px, none);
+      border-bottom: 2px solid #ccc;
+      & > td:nth-child(2) {
+        text-align: left;
+        position: relative;
+        & > .updown_txt {
+          width: 15px;
+          height: 80%;
+          position: absolute;
+          right: 0;
+        }
+      }
+    }
+  }
+  & > .add_faq_btn {
+    @include sections(100px, 30px, #ccc);
+    color: white;
+    border: none;
+  }
+}
+.faq_a_text {
+  background-color: rgba(204, 204, 204, 0.4);
+  display: none;
+  & > td:nth-of-type(1) {
+    position: relative;
+    & > img {
+      width: 20px;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+  }
+  & > td:nth-of-type(3) > .modify_buttons {
+    @include sections(60px, 30px, #dbb0a0);
+    @include font_sans(30px, white, center, unset, 100%);
+    border: none;
+    &:hover {
+      background-color: #be9a8d;
+    }
+  }
+}
+
+//페이징 넘버
+.faq_page {
+  @include sections(100%, 50px, none);
+  margin: 10px 0;
+  & > ul {
+    @include sections(100%, inherit, none);
+    @include flexs(nowrap, center, center);
+    & > li {
+      @include sections(30px, 30px, #dbb0a0);
+      cursor: pointer;
+      margin-left: 5px;
+      text-align: center;
+      line-height: 30px;
+      &:hover {
+        background-color: #be9a8d;
+      }
+    }
+  }
+}
+/*faq write*/
+.insert_faq {
+  @include sections(1200px, auto, none);
+  margin: 0 auto;
+  padding: 50px 0;
+  & > form > .insert_faq_tb {
+    @include sections(100%, auto, none);
+    & > tbody > tr > td {
+      &:nth-child(odd) {
+        background-color: #ccc;
+        text-indent: 10px;
+      }
+      & > select {
+        @include sections(200px, 40px, none);
+        font-size: 100%;
+        border: none;
+        border-bottom: 2px solid #ccc;
+      }
+      & > input {
+        @include sections(100%, 50px, none);
+        font-size: 100%;
+        border: none;
+      }
+      & > textarea {
+        @include sections(100%, 300px, none);
+        border: none;
+      }
+    }
+  }
+  & > .faq_btns {
+    @include sections(100%, auto, none);
+    text-align: center;
+    padding: 10px;
+    & > input {
+      @include sections(100px, 30px, #c3222b);
+      @include font_sans(30px, unset, center, unset, 100%);
+      color: white;
+      border: none;
+      &:nth-child(2) {
+        margin-left: 10px;
+      }
+      &:hover {
+        background-color: #88181e;
+      }
+    }
+  }
+}
+.add_faq_btn {
+  @include font_sans(30px, unset, center, unset, 100%);
+  @include sections(100px, 30px, #c3222b);
+  margin-bottom: 10px;
+  color: white;
+  border: none;
+}

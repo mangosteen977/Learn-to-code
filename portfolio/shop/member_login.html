@@ -1,0 +1,32 @@
+<meta charset="UTF-8">
+<aside class="shop_login_box">
+    <!-- 회원 -->
+    <div class="login_mem">
+        <form id="id_login_frm" name="id_login_frm" onsubmit="return login_shop_fn(0)">
+            <p>회원로그인</p>
+            <span>
+                <input type="text" name="shop_id" placeholder="아이디를 입력해주세요.">
+                <input type="password" name="shop_pw" placeholder="패스워드를 입력해주세요.">
+                <input type="submit" value="LOGIN">
+            </span>
+            <span class="shop_login_btnbox">
+                <input type="button" value="회원가입" onclick="member_btn(1)">
+                <input type="button" value="아이디찾기" onclick="member_btn(2)">
+                <input type="button" value="비밀번호찾기" onclick="member_btn(3)">
+            </span>
+        </form>
+    </div>
+    <!-- 비회원 -->
+    <div class="login_mem">
+        <form id="nofrm" name="nofrm" method="POST" action="./shop_loginok.php" onsubmit="return login_shop_fn(1)">
+            <input type="hidden" name="nomember_security" value="noinfo">
+            <p>비회원로그인</p>
+            <span>
+                <input type="text" name="nomember_id" placeholder="주문자명을 입력해주세요.">
+                <input type="password" name="nomember_no" maxlength="8" placeholder="주문번호를 8자리를 입력해주세요.">
+                <input type="submit" value="주문조회">
+            </span>
+            <label>※주문번호와 주문자명을 잊으신 경우, 고객센터로 문의하여 주시기 바랍니다.</label>
+        </form>
+    </div>
+</aside>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>내일 연습 룰루랄라</title>
+        <script src="../jq/jquery.js"></script>
+        <script>
+               $(document).ready(function(){
+                // 플로팅 배너 전처리
+                $(window).scroll(function(){
+                    var $sct = $(window).scrollTop();
+                    var $fm = $("#up").offset().top;
+                    var $mv = 0;
+                    if($sct==0){
+                        $mv = 150;
+                    }
+                    else{
+                        if($sct<300){
+                            $mv = $sct + $fm;
+                        }
+                        else{
+                            $mv = $sct + 150;
+                        }
+                    }
+                    //해당 if범위에 한하여 animate를 해당 top 수치만큼 움직이도록 함.
+                    $("#up").stop().animate({ 
+                        "top":$mv+"px"
+                    },500);
+                });
+                //상단.하단 클릭
+                $("#up>li").click(function(){
+                    var $node = $(this).index();
+                    if($node==0){//상단클릭
+                        $("html,body").animate({
+                            "scrollTop":"0px"
+                        },1000);
+                    }
+                    else if($node==1){//하단클릭
+                        var $top = $("#bottom").offset().top;
+                        $("html,body").animate({
+                            "scrollTop":$top+"px"
+                        },1000);
+                    }
+                });
+                //쉐도우 메뉴 오픈
+                $("#menu_btn").click(function(){
+                    $("#shadow_box").css("display","block");
+                });
+                //쉐도우 메뉴 클로즈
+                $("#btn_close").click(function(){
+                    $("#shadow_box").css("display","");
+                });
+            });
+        </script>
+        <style>
+            *{box-sizing: border-box;}
+            body{margin: 0 auto; padding: 0;}
+            span,label{display: inline-block;}
+            ul,ol{list-style: none; margin: 0; padding: 0;}
+            .t_b{
+                position: relative; border: 4px solid yellow;
+                width: 100%; max-width: 2560px; height: 613px;
+            }
+            /*top*/
+            .top{
+               width: 100%; max-width: 2560px; height: auto; border: 1px solid red;
+                position: absolute; z-index: 5;
+                margin: 0 auto;
+            }
+            .top_box{
+                max-width: 2560px; margin: 0 auto; position: relative; margin-bottom: 15px;
+            }
+            .top_box>div{display: inline-block;}
+            .menu_btn{
+                width: 30px; height: 30px; border: 1px solid red;
+                background-image: url(../portfolio/shop/admin/svg/close.svg);
+                background-size: cover;
+            }
+            .top_icon{width: 125px; height: 30px; border: 1px solid red;
+                position: absolute; left: 50%; margin-left: -62px;}
+            .top_icon>span{width: 30px; height: 30px; border: 1px solid blue; float: left;}
+            .top_menu{
+                width: auto; height: inherit; border: 1px solid green;
+                display: inline-block; position: absolute; right: 0;
+            }
+            .top_menu>li{
+                width: 50px; height: inherit; border: 1px solid #ccc;
+                float: left; font-size: 10px;
+            }
+            .top_box2{max-width: 2560px; margin: 0 auto; text-align: center;}
+            .top_box2>img{width: 300px; height: inherit;}
+            /*banner*/
+            .banner{
+                width: 100%; max-width: 2560px; height: auto; position: absolute;
+            }
+            /*좌우*/
+            .bn_box{
+                max-width: 2600px; height: 613px; background-color: pink;
+                margin: 0 auto;position: relative;
+            }
+            
+            .btn{
+                position: absolute;
+                height: inherit; width: 100%; max-width: inherit;
+                display: flex;
+                align-items: center;
+            }
+            .btn>img{
+                object-fit:cover;
+                width: 50px; height: 50px; border: 1px solid yellow;
+                position: absolute; z-index: 20; cursor: pointer;
+            }
+            .l{left: 0;}
+            .r{right: 0;}
+            /*배너이미지*/
+            .bn_img{height: 613px; max-width: 2560px; margin: 0 auto; 
+                position: relative;}
+            .b1{
+                position: absolute;
+                height: inherit; width: 100%; max-width: inherit;
+                background-image: url("../html2/full_banner0.jpg");
+                background-position: 50%;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            /*디스크*/
+            .disc{width: 100%; text-align: center; height: 30px; position: absolute; z-index: 35; bottom: 7px;}
+            .disc>li{width: 30px; height: 30px; border: 1px solid green; display: inline-block;}
+            /*그 외 자리 잡기*/
+            .menu,.main,.bottom{
+                position: relative;
+                width: 100%; max-width: 2560px; height: 500px;
+                border: 3px solid red; background-color: turquoise;
+            }
+            /*사이드 플로팅 배너*/
+            .box{width:100%; height: auto; position: absolute; z-index: 50; }
+            .up{
+                width: 100px; height: 160px; background-color: darkgrey;
+                position: absolute; right: 0px; top: 130px;
+                font-size: 13px; color: white;
+            }
+            .up>li{
+                width: 100px; height: 40px;
+                text-align: center; line-height: 40px; cursor: pointer;
+            }
+            /*햄버거 메뉴 _ 쉐도우 팝업*/
+            .shadow_box{
+                display: none;
+                position: absolute; z-index: 70;
+                width: 100%; max-width: 2560px;
+                box-shadow: 0 0 0 9000px rgba(0,0,0,0.8);
+                background-color: rgba(0,0,0,0.8);
+                padding-top: 30px;
+            }
+            .close{
+                min-width: 500px; max-width: 2000px; height: 30px;
+                margin: 0 auto; border: 1px solid yellow; 
+                background-color: rgba(0,0,0,0.8);
+                text-align: center;
+            }
+            .btn_close{
+                width: 30px; height: 30px; border: 1px solid red;
+                background-image: url(../portfolio/shop/admin/svg/close.svg);
+                background-size: cover;
+            }
+            .shadow_menu{
+                min-width: 500px; max-width: 2000px; height: 500px;
+                margin: 0 auto; border: 1px solid red; 
+                background-color: rgba(0,0,0,0.8);
+                display: flex; flex-wrap: nowrap; justify-content: space-around;
+                align-items: center;
+            }
+            .shadow_menu>ul{
+                float: left; width: 200px; height: 400px;
+                border: 1px solid blue;
+            }
+            .shadow_menu>ul>li{
+                width: inherit; height: 33%; border: 1px solid white;
+                color: white;
+            }
+
+        </style>
+    </head>
+    <body>
+    <!-- 박스쉐도우=> display:none, 메뉴 클릭시 block
+        osition: absolute; z-index: 왕 많이 줄것
+        width: 100%; max-width: 2560px;
+        box-shadow: 0 0 0 9000px rgba(0,0,0,0.8); -->
+    <div class="shadow_box" id="shadow_box">
+        <div class="close"><span class="btn_close" id="btn_close"></span></div>
+        <div class="shadow_menu">
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+            <ul>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+            </ul>
+            <ul>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+            </ul>
+        </div>
+    </div>
+    <!-- 사이드 바 body 두번 째로 상단에 둘것.
+        width 100%, height auto; absolute, z-index 왕창
+    -->
+    <div class="box">
+        <ul class="up" id="up">
+            <li>상단</li>
+            <li>하단</li>
+            <li>00</li>
+            <li>00</li>
+        </ul>
+    </div>
+    <!-- top, banner 파트 header로 묶을 것.
+        header는  position: relative; width: 100%; max-width: 2560px;
+        height: 정확한 수치 넣기. 그래야 다음 section들이 아래에 잘 붙음
+    -->
+    <header class="t_b">
+        <!-- section top
+            width: 100%; max-width: 2560px; height: auto;
+            position: absolute; z-index: 적당히 작게; margin: 0 auto;
+         -->
+        <section class="top">
+            <!-- top섹션 안에 묶는 div/span등은 relative; -->
+            <div  class="top_box">
+                <!-- 탑 안에 있는 애들은 position:absolute로 자리 잡기. -->
+                <div class="menu_btn" id="menu_btn"></div><!--햄버거버튼 클릭시 쉐도우 메뉴 오픈-->
+                <div class="top_icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="top_menu">
+                    <li>로그인</li>
+                    <li>로그인</li>
+                    <li>로그인</li>
+                    <li>로그인</li>
+                </ul>
+            </div>
+            <div  class="top_box2"><img src="../shop/image/logo.png"></div>
+        </section>
+        <!-- section banner
+            width: 100%; max-width: 2560px; height: auto;
+            position: absolute; margin: 0 auto;
+         -->
+        <section class="banner">
+            <!-- banner section안에 묶는 객체는
+                max-width: 2600px; height: 613px; ==> 배너크기만큼 height지정
+                margin: 0 auto; position: relative;
+            -->
+            <div class="bn_box">
+                <!-- btn 좌우 아이콘 묶는 box => position: absolute;
+                height: inherit; width: 100%; max-width: inherit; -->
+                <div class="btn">
+                    <img class="l" src="../html2/rightbtn.svg">
+                    <img class="r" src="../html2/rightbtn.svg">
+                </div>
+                <!-- bn 이미지 담긴 박스 =>
+                    height: 613px; max-width: 2560px; margin: 0 auto; 
+                    position: relative; -->
+                <div class="bn_img">
+                    <!-- *첫 번째 배너만 block, 나머지는 display none 상태로 fade-InOut
+                        position: absolute;
+                        height: inherit; width: 100%; max-width: inherit;
+                        background-image: url("../html2/full_banner0.jpg");
+                        background-position: 50%;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                     -->
+                    <span class="b1"></span>
+                    <span class="b1"></span>
+                </div>
+                <!-- 디스크 박스=> width: 100%; text-align: center; height: 30px; 
+                                    position: absolute; z-index: 좀 많이-->
+                <ol class="disc"><li></li><li></li><li></li></ol>
+                <!-- 디스크 li들은 => display: inline-block; -->
+            </div>
+        </section>
+    </header>
+    <section class="menu"></section>
+    <section class="main"></section>
+    <section class="bottom" id="bottom"></section>
+    </body>
+</html>

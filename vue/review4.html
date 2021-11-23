@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1.0">
+    <meta name="viewport" content="width=divice-width, initial-scale=1.0">
+    <title> Vue 애니메이션 리뷰 </title>
+    <!-- 상용 vue -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+    <!-- 개발 vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* fade */
+        .slide_box .fade-enter-active,
+        .fade-leave-active {
+            /* transition: all linear 3s; */
+            transition-property: all;
+            transition-timing-function: linear;
+            transition-duration: 1s;
+        }
+
+        .fade-enter,
+        .fade-leave-to {
+            opacity: 0;
+        }
+
+        /* fade slide */
+        .fade-slide-enter-active {
+            transition: 1s ease all;
+        }
+
+        .fade-slide-leave-active {
+            transition: all 2s ease;
+        }
+
+        .fade-slide-enter,
+        .fade-slide-leave-to {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+    </style>
+</head>
+
+<body>
+    <section id="test">
+        <input type="button" @click="fd = !fd" :value="btn">
+        <transition name="fade">
+            <div v-if="fd" v-text="ftxt"></div>
+        </transition>
+        <transition name="fade-slide">
+            <div v-if="fd" v-text="ftxt"></div>
+        </transition>
+
+    </section>
+</body>
+<script>
+    let test = new Vue({
+        el: "#test",
+        data: {
+            fd: true,
+            ftxt: "VUE Transition Test",
+            btn: "fade"
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,69 @@
+@charset "UTF-8";
+@import "./config.scss";
+.week_pd_box {
+  @include sections(1200px, 1600px, none);
+  @include flexs(wrap, row, space-between, space-between);
+  padding: 50px 0;
+  margin: 0 auto;
+  & > .week_pd_product_box {
+    @include sections(360px, 485px, none);
+    & > .week_pd_product {
+      @include sections(100%, inherit, none);
+      & > li {
+        @include flexs(wrap, row, flex-start, flex-start);
+        padding-left: 5px;
+        cursor: pointer;
+        &:nth-child(1) {
+          height: 360px;
+          position: relative;
+          padding-left: 0;
+          & > .week_pd_product_hover {
+            @include sections(100%, 80px, none);
+            display: none;
+            position: absolute;
+            bottom: 0;
+            & > li {
+              @include sections(50%, inherit, rgba(0, 0, 0, 0.5));
+              @include flexs(wrap, column, center, center);
+              float: left;
+              color: white;
+              cursor: pointer;
+              position: relative;
+              &:nth-child(1) {
+                border-right: 1px dashed #ccc;
+              }
+              & > img {
+                @include sections(25px, auto, none);
+              }
+            }
+          }
+          &:hover .week_pd_product_hover {
+            display: block;
+          }
+        }
+        &:nth-child(2) {
+          height: 35px;
+          font-size: 14px;
+          font-weight: bold;
+          padding-top: 10px;
+        }
+        &:nth-child(5) {
+          height: 25px;
+          color: #c3222b;
+          font-weight: bold;
+        }
+        &:nth-child(3) {
+          height: 45px;
+          color: #aaa;
+        }
+        &:nth-child(4) {
+          height: 20px;
+          color: #aaa;
+        }
+      }
+    }
+    &:hover {
+      box-shadow: 3px 0 5px 1px rgba(0, 0, 0, 0.1);
+    }
+  }
+}

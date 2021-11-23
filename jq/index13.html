@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery 3일차(3) - Disc 응용하기 </title>
+        <script src="./jquery.js"></script>
+        <script>
+            /*배너 디스크, 게시판 페이징 번호, 퀵메뉴 넘버링 등
+            좌우버튼으로 이동하는 형태는 반복문 필수이며,
+            해당 노드만 style을 적용해 사용자 눈에 이동되는 것처럼 보이도록 한다.*/
+            $(document).ready(function(){
+                var $node = $(".ulcss>li").length; //$a
+                var $n = 0; //$node
+                //console.log($node);
+                //왼버튼
+                $("#left").click(function(){
+                    $w = 0;
+                    while($w < $node){
+                        $(".ulcss > li").eq($w).css("background-color","black"); 
+                        $w++;
+                    }
+                    if($n==0){
+                        $n = 3;
+                    }
+                    else{
+                        $n = $n-1;
+                    }
+                        console.log($n);
+                        $(".ulcss>li").eq($n).css("background-color","red");
+                });
+               
+                //우버튼
+                $("#right").click(function(){
+                    $w = 0;
+                    while($w < $node){
+                        $(".ulcss > li").eq($w).css("background-color","black"); 
+                        $w++;
+                    }
+                    $n = $n+1;
+                    if($n>3){
+                        $n = 0;
+                    }
+                    console.log($n);
+                    $(".ulcss > li").eq($n).css("background-color","red");
+                });
+            });
+        </script>
+        <style>
+            body{margin: 0; padding: 0;}
+            span,label,main{display: inline-block;}
+            ul,ol{list-style: none; margin: 0; padding: 0;}
+            .box{width: auto; height: 100px; padding-top: 10px;
+            text-align: center; box-sizing: border-box;}
+            .ulcss{
+                display: inline-block;
+                background-color: aliceblue;
+                height: 30px; 
+                text-align: center;
+                margin-bottom: 10px; 
+                box-sizing: border-box;
+                }
+            .ulcss > li{
+                width: 30px; 
+                height: 30px; 
+                background-color: black;
+                display: inline-block; 
+                border-radius: 100%;
+                }
+            .ulcss > li:first-child{background-color: red;}
+            .btn{
+                cursor: pointer; 
+                width: 50px; height: 50px; 
+                color: white; font-size: 30px; font-weight: bold;
+                background-color: cornflowerblue; 
+                text-align: center; line-height: 45px;
+                }
+            #left{margin-right: 20px;}
+
+            /*높이 관련 사항*/
+            /*자식객체의 높이와 넓이가 있을 때, 부모객체에 자식객체의 높이, inline-block이면 해당 넓이만큼만 잡힌다.*/
+            .bbox{display: inline-block; height: 30px; border: 1px solid red;}
+            .bbox > li {width: 100px; height: 30px; 
+             display: inline-block;  background-color: pink;}
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <ul class="ulcss">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        <div class="btnbox">
+            <span class="btn" id="left"><</span>
+            <span class="btn" id="right">></span>
+        </div>
+    </div>
+        <!-- <ul class="bbox">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul> -->
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/index13.html -->

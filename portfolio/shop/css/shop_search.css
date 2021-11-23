@@ -1,0 +1,234 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700;900&display=swap");
+/* font-family: 'Noto Sans KR', sans-serif; (100, 400, 700, 900) */
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 12px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+label,
+span {
+  display: inline-block;
+}
+
+img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+ul,
+ol,
+dl,
+dd {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.ser_datas {
+  width: 100%;
+  height: auto;
+  background-color: white;
+  max-width: 1200px;
+  min-height: 500px;
+  padding: 80px 0;
+  margin: 0 auto;
+}
+
+.ser_datas > p {
+  width: 200px;
+  height: 50px;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 50px;
+  color: #c3222b;
+  text-align: center;
+  font-weight: bold;
+  font-size: 25px;
+  margin: 0 auto;
+  border-bottom: 3px solid #c3222b;
+}
+
+.ser_datas > label {
+  width: 100%;
+  height: 30px;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 30px;
+  color: unset;
+  text-align: unset;
+  font-weight: unset;
+  font-size: 13px;
+  text-indent: 10px;
+  border-bottom: 2px solid #ccc;
+  margin: 30px 0;
+}
+
+.no_ser_data {
+  width: 100%;
+  height: 300px;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 300px;
+  color: unset;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.yes_ser_data {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: justify;
+      align-content: space-between;
+  -webkit-box-align: space-between;
+      -ms-flex-align: space-between;
+          align-items: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding: 50px 0;
+  margin: 0 auto;
+}
+
+.yes_ser_data > .ser_box {
+  width: 360px;
+  height: 485px;
+  background-color: none;
+}
+
+.yes_ser_data > .ser_box > .ser_pd_product {
+  width: 100%;
+  height: inherit;
+  background-color: none;
+}
+
+.yes_ser_data > .ser_box > .ser_pd_product > li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding-left: 5px;
+  cursor: pointer;
+}
+
+.yes_ser_data > .ser_box > .ser_pd_product > li:nth-child(1) {
+  height: 360px;
+  position: relative;
+  padding-left: 0;
+}
+
+.yes_ser_data > .ser_box > .ser_pd_product > li:nth-child(1) > .ser_pd_product_hover {
+  width: 100%;
+  height: 80px;
+  background-color: none;
+  display: none;
+  position: absolute;
+  bottom: 0;
+}
+
+.yes_ser_data > .ser_box > .ser_pd_product > li:nth-child(1) > .ser_pd_product_hover > li {
+  width: 50%;
+  height: inherit;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  float: left;
+  color: white;
+  cursor: pointer;
+  position: relative;
+}
+
+.yes_ser_data > .ser_box > .ser_pd_product > li:nth-child(1) > .ser_pd_product_hover > li:nth-child(1) {
+  border-right: 1px dashed #ccc;
+}
+
+.yes_ser_data > .ser_box > .ser_pd_product > li:nth-child(1) > .ser_pd_product_hover > li > img {
+  width: 25px;
+  height: auto;
+  background-color: none;
+}
+
+.yes_ser_data > .ser_box > .ser_pd_product > li:nth-child(1):hover .week_pd_product_hover {
+  display: block;
+}
+
+.yes_ser_data > .ser_box > .ser_pd_product > li:nth-child(2) {
+  height: 35px;
+  font-size: 14px;
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+.yes_ser_data > .ser_box > .ser_pd_product > li:nth-child(5) {
+  height: 25px;
+  color: #c3222b;
+  font-weight: bold;
+}
+
+.yes_ser_data > .ser_box > .ser_pd_product > li:nth-child(3) {
+  height: 45px;
+  color: #aaa;
+}
+
+.yes_ser_data > .ser_box > .ser_pd_product > li:nth-child(4) {
+  height: 20px;
+  color: #aaa;
+}
+
+.yes_ser_data > .ser_box:hover {
+  -webkit-box-shadow: 3px 0 5px 1px rgba(0, 0, 0, 0.1);
+          box-shadow: 3px 0 5px 1px rgba(0, 0, 0, 0.1);
+}
+/*# sourceMappingURL=shop_search.css.map */

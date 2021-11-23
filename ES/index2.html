@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="Ko">
+<!-- ES9 : 화살표 함수 (리턴) -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECMA Script 1일차(2) - ES 인스턴스 이벤트 핸들링</title>
+    <script>//핸들링은 script별도 사용
+        // function abc() {
+        //     alert("d");
+        // }
+    </script>
+</head>
+
+<body>
+    <input type="button" value="클릭" id="btn">
+    <!-- ES에서 이벤트 핸들링은 id를 이용하여 
+    document.querySelector("#btn").addEventListener("click", abc);형태로 쓸 수있다
+    단 import로 함수 불러와야 함. -->
+</body>
+<script type="module">//<==모듈은 ES전용 Script, Vue처럼 하단에 script를 둔다.
+    import { ccc, ddd, abc } from "./index2.js";//ES는 규칙성이 있다. ./ ../ 같은 경로설정이 필요함.
+    ccc(2, 3, 4), ddd(10, 20); //해당 함수에 인자값을 적용함.
+    //복합인스턴스 : import {함수1,함수2} from "./경로";
+    //여러 함수를 가져올 수 있다.
+    document.querySelector("#btn").addEventListener("click", abc);
+</script>
+
+</html>

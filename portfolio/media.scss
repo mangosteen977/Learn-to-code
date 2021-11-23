@@ -1,0 +1,45 @@
+//PC
+$view_width1: 1220px;
+$view_width2: 1024px;
+//타블렛
+$view_width3: 960px;
+$view_width4: 768px;
+//모바일
+$view_width5: 600px;
+$view_width6: 480px;
+$view_width7: 340px;
+
+// @mixin pc1 {
+//   @media (max-width: $view_width1) {
+//   }
+// }
+
+// @mixin pc2 {
+//   @media (min-width: $view_width3) and (max-width: $view_width1) {
+//   }
+// }
+
+// @mixin tab1 {
+//   @media (min-width: ($view_width5)+1px) and (max-width: ($view_width3)-1px) {
+//   }
+// }
+
+@mixin mobile1 {
+  @media (min-width: $view_width7) and (max-width: $view_width5) {
+    .header {
+      @include flexs(nowrap, column, space-between, flex-end);
+      & > .menu {
+        display: none;
+      }
+      & > .menu2 {
+        display: block;
+      }
+      & > .icon {
+        margin-top: 7px;
+      }
+    }
+    .about_me > .introduce {
+      margin-right: 0px;
+    }
+  }
+}

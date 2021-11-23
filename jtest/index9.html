@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+    <title>문제9 - Javascript</title>
+    <!--
+     문제9 설문조사에 참여 하기 위해서 폼을 모두 작성해야 합니다.
+     전화번호 일 경우 숫자만 입력이 되어야 합니다.
+     radio일 경우 한가지만 선택 되도록 합니다.
+     좋아하는 스포츠 부분은 무조건 2가지를 선택해야 합니다.
+     개인정보 활용이 동의를 해야만 설문조사가 완료 되도록 합니다.
+    -->
+    <script>
+        function abc(){
+            var name = document.getElementById("name").value;
+            var tel = Number(document.getElementById("tel").value);
+            var mail = document.getElementById("mail").value;
+            var agree = document.getElementById("agree").checked;
+            var node = 0; var node2 = 0; var count = 0;
+            var ok = "no";
+            while(node<3){
+                var a= fm.ra[node].checked;
+                if(a==true){  var ok = "ok"}
+                node++;
+            }
+            while(node2<6){
+                var b = document.getElementById("a"+node2).checked;
+                if(b==true){
+                    count = count+1;
+                }
+                node2++;
+            }
+
+            if(name==""){alert("이름을 입력하세요"); return false;}
+            else if(tel==""){alert("전화번호를 입력하세요"); return false;}
+            else if(isNaN(tel)==true){alert("전화번호는 숫자로 입력하세요"); return false;}
+            else if(mail==""){alert("이메일주소를 입력하세요"); return false;}
+            else if(ok=="no"){alert("어떤 경로로 알게되었는지 체크하세요."); return false;}
+            else if(count!=2){alert("좋아하는 스포츠 2개를 선택하세요"); return false;}
+            else if(agree!=true){alert("개인정보 활용 동의는 필수입니다."); return false;}
+            else{
+                alert("설문조사가 완료되었습니다.");
+                return true;
+            }
+
+            
+        };
+    </script>
+</head>
+<body>
+<h1>설문조사</h1>
+
+아래 항목을 채워주세요.<br>
+<form name="fm" onsubmit="return abc();">
+<h4>신상 정보 : </h4>
+
+이름　　　 <input id="name" type="text" maxlength="10" size="15" placeholder="고객명을 입력하세요"><br>
+전화번호　 <input id="tel" type="tel" maxlength="11" size="15" placeholder="숫자만 입력하세요"><br>
+이메일주소 <input id="mail" type="text" maxlength="80" size="30" placeholder="메일주소를 입력하세요"><br>
+<br>
+<h3> 어떤 경로로 알게 되었습니까? </h3>
+<input type="radio" value="기사" name="ra"/>기사<br>
+<input type="radio" value="광고" name="ra"/>광고<br>
+<input type="radio" value="기타" name="ra"/>기타<br>
+
+<h3> 좋아하는 스포츠는 무엇입니까? 2가지를 선택해 주세요</h3>
+<input type="checkbox" id="a0" value="테니스"/>테니스
+<input type="checkbox" id="a1" value="골프"/>골프
+<input type="checkbox" id="a2"  value="농구"/>농구<br>
+<input type="checkbox" id="a3"  value="스쿼시"/>스쿼시
+<input type="checkbox" id="a4"  value="볼링"/>볼링
+<input type="checkbox" id="a5"  value="축구"/>축구
+<br><br>
+연락방법 
+<select>
+<option value="email"/>email
+<option value="phone"/>phone
+</select>
+<br><br>
+<input type="checkbox" id="agree"> 개인정보 활용에 동의합니다. 
+<br><br>
+<input type="submit" value="submit">
+</form>
+</body>
+</html>

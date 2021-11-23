@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery 금요일 복습(2) - </title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(document).ready(function(){
+                /*문제2.
+                이동버튼 클릭시 노란박스가 우측상단 이동 후 우측 하단으로 이동.
+                hint! 전역변수를 사용할 것.*/
+               var $a = 0;
+                $("#btn").click(function(){
+                    if($a==0){
+                        $("#box_yellow").animate({
+                            "right":"0"
+                        },1000);
+                        $a+=1;
+                    }
+                    else if($a==1){
+                        $("#box_yellow").animate({
+                            "bottom":"0"
+                        },1000);
+                        $a+=1;
+                    }
+                    else if($a==2){
+                        $("#box_yellow").animate({
+                            "right":"720"
+                        },1000);
+                        $a+=1;
+                    }
+                    else if($a==3){
+                        $("#box_yellow").animate({
+                            "bottom":"320"
+                        },1000);
+                        $a=0;
+                    }
+                });
+             });
+        </script>
+        <style>
+            body{margin: 0; padding: 0;}
+            ul,ol,dl{list-style: none; margin: 0; padding: 0;}
+            span,main,label{display: block;}
+        /* 문제2. */
+            .box_red{
+                width: 800px; height: 400px; background-color: crimson;
+                position: relative;
+            }
+            .box_yellow{
+                width: 80px; height: 80px; background-color: gold;
+                position: absolute;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 문제2. -->
+            <div class="box_red" id="box_red">
+                <div class="box_yellow" id="box_yellow"></div>
+            </div>
+            <button type="button" id="btn">이동</button>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/web/jquery2.html -->

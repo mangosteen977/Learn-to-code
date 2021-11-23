@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> JS/JQ 초급 복습2 attr / setAttribute / getAttribute 속성값조정</title>
+        <script src="../jq/jquery.js"></script>
+        <script>
+            //jq
+            /* 응용문제1. jq 사용자가 선택한 이메일을bmail에 입력되게 하시오,
+            직접입력 시 bmail에 직접 메일주소값을 입력가능함.*/
+            $(document).ready(function(){
+                $("#mailsel").change(function(){
+                    var $bemail = $("#bemail");
+                    var $mail = $(this).val();
+                    if($mail=="self"){
+                        $bemail.val("");
+                        $bemail.attr("readonly",false);
+                    }
+                    else{
+                        $bemail.val($mail);
+                        $("#bemail").attr("readonly",true);
+                    }
+                });
+                $("#btn").click(function(){
+                    //name값 가져오기
+                    //var $aa = $("#test").attr("name");
+                    // console.log("$aa")
+                    //name값 바꾸기 혹은 생성하기
+                    $("#test").attr("name","bbb");
+                    //attr 로 style 속성 추가하기
+                    $("#test").attr("style","border:1px solid red");
+                    //attr 로 class name 지정하기
+                    $("#test").attr("class","input_css");
+
+                });
+            });
+            //js
+            /* 응용문제2. js 사용자가 선택한 이메일을bmail에 입력되게 하시오,
+            직접입력 시 bmail에 직접 메일주소값을 입력가능함.*/
+            function mail(mail){
+                var bemail = document.getElementById("bemail");
+                if(mail=="self"){
+                        bemail.value = "";
+                        bemail.readOnly=false;
+                    }
+                    else{
+                        bemail.value = mail;
+                        bemail.readOnly=true;
+                    }
+            }
+            function bbb(){
+                //JS setAttribute("",""); == JQ attr("","");
+                //name 값 추가하기
+                document.getElementById("test").setAttribute("name","aaa");
+                //JS getAttribute 값 가져오기 (속성값 가져오기)
+                var c = document.getElementById("test").getAttribute("class");
+                console.log(c);
+            };
+        </script>
+    </head>
+    <body>
+        <!-- 응용문제1. jq 사용자가 선택한 이메일을bmail에 입력되게 하시오,
+            직접입력 시 bmail에 직접 메일주소값을 입력가능함.  -->
+        <!-- <input type="text" id="femail">@<input type="text" id="bemail" readonly>
+        <select id="mailsel">
+            <option value="">[메일주소 선택]</option>
+            <option value="naver.com">naver.com</option>
+            <option value="nate.com">nate.com</option>
+            <option value="gmail.com">gmail.com</option>
+            <option value="hotmail.com">hotmail.com</option>
+            <option value="self">직접입력</option>
+        </select> -->
+<!-- JS : readOnly == JQ : attr("readonly",false); -->
+        <!-- 응용문제2. js 사용자가 선택한 이메일을bmail에 입력되게 하시오,
+            직접입력 시 bmail에 직접 메일주소값을 입력가능함.  -->
+            <input type="text" id="femail">@<input type="text" id="bemail" readonly>
+            <select id="mailsel" onchange="mail(this.value);">
+                <option value="">[메일주소 선택]</option>
+                <option value="naver.com">naver.com</option>
+                <option value="nate.com">nate.com</option>
+                <option value="gmail.com">gmail.com</option>
+                <option value="hotmail.com">hotmail.com</option>
+                <option value="self">직접입력</option>
+            </select>
+<!-- onchange="함수이름(this.value);" : 바로 하위 option value값 가져옴.-->
+            <br><br>
+            <input type="text" id="test" class="inputcss">
+            <input type="button" value="attr" id="btn"><!--JQ-->
+            <input type="button" value="setAttribute" onclick="bbb();"><!--JS-->
+<!-- 
+JS_setAttribute("",""); == JQ_attr("",""); 속성 값 만들기/변경하기
+JS_getAttribute(""); == JQ_attr(""); 속성 값 가져오기.
+-->
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/rejava2.html -->

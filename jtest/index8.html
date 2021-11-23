@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+    <title>문제8 - Javascript</title>
+    <!-- 문제8
+    해당 게시글 작성 폼입니다.
+    모든 필수 항목을 검사하며, 완료 되었을 경우
+    post로 전송되도록 하면됩니다. 전송 페이지는 index8.html로 이동되도록 하면 됩니다.
+    단, 등록 버튼 클릭시에만 이동되며, 다시 작성하기 클릭시 모든 내용은
+    초기화 됩니다.
+    취소 버튼 클릭시 이전 페이지로 이동 되도록 제작하세요
+    -->
+    <style>
+        * {box-sizing: border-box;}
+        body { margin: 0; padding: 0;}
+        .btn{
+    margin-top: 15px;
+    width: 120px;
+    height: 35px;
+    font-size: 17px;
+}
+    </style>
+    <script>
+        function abc(){
+            var a1 = fm.title.value;
+            var a2 = fm.name.value;
+            var a3 = fm.pass.value;
+            var a4 = fm.content.value;
+            if(a1==""){alert("제목을 입력하세요"); return false; }
+            else if(a2==""){alert("아이디를 입력하세요"); return false; }
+            else if(a3==""){alert("비밀번호를 입력하세요"); return false; }
+            else if(a4==""){alert("내용을 입력하세요"); return false; }
+            else{ return true; }
+        };
+        function can(){ 
+            //location.href="./index7.html";
+            history.go(-1);//()안의 숫자만큼 이전 페이지로 이동함
+        };
+    </script>
+</head>
+
+<body>
+    <div id="wrap">
+        <h2>게시글 작성</h2>
+        <form name="fm" method="post" action="index8.html" onsubmit="return abc();">
+        	<input type="hidden" value="board_write" name="command">
+            <table>
+                <tr>
+                    <th>제목 *</th>
+                    <td><input type="text" name="title"></td>
+                </tr>
+                <tr>
+                    <th>아이디 *</th>
+                    <td><input type="text" name="name"></td>
+                </tr>
+                <tr>
+                    <th>비밀번호 *</th>
+                    <td><input type="password" name="pass"></td>
+                </tr>
+                <tr>
+                    <th>내용 *</th>
+                    <td><textarea cols="100" rows="30" name="content"></textarea></td>
+                </tr>
+            </table>
+            <input class="btn" type="submit" value="등록">
+            <input class="btn" type="reset" value="다시작성하기">
+            <input class="btn" type="button" value="취소" onclick="can();">
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+@charset "UTF-8";
+$desktop: 1024px; //1024~1920px & font-size:12px;
+$tablet: 758px; //758~1023px & font-size:14px;
+$mobile: 335px; //335~757px & font-size:14px;
+//단, #OST,portfolio (12px) - 글자체 종류(noto 14px) - roboto(12px), Arial체(12px)
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.fonts {
+  font-family: "Noto Sans KR", "Arial", "Roboto", sans-serif; //고딕체
+  //font-family:'Noto Sans KR','Arial','Roboto',cursive; //필기체
+  //font-family:'Noto Sans KR','Arial','Roboto',serif; //바탕체
+  //font-family:'Noto Sans KR','Arial','Roboto',fantasy; //굵은체
+  //font-family:'Noto Sans KR','Arial','Roboto',monospace; //글자폭을 동일하게 출력하는 폰트체
+  //font-family:'Noto Sans KR','Arial','Roboto','BantangChe','바탕체',serif;
+  font-size: 12px;
+}
+.information {
+  background-color: yellow;
+  height: 250px;
+  & > div {
+    margin: 0 auto;
+    width: 1200px;
+    height: inherit;
+    background-color: yellowgreen;
+    & > span {
+      width: calc(1200px / 2);
+      height: inherit;
+      display: block;
+      float: left;
+      &:nth-of-type(1) {
+        background-color: lavender;
+      }
+      &:nth-of-type(2) {
+        background-color: lightcoral;
+      }
+      & > label {
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        text-indent: 10px;
+        display: block;
+        font-family: "Noto Sans KR", "Arial", "Roboto", sans-serif;
+        &:nth-of-type(1) {
+          font-size: 15px;
+        }
+        &:nth-of-type(2) {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+
+@mixin tablet {
+  @media (min-width:#{$tablet}) and (max-width:#{$desktop - 1px}) {
+    .information {
+      height: 200px;
+      & > div {
+        width: 100%;
+        height: inherit;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        & > span {
+          width: calc(100% / 2);
+          height: inherit;
+          float: unset;
+        }
+      }
+    }
+  }
+}
+@mixin mobile {
+  @media (min-width:#{$mobile}) and (max-width:#{$tablet - 1px}) {
+    .information {
+      height: auto;
+      & > div {
+        width: 100%;
+        height: max-content; //자식사이즈에 맞춰서 정확하게 해당 부분을 맞춰서 px값을 적용함
+        flex-direction: column;
+        padding: 10px;
+        box-sizing: border-box;
+        & > span {
+          width: 100%;
+          height: 150px;
+          float: unset;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}
+@include tablet;
+@include mobile;

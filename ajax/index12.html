@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Ajax 4일차(3) - Ajax POST 통신3 (패스워드찾기) </title>
+        <style>
+            .search{background-color: plum;}
+            .pass_modify{display: none; background-color: pink;}
+        </style>
+        <script>
+            //패스워드 찾기 파트
+            function abc(){
+                let n = "mname="+document.getElementById("mname").value;
+                let i = "&mid="+document.getElementById("mid").value;
+                const datas = n+i;
+                let data;
+                function windowck(){
+                    if(window.XMLHttpRequest){
+                        return new XMLHttpRequest();
+                    };
+                };
+                function file_pw(){
+                    if(data.readyState==XMLHttpRequest.DONE && data.status==200){
+                        let result = this.response;
+                        if(result=="ok"){
+                            alert("신규 패스워드를 입력해주세요");
+                            document.getElementById("userid").value = document.getElementById("mid").value;
+                            //view변경
+                            document.getElementById("search").style.display="none";
+                            document.getElementById("pass_modify").style.display="block";
+                        }
+                        else if(result=="no"){
+                            alert("가입되지 않은 사용자 입니다.");
+                        }
+                        else{console.log("데이터 오류");}
+                    };
+                };
+                data = windowck();
+                data.onreadystatechange = file_pw;
+                data.open("POST","./index12.php",true);
+                data.setRequestHeader("content-type","application/x-www-form-urlencoded");
+                data.send(datas);
+            };
+            /*
+            Back-end 데이터 => Error :  name 오류, 암호화(enctype):application/x-www-form-urlencoded 있는지 확인.
+            consol.log = "" => 백엔드 파일 無(url확인) or 백엔드 코드 에러
+            */
+            //패스워드 변경 파트
+            function modify(){
+                let pw = f.mpass.value;
+                let pw2 = f.mpass2.value;
+                if(!pw){
+                    alert("새로운 패스워드를 입력해주세요.")
+                }
+                else if(!pw2){
+                    alert("패스워드를 한번 더 입력해주세요.")
+                }
+                else if(pw!=pw2){
+                    alert("동일한 패스워드를 입력해주세요.")
+                }
+                else{
+                    f.submit();
+                }
+            };
+            
+        </script>
+    </head>
+    <body>
+        <p>[패스워드 찾기]</p>
+        <!-- Ajax POST로 보낼경우 call sign을 받아 값을 출력함.(페이지 이동 無) -->
+        <!-- 패스워드 찾기를 form으로 보낼 경우, 페이지가 이동하여 새로운페이지에서 값을 받아야함 -->
+        <!-- 샘플: 홍길동, hong -->
+        <div class="search" id="search">
+            <input type="text" id="mname" placeholder="고객명">
+            <input type="text" id="mid" placeholder="아이디">
+            <input type="button" value="패스워드 찾기" onclick="abc();">
+        </div>
+        <!-- 새로운 비밀번호는 form으로 전달(페이지 이동 有), id같이 보낼 것 -->
+        <form name="f" id="f" method="POST" action="passok.php" enctype="application/x-www-form-urlencoded">
+            <div class="pass_modify" id="pass_modify">
+                <input type="hidden" name="userid" id="userid" value="">
+                <input type="password" name="mpass" id="mpass" placeholder="새로운 패스워드">
+                <input type="password" name="mpass2" id="mpass2" placeholder="동일한 패스워드">
+                <input type="button" value="패스워드 변경" onclick="modify();">
+            </div>
+        </form>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/ajax/index12.html -->

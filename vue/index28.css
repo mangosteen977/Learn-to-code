@@ -1,0 +1,67 @@
+body,
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body,
+* {
+  font-size: 12px;
+}
+
+.login {
+  width: 300px;
+  height: 150px;
+  background-color: rgba(204, 204, 204, 0.5);
+  position: unset;
+  text-align: center;
+  padding: 10px;
+}
+
+.login > p {
+  width: 100%;
+  height: 20px;
+  background-color: none;
+  position: unset;
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 7px;
+  font-weight: bold;
+  color: cornflowerblue;
+}
+
+.login > input {
+  width: 40%;
+  height: 26px;
+  background-color: white;
+  position: unset;
+  border: none;
+  margin-bottom: 7px;
+}
+
+.login > input:nth-of-type(3) {
+  width: 90%;
+}
+
+.login > button {
+  width: 90%;
+  height: 30px;
+  background-color: cornflowerblue;
+  position: unset;
+  border: none;
+  display: block;
+  margin-bottom: none;
+  margin: 0 auto;
+  font-weight: bold;
+}
+
+.login > em {
+  width: 10%;
+  display: inline-block;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+}
+/*# sourceMappingURL=index28.css.map */

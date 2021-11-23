@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>응용문제3.</title>
+       <script>
+           /*응용문제3.
+           사용자가 값을 입력, 종료값은 시작값보다 커야함.
+           시작값~종료값을 모두 더한 반복문의 결과값만 출력한다.
+           *중요사항* 반복문은 다른 함수로 보내서 처리하시오.
+           */
+        function aaa(){
+            var a = Number(document.getElementById("num1").value);
+            var b = Number(document.getElementById("num2").value);
+            if(b<a){
+                alert("!종료값은 시작값보다 커야합니다!");
+            }
+            else{
+                bbb(a,b);
+            }
+        }
+        function bbb(a,b){
+            var c = 0;
+              while(a<=b){
+                  c = c+a;
+                  a++;
+              }
+            console.log(c);
+        }
+        </script>
+    </head>
+    <body>
+        <input type="number" id="num1" placeholder="시작값" min="0" max="99">
+        <input type="number" id="num2" placeholder="종료값" min="0" max="99">
+        <input type="button" value="계산하기" onclick="aaa();">
+    </body>
+</html>

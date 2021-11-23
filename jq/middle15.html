@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jquery 5일차(4) - 중급 ( 롤링 게시판 )</title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(function(){
+                //배열(게시글 내용)
+                const $array=[
+                    {"news":"네이버, 카카오, 한국은행 '디지털 화폐' 실험 도전 결정...","press":"뉴시스","url":"http://naver.com"},
+                    {"news":"스타트업 주 4일 근무 확산 '밀리의서재' 파격실험","press":"뉴시스","url":"http://daum.com"},
+                    {"news":"OSBC '8년간 최다 이용 오픈소스는 Jquery'","press":"CCTV뉴스","url":"http://google.com"},
+                    {"news":"연봉 인상에 스톡옵션까지... 4차산업시대 IT 개발자 선망직업","press":"에듀동아","url":"http://youtube.com"},
+                    {"news":"망고스틴 曰 '금요일이라 기분좋아 <b>김피탕</b>시킬 것...'","press":"망고스틴일보","url":"http://instagram.com"}
+                ];
+                //세부키만있을 때 ▶ each문 뭘 쓰던 값 같음
+                //$.each($배열,function(){}); === $($배열).each(function(){});
+                //게시글 li출력
+                let $li;
+                $.each($array,function($a,$b){
+                    $li = "<li datacontent = '"+$b["press"]+"' url = '"+$b["url"]+"'>"+$b["news"]+"</li>";
+                    $("#ulcss").append($li);
+                    //언론사명 :after로 출력시키기
+                    // $("#ulcss>li:eq("+$a+")").attr("datacontent",$b["press"]);
+                });
+                let $height_li = $("#ulcss>li").height();
+                let $timer;
+                // let $n = 0; //반복문 돌리던 값
+                $.fn.news = function(){
+                    $timer = setInterval(function(){
+                        $("#ulcss").stop().animate({
+                            "top" : -$height_li+"px" //li높이만큼 증가하며 당김
+                        },700,function(){
+                            let $copy = $("#ulcss>li:first-child").clone(); //첫번 째 노드 복사
+                            $("#ulcss>li:first-child").remove(); //첫번 째 노드 삭제
+                            $("#ulcss").append($copy); //복사노드 맨 뒤에 붙이기
+                            $("#ulcss").css("top","0px"); //ul top 값 되돌리기
+                        });
+                    },5000);
+                };
+                setTimeout($.fn.news(),5000); //초기에 setinterval을 작동시킴
+
+                //해당 기사 페이지로 이동시키기
+                $("#ulcss").click(function(){
+                    let $url = $("#ulcss>li:first-child").attr("url");
+                    // console.log($url)
+                    window.open($url,"_blank");
+
+                });
+                
+            });
+        </script>
+        <style>
+            *{box-sizing: border-box;}
+            body{margin: 0;padding: 0;}
+            ul,ol{list-style: none; margin: 0; padding: 0;}
+            .news_list{
+                width: 500px; height: 30px; border: 2px solid salmon;
+                position: relative; margin: 0 auto; overflow: hidden;
+            }
+            .ulcss{ width: inherit; height: auto; position: absolute;}
+            .ulcss>li{
+                width: inherit; height: 30px; line-height: 30px;
+                text-indent: 10px; font-size: 12px;
+                position: relative;
+            }
+            /*해당 객체의 속성값이용해 content로 붙이기*/
+            .ulcss>li:after{
+                content: attr(datacontent);
+                position: absolute; right: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="news_list" id="news_list">
+            <ul class="ulcss" id="ulcss">
+                <!--예시. <li>네이버 뉴스 롤링 front 게시글    대한뉴스</li> -->
+            </ul>
+        </div>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/middle15.html -->

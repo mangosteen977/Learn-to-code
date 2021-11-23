@@ -1,0 +1,62 @@
+@charset "UTF-8";
+body{margin: 0; padding: 0; font-size: 12px;}
+span, label, main{display: block;}
+ul, ol, dl {list-style: none;}
+a{text-decoration: none;}
+.login{
+    margin: 0 auto;
+    width: 550px;
+    height: auto;
+    background-color: darkmagenta;
+}
+.login > label{
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    box-sizing: border-box;
+}
+.tb1{
+    margin: 0 auto;
+    width: 550px;
+    height: 140px;
+}
+.tb1  tr td:nth-of-type(2){
+    width: 250px;
+    height: 90px;
+    text-align: right;
+}
+.tb1  tr:nth-of-type(1) td:first-child{
+    background-color: blue;
+    padding-bottom: 5px;
+    box-sizing: border-box;
+    width: 300px;
+    height: 45px;
+}
+.tb1  tr:nth-of-type(2) td:first-child{
+    background-color: skyblue;
+    padding-top: 5px;
+    box-sizing: border-box;
+    width: 300px;
+    height: 45px;
+}
+.input_id{
+    width: 300px;
+    height: 40px;
+    padding: 0;
+    margin: 0;
+    border: 1px solid gray;
+    color: gray;
+    font-size: 15px;
+}
+.tb1  tr td:nth-of-type(2) input{
+    width: 200px;
+    height: 90px;
+    border: 2px solid gray;
+    color: gray;
+    font-size: 20px;
+    
+}

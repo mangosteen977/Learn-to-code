@@ -1,0 +1,49 @@
+@charset "UTF-8";
+%basic {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@mixin object($w, $h, $bg, $p) {
+  width: $w;
+  height: $h;
+  background-color: $bg;
+  position: $p;
+}
+@mixin ulol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+body,
+* {
+  @extend %basic;
+}
+.tlist,
+.tlist2 {
+  @include ulol;
+  @include object(500px, 30px, skyblue, relative);
+  & > li {
+    width: 30%;
+    height: inherit;
+    float: left;
+    text-align: center;
+    line-height: 30px;
+    border-right: 1px solid rgb(48, 47, 47);
+    &:nth-of-type(3) {
+      width: 40%;
+      border-right: none;
+    }
+  }
+}
+.tlist2 {
+  background-color: lavender;
+}
+button {
+  width: 50px;
+  height: 30px;
+  background-color: skyblue;
+  border: none;
+  margin: 10px;
+  color: white;
+}

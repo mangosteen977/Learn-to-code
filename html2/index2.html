@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="imagetoolbar" content="no">
+        <!-- 마우스 오버시 이미지 관련 툴바가 생성되지 않도록 함. -->
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title> HTML&CSS 1일차 중급 태그 및 속성(2)</title>
+        <style>
+	    </style>
+        <!-- <base href="../images/"> -->
+        <!-- base : 페이지 내 모든 상대 주소를 url로 지정할 때 사용하는 태그 -->
+    </head>
+    <body>
+        <img src="logo_quick_01.png">
+        <img src="logo_quick_02.png">
+        <img src="logo_quick_03.png">
+        <img src="logo_quick_04.png">
+        <br><br>
+        <!-- formaction : HTML5 form과 함께 사용.
+                          input_submit이나 button_submit에 사용,  -->
+        <!-- formmethod : GET,POST 형태로 데이터 보내는 방식 설정-->
+        <!-- formtarget : _new : (팝업창 만들 때)새로운 탭에서  formaction으로 이동.
+                          _self : 기존 탭에서 이동
+                          _blank : 새 탭에서 이동 -->
+        <form method="POST" action="http://naver.com">
+            <input type="text" name="mid">
+            <input type="submit" value="로그인2" formaction="./index3.html">
+            <button type="submit" formtarget="_new" formmethod="GET" formaction="./index3.html">로그인</button>
+        </form>
+        
+    </body>
+</html>

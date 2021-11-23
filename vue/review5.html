@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+    <title> VUE components template </title>
+    <!-- <script src="http://cdn.jsdelivr.net/npm/vue"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .divclass {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="vue-test">
+        <test-component></test-component>
+        <test-component2></test-component2>
+
+        <table>
+            <my-row></my-row>
+            <my-row></my-row>
+            <my-row></my-row>
+        </table>
+
+        <ul>
+            <my-com></my-com>
+            <my-com></my-com>
+            <my-com></my-com>
+        </ul>
+
+        <table>
+            <tr v-bind:is="what"></tr>
+            <tr v-bind:is="what2"></tr>
+        </table>
+
+        <my-child></my-child>
+
+        <counter></counter>
+        <counter></counter>
+        <counter></counter>
+    </div>
+    <div id="test2">
+        <my-child></my-child>
+        <my-child></my-child>
+        <my-child></my-child>
+    </div>
+</body>
+<script>
+    //전역 컴포넨츠
+    // let msg = { msg_txt: "hi there!" }
+    Vue.component('my-child', {
+        template: "<div v-bind:class='cl'>{{msg_txt}}</div>",
+        data: function () {
+            // return msg;
+            return { msg_txt: "hi there!", cl: "divclass" };
+        }
+    })
+    Vue.component('test-component', {
+        template: "<div>컴포넨츠 다 뿌셔버려</div>"
+    });
+    Vue.component('my-row', {
+        template: "<tr><td>123</td><td>가나다</td></tr>"
+    })
+    //지역 컴포넨츠
+    let child = { template: "<div>컴포넨츠 다 뿌셔버려버려</div>" };
+    let lis = { template: "<li>우린천재야 지니어스야</li>" };
+    let cal = {
+        template: "<button type='button' @click='num++' v-text='num'></button>",
+        data() {
+            return { num: 0 }
+        }
+    }
+    //뷰
+    let test = new Vue({
+        el: "#vue-test",
+        data: {
+            what: 'home',
+            what2: 'dog'
+        },
+        components: {
+            "test-component2": child,
+            "my-com": lis,
+            'home': { template: "<td>it's home</td>" },
+            'car': { template: "<td>it's car</td>" },
+            'dog': { template: "<td>it's dog</td>" },
+            'counter': cal
+        }
+    });
+    let test2 = new Vue({
+        el: "#test2"
+    })
+</script>
+
+</html>

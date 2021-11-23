@@ -1,0 +1,73 @@
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>HTML 4.0 6일차 - CSS 2.0 position(응용)</title>
+        <style>
+            /* ul, ol 사용 시 li의 각각의 가로크기에 맞춰 ul,ol의 width를 정확하게 입력
+               
+               부모 객체와 자식 객체는 float를 각각 적용 가능함. */
+            body{margin: 0; padding: 0;}
+            .menu{
+                width: 310px;
+                height:25px;
+                float: right;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                }
+            .a{
+                width: 60px;
+                height: 25px;
+                border: 1px solid black;
+                border-right: none;
+                float:left;
+                line-height: 25px;
+                text-align: center;
+                font-size: 12px;
+                font-family: "돋움체";
+                }
+            .b{border-right: 1px solid black;}
+
+            .menu2{
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                clear: both;
+                float: right;
+                width: 310px;
+                height: 25px;
+                }
+            .c{
+                width: 60px;
+                height: 25px;
+                border-right: 1px solid black;
+                float:left;
+                line-height: 25px;
+                text-align: center;
+                font-size: 13px;
+                font-family: "굴림체";
+                }
+            .d{border-right: none;}
+        </style>
+    </head>
+    <body>
+        <ul class="menu">
+            <li class="a">HOME</li>
+            <li class="a">LOGIN</li>
+            <li class="a">MEMBER</li>
+            <li class="a">MYINFO</li>
+            <li class="a b">CS</li>
+        </ul>
+
+        <br><br>
+
+        <ul class="menu2">
+            <li class="c">HOME</li>
+            <li class="c">LOGIN</li>
+            <li class="c">MEMBER</li>
+            <li class="c">MYINFO</li>
+            <li class="c d">CS</li>
+        </ul>
+    </body>
+</html>

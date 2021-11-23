@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap : http://mangsteen977.dothome.co.kr/portfolio/shop/sitemap.xml

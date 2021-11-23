@@ -1,0 +1,73 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700;900&display=swap");
+/* font-family: 'Noto Sans KR', sans-serif; (100, 400, 700, 900) */
+@mixin base {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+@mixin ulol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+@mixin sections($width, $height, $bg) {
+  width: $width;
+  height: $height;
+  background-color: $bg;
+}
+@mixin flexs($wrap, $justify, $align) {
+  display: flex;
+  flex-wrap: $wrap;
+  justify-content: $justify;
+  align-content: $align;
+}
+@mixin font_sans($h, $c, $a, $w, $s) {
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: $h;
+  color: $c;
+  text-align: $a;
+  font-weight: $w;
+  font-size: $s;
+}
+
+* {
+  box-sizing: border-box;
+}
+ul{
+    @include ulol;
+}
+body {
+  @include base;
+  font-size: 13px;
+}
+.box{
+    @include sections(400px, auto, none);
+    margin: 0 auto;
+    &>.ulcss{
+        @include sections(400px, auto, none);
+        @include font_sans(50px, black, unset, 700, 13px);
+        &>li{
+            @include sections(100%, 50px, none);
+            &>div{
+                @include sections(100%, 50px, none);
+                @include font_sans(50px, cornflowerblue, unset, 700, 16px);
+                text-indent: 5px;
+            }
+            &>input{
+                @include sections(100%, 40px, none);
+                @include font_sans(40px, #ccc, unset, 400, 13px);
+                text-indent: 5px;
+            }
+            &>.btn{
+                @include font_sans(40px, black, center, 400, 16px);
+                background-color: rgba(218, 218, 218, 0.7);
+                border: none;
+                text-indent: 0;
+                &:hover{
+                  background-color: rgba(184, 182, 182, 0.7);
+                }
+            }
+        }
+    }
+}

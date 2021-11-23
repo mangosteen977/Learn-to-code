@@ -1,0 +1,291 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap");
+/*font-family: 'Nanum Gothic', sans-serif;*/
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+.section_agree {
+  width: 100%;
+  height: auto;
+  background-color: none;
+}
+
+.agree_view {
+  width: 1200px;
+  height: auto;
+  background-color: none;
+  margin: 0 auto;
+}
+
+.agree_view > p {
+  width: 100%;
+  height: 40px;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 40px;
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  font-size: 25px;
+  margin: 80px 0;
+}
+
+.agree_view > .agree_text {
+  width: 100%;
+  height: auto;
+  background-color: none;
+}
+
+.agree_view > .agree_text > li {
+  width: 100%;
+  height: 50px;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  text-indent: 5px;
+}
+
+.agree_view > .agree_text > li:nth-of-type(1) {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  border-bottom: 3px solid #aaa;
+}
+
+.agree_view > .agree_text > li > label {
+  cursor: pointer;
+}
+
+.agree_view .text_box {
+  width: 100%;
+  height: 250px;
+  background-color: none;
+  overflow-y: scroll;
+  border: 1px solid #ccc;
+  display: block;
+}
+
+.agree_view .agree_btn {
+  width: 180px;
+  height: 50px;
+  background-color: #646363;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 50px;
+  color: white;
+  text-align: center;
+  font-weight: unset;
+  font-size: 12px;
+  margin: 0 auto;
+  margin-top: 25px;
+  display: block;
+}
+
+/*welcom_ok.html*/
+.welcome_box {
+  width: 550px;
+  height: auto;
+  background-color: none;
+  padding: 80px 0;
+  margin: 0 auto;
+}
+
+.welcome_box > p {
+  width: 100%;
+  height: 40px;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 40px;
+  color: black;
+  text-align: unset;
+  font-weight: bold;
+  font-size: 25px;
+  padding-left: 10px;
+}
+
+.welcome_box > .welcome_text_box {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 80px 0;
+  border: 1px solid #ccc;
+}
+
+.welcome_box > .welcome_text_box > ul {
+  width: 90px;
+  height: auto;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding: 30px 0;
+  margin: 0 auto;
+}
+
+.welcome_box > .welcome_text_box > ul > li {
+  width: 15px;
+  height: 15px;
+  background-color: #c3222b;
+  border-radius: 100%;
+}
+
+.welcome_box > .welcome_text_box > span {
+  width: 90%;
+  height: 50px;
+  background-color: none;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.welcome_box > .welcome_text_box > span:nth-of-type(1) {
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 50px;
+  color: unset;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.welcome_box > .welcome_text_box > span:nth-of-type(2) {
+  height: auto;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: unset;
+  color: #aaa;
+  text-align: center;
+  font-weight: unset;
+  font-size: 12px;
+  padding-bottom: 80px;
+  margin-bottom: 0px;
+  border-bottom: 2px solid #ccc;
+}
+
+.welcome_box > .welcome_text_box > span:nth-of-type(2) > label {
+  font-weight: bold;
+  color: black;
+}
+
+.welcome_box > .welcome_text_box > span:nth-of-type(3) {
+  height: auto;
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-top: 80px;
+}
+
+.welcome_box > .welcome_text_box > span:nth-of-type(3) > label {
+  width: 100%;
+  height: 30px;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: 10px 0;
+}
+
+.welcome_box > .welcome_text_box > span:nth-of-type(3) > label:nth-of-type(1) {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.welcome_box > .welcome_text_box > span:nth-of-type(3) > label:nth-of-type(2) {
+  color: #aaa;
+  height: 60px;
+}
+
+.welcome_box > .welcome_text_box > span:nth-of-type(3) > label:nth-of-type(2) > a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.welcome_box > .welcome_text_box > span:nth-of-type(3) > label:nth-of-type(3) {
+  width: 230px;
+  height: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.welcome_box > .welcome_text_box > span:nth-of-type(3) > label:nth-of-type(3) > img {
+  width: 20px;
+}
+
+.welcome_box > .welcome_text_box > span:nth-of-type(3) > label > img {
+  width: 30px;
+}
+
+.welcome_box > .welcome_text_box > .welcom_btn {
+  width: 230px;
+  height: 50px;
+  background-color: #c3222b;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 50px;
+  color: white;
+  text-align: center;
+  font-weight: unset;
+  font-size: 16px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+}
+
+.color_red {
+  color: #c3222b;
+}
+/*# sourceMappingURL=agree.css.map */

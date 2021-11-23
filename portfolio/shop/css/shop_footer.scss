@@ -1,0 +1,44 @@
+@charset "UTF-8";
+.copyright {
+  width: 1200px;
+  height: 100px;
+  margin: 0 auto;
+  padding-top: 5px;
+  text-align: center;
+}
+.copy_ul {
+  width: auto;
+  height: 30px;
+  font-size: 12px;
+  margin: 0 auto;
+}
+.copy_ul > li {
+  width: auto;
+  height: inherit;
+  line-height: 30px;
+  display: inline-block;
+  text-align: center;
+  padding: 0 10px 0 10px;
+}
+.btn_info_cp {
+  border: 0;
+  width: 80px;
+  height: 20px;
+  font-size: 11px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 3px;
+  background-color: #c3222b;
+  color: white;
+}
+.btn_info_cp:hover {
+  background-color: #921c22;
+}
+.copyright_div {
+  width: inherit;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  font-size: 12px;
+  margin: 0 auto;
+}

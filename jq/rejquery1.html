@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery 9일차(1) - JQ초급코드 응용 및 최종복습 </title>
+        <script src="./jquery.js"></script>
+        <script src="./jquery-ui.js"></script>
+        <link rel="stylesheet" type="text/css" href="./jquery-ui.css">
+        <!--[JQ총정리]
+            JS : name,id
+            JQ : id, class - 엔진:jquery.js,jquery-ui.js
+                시작함수 : $(document).ready(function(){});
+                $.fn.확장함수
+                이벤트핸들링(click, change, mouseover/out/enter/leave, submit)
+                핸들링(scrollTop, keydown/up/press)
+                offset : 위치를 파악(top,left)
+                특징함수(css, fadeIn/Out, slideDown/Up/Toggle, animate, show, hide)
+                (this):자신의 오브젝트 지칭,자식노드를 확인
+                    1. 자신을 지칭 ex.
+                        $("#box").click(function(){
+                            $(this).slideUp(1000);
+                        });
+                    2. 자식노드 확인 ex.
+                        $("#box>li").click(function(){
+                            $(this).index();
+                        });
+        -->
+        <script>
+             $(document).ready(function(){
+                // 문제1.
+                var $left = 0;
+                $("#btn").click(function(){
+                    var $where = $("#box").offset().left;
+                    console.log($where);
+                    if($where==0){
+                        $left += 500;
+                        $("#box").stop().animate({"left":$left+"px"},500);
+                    }
+                    else if($where==500){
+                        if(confirm("추가로 더 이동하시겠습니까?")){
+                            $left += 500;
+                            $("#box").stop().animate({"left":$left+"px"},500);
+                        }
+                    }
+                });
+
+
+             });
+        </script>
+        <style>
+            body{margin: 0; padding: 0;}
+           .a{text-align:right; display:inline-block; width: 500px; height: 20px;background-color: pink;}
+           .b{background: rebeccapurple; color: white;}
+           #box{position: relative; width: 100px; height: 100px; background-color: black;}
+            #btn{display: block;}
+        </style>
+    </head>
+    <body>
+        <!-- 문제1. offset -->
+        <div id="box"></div>
+        <div class="a">500px </div><div class="a b">1000px </div>
+        <button type="button" id="btn" class="ui-button">실행</button>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/rejquery1.html -->

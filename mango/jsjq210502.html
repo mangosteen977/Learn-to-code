@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <meta http-equiv="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JS/JQ 다시 복습하기 210502</title>
+        <script src="../jq/jquery.js"></script>
+        <script>
+            $(document).ready(function(){
+            /* 1번 */
+                $("#btn").click(function(){
+                    $("#a0").stop().animate({ "width":"350px" },1000);
+                    $("#a1").stop().animate({ "width":"220px" },1000);
+                    $("#a2").stop().animate({ "width":"290px" },1000);
+                });
+            /* 2번 */
+                var $timer;
+                var $time = 60;
+                $.fn.timer = function(){
+                    $timer = setTimeout($.fn.timer,1000);
+                    $("#hidden").val($time);
+                    $time--;
+                    if($time<0){
+                        clearTimeout($timer);
+                        $("#msg").attr("readonly","true");
+                    }
+                }
+                $("#btn2").click(function(){
+                    var $num1 = $("#num1").val();
+                    var $num2 = $("#num2").val();
+                    var $num3 = $("#num3").val();
+                    if($num1==""||$num2==""||$num3==""){
+                        alert("핸드폰번호 입력 필수.");
+                    }
+                    else{
+                        $timer = $.fn.timer();
+                    }
+                });
+                $("#btn22").click(function(){
+                    if($("#msg").val()=="123456"){
+                        alert("인증되었습니다.");
+                        clearTimeout($timer);
+                    }
+                    else{
+                        alert("인증번호가다릅니다.");
+                    }
+                });
+            /* 3번 */    
+
+            });
+            /* 1번 */
+            function no1(){
+                document.getElementById("a0").style.width="350px";
+                document.getElementById("a1").style.width="220px";
+                document.getElementById("a2").style.width="290px";
+            };
+            /* 2번 */
+        </script>
+        <style>
+            /* 1번 */
+            #a>div{width: 0; height: 35px; background-color: aquamarine; margin-bottom: 20px;}
+        </style>
+    </head>
+    <body>
+        <!-- 1번 -->
+        <div id="a">
+            <div id="a0"></div>
+            <div id="a1"></div>
+            <div id="a2"></div>
+        </div>
+        <input type="button" value="jq" id="btn"><!--1번jq버튼-->
+        <input type="button" value="js" onclick="no1();"><!--1번js버튼-->
+        <br><br>
+        <!-- 2번 -->
+        <input type="text" id="num1">-<input type="text" id="num2">-<input type="text" id="num3">
+        <br>
+        <input type="button" value="jq인증발송" id="btn2">
+        <input type="button" value="js인증발송" onclick="no2();">
+        <br>
+        <input type="text" id="hidden"><input type="text" id="msg">
+        <input type="button" value="jq인증확인" id="btn22">
+        <input type="button" value="js인증확인" onclick="no22();">
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/mango/jsjq210502.html -->

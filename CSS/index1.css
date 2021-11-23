@@ -1,0 +1,17 @@
+@charset "UTF-8";
+body{margin: 0; padding: 0; font-size: 12px;}
+ul, ol{list-style: none; margin: 0; padding: 0;}
+span, label, main{display: block;}
+a{text-decoration: none;}
+.box1{width: 100px; height: 100px; background-color: blue;}
+.box2{width: 100px; height: 100px; background-color: red;}
+
+span:nth-child(3){width: 100px; height: 100px; background-color: green;}
+span:nth-child(4){width: 100px; height: 100px; background-color: orange;}
+span:nth-of-type(5){width: 100px; height: 100px; background-color: black;}
+div:nth-of-type(1){width: 150px; height: 50px; background-color: blueviolet;}
+label:nth-of-type(1){width: 150px; height: 50px; background-color: pink;}
+/* 
+    :nth-child() : 부모기준으로 순서에 동일한 태그가 있을 때
+    :nth-of-type() : 부모기준으로 동일하지 않은 태그일 경우 카운터 순서
+*/

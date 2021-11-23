@@ -1,0 +1,42 @@
+@charset "UTF-8";
+@import "./config.scss";
+
+.shop_menu_se {
+  @include sections(1174px, 50px, black);
+  @include flexs(nowrap, row, space-between, center);
+  margin: 0 auto;
+  & > .shop_menu {
+    @include sections(auto, inherit, none);
+    @include flexs(nowrap, row, flex-start, center);
+    & > div {
+      @include sections(140px, inherit, none);
+      @include font_sans(50px, white, center, unset, 16px);
+      cursor: pointer;
+      position: relative;
+      &:hover {
+        background-color: #c3222b;
+      }
+      & > ul {
+        @include sections(inherit, auto, white);
+        @include font_sans(30px, black, center, unset, 12px);
+        @include flexs(nowrap, column, flex-start, center);
+        position: absolute;
+        z-index: 30;
+        & > li {
+          @include sections(inherit, 30px, none);
+          cursor: pointer;
+          &:hover {
+            box-shadow: 3px 3px 3px 0.5px #ccc;
+            color: #c3222b;
+          }
+        }
+        display: none;
+      }
+    }
+  }
+  & > .shop_menu_ask {
+    @include sections(140px, inherit, #c3222b);
+    @include font_sans(50px, white, center, unset, 13px);
+    cursor: pointer;
+  }
+}

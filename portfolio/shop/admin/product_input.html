@@ -1,0 +1,92 @@
+<meta charset="UTF-8">
+<article class="adm_main">
+    <span>신규 상품등록</span>
+    <ol class="admin_main_ul">
+        <li onclick="fontclass('1');"><img src="../image/ts01.gif" alt="../img/ts01.gif" title="보통"></li>
+        <li onclick="fontclass('2');"><img src="../image/ts02.gif" alt="../img/ts02.gif" title="크게"></li>
+        <li onclick="fontclass('3');"><img src="../image/ts03.gif" alt="../img/ts03.gif" title="더크게"></li>
+    </ol>
+</article>
+<article class="input_pd">
+    <form name="pd_input_frm" enctype="multipart/form-data">
+        <input type="hidden" name="domain" value="http://mangsteen977.dothome.co.kr">
+        <input type="hidden" name="product_key" value="new_product">
+        <table class="input_pd_tb" border="1" cellpadding="0" cellspacing="0">
+            {{code_random}}
+            <tbody>
+                <tr>
+                    <td style="width: 20%; height: 40px;">상품코드</td>
+                    <td style="width: 80%;"><input type="text" name="goodsno" v-model="code" readonly>*해당 상품 코드는 8자리
+                        자동생성 됩니다</td>
+                </tr>
+                <tr>
+                    <td>상품명</td>
+                    <td><input type="text" name="product_nm" v-model="name" maxlength="150">※ 상품명은 150자까지 등록이 가능합니다.
+                    </td>
+                </tr>
+                <tr>
+                    <td>간편설명</td>
+                    <td><input type="text" name="product_nmdtc" v-model="info1" maxlength="200">※ 최대 200자 이내</td>
+                </tr>
+                <tr>
+                    <td>소비자가격</td>
+                    <td><input type="text" name="product_money" v-model="price" :id="rp">원</td>
+                </tr>
+                <tr>
+                    <td>상품할인 유뮤</td>
+                    <td>
+                        <label><input type="radio" name="product_dc" value="Y" @click="dc_yes_fun(1)"> 적용</label>
+                        <label><input type="radio" name="product_dc" value="N" @click="dc_yes_fun(0)" checked>
+                            미적용</label>
+                    </td>
+                </tr>
+                <tr v-if="dc_yes==1">
+                    <td>상품할인율</td>
+                    <td>
+                        <label><input type="radio" name="product_dcpart" value="P" v-model="ways">%단위</label>
+                        <label><input type="radio" name="product_dcpart" value="M" v-model="ways"
+                                checked>원단위</label>&nbsp;|&nbsp;
+                        할인율 : <input type="text" name="product_dcnum" v-model="dc_per" @input="total()">&nbsp;|&nbsp;
+                        할인 최종금액 : <input type="text" name="product_sales" v-model="sale_price">원
+                    </td>
+                </tr>
+                <tr>
+                    <td>상품제한 수량</td>
+                    <td><input type="text" name="product_ea" v-model="limit_ea"> EA ※ 최대수량은 99999개 입니다 </td>
+                </tr>
+                <tr>
+                    <td>상품대표 이미지</td>
+                    <td><input type="file" name="product_img" v-model="img1">※ JPG,BMP,PNG,JPEG,GIF 2MB 이하만 업로드 가능합니다.
+                        (500 * 500)</td>
+                </tr>
+                <tr>
+                    <td>상품옵션명</td>
+                    <td>옵션명1<input type="text" name="product_option1">
+                        옵션명2<input type="text" name="product_option2">
+                        옵션명<input type="text" name="product_option3">※ 미입력시 옵션은 출력되지 않습니다
+                    </td>
+                </tr>
+                <tr>
+                    <td>제품 상세보기 URL</td>
+                    <td><input type="text" name="product_url" v-model="url"></td>
+                </tr>
+                <tr>
+                    <td>상품추가 이미지</td>
+                    <td>
+                        <input type="file" name="product_img1">※ JPG,BMP,PNG,JPEG,GIF 2MB 이하만 업로드 가능합니다. (500 * 500)<br>
+                        <input type="file" name="product_img2">※ JPG,BMP,PNG,JPEG,GIF 2MB 이하만 업로드 가능합니다. (500 * 500)<br>
+                        <input type="file" name="product_img3">※ JPG,BMP,PNG,JPEG,GIF 2MB 이하만 업로드 가능합니다. (500 * 500)<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>상품상세설명</td>
+                    <td><textarea name="product_contents1" v-model="info2"></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <div class="btns_input_pd">
+        <input type="button" value="상품등록" @click="add_pd_btn">
+        <input type="button" value="상품목록" @click="go_to_list()">
+    </div>
+</article>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Javascript 8일차 (4) - 중급 (배열 및 출력 총 복습 1) </title>
+        <style>
+            #box{width: 100px; height: 100px; border: 1px solid black;}
+        </style>
+    </head>
+    <body>
+        <!-- 응용문제 1.
+            두 개의 버튼이 #box안에 생성되도록 하시오.
+            한개의 버튼 속성은 button이고, 아이디찾기이며,
+            다른 한 개는 submit이며, 확인이다.
+        -->
+        <div id="box"></div>
+        <!-- 응용문제 2.
+         -->
+    </body>
+    <script>
+        function abc(){alert("test")};
+        // 응용문제1.
+        var btn1 = document.createElement("input");
+        //btn1.type="button";
+        btn1.setAttribute("type","button");
+        btn1.setAttribute("value","아이디찾기");
+        btn1.setAttribute("onclick","abc();");
+        btn1.className = "btn1"; //class name 클래스 설정
+        btn1.id = "btn1"; //id name 아이디 설정
+        var btn2 = document.createElement("input");
+        btn2.setAttribute("type","submit");
+        btn2.setAttribute("value","확인");
+        btn2.className = "btn2";
+        btn2.id = "btn2";
+        //document.getElementById("box").append(btn1,btn2);
+        document.getElementById("box").appendChild(btn1);
+        document.getElementById("box").appendChild(btn2);
+        // 응용문제2.
+
+    </script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/array1.html -->

@@ -1,0 +1,30 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+/*font-family: 'Noto Sans KR', sans-serif; 100;300;400;500;700;900*/
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+/*font-family: 'Noto Sans', sans-serif;*/
+*{box-sizing: border-box;}
+body{margin:0; padding: 0; font-family: 'Noto Sans KR', sans-serif;}
+ul, ol{list-style: none; margin: 0; padding: 0;}
+span, label, main{display: block;}
+a{text-decoration: none;}
+img{ width: 100% }
+.bn_box{width: 1200px; height: 500px; margin: 0 auto; position: relative;}
+.bn_ul{width: 1200px; height: 500px; position: relative;}
+.bn_ul>li{width: 1200px; height: 500px; position: absolute; display: none;}
+.bn_ul>li:nth-child(1){display: block;}
+.bn_disc{width: 1200px; height: 20px; text-align: center; position: absolute;
+bottom: 10px;}
+.bn_disc>li{
+    width: 20px; height: 20px; border-radius: 100%; background-color: #ccc;
+    display: inline-block; cursor: pointer;
+}
+.bn_disc>li:nth-of-type(1){background-color: goldenrod;}
+.bn_side{
+    width: 1200px; height: 60px; 
+    position: absolute; top: 50%; margin-top: -30px;
+}
+.bn_left, .bn_right{
+    width: 60px; height: 60px; cursor: pointer; position: absolute; 
+}
+.bn_right{right: 5px;}

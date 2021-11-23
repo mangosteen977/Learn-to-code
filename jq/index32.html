@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery Jquery 8일차(4) - 초급코드 초급코드 시간(GET 파라미터 값 받아서 처리하기2) </title>
+        <script src="./jquery.js"></script>
+        <script src="./jquery-ui.js"></script>
+        <link rel="stylesheet" type="text/css" href="./jquery-ui.css">
+        <script>
+             $(document).ready(function(){
+                var $url = location.search;//url정보 중 파라미터 부분만 가져오는 명령어
+                var $a = $url.split("?test=");
+                //console.log($a[1]);
+                var $t = $url.split("&mtel=");
+                //console.log($t[1])
+                var $j = $url.split("&");
+                var $jj = $j[1].split("mname=");
+                //console.log($jj[1])
+                var $em = $url.split("&memail=");
+                var $per = $em[1].replace("%40","@");
+                console.log($per)
+
+
+                if($a[1]=="admin"){
+                    alert("관리자님 환영합니다.");
+                }
+                else{
+                    //alert("잘못 된 접근입니다.");
+                    //location.href='index31.html';
+                }
+             });
+        </script>
+        <style>
+           
+        </style>
+    </head>
+    <body>
+        
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/index32.html -->

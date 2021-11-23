@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible">
+        <title>Javascript 5일차(1) - 초급코드 </title>
+        <script>
+    // ===, !== : type과 결과값 모두를 고려함.
+            var a = "123456";
+            var b = "123";
+           /* if(a === 123456){
+                console.log("동일함");
+            }
+            else{
+                console.log("동일하지않음");
+            }*/
+            function abc(){
+                var aa = Number(document.getElementById("bb").value);
+                console.log(aa);
+    //NaN : Not a Number
+    //isNaN : : true(문자), false(숫자)
+                if(isNaN(aa)==true){
+                    alert("숫자만 입력하세요.");
+                    document.getElementById("bb").value = "";
+    //document.getElementById("bb").value = ""; : 정상적이지 않은 입력값을 초기화함.
+                }
+                else if(aa==""){
+                    alert("숫자를 입력해주세요.")
+                    document.getElementById("bb").focus();
+                }
+                else{
+                    alert("정상적으로 숫자를 입력했습니다.");
+                }
+            }
+
+        </script>
+    </head>
+    <body>
+        <input type="text" id="bb" placeholder="number only">
+        <button type="button" onclick="abc();">결과확인</button>
+        <!-- button : 기본 type="submit"으로 되어 있다.
+            type="button"으로 설정해야 onclick이 작동한다. -->
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/index25.html -->

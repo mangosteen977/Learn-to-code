@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>문제 5번</title>
+        <style>
+            body{margin: 0; padding: 0; box-sizing: border-box; box-sizing: border-box;}
+            ul,ol,dl{margin: 0; padding: 0; list-style: none;}
+            span,label,main{display: block;}
+            a{text-decoration: none;}
+            .box{
+                width: 1000px;
+                height: 30px;
+                text-align: right;
+            }
+            .box > label{
+                width: 100px;
+                height: 30px;
+                font-size: 12px;
+                font-weight: bold;
+                color: white;
+                display: inline-block;
+                text-align: center;
+                line-height: 30px;
+            }
+            .c{
+                background-color: blue;
+                margin-right: 10px;
+            }
+            .d{
+                background-color: black;
+            }
+            .t{
+                width: 1000px;
+                height: 90px;
+                font-size: 13px;
+                text-align: center;
+                line-height: 30px;
+                border: none;
+                margin-top: 15px;
+            }
+            .blue{
+                width: 200px;
+                height: 30px;
+                background-color: blue;
+                color: white;
+            }
+            .b{
+                width: 200px;
+                height: 30px;
+                background-color: yellow;
+            }
+        </style>
+    </head>
+    <body>
+        <span class="box">
+            <label class="c">게시판 생성</label><label class="d">리스트 다운로드</label>
+        </span>
+        <table class="t" border="1px solid gray" cellpadding="0" cellspacing="0">
+            <tr class="a">
+                <td rowspan="3" class="blue">게시판 글/댓글 리스트</td>
+                <td class="b">공지사항</td>
+                <td class="b">자유게시판</td>
+                <td class="b">자료실</td>
+                <td class="b">FAQ</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>55</td>
+                <td>5</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>-</td>
+                <td>105</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+        </table>
+    </body>
+</html>

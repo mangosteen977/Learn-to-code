@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE-Edge, chrome=1">
+        <title>CSS 3.0 1일차 table 추가속성2</title>
+        <style>
+            .table{width: 400px; height: 100px; text-align: center;box-sizing: border-box;}
+            .table>.col:nth-child(2){width: 100px;}
+            .table>.col:nth-child(3){width: 100px;}
+            .table>.col:nth-child(4){width: 100px;}
+            .table>tbody>tr>td:nth-child(4){text-align: right; color:red;}
+
+            .table2{width: 500px; height: 120px; box-sizing: border-box; text-align: center;}
+            .table2 > thead > tr {height: 30px;}
+            .table2 > tbody > tr {height: 30px;}
+            .col2 > col{width: 100px; height: 30px;}
+            .col2 > col:first-child{width: 200px;}
+            .table2>tbody>tr>td:nth-child(4){text-align: right; background-color: #98d2fb;}
+        </style>
+    </head>
+    <body>
+        <table border="1" class="table" cellspacing="0" cellpadding="0">
+            <caption>[야근 근무 수당]</caption>
+            <colgroup>
+                <col class="col">
+                <col class="col">
+                <col class="col">
+                <col class="col">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th rowspan="2">재직자</th>
+                    <th colspan="3">월별</th>
+                </tr>
+                <tr>
+                    <th>1월</th>
+                    <th>2월</th>
+                    <th>3월</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>이순신</th>
+                    <td>2시간</td>
+                    <td>1시간</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <th>홍길동</th>
+                    <td>10시간</td>
+                    <td>5시간</td>
+                    <td>7시간</td>
+                </tr>
+            </tbody>
+        </table>
+        <br><br>
+        <!-- 응용문제 Table + CSS Node -->
+        <table border="1" class="table2" cellpadding="0" cellspacing="0">
+            <caption><u>수도권 및 경기도 월, 화요일 강수량 확인</u></caption>
+            <colgroup class="col2">
+                <col>
+                <col>
+                <col>
+                <col>
+            </colgroup>
+            <thead>
+                <tr>
+                    <th> </th>
+                    <th>월요일</th>
+                    <th>화요일</th>
+                    <th>총 강수량</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>서울</td>
+                    <td>0mm</td>
+                    <td>0mm</td>
+                    <td>0mm</td>
+                </tr>
+                <tr>
+                    <td>의정부</td>
+                    <td>3mm</td>
+                    <td>0mm</td>
+                    <td>3mm</td>
+                </tr>
+                <tr>
+                    <td>일산</td>
+                    <td>1.5mm</td>
+                    <td>0.5mm</td>
+                    <td>2mm</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+    </html>

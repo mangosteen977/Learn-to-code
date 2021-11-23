@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HTML&CSS 3일차(4) 중급 반응형 (transform + transition) </title>
+        <script src="../jq/jquery.js"></script>
+        <script>
+           $(document).ready(function(){
+                $("#box2").click(function(){
+                    $(this).css({
+                        "transform":"translate(300px)"
+                    })
+                });
+                $("#ck").click(function(){
+                    var $a = $(this).is(":checked");
+                    var $w = $("#width").val();
+                    console.log($a)
+                    if($a==true){
+                        /*$("#box3").css("width",$w+"px");*/
+                        $("#box3").css("width","600px");
+                    }
+                    else{
+                        $("#box3").css("width","");
+                    }
+                });
+
+
+
+
+           });
+        </script>
+        <style>
+            .box{width: 100px; height: 100px; background-color: black;}
+            .box:hover{
+                width: 200px; height: 50px;
+                background-color: rebeccapurple;
+                transition-property: background-color;
+                transition-duration: 3s;
+            }
+            /*
+            transiton-property : 속성을 적용할 오브젝트, 기본은 모두 선택 (all)
+            transition-duration : 속성 효과가 작동할 시간
+            ransition-timing-function: 효과 지속 빠르기 
+                                    --> ease(기본, 느림-보통-느림)
+                                    --> ease-in/out(점점 빨라짐/점점 느려짐)
+                                    --> linear(같은 속도 유지)
+                                    --> cubic-bezier(n,n,n,n); : 1=느림/0=빠름
+                                                    (시작값,중간값,최대값,종료값);
+                                    -->steps(n); : 효과를 1/n씩 뚝뚝뚝 작동
+
+            ex. transition: width 3s;
+            ==transition-property: width;
+            ==transition-duration: 3s;
+            */
+            .box2{width: 100px; height: 100px; background-color: lightsalmon;
+                transition-duration: 5s;
+                /*transition-timing-function: cubic-bezier(0,0,1,1);*/
+                transition-timing-function: steps(10);
+            }
+            .box3{width: 100px; height: 100px; background-color: salmon;
+                transition-duration: 5s;
+            }
+        </style>    
+    </head>
+    <body>
+        <div class="box"></div>
+        <div class="box2" id="box2"></div>
+        <br><br>
+        <div class="box3" id="box3"></div>
+        <!-- /<input type="text" id="width" placeholder="가로길이"> -->
+        <input type="checkbox" id="ck"><label for="ck">가로길이늘리기</label>
+    </body>
+</html>

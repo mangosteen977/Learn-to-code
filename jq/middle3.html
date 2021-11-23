@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jquery 1일차(3) - 중급 (setInterval JQ) </title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(function(){
+                var $timer;
+                var $node = 0;
+                $.fn.btime = function(){
+                    $timer = setInterval(function(){
+                        $node++;
+                        $(".dot>li").css("background-color","black");
+                        $(".dot>li").eq($node).css("background-color","darkseagreen");
+                        if($node==3){ $node = -1; }
+                        
+                    },2000);
+                };
+                //setinterval은 더블로 사용하지 않음. 두 개가 함께 작동함.
+                //settimeout은 더블로 사용함
+                //배너최조 time작동 할 경우 settimeout으로 적용, 그 외는 setinterval로 사용
+                setTimeout($.fn.btime,0); //처음 swtinterval을 호출
+                $(".dot>li").bind({
+                    "click":function(){
+                        var $n = $(this).index();
+                        clearInterval($timer);
+                        $(".dot>li").css("background-color","black");
+                        $(".dot>li").eq($n).css("background-color","darkseagreen");
+                    },
+                    "mouseleave":function(){
+                        setTimeout($.fn.btime,0);
+                    }
+                       
+                });    
+            });
+        </script>
+        <style>
+            *{box-sizing: border-box;}
+            body{margin: 0; padding: 0;}
+            ul{list-style: none; margin: 0; padding: 0;}
+            .dot{width: 100%; height: auto; text-align: center;}
+            .dot>li{
+                width: 15px; height: 15px; border-radius: 100%;
+                background-color: black; display: inline-block; 
+                margin-left: 5px; color: white; font-size: 10px;
+            }
+            .dot>li:first-child{margin-left: 0px; background-color: darkseagreen;}
+            
+        </style>
+    </head>
+    <body>
+        <ul class="dot"><li>0</li><li>1</li><li>2</li><li>3</li></ul>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/middle3.html -->

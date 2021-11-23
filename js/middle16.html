@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>자바스크립트 4일차(3) (중급) - 배열(고객리스트 출력)응용 </title>
+        <script>
+            //배열ver1.
+            const array = {
+                "mid":["mangosteen","mango","coconut","jackfruit","drangonfruit"],
+                "mname":["망고스틴","망고","코코넛","잭프룻","용과"],
+                "mtel":["000-0000-0000","111-1111-1111","222-2222-2222",
+                "333-3333-3333","444-4444-4444"]
+            };
+            //출력
+            //ver.1 가내수공업 버전 (while + for in)
+            function listck(){
+                var k; var n = 0;
+                while(n<5){
+                    var label = document.createElement("label");
+                    for(k in array){
+                        var span = "<span>"+array[k][n]+"</span>";
+                        label.innerHTML+=span;
+                        document.getElementById("member").append(label);
+                    };
+                    n++;
+                }
+            };
+            //console.log(array[k][0]); 
+            //k == mid mname mtel
+            //array[k] == 각[]값
+            //array[k][0] == hong 홍길동 010-1234-5555
+
+            //ver.4 배열1 --> 더블 배열반복문 사용해보자..
+            function listck4(){
+                var k2,k3;
+                for(k2 in array.mid){ //임의의 키(mid)의 배열을 돌려 반복문이 5번 돌게 한다.
+                    var label4 = document.createElement("label");//반복문에 의해 label이 5개 생성된다.
+                    //console.log(label4)//label*5
+                    for(k3 in array){ //실제 내용을 찍을 배열반복문, k3는 key의 수가 3 개임으로, 3번 도는 반복문이다.
+                        var span4 = "<span>"+array[k3][k2]+"</span>";
+                        //스판태그 속, 배열[0]~[3]이 각 [0]~[5]까지 회전 함.
+                        //ex) array[k3][0] == array배열의 각 키 값(k3)의 0번 째 값. == mangosteen 망고스틴 000-0000-0000
+                        label4.innerHTML+=span4; //스판에 만들어진 태그들을 반복문을 돌며 label4에 축적시킨다.
+                        document.getElementById("member").append(label4); //축적된 스판값이 담긴 라벨을 해당 태그안에 찍는다.
+                        
+                    };
+                }
+            };
+
+            //배열ver2.
+            const array2 = [
+                ["mangosteen","mango","coconut","jackfruit","drangonfruit"],
+                ["망고스틴","망고","코코넛","잭프룻","용과"],
+                ["000-0000-0000","111-1111-1111","222-2222-2222", "333-3333-3333","444-4444-4444"]
+            ];
+            //(k3);//0 1 2
+            //(array2[k3]);//mangosteen", "mango", "coconut", "jackfruit", "drangonfruit"
+            //(array2[k3][0])//mangosteen 망고스틴 000-0000-0000
+
+            //ver3. 숙제 : for in + for in 만들어 오기.
+            function listck3(){
+                var k3,k4;
+                for(k3 in array2[0]){
+                    var label3 = document.createElement("label");
+                    //console.log(label3)//label*5
+                    for(k4 in array2){
+                        //console.log(array2[k4][k3])//mangosteen 망고스틴 000-0000-0000....
+                        var span3 = "<span>"+array2[k4][k3]+"</span>";
+                        label3.innerHTML += span3;
+                        document.getElementById("member").append(label3);
+                    }
+                }
+            };
+
+            //ver2. 더블 반복문 for
+            function listck2(){
+                var f,g;
+                var labels,spans;
+                var f_ea = array2.length; //3
+                var g_ea = array2[0].length; //5
+                for(g=0;g<g_ea;g++){
+                    labels = document.createElement("label");
+                    for(f=0;f<f_ea;f++){
+                        spans = document.createElement("span");
+                        data1 = document.createTextNode(array2[f][g]);
+                        spans.append(data1);
+                        labels.append(spans);
+                        document.getElementById("member").append(labels);
+                    }
+                }
+            };
+            //console.log(array2[f][g]);
+        </script>
+        <style>
+           .list { width:500px; height: 30px; text-align:center;
+            background-color: wheat; font-size:12px;}
+            .list > span { display:block; float: left; 
+            height: 30px; line-height: 30px; border-right:1px solid rosybrown;
+            box-sizing: border-box;} 
+            .list > span:nth-of-type(1) { width: 100px;} 
+            .list > span:nth-of-type(2) { width: 100px;} 
+            .list > span:nth-of-type(3) { width: 300px; border: 0;} 
+            .member { width:500px; height:auto; text-align:center;
+            background-color:seashell; font-size:12px;}
+            .member > label { width:inherit; height: 30px; display: block;}
+            .member > label > span { display:block; float: left; 
+            height: 30px; line-height: 30px; border-right:1px solid rosybrown;
+            box-sizing: border-box;} 
+            .member > label > span:nth-of-type(1) { width: 100px;} 
+            .member > label > span:nth-of-type(2) { width: 100px;} 
+            .member > label > span:nth-of-type(3) { width: 300px; border: 0;} 
+        </style>
+    </head>
+    <body>
+        <P>고객 리스트 및 전화번호</P>
+        <div class="list">
+            <span>아이디</span>
+            <span>고객명</span>
+            <span>연락처</span>
+        </div>
+        <div class="member" id="member">
+            <!-- 샘플  -->
+            <!--<label>
+                <span>아이디</span>
+                <span>고객명</span>
+                <span>연락처</span>
+            </label>-->
+        </div>
+        <input type="button" value="리스트 출력" onclick="listck();">
+        <input type="button" value="리스트 출력2" onclick="listck2();">
+        <input type="button" value="리스트 출력3" onclick="listck3();">
+        <input type="button" value="리스트 출력4" onclick="listck4();">
+    </body>
+    <script></script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/middle16.html -->

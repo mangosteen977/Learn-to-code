@@ -1,0 +1,53 @@
+<?php
+    $v = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반응형 웹사이트 (css , scss) 기본골격 형태 만들기 실무 1 </title>
+    <link rel="stylesheet" type="text/css" href="./web_mobile1.css?v=<?php echo $v?>">
+</head>
+
+<body>
+    <section class="information">
+        <div class="iediv">
+            <span>
+                <label>[자기소개 정보 출력부분]</label>
+                <label>조회수 100만회 | #프론트엔드 #웹개발자</label>
+            </span>
+            <span>
+                <label>[캐릭터 이미지 출력부분]</label>
+                <label>조회수 20만회 | #자바스크립트 #Vue개발자</label>
+            </span>
+        </div>
+    </section>
+    <script>
+        var bw = navigator.userAgent.toLocaleLowerCase();
+        //var a = navigator.appName; //접속기기체크
+        window.addEventListener("resize", function (r) {
+
+            //console.log(r.target.innerWidth); //브라우져의 가로 크기를 가져옴
+            if ((navigator.appName == "Netscape" && navigator.userAgent.search("Trident") != -1) ||
+                (bw.indexOf("msie") != -1)) {
+
+                if (r.target.innerWidth <= 757) {
+                    //IE에서만 적용하는 조건문
+                    var hh = document.querySelector(".iediv > span").offsetHeight * 2 + 20;
+                    //20이라는 숫자는 padding값을 준 부분을 추가 한 사항 입니다.
+                    document.querySelector(".iediv").style.height = hh + "px";
+                    //span 2개의 높이값을 계산하여 해당 부모 오브젝트에 신규로 높이를 적용함
+                }
+                else {
+                    document.querySelector(".iediv").style.height = "";
+                }
+
+            }
+        });
+    </script>
+</body>
+
+</html>

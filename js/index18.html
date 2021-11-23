@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>JavaScript 3일차(6) - 함수호출(HTML결합) </title>
+        <script>
+            function abc(){
+                window.open("./popup.html","","width=500 height=500");
+            }
+
+            function bbb(){
+                // var a = document.getElementById("a").value 
+        //값을 가져와 a변수로 적용 
+               document.getElementById("a").value = "홍길동";
+               //document.getElementById("b").value = "이순신";
+        //HTML에 a라는 id값을 가진 태그에 값을 입력시킴.
+                var f = document.getElementById("b");
+        //HTML에 b라는 id를 가져옴
+               f.value="이순신";
+        //b라는 id에 값을 입력시킴.
+            }
+
+
+        </script>
+    </head>
+    <body>
+        <!--  function에 함수값을 넘길 때 :
+           1. form > input > submit 은 form에 onsubmit="();"속성을 준다.
+           2. input > button은  input에 onclick="();" 이다.
+         -->
+        <form onsubmit="bbb();">
+        <input type="text" id="a">
+        <input type="text" id="b">
+        <input type="button" value="click" onclick="abc();">
+        <input type="submit" value="확인" >
+        <input type="button" value="적용" onclick="bbb();">
+        </form>
+
+
+
+
+        <!-- http://mangsteen977.dothome.co.kr/js/index18.html -->
+    </body>
+</html>

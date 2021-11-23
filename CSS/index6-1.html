@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE-Edge, chrome=1">
+        <title>CSS 3.0 1일차 table 추가속성2-1</title>
+        <style>
+            .table{
+                width: 500px;
+                height: auto;
+                box-sizing: border-box;
+                text-align: center;
+            }
+            .table>caption{height: 50px; line-height: 50px;}
+            .table > thead > tr, .table > tbody > tr {height: 30px;}
+            /* col : height 적용이 안된다. */
+            .col>col:first-child{width: 200px;}
+            .col>col:last-child{width: 100px;}
+            .table>tbody>tr>td:nth-child(4){
+                text-align: right;
+                background-color: #98d2fb;
+            }
+        </style>
+    </head>
+    <body>
+        <table border="1" class="table" cellpadding="0" cellspacing="0">
+            <caption><u>수도권 및 경기도 월, 화요일 강수량 확인</u></caption>
+            <colgroup class="col">
+                <col>
+                <col span="3">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th> </th>
+                    <th>월요일</th>
+                    <th>화요일</th>
+                    <th>총 강수량</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>서울</td>
+                    <td>0mm</td>
+                    <td>0mm</td>
+                    <td>0mm</td>
+                </tr>
+                <tr>
+                    <td>의정부</td>
+                    <td>3mm</td>
+                    <td>0mm</td>
+                    <td>3mm</td>
+                </tr>
+                <tr>
+                    <td>일산</td>
+                    <td>1.5mm</td>
+                    <td>0.5mm</td>
+                    <td>2mm</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+    </html>

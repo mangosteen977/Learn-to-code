@@ -1,0 +1,68 @@
+@charset "UTF-8";
+*{box-sizing: border-box; font-family: "돋움체";}
+body{margin: 0; padding: 0;}
+span, main, label{display: block;}
+ul,ol,dl{list-style: none; margin: 0; padding: 0;}
+a{text-decoration: none;}
+img{width: 100%; object-fit: cover;}
+/*img > object-fit: 가로세로 비율 자동으로 조절, 주로 모바일 사용, IE(X)*/
+
+
+.top{ display: block; height: 30px; background-color: grey;}
+.menubox{
+    width: 1200px; height: 30px; margin: 0 auto;
+}
+.top_menu{ height: 30px; float: right;}
+.top_menu>li{
+    width: 80px; height: 30px; clear: right; float: left;
+    color: white; font-size: 12px; text-align: center;
+    line-height: 30px; position: relative; cursor: pointer;
+}
+/* after/before : 해당 오브젝트 뒤/앞에 content=""속 문자/이미지를 추가.
+                  위치 설정은 position을 이용. */
+/* 객체:after{content: "문자"; position:absolute; } :
+    객체 뒤에 문자를 넣음, 포지션으로 위치를 조정(객체기준).
+    단, 객체포지션은 relative */
+.top_menu>li:after{
+    content: "|";
+    position: absolute; right: 0;
+}
+.top_menu>li:last-child:after{content: "";}
+/*content: ""; == li:last-child 에는 :after를 사용하지 않음*/
+.menus{ display: block; height: 150px;}
+.divlogo{ width: 1200px; height: inherit; margin: 0 auto; text-align: center;}
+/*이미지 담긴 객체->display:inline-block; line-heght이고,
+  이미지->vertical-align:middle; 이면 이미지를 이미지 부모객체 세로중앙정렬 가능*/
+.logo{width: 250px; height: 150px; display: inline-block; line-height: 150px;}
+.logo>img{vertical-align: middle;}
+.ttop{display: none;}
+/* 메인 */
+.main{ height: 800px; background-color: cornflowerblue;}
+.m_menu{display: none;}
+/*모바일 CSS*/
+@media screen and (min-width:320px) and (max-width:560px) {
+    .top, .menus{display: none;}
+    .ttop{
+        display: block; height: 60px; background-color: black;
+    }
+    .m_top{
+        display: block; width: 100%; height: inherit; position: relative;
+    }
+    .leftbtn{
+        width: 30px; height: 60px; display: inline-block;
+        position: absolute; left:5px;
+    }
+    .rightbtn{
+        width: 30px; height: 60px; display: inline-block;
+        position: absolute;right: 5px;
+    }
+    .logobtn{
+        width: 120px; height: 60px; display: inline-block;
+        position: absolute; left: 50%; margin-left: -60px;
+    }
+    .m_top > label{line-height: 60px; cursor: pointer;}
+    .m_top > label > img{
+        vertical-align: middle;
+    }
+    .m_menu{display: block; width: 0px; height: 400px; background-color: darkcyan;}
+}

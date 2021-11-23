@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head> 
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Jquery Ajax 5일차(3) - Jquery Ajax ( 통신 _ JSON 응용 ) </title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(function(){
+                $.ajax({
+                    url:"./myinfo.json",
+                    cache:false,
+                    type:"GET",
+                    dataType:"JSON",
+                    success:function($data,$ok){
+                        let $spans = ""; let $infos = ""; let $n = 0;
+                        $.each($data,function($c,$d){
+                            //fieldset
+                            $infos = '<fieldset class="info" id="info'+$n+'">\
+                                        <legend >'+$c+'</legend>\
+                                      </fieldset>'
+                            $("#bodys").append($infos);
+                            //span
+                            $.each($data[$c][0],function($a,$b){
+                                switch($a){
+                                    case "id":
+                                    $spans = "아이디 : <span>"+$b+"</span><br>";
+                                    break;
+
+                                    case "name":
+                                    $spans = "이름 : <span>"+$b+"</span><br>";
+                                    break;
+
+                                    case "email":
+                                    $spans = "휴대폰번호 : <span>"+$data[$c][0]["phone"]+"</span><br>";
+                                    break;
+
+                                    case "area":
+                                    $spans = "이메일 : <span>"+$data[$c][0]["email"]+"</span><br>";
+                                    break;
+                                    
+                                    case "phone":
+                                    $spans = "지역 : <span>"+$data[$c][0]["area"]+"</span><br>";
+                                    break;
+                                }//스위치
+                                $("#info"+$n).append($spans);
+                            });//小each
+                            $n++;
+                        });//大each
+                    },//success
+                    error:function(){
+                        alert("에러");
+                    }//error
+                });//ajax()
+
+            });
+        </script>
+        <style>
+            *{box-sizing: border-box;}
+            body{margin: 0; padding: 0;}
+            .info{ 
+                width: 400px; height: auto; margin: 0 auto; 
+                text-align: center; padding: 10px;
+                border-color: darkturquoise;
+            }
+            .info>legend{
+                text-align: center; font-size: 20px; 
+                font-weight: bold; color: darkturquoise;
+            }
+            .info>span{
+                display: inline-block; 
+                height: 30px; margin-top: 10px;
+            }
+
+        </style>
+    </head>
+    <body id="bodys">
+    <!--출력하기
+        <fieldset class="info" id="info">
+            <legend >MY INFO</legend>
+            아이디 : <span></span>
+            이름 : <span></span>
+            휴대폰번호 : <span></span>
+            이메일 : <span></span>
+            지역 : <span></span>
+        </fieldset>
+    -->
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/ajax/jqindex3.html -->
+<!-- jndex -->

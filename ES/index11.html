@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECMA Script 2일차(5) - ES 첨부파일 이미지 미리보기 </title>
+    <style>
+        .imgs {
+            width: 300px;
+            height: 400px;
+            object-fit: contain;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="file" id="img_file">
+    <img src="" class="imgs" id="imgs">
+</body>
+<!-- ES용 Script -->
+<script type="module">
+    import { a } from "./index11.js?v=2";
+    a();
+</script>
+
+</html>

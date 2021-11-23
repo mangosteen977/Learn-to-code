@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible">
+        <title>Javascript 5일차(3) - 초급코드 (랜덤함수 응용) </title>
+        <script>
+            function lotto(){
+                var rd = 45; //랜덤함수에 들어갈 최대치 정수값
+                var zz = 5; //초기값~출력할 갯수
+                var h =0; //초기값
+               do{
+                    var i = Math.ceil(Math.random()*rd);
+                    document.getElementById("num"+h).value = i;
+                    //id값 반복문으로 돌리기.
+                    h++;
+               }while(h<=zz);               
+            }
+        </script>
+    </head>
+    <body>
+        <P>[이번 주 로또 복권 예상 숫자]</P>
+        <input type="text" id="num0" readonly><br>
+        <input type="text" id="num1" readonly><br>
+        <input type="text" id="num2" readonly><br>
+        <input type="text" id="num3" readonly><br>
+        <input type="text" id="num4" readonly><br>
+        <input type="text" id="num5" readonly><br>
+        <button type="button" onclick="lotto();">숫자 확인</button>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/index27.html -->

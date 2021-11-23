@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery Jquery 8일차(3) - 초급코드 시간(GET 파라미터 값으로 던지기1) </title>
+        <script src="./jquery.js"></script>
+        <script src="./jquery-ui.js"></script>
+        <link rel="stylesheet" type="text/css" href="./jquery-ui.css">
+        <script>
+             $(document).ready(function(){
+                $("#btn").click(function(){
+                    $("#f").submit();
+                });
+
+                //연습 클릭없이 바로 실행되는 타이머 settimeout 
+                //확장함수 없이 settimeout 쓰기
+                var $time =0;
+                var $timer;
+                $.fn.abc = function(){
+                    //$timer = setTimeout($.fn.abc,1000);
+                    $time = $time+1;
+                    //console.log($time);
+                    if($time>=15){clearTimeout($timer);}
+                }
+                $.fn.abc()
+
+                var $aaa = 100;
+                var $bbb = 320;
+                var $ccc = 143;
+                var $abc = String($aaa+","+$bbb+","+$ccc);
+                console.log($abc);
+
+                
+             });
+        </script>
+        <style>
+           
+        </style>
+    </head>
+    <body>
+        <!-- 파라미터 : http://naver.com?test= -->
+        <!-- name값이 1개 이상일 경우 파라미터는 &기호와 함께 url에 표시된다. -->
+        <form id="f" method="GET" action="./index32.html">
+            <input type="text" name="test" id="a">
+            <input type="text" name="mname" id="b">
+            <input type="text" name="mtel" id="c">
+            <input type="text" name="memail" id="d">
+            <input type="button" value="확인" id="btn">
+        </form>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/index31.html -->

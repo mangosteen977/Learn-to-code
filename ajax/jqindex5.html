@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head> 
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Jquery Ajax 5일차(5) - Jquery Ajax ( JQ GET - 그래프출력 ) </title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(function(){
+                let $y = 0; //1월의 val()값, 전역변수 값도 0으로 둠.
+                $("#sdate").change(function(){
+                    $y = $(this).val();
+                    $.fn.graphs($y);//option선택시 각 달의 value를 확장함수에 넘긴다(0~11)
+                });
+                //확장함수 사용, 해당 값을 ajax로 체크
+                $.fn.graphs = function($yy){
+                    $.ajax({
+                        url:"./front_data.json",
+                        cache:false,
+                        type:"GET",
+                        dataType:"JSON",
+                        success:function($data,$ok){
+                            $.fn.ani($data,$yy);
+                            //data load걸리니깐 animate는 확장함수에서 처리함
+                        },
+                        error:function(){
+                            console.log("data error");
+                        }
+                    });
+                };
+                $.fn.graphs($y);//1월의 기본값을 확장함수에 넘긴다.(0)
+                $.fn.ani = function($data,$yy){//data load걸리니깐 animate는 확장함수에서 처리함
+                    //each한계有(loading有,특히 onchange_function일 때), map이 더 빠르다.
+                    //스플래쉬 인트로 (이동 전 다른화면 보여주고 본 화면으로 이동(?)like 용인시청)
+                    //delay 중요 json을 읽어오는 시간 때문에 data load걸림
+                    $.map($data["datas"][$yy],function($v,$k){
+                        //max(999) 데이터 1 = 1px || 0.5px;
+                        $(".list>.chart").eq(0).delay(1000).animate({
+                            "width":($data["datas"][$yy]["seoul"]*3)+"px"
+                        },500,function(){
+                            $(".list>.chart").eq(0).text($data["datas"][$yy]["seoul"]+"名");
+                        });
+                        $(".list>.chart").eq(1).delay(1000).animate({
+                            "width":($data["datas"][$yy]["gyeonggi"]*3)+"px"
+                        },500,function(){
+                            $(".list>.chart").eq(1).text($data["datas"][$yy]["gyeonggi"]+"名");
+                        });
+                        $(".list>.chart").eq(2).delay(1000).animate({
+                            "width":($data["datas"][$yy]["allcity"]*3)+"px"
+                        },500,function(){
+                            $(".list>.chart").eq(2).text($data["datas"][$yy]["allcity"]+"名");
+                        });
+                    });
+
+                };
+            });
+        </script>
+        <style>
+            *{box-sizing: border-box; margin: 0; padding: 0;}
+            body{margin: 0; padding: 0;}
+            .headercss{height: auto;}
+            .mainlist{
+                width: 600px; height: auto; margin: 0 auto;
+                padding: 30px; text-align: center; border-color: darkslateblue;
+            }
+            .maintitle{font-size: 20px; font-weight: bold; color: darkslateblue;}
+            .ymd{width: inherit; height: auto; margin-bottom: 10px;}
+            .sdate{ width: 150px; height: 30px; }
+            .list{width: inherit; height: 120px;}
+            .local,  .chart{
+                display: block; width: 130px; height: 30px; line-height: 30px; 
+                float: left; color: white; text-align: center;
+                margin-top: 10px; background-color: darkslateblue;
+            }
+            .chart{
+                width: 0px; background-color: lightskyblue;
+                font-size: 12px; text-align: right;
+            }
+            .blank{clear: both; display: block;}/*빈태그*/
+        </style>
+    </head>
+    <body>
+        <header class="headercss">
+            <fieldset class="mainlist">
+                <legend class="maintitle">2020년도 Front-End 월별 취업 현황</legend>
+                <div class="ymd">
+                    <select id="sdate" class="sdate">
+                        <option value="0">1월</option>
+                        <option value="1">2월</option>
+                        <option value="2">3월</option>
+                        <option value="3">4월</option>
+                        <option value="4">5월</option>
+                        <option value="5">6월</option>
+                        <option value="6">7월</option>
+                        <option value="7">8월</option>
+                        <option value="8">9월</option>
+                        <option value="9">10월</option>
+                        <option value="10">11월</option>
+                        <option value="11">12월</option>
+                    </select>
+                </div>
+                <div class="list">
+                    <span class="local">서울</span>
+                    <label class="chart"><!--그래프: 값*3px--></label>
+                    <span class="blank"></span><!--빈 스판 : clear: both; display: block;-->
+                    <span class="local">경기도</span>
+                    <label class="chart"></label>
+                    <span class="blank"></span>
+                    <span class="local">지방광역시</span>
+                    <label class="chart"></label>
+                </div>
+            </fieldset>
+        </header>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/ajax/jqindex5.html -->
+<!-- jndex -->
+<!-- 05/26 조별활동(정윤경 님) -->

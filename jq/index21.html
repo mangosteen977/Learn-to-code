@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery 6일차(1) - 초급코드 (함수값 넘기기) </title>
+        <script src="./jquery.js"></script>
+        <script>
+             $(document).ready(function(){
+        /*
+        [document]
+        창크기에 상관없이 전체문서의 크기
+        (스크롤에 의해 보여지지 않는 영역포함)
+        [window]
+
+        */
+                $("#btn").click(function(){
+                    var $a = 200;
+                    var $b = 400;
+                    $.fn.abc($a,$b);//확장함수(버블링함수), fn==function
+                    $.fn.bbc($a,$b);//여러 개 동시에 버블링함수 O, 단 동일 함수는 1번 만 사용.
+                });
+                $.fn.abc = function($aa,$bb){
+                    var $c = $aa+$bb;
+                    console.log($c);
+                };
+                /*응용문제1.
+                첫번 째 숫자와 두번 째 숫자 중,
+                첫번 째 숫자가 두번 째 숫자보다 클 경우, 내림차순으로 출력하고,
+                두번 째 숫자가 첫번 째 숫자보다 클 경우, 올림차순으로 출력하시오.
+                핸들링함수 1개, 확장함수를 2개 사용하시오. */
+                $("#btn2").click(function(){
+                    var $n1 = $("#n1").val();
+                    var $n2 = $("#n2").val();
+                    if($n1>$n2){
+                        $.fn.aaa($n1,$n2);} //확장함수1_$n1>$n2일 때
+                    else if($n2>$n1){
+                        $.fn.bbb($n1,$n2);} //확장함수2_$n1<$n2일 때
+                    else{
+                        console.log(" 두 값은 "+$n1+"으로 서로같다.")
+                    }
+                });
+                $.fn.aaa = function($a,$b){//버블링함수1_내림차순
+                    while($a>=$b){
+                        console.log($a);
+                        $a--;
+                    }
+                };
+                $.fn.bbb = function($a,$b){//버블링함수2_오름차순
+                    while($a<=$b){
+                        console.log($a);
+                        $a++;
+                    }
+                };
+
+             });
+        </script>
+    </head>
+    <body>
+        <input type="button" value="확인" id="btn">
+        <br><br>
+        <!-- 응용문제1. -->
+        <input type="text" id="n1" placeholder="n1">
+        <input type="text" id="n2" placeholder="n2">
+        <input type="button" value="확인2" id="btn2">
+    </body>
+</html>

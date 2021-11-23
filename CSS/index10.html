@@ -1,0 +1,38 @@
+<?php
+    $date=date("YmdHis")
+    ?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE-Edge, chrome=1">
+        <!-- name-"viewport" : CSS3.0, 디바이스 타입, 화면크기 기준으로 스타일 시트가 적용되도록 함.
+             content-"width=device-width" : 접속 디바이스 가로 최대 길이 모두 사용
+             content-"initial-scale=1.0" : 1:1비율로 보여주도록 함
+             content- "user-scalable=yes/no" : 사용자 확대/축소기능 사용 여/부, (잘 안씀) -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <title>CSS 3.0 3일차 모바일 페이지 만들기 - 기초</title>
+        <!-- 모바일일 때 추가 meta : apple(safari)전체모드에서 작동되게 함. -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link type="text/css" rel="stylesheet" href="./index10.css?v=<?php echo $date?>">
+    </head>
+    <body>
+        <!-- <div class="box">연습입니다:)</div> -->
+        <!-- 
+            모바일 전용 웹 제작
+            최소 가로 사이즈 : 320 (iphone SE)
+            최대 가로 사이즈 : 560
+         -->
+         <header class="top">
+         <div class="btn1"></div>
+         <div class="btn2"></div>
+         <div class="btn3"></div>
+         <span class="cs">
+            <a href="tel:1588-0000">CS :1588-0000</a>
+            <!--a href="tel:전화번호" : 전화로 연결--><br>
+            <a href="mailto:webmaster@nate.com">담당자 메일: webmaster@nate.com</a>
+            <!--a href="mailto:메일주소" :  메일 보내기로 연결-->
+        </span>
+        </header>
+    </body>
+</html>

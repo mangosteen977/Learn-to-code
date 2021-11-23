@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery 4일차(4) - 정지함수와 배너슬라이드 응용(2) </title>
+        <script src="./jquery.js"></script>
+        <script>
+             $(document).ready(function(){
+                //ul width 자동 계산용
+                var $banner_ea = $("#ulcss>li").length; // li갯수
+                var $banner_width = $("#ulcss>li").width(); // 배너 1개당 가로길이
+                var $total = $banner_ea*$banner_width // li갯수*길이
+                $("#ulcss").css("width",$total+"px"); // 구한 값을 ul 가로길이에 적용
+                var $node = 0; //배너 노드 기본값
+                var $disc = 0; //disc 노드 기본값
+                //오른쪽 : 클릭 시 배너이미지를 모두 가진 부모객체를 배너 하나만큼 당김.
+                $("#right").click(function(){
+                    $node++; //==$node = $node+1;
+                    if($node>2){
+                        $node = 0;
+                    }
+                   var $left = $node * $banner_width;
+                    $("#ulcss").animate({
+                        "left":-$left+"px"
+                    },1000);
+                    //반복문을 이용한 디스크 이동
+                    /*do{
+                        $("#olcss>li:eq("+$disc+")").css("background-color","black");
+                        $disc++;
+                    }while($disc<$banner_ea)
+                        $("#olcss>li:eq("+$disc+")").css("background-color","crimson");
+                    */
+                    //반복문 없는 디스크 이동
+                    if($disc>=2){
+                        $("#olcss>li:eq("+$disc+")").css("background-color","black");
+                        $disc = 0;
+                        $("#olcss>li:eq("+$disc+")").css("background-color","crimson");
+                    }
+                    else{
+                        $("#olcss>li:eq("+$disc+")").css("background-color","black");
+                        $disc++;
+                        $("#olcss>li:eq("+$disc+")").css("background-color","crimson");
+                    }
+                });
+                //왼쪽 : 클릭 시 배너이미지를 모두 가진 부모객체를 배너 하나만큼 당김.
+                $("#left").click(function(){
+                    $node = $node-1;
+                    if($node==-1){
+                        $node = $banner_ea-1;
+                    }
+                    console.log($node);
+                    var $left = $node * $banner_width;
+                    $("#ulcss").animate({
+                        "left":-$left+"px"
+                    },1000);
+                    
+                    //반복문 없는 디스크 이동
+                    if($disc==0){
+                        $("#olcss>li:eq("+$disc+")").css("background-color","black");
+                        $disc = $banner_ea-1;
+                        $("#olcss>li:eq("+$disc+")").css("background-color","crimson");
+                    }
+                    else{
+                        $("#olcss>li:eq("+$disc+")").css("background-color","black");
+                        $disc--;
+                        $("#olcss>li:eq("+$disc+")").css("background-color","crimson");
+                    }
+                });
+            });
+        </script>
+        <style>
+            body{margin: 0; padding: 0;}
+            ul,ol{list-style: none; margin: 0;padding: 0;}
+            /*banner*/
+            .banner{
+                width:1000px; height: 490px;
+                border: 1px solid black;
+                box-sizing: border-box;
+                overflow: hidden;
+                position: relative;
+            }
+            .ulcss{ height: 490px; position: absolute;}
+            .ulcss >li{
+                float: left;
+                width: 1000px;
+                height: 490px;
+            }
+            .olcss{
+                position: absolute; bottom: 10px;
+                width: 100%;
+                height: 20px;
+                text-align: center;
+                z-index: 15;
+            }
+            .olcss > li:first-child{
+                margin-left: 0px;
+                background-color: crimson;
+                }
+            .olcss > li{
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                border-radius: 100%;
+                background-color: black;
+                margin-left: 5px;
+            }
+            .bbox{width: 1000px; height: 30px; text-align: center; margin-top: 10px;}
+            .bbox > button{
+                width: 30px;
+                height: 30px;
+                background-color: cornflowerblue;
+                color: beige; border: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="banner" id="banner">
+            <ol class="olcss" id="olcss">
+                <li class="view"></li><li></li><li></li>
+            </ol>
+            <ul class="ulcss" id="ulcss">
+                <li><img src="../js/banners/banner0.png"></li>
+                <li><img src="../js/banners/banner1.png"></li>
+                <li><img src="../js/banners/banner2.png"></li>
+            </ul>
+        </div>
+        <div class="bbox" id="bbox">
+            <button type="button" id="left"><</button>
+            <button type="button" id="right">></button>
+        </div>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/index17.html -->

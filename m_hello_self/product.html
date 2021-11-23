@@ -1,0 +1,150 @@
+<?php
+    $v = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 7일차 (2) vue + JS + JQ + ajax </title>
+        <script src="../jq/jquery.js"></script>
+        <script src="http://cdn.jsdelivr.net/npm/vue"></script>
+        <!-- lodash js src -->
+        <Script src="http://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></Script>
+        <style>
+            *{box-sizing: border-box; font-size: 12px;}
+            img{
+                width: 100%; object-fit: cover;
+            }
+            .box{
+                width: 100%; max-width: 1280px; height: auto; margin: 0 auto;
+                display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; align-items: center;
+            }
+            .p_box{
+                width: 20%; height: auto;
+                display: flex; flex-direction: column; justify-content: center; align-items: center;
+            }
+            .p_box>span{
+                width:100%; height: 80px; display: block;
+                display: flex; flex-direction: column; justify-content: center; align-items: center; line-height: unset;
+            }
+            .p_box>span:nth-of-type(1){height: auto; min-height: 200px; position: relative; background-color: skyblue;}
+            .product_dc{
+                width: 50px; height: 50px; border-radius: 100%; background-color: skyblue;
+                line-height: 50px; text-align: center; font-weight: 700;
+                color: white; position: absolute; z-index: 20; right: 3%;  top: 3%;
+            }
+        </style>
+        <!-- <script>
+            $(function(){
+                $.fn.product = function(){
+                    $.ajax({
+                        url:"../public_html/json/hello_product.json",
+                        cache:false,
+                        type:"GET",
+                        dataType:"JSON",
+                        success:function($data){
+                            $.fn.pd_js($data);
+                        },
+                        error:function(){
+                            console.log("Data Error");
+                        }
+                    });
+                }
+                $.fn.product();
+                
+            });
+        </script> -->
+    </head>
+    <body>
+        <section id="box">
+            
+            <div class="btns">
+                <span @click="list(2)">가격높은순</span>
+                <span @click="list(1)">가격낮은순</span>
+                <span @click="list(0)">최신등록순</span>
+            </div>
+            <article class="box">
+                {{jsons}}
+                <div class="p_box" v-for="v in p_arr" v-if="part==1">
+                    <span>
+                        <img v-bind:src="'../public_html/'+v.product_img"><!--이미지-->
+                        <label class="product_dc" v-text="v.product_dc" v-if="v.product_dc!=''"><!--할인율--></label>
+                    </span>
+                    <span v-html="v.product_nm"><!--상품명--></span>
+                    <span v-text="v.product_sample"><!--설명--></span>
+                    <span>
+                        <label class="product_money" v-text="v.product_money.toLocaleString('Ko')+'원'" ><!--가격--></label>
+                        <label class="product_sales" v-text="v.product_sales.toLocaleString('Ko')+'원'" v-if="v.product_sales!=''"><!--할인가--></label>
+                    </span>
+                </div>
+
+                <div class="p_box" v-for="v in p_arr2" v-if="part==2">
+                    <span>
+                        <img v-bind:src="v.img"><!--이미지-->
+                        <label class="product_dc" v-text="v.dc" v-if="v.dc!=''"><!--할인율--></label>
+                    </span>
+                    <span v-html="'2'+v.name"><!--상품명--></span>
+                    <span v-text="v.info"><!--설명--></span>
+                    <span>
+                        <label class="product_money" v-text="v.money.toLocaleString('Ko')+'원'" ><!--가격--></label>
+                        <label class="product_sales" v-text="v.sale.toLocaleString('Ko')+'원'" v-if="v.sale!=''"><!--할인가--></label>
+                    </span>
+                </div>
+            </article>
+        </section>
+    </body>
+    <script>
+        let product = new Vue({
+            el:"#box",
+            data:{
+                p_arr:[],
+                p_arr2:[],
+                part:1
+            },
+            methods:{
+                print(data){
+                    this.p_arr=data;
+                    let f;
+                    for( f in data){
+                        this.p_arr2.push({
+                            img:'../public_html/'+data[f]['product_img'],
+                            name:data[f]['product_nm'],
+                            info:data[f]['product_sample'],
+                            dc:data[f]['product_dc'],
+                            money:Number(data[f]['product_money'].replaceAll(",","")),
+                            sale:data[f]['product_sales'],
+                        })
+
+                    }
+                },
+                list(num){
+                    switch(num){
+                        case 2:
+                            this.part=2;
+                            this.p_arr2 = _.orderBy(this.p_arr2,["money"],"desc");
+                        break;
+                        case 1:
+                                this.part=2;
+                                this.p_arr2 = _.orderBy(this.p_arr2,["money"],"asc");
+                        break;
+                        case 0: this.part=1; break;
+                    }
+                }
+            },
+            components:{
+
+            },
+            computed:{
+                jsons:function(){
+                    fetch("../public_html/json/hello_product.json").then(function(data){
+                        return data.json();
+                    }).then((data2)=>{
+                        product.print(data2["pet_product"]);
+                    })
+                }
+            }
+        })
+    </script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/vue/index38.html -->

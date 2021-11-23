@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>자바스크립트 3일차(4) (중급) - method 메소드함수 사용(4) </title>
+        <script src="http://lovertvtest.dothome.co.kr/js/middle11.js"></script>
+        <script>
+            //1. 뭔 말이지..?
+            const fn = new aaa(); //fn에서 new 함수만 변경해서 클릭시 작동할 함수를 변경가능.
+            function bbb(){alert("죄송합니다. 서비스 점검 중 입니다.")}; // fn = new bbb()로 바꾸면 이게 작동함.
+            function aaa(){
+                this.search = function(b){ //메소드함수에 값을 받아 처리함.
+                    //console.log(b);
+                    var jj = this.word(b); //값 b를 this.word()함수로 보냄.
+                    console.log(jj); //리턴함수가 보낸 값+메세지를 출력함.
+                };
+                this.word = function(f){
+                    var msg = f+"님 로그인 하셨습니다."; //받은 값을 메세지 합쳐서
+                    return msg; //다시 값을 준 함수로 리턴함
+                };
+            };
+
+            function ps(){
+                var k = apink();
+                console.log(k);
+            };
+        </script>
+    </head>
+    <body>
+        <!-- 1번 -->
+        <input type="text" id="a">
+        <input type="button" value="실행" onclick="fn.search('mangosteen');"><!--상수fn(==aaa())안에 search함수-->
+        <input type="button" value="호출" onclick="ps()">
+        
+        <!-- 2번 --><br><br><br>
+        합계금액 : <input type="text" id="money" value="56000" readonly><br>
+        할인율 : <input type="text" id="sale" value="20" readonly>%할인<br>
+        적립금 사용 : <input type="text" id="reserve" value="1500" readonly><br>
+        <input type="button" value="결제확인">
+        <div id="box"><!--결제금액 여기에--></div>
+    </body>
+    <script>
+        //2.
+
+    </script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/middle11.html -->

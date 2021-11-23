@@ -1,0 +1,52 @@
+<meta charset="UTF-8">
+<style>
+    *{box-sizing: border-box;}
+    body{margin: 0; padding: 0;}
+    .table{background-color: black; height: auto; width: 500px; text-align: center;}
+    .table th, .table td {height: 30px; background-color: white; cursor: pointer;}
+    .table th:nth-child(1),.table td:nth-child(1) {width: 50px;}
+    .table th:nth-child(3),.table td:nth-child(3) {width: 150px;}
+    .close{
+        width: 500px; height: 60px;
+        display: flex; flex-direction: row;
+        justify-content: flex-end; align-items: center; margin: 0 auto;
+    }
+    .close > button{width: 100px; height: 40px; background-color: black; color: white; border: 0; cursor: pointer;}
+</style>
+<script>
+    function test(a){
+        //let data = document.getElementsByTagName("td")[4].childNodes[0].nodeValue;
+        //해당 자식 노드를 확인
+        let data = document.getElementById("t"+a).childNodes;
+        //console.log(data[2].outerText)
+        //해당 부모창에 노드값 중 텍스트만 값만 가져와서 보냄.
+        window.opener.document.getElementById("idx").value = data[0].outerText;
+        window.opener.document.getElementById("product").value = data[1].outerText;
+        window.opener.document.getElementById("money").value = data[2].outerText;
+        window.opener.document.getElementById("totalmoney").value = data[2].outerText;
+        self.close();
+    };
+</script>
+<body>
+<!-- http://mangsteen977.dothome.co.kr/js/middle22.html 의 팝업페이지 -->
+<table border="0" cellspacing="1" cellpadding="1" class="table" align="center">
+    <!-- table > align="center" : table화면 가운데 정렬 -->
+    <thead>
+        <tr>
+            <th>번호</th>
+            <th>상품명</th>
+            <th>가격</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- this.outerText : 객체 내  text 가져옴 -->
+        <!-- this.outerHTML : 객체 내 html 가져옴 -->
+        <tr id="t3" onclick="test(3);"><td>3</td><td>제주 삼다수 500ml 40개</td><td>13,760</td></tr>
+        <tr id="t2" onclick="test(2);"><td>2</td><td>오션블루향 핸드위서 300ml 3개</td><td>11,070</td></tr>
+        <tr id="t1" onclick="test(1);"><td>1</td><td>닥터방기원 데미지 케어 샴푸</td><td>10,320</td></tr>
+    </tbody>
+</table>
+<div class="close">
+    <button type="button">창닫기</button>
+</div>
+</body>

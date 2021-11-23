@@ -1,0 +1,45 @@
+<?php
+    $data = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 1일차 (4) vue 핸들링 </title>
+        <script src="../jq/jquery.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <style>
+            
+            
+        </style>
+    </head>
+    <body>
+    <div id="vuebox">
+        <span id="msg">{{datavue}}</span>
+        <button type="button" v-on:click="aaa">{{btn}}</button>
+    </div>
+
+        
+    </body>
+    <script>
+        let num1 = 23;
+        let num2 = 25;
+        let a = new Vue({
+            el:"#vuebox",
+            data:{
+                datavue:"",
+                btn:"click",
+                val1:num1,
+                val2:num2
+            },
+            methods:{
+                aaa:function(){
+                    //핸들링으로 해당 변수(?)에 값을 넣기.
+                    this.datavue = this.val1*this.val2;
+                }
+            }
+        });
+        
+    </script>
+</html>

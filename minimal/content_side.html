@@ -1,0 +1,81 @@
+<div class="content_side_outline" id="side_vue_ids">
+	{{for_json_load}}
+	<div class="sidebanner_b">
+		<img id="sidebanners">
+	</div>
+
+	<div class="tab_b">
+		<div class="tab_title_b">
+			<span class="tab_normal_b" @click="side_titles(0)">이벤트</span>
+			<span class="tab_active_b" @click="side_titles(1)">공지사항</span>
+		</div>
+		<div class="tab_list_b">
+			<ul v-if="title_side==0">
+				<li v-for="e in event_arr">{{e}}</li>
+			</ul>
+			<ul v-if="title_side==1">
+				<li v-for="n in notice_arr">{{n}}</li>
+			</ul>
+		</div>
+		<div class="tab_button">
+			<button onclick="totalopen();" class="tabbtn">전체보기</button>
+		</div>
+	</div>
+
+	<div class="sidebanner_b">
+		<img id="sidebanners2">
+	</div>
+</div>
+<script>
+	//contnet_side.html (JS)
+	//banner_random_print
+	let side1, side2;
+	function random_side() {
+		side1 = Math.ceil(Math.random() * 6);
+		side2 = Math.ceil(Math.random() * 6);
+		if (side1 == side2) { random_side(); }
+		else {
+			document.getElementById("sidebanners").setAttribute("src", "./img/sidebanner" + side1 + ".png");
+			document.getElementById("sidebanners2").setAttribute("src", "./img/sidebanner" + side2 + ".png");
+		}
+	}
+	random_side();
+	//vue_function_for_side.html (Vue)
+	function totalopen() {
+		window.open("https://m.sonyunara.com/board/list.php?boardid=csnotice", "", "_new");
+	}
+	let side_vue = new Vue({
+		el: "#side_vue_ids",
+		data: {
+			title_side: 0,
+			event_arr: [],
+			notice_arr: []
+		},
+		methods: {
+			side_titles(tab) {
+				this.title_side = tab;
+			},
+			events(data2) {
+				for (let keys in data2) {
+					this.event_arr.push(data2[keys]["title"]);
+				}
+			},
+			notices(data4) {
+				for (let keys2 in data4) {
+					this.notice_arr.push(data4[keys2]["title"]);
+				}
+			}
+		},
+		computed: {
+			for_json_load() {
+				fetch("./json/event.json").then((data) => data.json())
+					.then((data2) => side_vue.events(data2))
+					.catch((error) => console.log(error));
+
+				fetch("./json/notice.json").then((data3) => data3.json())
+					.then((data4) => side_vue.notices(data4))
+					.catch((error2) => console.log(error2));
+			}
+		}
+	});
+</script>

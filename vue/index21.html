@@ -1,0 +1,129 @@
+<?php
+    $data = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+    <title> Vue ,vuejs 3일차 (5) vue 애니메이션 </title>
+    <script src="../jq/jquery.js"></script>
+    <!-- vue 버전 1.6.4??? -->
+    <script src="http://cdn.jsdelivr.net/npm/vue"></script>
+    <!--상용버전 값 가져옴^_~-->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <!--개발버전 값 못가져옴^.^-->
+    <!-- <link rel="stylesheet" type="text/css" href="./index19.css?v=<?=$data?>"> -->
+    <style>
+        /* leave효과 : 없어질 때. false */
+        /* .tests1-leave{
+                opacity: 1;
+            }
+            .tests1-leave-to{
+                opacity: 0;
+            } */
+        /* enter효과 : 나타날 때. true */
+        /* .tests1-enter{
+                opacity: 0;
+            }
+            .tests1-enter-to{
+                opacity: 1;
+            } */
+        /*줄인 버전 == 수동 fadeIn/fadeOut*/
+        .tests1-leave-to,
+        .tests1-enter {
+            opacity: 0;
+        }
+
+        .tests1-enter-to,
+        .tests1-leave {
+            opacity: 1;
+        }
+
+        .tests1-enter-active,
+        .tests1-leave-active {
+            transition: all 3s ease;
+        }
+
+        /*줄인 버전 == 이동하기*/
+        /* .tests2-leave-to, .tests2-enter{
+                transform: translate(0px);
+            }
+            .tests2-enter-to, .tests2-leave{
+                transform: translate(250px);
+            } */
+        .tests2-leave-to,
+        .tests2-enter {
+            transform: rotate(45deg);
+        }
+
+        .tests2-enter-to,
+        .tests2-leave {
+            transform: rotate(0deg);
+        }
+
+        .tests2-enter-active,
+        .tests2-leave-active {
+            transition: all 3s ease;
+        }
+
+        .tests {
+            width: 100px;
+            height: 100px;
+            background-color: rebeccapurple;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="box">
+        <button @click="btn" v-text="btns"></button>
+        <!-- 
+               transition : vue전용 태그
+               단, class, id를 이용해 style에 애니메이션을 사용하지 않습니다.
+            -->
+        <transition name="tests1">
+            <!--백엔드와 관련 X - name으로 vue 애니메이션을 어쩌구-->
+            <div v-if="ani" class="tests">애니메이션</div>
+        </transition>
+    </section>
+
+
+    <section id="box2">
+        <button @click="btn2" v-text="btns2"></button>
+        <transition name="tests2">
+            <div v-if="ani2" class="tests">애니메이션</div>
+        </transition>
+    </section>
+</body>
+<script>
+    let a = new Vue({
+        el: "#box",
+        data: {
+            btns: "작동",
+            ani: false
+        },
+        methods: {
+            btn: function () {
+                this.ani = !this.ani;
+            }
+        }
+    });
+
+
+    let b = new Vue({
+        el: "#box2",
+        data: {
+            btns2: "작동",
+            ani2: false
+        },
+        methods: {
+            btn2: function () {
+                this.ani2 = !this.ani2;
+            }
+        }
+    });
+</script>
+
+</html>

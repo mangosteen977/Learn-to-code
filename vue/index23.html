@@ -1,0 +1,76 @@
+<?php
+    $v = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 4일차 (1) vue 내장 컴퍼넌트 ??? components template 템플릿 가짜 태그 ?????????</title>
+        <script src="../jq/jquery.js"></script>
+        <!-- vue 버전 1.6.4 ???????? -->
+        <script src="http://cdn.jsdelivr.net/npm/vue"></script> <!--상용버전 값 가져옴^_~-->
+        <style>
+            .spancss{
+                display: block;
+                width: 50px;
+                height: 50px;
+                background-color: rebeccapurple;
+            }
+        </style>
+    </head>
+    <body>
+        <section id="box">
+            <!-- 내장 컴퍼넌트로 템플릿으로 태그를 만들 때는 v-on 함수나 @click등이 인식되지 않는다.
+            템플릿을 찍어내는 단계에서 vue function을 호출하는 방식으로 해야한다. -->
+            <snow v-text="text1"></snow>
+            <apple></apple>
+            <front v-text="btn"></front>
+            <!--  템플릿 안에 템플릿을 찍을 수 없다. -->
+            <calls>
+                <op></op> <!-- <==  그니깐 이렇게 안찍힌다.  -->
+            </calls>
+            <!-- 원래 있던 기존 태그 안에 템플릿을 찍는건 가능하다. -->
+            <ol>
+                <op></op>
+                <op></op>
+                <op></op>
+                <op></op>
+                <op></op>
+            </ol>
+        </section>
+    </form>
+</body>
+<script>
+    // vue function 호출하기
+    // vue의 변수값.함수명 으로 불러내기
+    // ex. a.abc();
+    let a = new Vue({
+        el:"#box",
+        data:{
+            text1 : "연습",
+            btn : "로그인",
+            aa:""
+        },//내장 컴퍼넌트는 s가 붙음
+        components:{ //components HTML 재사용 태그를 보다 쉽게 적용하기 위한 사용자 지정 엘리먼트 입니다.
+            "snow":{template:"<span class='spancss'></span>"},//해당 태그 기중으로 템플렛을 이용하여 정규화 태그명으로 변화시키는 것을 말합니다.
+            "apple":{template:"<input type='text' name='mid' id='mid'>"},
+            "front":{template:"<button onclick='a.abc()'></button>"},
+            "calls":{template:"<ul>123</ul>"},
+            "op":{template:"<li>123</li>"},
+        },
+        methods:{
+            abc:function(){
+                if(!document.querySelector("#mid").value){
+                    alert("입력값이 없습니다.");
+                }
+                else{
+                    location.href = "http://naver.com";
+                }
+            }
+        }
+    });
+
+</script>
+    
+</html>

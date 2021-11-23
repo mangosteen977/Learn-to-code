@@ -1,0 +1,97 @@
+<?php
+    $v = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 6일차 (2) vue ajax 2 </title>
+        <script src="../jq/jquery.js"></script>
+        <!-- vue 버전 1.6.4 ???????? -->
+        <script src="http://cdn.jsdelivr.net/npm/vue"></script>
+        <style>
+            *{box-sizing: border-box;}
+            .notice_box{
+                width: 650px;
+                height: 200px;
+                padding: 0;
+                margin: 0;
+                position: relative;
+                top: 50px;
+                border: 2px solid black;
+            }
+            .notice_box>legend{
+                width: 100px;
+                height: 50px;
+                border: 2px solid black;
+                border-bottom: 3px solid white;
+                position: absolute;
+                left: -2px;
+                bottom: 100%;
+                padding: 0;
+                margin: 0;
+            }
+            .notice_box>legend>label{
+                width: 100px;
+                height: 50px;
+                text-align: center;
+                line-height: 48px;
+                display: block;
+
+            }
+            .notice_box>ul{
+                width: 90%;
+                height: inherit;
+                margin: 0;
+            }
+            .notice_box>ul>li{
+                width: 100%;
+                height: 20%;
+                line-height: 40px;
+            }
+        </style>
+    </head>
+    <body>
+        <section id="box">
+           {{start}}
+           <fieldset class="notice_box">
+               <legend><label>공지사항</label></legend>
+               <ul>
+                   <li v-for="x in arr">{{x}}</li>
+               </ul>
+           </fieldset>
+        </section>
+    </body>
+    <script>
+        let ocn = new Vue({
+            el:"#box",
+            data:{
+              arr:[]  
+            },
+            methods:{
+                prints(data){
+                    for(let y in data){
+                        ocn.arr.push(data[y][0]);
+                    }
+                }
+            },
+            components:{
+
+            },
+            computed:{
+                start(){
+                    fetch("./notice.json").then((data1)=>{
+                        console.log(data1.ok);
+                        return data1.json();
+                    }).then((data2)=>{
+                        ocn.prints(data2["notice"]);
+                    })
+                    .catch(function(error){
+                        console.log(error);
+                    })
+                }
+            }
+        });
+    </script>
+</html>

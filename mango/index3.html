@@ -1,0 +1,29 @@
+<?php
+    $date=date("YmdHis")
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>아이디 페이지 만들기 복습하기_2021.03.21</title>
+        <link type="text/css" rel="stylesheet" href="./index3.css?v=<?php echo $date?>">
+    </head>
+    <body>
+        <form class="login">
+            <label>MEMBER LOGIN</label>
+            <table class="tb1" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td><input type="text" placeholder="아이디를 입력해주세요" class="input_id"></td>
+                    <td rowspan="2"><input type="submit" value="LOGIN"></td>
+                </tr>
+                <tr>
+                    <td><input type="password" placeholder="비밀번호를 입력해주세요" class="input_id"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="checkbox" id="save"><label for="save">아이디 저장</label></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

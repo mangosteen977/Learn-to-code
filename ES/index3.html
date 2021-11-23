@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECMA Script 1일차(3) - ES 화살표 함수</title>
+    <!-- JS용 Script -->
+    <!-- 
+        찾아 볼 것 (면접) ???????????
+        콜 스택 사용 여부 ( 콜 스택 한 적 있나요. )
+     -->
+    <script>
+        //JS일반 선언(?) return형태 사용
+        let aaa = function (a1, a2) { //일반 선언함수 형태
+            var bb = a1 * a2;
+            return bb;
+        }
+        console.log(aaa(10, 2));
+
+
+        //화살표 함수 선언
+        let aaa2 = (aa1, aa2) => aa1 * aa2; //화살표 함수를 이용해 변수 선언
+        var bb2 = aaa2(30, 50);
+        console.log(bb2);
+        //return 필요 X, 화살표함수는 기본 베이스가 return;
+
+    </script>
+</head>
+
+<body>
+
+</body>
+<!-- ES용 Script -->
+<script type="module">
+    import { aaa, aaa2, bbb, bbb2 } from "./index3.js";
+    console.log(aaa(50, 7));
+    console.log(aaa2(50, 7));
+    // bbb();
+    console.log(bbb2());
+</script>
+
+</html>

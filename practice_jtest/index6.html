@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+    <title>Jquery 문제2</title>
+    <script src="../jq/jquery.js"></script>
+        <script>
+            $(document).ready(function(){
+                var $c = 0;
+                $("#btn").click(function(){
+                    $c++;
+                    if($c>4){alert("파일 추가는 최대 5회");}
+                    else if($c<=4){
+                        /*
+                        var $add = $("#attachFile").clone();
+                        $add.attr("name","attachFile"+$c);
+                        $add.attr("id","attachFile"+$c);
+                        $("#files>td").append($add);
+                        */
+                        //전체 복사
+                        var $add2 = '<tr class="files"id="files'+$c+'"><th>첨부파일</th><td><input type="file" name = "attachFile'+$c+'"></td></tr>';
+                        $("#tables").append($add2);
+                    }
+                });
+            });
+        </script>
+    <style>
+        body { margin: 0; padding: 0;}
+    </style>
+</head>
+<!--
+    문제2 첨부파일 추가 버튼 클릭시 
+    최대 5개까지 첨부파일이 추가 되도록 하십시오. 
+-->
+<body>
+    <div style="color:white; text-align:center; margin:0 0 100px 0; background:#555; line-height:80px;">
+       첨부파일 추가하기
+    </div>
+    
+<form name="form1" id="form1" method="post" action="">
+    <table cellpadding="5" cellspacing="0" border="1" id="tables">
+        <tr>
+            <th>제목</th>
+            <td>.</td>
+        </tr>
+        <tr>
+            <th>내용</th>
+            <td>.</td>
+        </tr>
+        <tr id="files" class="files">
+            <th>첨부파일</th>
+            <td>
+                <input type="file" name="attachFile" id="attachFile"> <button type="button" id="btn">추가</button>
+            </td>
+        </tr>
+
+    </table>
+    </form>
+</body>
+</html>

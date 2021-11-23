@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible">
+        <title>Javascript 8일차(1) - 초급코드(함수연결) </title>
+        <script>
+            function abc(){
+                var aa = Number(document.getElementById("a").value);
+                var bb = Number(document.getElementById("b").value);
+                var cc = "+";
+                if(cc=="+"){
+                    bbb(aa,bb);//bbb 이름을 가진 함수로 값을 전달함.
+                }
+                else if(cc=="-"){
+                    ccc(aa,bb);//ccc 이름을 가진 함수로 값 전달
+                }
+                //단 주의사항 값을 던질 때 해당 변수값이 전역변수, 지역변수인지 확인.
+                //두 함수를 연결함.
+            }
+            function bbb(c,d){
+                var cc = c+d;
+                console.log(cc);
+            }
+            function ccc(c,d){
+                var cc = c+d;
+                console.log(cc);
+            }
+            function zzz(){
+                var a= document.getElementById("a").value;
+                var b= document.getElementById("b").value;
+                gugu(a,b);
+            }
+            function gugu(c,d){
+                var h = 1;
+                while(h<=d){
+                    var k = c*h;
+                    console.log(c+"X"+h+"="+k);
+                    h++;
+                }  
+            }
+            function jj(){
+                gugu(4,12);
+            }
+        </script>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <input type="text" id="a" placeholder="구구단 숫자">
+        <input type="text" id="b" placeholder="계산숫자">
+        <input type="button" value="결과확인" onclick="abc();">
+        <input type="button" value="구구단" onclick="zzz();">
+    </body>
+    <script>
+    </script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/index42.html -->

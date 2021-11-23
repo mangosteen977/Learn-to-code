@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>JavaScript 1일차(7) -반복문 + 반복문</title>
+        <script>
+            var a; //for문에 사용되는 변수
+            var b =2; //for문에 사용되는 고정변수
+            var c; //for문에 계산 결과 변수
+            for(a=1; a<=9; a++){
+                c = b * a;
+                //document.write(b + "*" + a + "=" + c + "<br>");
+            }
+            /* 응용문제8.
+            구구단 8단을 역순으로 출력하시오.*/
+            var a8;
+            var b8 = 8;
+            var c8;
+            for(a8=9; a8>=1; a8--){
+                c8 = a8 * b8
+                //document.write(b8 + "X" + a8 + "=" + c8 +"<br>");
+            }
+            /* 반복문 + 반복문 */
+            var x;
+            var y;
+            var z;
+            for(x=2; x<=9; x++){ //큰 반복문
+                for(y=1; y<10; y++){ //작은 반복문
+                    z = x * y;
+                //    document.write(x + "X" + y + "=" + z + "<br>");
+                }
+            }
+            /*큰 반복문이 한번 회전하면 작은 반복문은 자신의 범위(!~9)가
+                끝날때까지 큰반복문은 회전하지 않는다.
+                ex)큰for(1)->작은for(1~9)->큰for(2)->작은for(1~9).....*/
+
+        /* 응용문제9.
+        구구단 7단~3단 역순으로 출력하시오*/
+            var g;
+            var h;
+            var j;
+            for(g=7; g>=3; g--){
+                for(h=9; h>=1; h--){
+                    j = g * h
+            //        document.write(g + "X" + h + "=" + j +"<br>");
+                }
+            }
+        /* 응용문제10.
+        다음과 같이 더블 반복문으로 출력 하시오.
+        출력 내용: *트리 만들기 */
+        var k1;
+        var k2;
+        var k3 = "*";
+        for(k1=1; k1<=5; k1++){
+//k1은 큰 for문의 변수값을 가져와 작은 for문의 범위로 설정할 수 있다.
+
+            for(k2=1; k2<=k1; k2++){
+     //           document.write(k3);
+            }
+     //       document.write("<br>");
+        }
+
+        /* 응용문제11.
+        다음처럼 쌍for문으로 문자를 출력하시오.
+        역삼각형 트리*/
+        var j1;
+        var j2;
+        var j3 = "*";
+        for(j1=5; j1>=1; j1--){ //큰for문의 변수값을
+            for(j2=1; j2<=j1; j2++){//작은 for문에 대입하여 범위 초기값을 적용한다.
+         //       document.write(j3);
+            }
+         //       document.write("<br>");
+        }
+
+        /* 오늘꺼 복습 : 1~100사이의 2의 배수 내림차순으로 출력하기*/
+        var t2;
+        for(t2=100; t2>=1; t2--){
+            if(t2 % 2 == 0){
+       //         document.write(t2 + "<br>");
+            }
+        }
+        /* 오늘꺼 복습 : 트리모양 만들기*/
+        var t3;
+        var t4;
+        var t5 = "*";
+        for(t3=1; t3<=5; t3++){
+            for(t4=1; t4<=t3; t4++){
+        //        document.write(t5);
+            }
+        //    {document.write("<br>");}
+        }
+        /* 오늘꺼 복습 : 역 트리모양 만들기*/
+        var t6;
+        var t7;
+        var t8 = "*";
+        for(t6=5; t6>=1; t6--){
+            for(t7=1; t7<=t6; t7++){
+                document.write(t8);
+            }
+            {document.write("<br>");}
+        }
+        </script>
+    </head>
+    <body>
+        <!-- http://mangsteen977.dothome.co.kr/js/index7.html -->
+    </body>
+</html>

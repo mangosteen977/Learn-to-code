@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <meta name="view-port" content="width=device-width, initial-scale=1.0">
+        <title> CSS 중상급 (체크 박스 디자인 변동 )</title>
+        <style>
+            *{box-sizing: border-box; margin: 0; padding: 0;}
+            body{margin: 0; padding: 0;}
+            label,span,main{display: block;}
+            .box{
+                width: 300px; height: 80px; position: relative;
+                border: 1px solid #ccc; margin: 0 auto;
+                font-size: 12px; display: flex; flex-direction: row;
+                justify-content: center; align-items: center;
+            }
+            .ckbox{
+                /* 체크박스 => position:relative */
+                position: relative;
+                margin-right: 10px; /*디자인 들어갈 여백 마련 (체크박스~글자 간격)*/
+                text-align: center;
+            }
+            .ckbox::before{
+                /*체크박스 대신할 이미지를 background-image로 가져옴.*/
+                content: "";
+                background-image: url("./pc_ico.png");
+                background-position: -30px 0 ;
+                background-color:  white; /*사이트 배경 색상에 맞춰 체크박스를 감춤*/
+                width: 30px;
+                height: 30px;
+                position: absolute; /*position:absolute => 체크박스 위에 올림*/
+                left: -6px; top: -6px;
+                /* overflow: hidden; */
+                cursor: pointer;
+            }
+            .ckbox:checked::after{
+                /*체크박스가 checked 상태일 때 체크박스뒤에*/
+                content: "";
+                background-image: url("./pc_ico.png");
+                background-color:  white;
+                width: 30px;
+                height: 30px;
+                position: absolute; /*position:absolute => 체크박스 위에 올림*/
+                left: -6px; top: -6px;
+                /* overflow: hidden; */
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <input type="checkbox" class="ckbox" id="ckbox">
+            <label for="ckbox">자동 로그인</label>
+        </div>
+    </body>
+</html>

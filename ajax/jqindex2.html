@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head> 
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Jquery Ajax 5일차(2) - Jquery Ajax ( 통신 _ JSON 파일 로드하기 ) </title>
+        <script src="./jquery.js"></script>
+        <!-- 
+            Ajax-JS : ajax 한 번 이상 사용(O)
+            Ajax-JQ : ajax 한 번 이상 사용(X), $.ajax한 번 쓰면 $.get/post으로 써야함
+         -->
+        <script>
+            $(function(){
+                let $html = ""; //html출력 변수
+                $.ajax({
+                    url:"./news.json",
+                    cache:false,
+                    type:"GET",
+                    dataType:"JSON",
+                    success:function($node,$data){//Json은 값 2개, XML은 값 1개
+                    //JQ 배열반복문 : key가 없는 배열= $.each, $().each이던 사용 가능
+                        // console.log($node[0][0])
+                        // $($node).each(function($a,$b){
+                        //     console.log($b)
+                        // });
+                        $.each($node,function($a,$b){
+                            //긴 값을 말줄임표로 자르기
+                            //white-space(css로 자르기???) 영어는(O),한글(△)
+                            let $word = $b[0].length;
+                            let $w = $b[0];
+                            if($word>37){
+                                $w = $w.substr(0,37)+"...";
+                            }
+                            //따옴표 안에서 줄바꾸기 쓰려면 '\'를 쓴다.
+                            //원화 모양키 = '\' 역슬래시
+                            $html = '<span>\
+                                    <label class="ntext1">'+$w+'</label>\
+                                    <label class="ntext2"></label>\
+                                    </span>';
+                            $("#newstext").append($html);
+                            $("#newstext>span:eq("+$a+")>.ntext1").attr("data-content",$b[1]);
+                        });
+                    },
+                    error:function(){
+                        alert("파일로드 실패");
+                    }
+                });
+
+            });
+        </script>
+        <style>
+            *{margin: 0; padding: 0; box-sizing: border-box;}
+            body{margin: 0; padding: 0;}
+            .divcss{width: 1000px; height: 150px; border: 1px solid #ccc; 
+            text-align:left; margin: 0 auto;
+            display: flex; justify-content: center; align-items: center; 
+            font-size: 13px;
+            }
+            .photo{display:inline-block; 
+                width: 300px; height: 130px;
+                background: url("./mainimg.jpg")50% 0 no-repeat; 
+                background-size:cover;
+                background-position: center;
+            }
+            label{display:inline-block; width: 550px; }
+            span{display:block; width: 550px; height: 30px; 
+                border:1px solid #ccc; margin-top: 2px;
+                box-sizing: border-box; line-height: 30px;
+                position: relative;
+            }
+            .newstext { margin-left: 40px; }
+            .ntext1 { display: block; width: 100%;
+                height: 30px; cursor: pointer;
+                position: absolute;
+            }
+            .ntext1::after{
+                content: attr(data-content); 
+                float: right;
+                margin-right: 50px;
+            }
+            .ntext2 { display: block; width:30px; height: 30px; 
+                position: absolute; right: 0;
+                cursor: pointer;
+                background-image: url("camera.svg");
+                background-size: 80%;
+                background-repeat: no-repeat;
+                background-position: center;
+                }
+        </style>
+    </head>
+    <body>
+        <div class="divcss">
+            <label class="photo"></label>
+            <label class="newstext" id="newstext">
+                <!--샘플코드
+                <span>
+                    <label class="ntext1">test</label>
+                    <label class="ntext2"></label>
+                </span>
+                -->
+            </label>
+        </div>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/ajax/jqindex2.html -->
+<!-- jndex -->

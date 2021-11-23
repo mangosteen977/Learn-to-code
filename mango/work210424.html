@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> 공부시간 타이머를 만들어야지 희희 </title>
+        <script src="../jq/jquery.js"></script>
+        <script>
+            $(document).ready(function(){
+                var $timer;
+                var $sec = 0;
+                var $min = 0;
+                var $hour = 0;
+                $("#start").click(function(){
+                    $.fn.worktimer();
+                });
+                $.fn.worktimer = function(){
+                    if($sec<60){
+                        $sec += 1;
+                    }
+                    else if($sec>=60){
+                        $sec = 0;
+                        if($min<60){
+                            $min += 1;
+                        }
+                        else if($min>=60){
+                            $hour += 1;
+                        } 
+                    }
+                    $("#text_time").val($hour+"시간 "+$min+"분 "+$sec+"초");
+                    $timer = setTimeout($.fn.worktimer,1000);
+                };
+                $("#stop").click(function(){
+                    clearTimeout($timer);
+                });
+                $("#reset").click(function(){
+                    clearTimeout($timer);
+                    $sec = 0; $min = 0; $hour = 0;
+                    $("#text_time").val($hour+"시간 "+$min+"분 "+$sec+"초");
+                });
+                
+            });
+        </script>
+        <style>
+            *{box-sizing: border-box;}
+            #timer_box{
+                height: 300px;
+                background-color: lightblue;
+                font-weight: bold;
+                text-align: center;
+                padding: 5px;
+            }
+            #timer_box>p{color: navy;}
+            #timer{
+                width:500px; height: 60%;
+                padding: 10px;
+                border: 2px dashed white;
+                margin: 0 auto;
+            }
+            #text_time{
+                width: 70%; height: 75%;
+                display: block; margin: 0 auto;
+                border: none; color: black;
+                text-align: center;
+                font-size: 40px;
+            }
+            #timer>button{
+                width: 50px; height: 20%; margin: 5px;
+                border: none; background-color: navy; color: white;
+            }
+            .by{font-size: 10px; font-weight: lighter; color: white;}
+        </style>
+    </head>
+    <body>
+        <section id="timer_box">
+            <p>하루에 한 시간 이상 공부하쟈ㅜㅡㅜ!!</p>
+            <p>★딴짓할 때는 멈출 것!☆</p>
+            <div id="timer">
+                <input type="text" id="text_time" value="0시간 0분 0초" readonly>
+                <button type="button" id="start">start</button>
+                <button type="button" id="stop">stop</button>
+                <button type="button" id="reset">reset</button>
+            </div>
+            <p class="by">♡made by Mangosteen♥</p>
+        </section>
+    </body>
+</html>

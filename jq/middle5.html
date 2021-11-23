@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jquery 1일차(5) - 중급 (JQ-mobile (tap) </title>
+        <script src="./jquery-2.0.js"></script>
+        <script src="./jquery-ui.js"></script>
+        <script src="./jquery.mobile.js"></script>
+        <link rel="stylesheet" type="text/css" href="./jquery-ui.css">
+        <script>
+            $(function(){
+                //tap : click과 같은 기능. 모바일에서의 터치.
+                // $("#ulcss>li").tap(function(){
+                // $(this).addClass("bg");
+                // });
+                $("#ulcss>li").taphold(function(){
+                    //taphold : tap과 다르게 타임을 자동으로 가짐.
+                    //taphold : 꾹 눌러서 작동
+                    $(this).addClass("bg");
+                });
+                //scrollstart 위-아래 방향 진행
+                //scrollend 아래-위 방향 진행
+                //scrollstop 스크롤 자동으로 드롭될 때 중지하는 이벤트
+                $("html,body").scrollstop(function(){
+                    // var $top = $("#tabs-3").offset().top;
+                    // $(this).stop().animate({
+                    //     "scrollTop":$top+"px"
+                    // },500);
+                    $(this).stop().animate({
+                        "scrollTop":"1200px"
+                    },500);
+                });
+            });
+        </script>
+        <style>
+            *{box-sizing: border-box;}
+            a{text-decoration: none;}
+            body{margin: 0; padding: 0;}
+            .ulcss{
+                width: 100%; max-width: 620px; height: 40px;
+                list-style: none; margin: 0; padding: 0;
+                background-color: sandybrown;
+            }
+            .ulcss>li{
+                /*calc(); : calculate() ()수치값 계산*/
+                display: inline-block; width: calc(100%/3.1); height: inherit;
+                max-width: 200px; text-align: center; line-height: 35px;
+            }
+            .bg{background-color: lightpink !important;}
+            #tabs-1{width: 200px; height: 800px; background-color: lightcoral;}
+            #tabs-2{width: 200px; height: 800px; background-color: lightseagreen;}
+            #tabs-3{width: 200px; height: 800px; background-color: lightgreen;}
+        </style>
+    </head>
+    <body>
+        <ul class="ulcss" id="ulcss">
+            <li>box1</li>
+            <li>box2</li>
+            <li>box3</li>
+        </ul>
+        <div id="tabs-1"></div>
+        <div id="tabs-2"></div>
+        <div id="tabs-3"></div>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/middle5.html -->

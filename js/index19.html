@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>JavaScript 3일차(7) - 함수호출(HTML결합:name 이용) </title>
+        <script>
+            function abc(){
+                //form에 name이 있고, input에 name이 있을 경우
+                //다음과 같이 사용가능. 단, 무조건 form 필요함.
+                //var aa = f.bb.value;
+                //var aa = f(form의 name).bb(찾을 input의 name).value(가져오라는 명령);
+                //alert(aa);
+
+                /* 연습 문제 : 비밀번호에 아무것도 입력이 되지 않을 경우,
+                비밀번호를 입력하세요 메세지를 출력.
+                입력시: 체크버튼을 클릭하더라도 반응 없음.
+                단, name으로 작성하시오.*/
+                var a = f.bb.value;
+                if(a==""){
+                    alert("비밀번호를 입력하세요");
+                }
+            }
+
+        </script>
+    </head>
+    <body>
+        <form id="f" name="f">
+            <input type="text" name="b">
+            <input type="password" name="bb">
+            <!--name은 backend와 상의 후 사용
+            (form은 프론트엔드 맘대로 OK)
+            특수한 태그 이외에 name 또한 동일한 이름을 가질 수 없다.
+            radio는 동일한 이름 가능 -->
+            <input type="button" value="체크" onclick="abc();">
+        </form>
+        <!-- http://mangsteen977.dothome.co.kr/js/index19.html -->
+    </body>
+</html>

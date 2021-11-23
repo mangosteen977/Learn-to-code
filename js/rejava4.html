@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> JS/JQ 초급 복습4 + backend; </title>
+        <script src="../jq/jquery.js"></script>
+        <script>
+            //jq
+            /*응용문제2. JQ 개인사업자번호 로그인 페이지를 제작
+            사업자번호와 회사명을 입력 시 로그인버튼 누르면 rejava4.php로 POST전송*/
+            $(document).ready(function(){
+                /*$("#loginfm").submit(function(){
+                var $f = 1;
+                var $sign = "yes";
+                var $num = "";
+                while($f<=3){
+                    var $ck = $("#n"+$f).val();
+                    $num += $ck;
+                    if($ck==""){ $sign = "no";}
+                    $f++;
+                }
+                $("#num").val($num);
+                var $name = $("#name").val();
+                if($sign=="no"){
+                    alert("사업자 번호를 모두 입력해주세요");
+                    return false;
+                }
+                else if($name==""){
+                    alert("회사명을 입력해주세요");
+                    return false;
+                }
+                else{return true;}
+                });*/
+            });
+
+            //js
+            /*응용문제1. JS 개인사업자번호 로그인 페이지를 제작
+            사업자번호와 회사명을 입력 시 로그인버튼 누르면 rejava4.php로 POST전송*/
+            var num = ""; //function밖으로 전역변수로 두기
+            function login(){
+                var f = 1;
+                var sign = "yes";
+                while(f<=3){
+                    var ck = document.getElementById("n"+f).value;
+                    num = num+ck;
+                    if(ck==""){sign = "no";}
+                    f++;
+                }
+                document.getElementById("num").value = num;
+                var name = document.getElementById("name").value;
+                if(sign=="no"){
+                    alert("사업자 번호를 모두 입력해주세요");
+                    return false;
+                }
+                else if(name==""){
+                    alert("회사명을 입력해주세요");
+                    return false;
+                }
+                else{return true;}
+            }
+
+        </script>
+    </head>
+    <body>
+        <!-- 응용문제1. JS 개인사업자번호 로그인 페이지를 제작
+        사업자번호와 회사명을 입력 시 로그인버튼 누르면 rejava4.php로 POST전송
+        +) 암호화하기 : enctype="multipart/form-data"
+         -->
+        <p>개인사업자번호 로그인</p>
+        <form onsubmit="return login();" method="POST" action="rejava4.php" enctype="multipart/form-data">
+            <input type="text" maxlength="3" id="n1" placeholder="사업자번호를 입력하시오">-<input type="text" maxlength="2" id="n2">-<input type="text" maxlength="5" id="n3">
+            <br><br>
+            <input type="text" name="sa_name" id="name" placeholder="회사명을 입력하시오">
+            <input type="hidden" name="sanum" id="num">
+            <input type="submit" value="로그인">
+        </form>
+
+        <!-- 응용문제2. JQ 개인사업자번호 로그인 페이지를 제작
+        사업자번호와 회사명을 입력 시 로그인버튼 누르면 rejava4.php로 POST전송
+        +) 암호화하기 : enctype="multipart/form-data"
+         -->
+        <!-- <p>개인사업자번호 로그인</p>
+        <form id="loginfm" method="POST" action="rejava4.php" enctype="multipart/form-data">
+            <input type="text" maxlength="3" id="n1" placeholder="사업자번호를 입력하시오">-<input type="text" maxlength="2" id="n2">-<input type="text" maxlength="5" id="n3">
+            <br><br>
+            <input type="text" name="sa_name" id="name" placeholder="회사명을 입력하시오">
+            <input type="hidden" name="sanum" id="num">
+            <input type="submit" value="로그인">
+        </form> -->
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/rejava4.html -->

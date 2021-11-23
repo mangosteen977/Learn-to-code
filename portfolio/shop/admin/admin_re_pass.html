@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="imagetoolbar" content="no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+    <title>한우사랑 관리자 패스워드 수정(수정 되는 아이디)</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        form {
+            width: 200px;
+            height: 90px;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+
+        input {
+            display: block;
+            border: 1px solid #ccc;
+            width: 200px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <form name="re_id" method="POST" action="./admin_repass_ok.php" enctype="application/x-www-form-urlencoded">
+        <input type="hidden" name="repass" value="password">
+        <input type="text" name="aid" placeholder="관리자 id">
+        <input type="password" name="apw" placeholder="관리자 pw">
+        <input type="button" value="관리자 비밀번호 변경" onclick="re_new_admin();">
+    </form>
+
+</body>
+<script>
+    function re_new_admin() {
+        if (!re_id.aid.value || !re_id.apw.value) {
+            alert("모든 인풋 입력 요망")
+        }
+        else {
+            re_id.submit();
+        }
+    }
+</script>
+
+</html>

@@ -1,0 +1,86 @@
+<?php
+    $data = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <title>Ajax (1일차) - Javascript (namedItem + 더블 함수)</title>
+        <script src="./jquery.js"></script>
+        <link rel="stylesheet" type="text/css" href="index(c).css?v=<?=$data?>">
+        <script>
+            $(function(){
+                $("#leftbtn").click(function(){
+                    
+                });
+                $("#rightbtn").click(function(){
+                    $("#dtc").stop().animate({
+                        "left":"-120px"
+                    },300,function(){
+                       let $clones = $("#product_ea>li").eq(0).clone();
+                       $("#product_ea>li").eq(0).remove();
+                       $("#product_ea").append($clones);
+                       $("#dtc").css("left","0px");
+                    });
+                });
+            });
+        </script>
+    </head>
+<body>
+    <aside style="height: 300px; background-color: blue;"></aside>
+    <section class="product">
+        <div class="product_head">
+            <label id="leftbtn">◀</label>
+            <div>PET LIST</div>
+            <label id="rightbtn">▶</label>
+        </div>
+        <div class="product_view">
+            <span class="product_list">
+                <label class="dtc" id="dtc">
+                    <ul class="product_ea" id="product_ea">
+                        <li>
+                            <div><img src="./product/product01.jpg"></div>
+                            <div>고양이</div>
+                        </li>
+                        <li>
+                            <div><img src="./product/product02.jpg"></div>
+                            <div>고양이</div>
+                        </li>
+                        <li>
+                            <div><img src="./product/product03.jpg"></div>
+                            <div>고양이</div>
+                        </li>
+                        <li>
+                            <div><img src="./product/product04.jpg"></div>
+                            <div>고양이</div>
+                        </li>
+                        <li>
+                            <div><img src="./product/product05.jpg"></div>
+                            <div>고양이</div>
+                        </li>
+                        <li>
+                            <div><img src="./product/product06.jpg"></div>
+                            <div>고양이</div>
+                        </li>
+                        <li>
+                            <div><img src="./product/product07.jpg"></div>
+                            <div>고양이</div>
+                        </li>
+                        <li>
+                            <div><img src="./product/product08.jpg"></div>
+                            <div>고양이</div>
+                        </li>
+                        <li>
+                            <div><img src="./product/product09.jpg"></div>
+                            <div>고양이</div>
+                        </li>
+                    </ul>
+                </label>
+            </span>
+        </div>
+    </section>    
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>자바스크립트 1일차 (중급) - node(1)</title>
+        <script src="../jq/jquery.js"></script>
+        <script>
+            function aaa(){
+               var a = document.getElementById("box");
+               var b = document.createElement("table");
+               b.innerHTML = "<tr><td>테이블</td></tr>"
+               a.append(b);
+            //    createElement : HTML 태그생성 JS명령어, ("") <>없이 입력.
+            //    x.append(y) : x에 자식노드로 y를 생성
+            }
+            function bbb(){
+                var box2 = document.getElementById("box2");
+                var ulli = document.createElement("ul");
+                var node = 1;
+                while(node<5){
+                    ulli.innerHTML += "<li>공지사항"+node+"</li>"
+                    node++;
+                }
+                box2.append(ulli);
+            }
+        </script>
+    </head>
+    <body>
+        <div id="box"></div>
+        <br><br>
+        <div id="box2"></div>
+        <input type="button" value="생성" onclick="bbb();">
+    </body>
+    <script>
+        aaa();
+    </script>
+</html>

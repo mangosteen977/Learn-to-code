@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery 5일차(1) - 초급코드 함수사용(submit핸들링) </title>
+        <script src="./jquery.js"></script>
+        <script>
+             $(document).ready(function(){
+                /*$("#btn").click(function(){
+                    $("#view").append("<li>"+$("#chat_text").val()+"</li>");
+                    $("#chat_text").val("");
+                });*/
+                $("#f").submit(function(){ 
+                    //submit 이벤트 핸들링, form id값을 사용함. 
+                    if( $("#chat_text").val()==""){
+                        alert("내용을 입력하세요.");
+                    }
+                    else{
+                        $("#view").append("<li>  ??? : "+$("#chat_text").val()+"</li>");
+                        $("#chat_text").val("");
+                    }
+                    $("#chat_text").focus();//자동으로 해당 아이디에 커서세팅됨.
+                    return false; //submit 사용 시 return false;사용하지 않으면,
+                    //해당 페이지가 계속해서 새로고침 혹은 이동이 된다.
+                });
+            });
+        </script>
+        <style>
+            body{margin: 0; padding: 0;}
+            dl,ul,ol{list-style: none; margin: 0;padding: 0;}
+            span,main,label{display: block;}
+            /* 부모가 text-align:center이고,
+            자식이 display:inline-block;  position:absolute;일 때,
+            text-align:center;는 IE에서 작동하지 않는다.(웹표준X)*/
+
+            /* .box{width: 300px; height: 200px; border: 1px solid red; text-align: center;}
+            .ulcss{width: 120px; border: 1px solid blue;
+            text-align: center;display: inline-block; position: relative;}
+            .ulcss>li{width: 50px; height: 50px; background-color: black;
+            display: inline-block; } */
+
+            .view{width: 400px;}
+            .view>li{
+                width: 100%; height: 30px;
+                color: darkblue; font-size: 12px;    
+            }
+            .chat{
+                width: 400px;
+                height: 600px;
+                border: 1px solid darkblue;
+                overflow-y: auto;
+                overflow-x: hidden;
+            }
+        </style>
+    </head>
+    <body>
+       <!-- <div class="box">
+            <ul class="ulcss">
+                <li></li>
+                <li></li>
+            </ul>
+       </div> -->
+       <form id="f" method="POST" action="http://naver.com">
+       <div class="chat">
+           <p>건전한 채팅문화를 선도합니다.</p>
+           <ul class="view" id="view">
+
+           </ul>
+        </div>
+           <br>
+           <input type="text" id="chat_text">
+           <input type="submit" value="전송">
+        </form>
+        <!-- submit : jq일 때 form id로 핸들링함.
+        $("#form id").submit(......(){}); -->
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/index18.html -->

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://cdn.jsdelivr.net/npm/vue"></script>
+    <title>ES 연습</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        img {
+            width: 100%;
+            object-fit: cover;
+        }
+
+        span,
+        label {
+            display: block;
+        }
+
+        .product_week {
+            width: 1178px;
+            height: auto;
+            border: 1px solid black;
+            /* padding: 15px; */
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 0 auto;
+        }
+
+        .pd_week_box {
+            width: 360px;
+            height: auto;
+            margin: 15px;
+            border: 1px solid blue;
+        }
+
+        .pd_week_box>span {
+            width: 100%;
+            text-align: center;
+        }
+
+        .pd_week_img_box {
+            height: 360px;
+        }
+
+        .pd_week_icon {
+            height: 30px;
+        }
+
+        .pd_week_title {
+            height: 40px;
+        }
+
+        .pd_week_info {
+            height: 65px;
+        }
+
+        .pd_week_p1 {
+            height: 20px;
+        }
+
+        .pd_week_p2 {
+            height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="product_week" class="product_week">
+        {{hey}}
+        <div class="pd_week_box" v-for="pd_week_val in p_arr">
+            <span class="pd_week_img_box"><img :src="pd_week_val.img"></span>
+            <span class="pd_week_icon"><img src="./product/goods_new.gif"><img src="./product/goods_made.gif"></span>
+            <span class=" pd_week_title" v-text="pd_week_val.name"></span>
+            <span class="pd_week_info" v-text="pd_week_val.info"></span>
+            <span class="pd_week_p1" v-if="pd_week_val.pd_week_p2!=0"><s>{{pd_week_val.pd_week_p1}}</s></span>
+            <span class="pd_week_p1" v-if="pd_week_val.pd_week_p2==0" v-text="pd_week_val.pd_week_p1"></span>
+            <span class="pd_week_p2" v-if="pd_week_val.pd_week_p2!=0" v-text="pd_week_val.pd_week_p2"></span>
+            <span class="pd_week_p2" v-if="pd_week_val.pd_week_p2==0"></span>
+        </div>
+    </section>
+</body>
+<script>
+    let product_print = new Vue({
+        el: "#product",
+        data: {
+            p_arr: []
+        },
+        methods: {
+            print_p(data) {
+                for (let k in data) {
+                    this.p_arr.push({
+                        img: "../light/public_html/" + data[k]["product_img"],
+                        name: data[k]["product_nm"],
+                        info: data[k]["product_sample"],
+                        p1: data[k]["product_money"],
+                        p2: Number(data[k]["sale_money"])
+                    })
+                }
+            }
+        },
+        computed: {
+            hey() {
+                fetch("../light/public_html/json/week_product.json").then((data1) => data1.json()).
+                    then((data2) => product_print.print_p(data2.week)).catch((error) => console.log(error));
+            }
+        }
+    })
+    /*
+    let product_print = new Vue({
+    el: "#product_week",
+    data: {
+        p_arr: []
+    },
+    methods: {
+        print_p(data) {
+            for (let k in data) {
+                this.p_arr.push({
+                    img: data[k]["product_img"],
+                    name: data[k]["product_nm"],
+                    info: data[k]["product_sample"],
+                    p1: data[k]["product_money"],
+                    p2: Number(data[k]["sale_money"])
+                })
+            }
+        }
+    },
+    computed: {
+        hey() {
+            fetch("./json/week_product.json").then((data1) => data1.json()).
+                then((data2) => product_print.print_p(data2.week)).catch((error) => console.log(error));
+        }
+    }
+})
+    */
+</script>
+
+</html>

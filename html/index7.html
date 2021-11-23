@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>HTML3일차 Form태그 3.0 + CSS 1.0</title>
+    </head>
+    <body>
+        <form action="http://naver.com">
+            <input type="text">
+            <input type="submit" value="입력완료">
+            <input type="reset" value="입력초기화"><br>
+            <input type="checkbox">이용약관 동의
+        </form>
+        <!--
+            form : 데이터를 보내거나 받을 때
+            action : 해당 데이터를 어는 곳에 보낼지를 설정
+
+            submit : form에 action을 작동할 수 있게 함
+            reset : 폼에 입력한 값을 모두 초기화
+            
+            input type="button" 외의 submit, reset은 무조건
+            form태그가 있어야 작동.
+        --> <br><br>
+
+        <!--응용문제 1.table+form+input-->
+        <!--css 1.0 index8.html 참조-->
+        <form>
+            <table border="1" style="font-size:12px;" cellpadding="0" cellspacing="0" width="500" height="90">
+                <tr>
+                    <td>&nbsp;&nbsp;아이디</td>
+                    <td width="250">
+                        &nbsp;<input type="text" style="width: 150px; height: 23px;">
+                    </td>
+                    <td rowspan="2" width="150" align="center">
+                        <input type="button" value="로그인" style="border:0; width:100px; height:40px; background-color: black; color:white; font-size: 12pxs;">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>&nbsp;&nbsp;패스워드</td>
+                    <td>
+                        &nbsp;<input type="password" style="width: 150px; height: 23px;">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="3" align="center">
+                        회원가입 | 아이디/비밀번호 찾기
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <!--
+            로그인 페이지 형태 : 외부로그인(카카오톡으로 로그인 등), 돌출로그인(페이지이동없이 화면에 로그인창이 있음), 탭이 전환되는 로그인, 
+            페이지 이동되는 로그인(url이 바뀜:href), 팝업형태 로그인(새창), 레이아웃 팝업형태 로그인(창 위에 작은 창 띄움(?)) 사업자로그인, 
+        -->
+    </body>
+</html>

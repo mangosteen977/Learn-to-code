@@ -1,0 +1,144 @@
+<form name="order" id="order" method="POST" enctype="application/x-www-form-urlencoded">
+    <input type="hidden" name="product_img" id="product_img1" value="">
+    <input type="hidden" name="goodsno" id="goodsno1" value="">
+    <!--상품코드-->
+    <input type="hidden" name="version" value="1.0">
+    <input type="hidden" name="mid" value="">
+    <input type="hidden" name="goodname" id="goodname" value="">
+    <!--상품명-->
+    <input type="hidden" name="oid" value="">
+    <input type="hidden" name="price" id="price" value="">
+    <!--최종 결제금액-->
+    <input type="hidden" name="goodea" id="goodea" value="1">
+    <!--구매수량-->
+    <input type="hidden" name="currency" value="WON">
+    <input type="hidden" name="buyername" value="">
+    <input type="hidden" name="mkey" value="">
+    <input type="hidden" name="gopaymethod" value="">
+    <input type="hidden" name="offerPeriod" value="">
+    <input type="hidden" name="payViewType" value="overlay">
+    <input type="hidden" name="charset" value="UTF-8">
+    <div class="pd_view_image_box">
+        <label>
+            <img id="product_img">
+        </label>
+        <label id="pd_view_image_small">
+            <span><img id="product_simg1"></span>
+            <span><img id="product_simg2"></span>
+            <span><img id="product_simg3"></span>
+        </label>
+    </div>
+    <div class="pd_view_info_box">
+        <label class="pd_view_info_title" id="productnm">
+            <!-- 상품명 제목 -->
+        </label>
+        <ul class="pd_view_price">
+            <li>판매가</li>
+            <li><label id="product_sales"></label>원</li>
+            <li>정상가<span id="product_money"></span>원</li>
+        </ul>
+        <ul class="pd_view_info_detail">
+            <li>상품코드</li>
+            <li id="goodsno"></li>
+            <li>상품간편설명</li>
+            <li id="productnm_dtc"></li>
+            <li>구매제한갯수</li>
+            <li><span id="product_ea"></span>EA</li>
+            <li>배송비</li>
+            <li><span id="product_product_delivery"></span>원</li>
+            <li>옵션선택</li>
+            <li>
+                <select name="product_option" id="product_option" class="product_option">
+                    <option value="">옵션을 선택하세요</option>
+                </select>
+            </li>
+            <li>구매갯수</li>
+            <li class="product_ea_count">
+                <span onclick="goods_ea_con(0)"><img src="./ico/minus.svg"></span>
+                <input type="text" name="goods_buy" id="goods_buy" maxlength="2" value="0" readonly>
+                <span onclick="goods_ea_con(1)"><img src="./ico/plus.svg"></span>
+            </li>
+            <li>총 결제금액</li>
+            <li><span id="total_money">0</span>원</li>
+        </ul>
+        <span style="display: block; clear:both;"></span>
+        <label class="pd_view_info_btns">
+            <span onclick="pd_view_btns_fn(0)">BUY NOW</span>
+            <span onclick="pd_view_btns_fn(1)">ADD TO CART</span>
+            <span onclick="pd_view_btns_fn(2)">WISH LIST</span>
+        </label>
+    </div>
+</form>
+<aside class="pd_view_more">
+    <ul class="pd_view_info_tags" id="pd_view_info_tags">
+        <li class="pd_view_more_li">상품상세정보</li>
+        <li>배송/교환/환불</li>
+        <li>상품후기</li>
+        <li>상품문의</li>
+    </ul>
+</aside>
+<div class="pd_view_more0 pd_view_mores" id="pd_view_more0"></div>
+<!--상세이미지-->
+<div class="pd_view_more1 pd_view_mores">
+    <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+            <td style="width: 15%;">배송안내</td>
+            <td>
+                <ul>
+                    <li>주문하신 상품은 입금 확인 후 우체국택배로 발송되며 평균적으로 2~3일 이내에 배송됩니다.</li>
+                    <li>배송비는 3만원 이상 구매시 무료배송이며, 3만원 미만 배송비 3,000원이 추가됩니다. (실 결제금액 기준)</li>
+                    <li>(단, vip,vip특별회원 등급의 회원은 모든 상품이 무료배송 입니다.)</li>
+                    <li>도서산간 지역은 평균배송일보다 1~2일 더 소요될 수 있으며, 추가 배송비가 발생합니다.</li>
+                    <li>무통장입금시 주문자명과 입금자명이 다를경우 확인이 어려우니 반드시 입금자명을 알려주세요.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>교환/반품/환불안내</td>
+            <td>
+                <ul>
+                    <li>명품한우사랑 쇼핑몰은 공정거래위원회 규정에 의거하여 운영됩니다.</li>
+                    <li>고객변심 및 주문착오에 의한 교환/반품은 7일이내에 전화 또는 게시판에 교환 및 반품을 요청해주세요</li>
+                    <li>단순변심에 의한 교환/반품 배송비는 고객님이 부담(왕복배송비 6,000원) 해 주셔야 합니다.</li>
+                    <li>오배송, 상품불량일 경우 전액(해당제품) 환불/교환해 드립니다. (제품 수령일로부터 3개월 이내)</li>
+                    <li>환불 진행은 반품하신 상품의 입고 확인 후 처리되며, 3일 이내에 현금환불 또는 카드 승인취소가 진행됩니다.</li>
+                    <li>카드승인 취소기간은 (4-5일)정도가 소요되며, 카드사에 따라 기간이 달라 질 수 있으니 개별적으로 카드사에 문의해주시기 바랍니다.</li>
+                </ul>
+                <p>교환/반품이 불가능한 경우</p>
+                <ul>
+                    <li>제품 또는 사은품을 개봉하여 상품이 훼손되거나 분실 된 경우</li>
+                    <li>교환/반품 기간이 지난 상품 (상품 수령일로부터 최대 3개월)</li>
+                    <li>기타 사용자의 과실이 인정되는 경우</li>
+                </ul>
+                <p>교환/반품 관련 배송비</p>
+                <ul>
+                    <li>고객 변심에 의한 교환 및 반품 시 발생되는 배송비는 고객님 부담입니다.</li>
+                    <li>교환 시: 반송비 + 재배송비 = 6,000원</li>
+                    <li>반품 시: 초기배송비(무료배송포함) + 반송비 = 6,000원</li>
+                </ul>
+
+            </td>
+        </tr>
+        <tr>
+            <td>반품주소지</td>
+            <td>
+                <ul>
+                    <li>반드시 고객센터에 전화 신청 후 반품하여 주시고, 택배사는 우체국택배로 보내주세요!</li>
+                    <li>
+                        서울 종로3가 국일빌딩 5F (주)명품한우사랑 고객센터 1234-5678
+                        MON-FRI 10:00 ~ 17:00 / LUNCH 12:00 ~ 13:00
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>
+<!--배송/교환/환불-->
+<div class="pd_view_more2 pd_view_mores">
+    <p class="pd_view_no_list">등록된 상품 후기가 없습니다.</p>
+</div>
+<!--상품후기-->
+<div class="pd_view_more3 pd_view_mores">
+    <p class="pd_view_no_list">등록된 상품 문의가 없습니다.</p>
+</div>
+<!--상품문의-->

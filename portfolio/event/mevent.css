@@ -1,0 +1,109 @@
+@charset "UTF-8";
+@import url("../css/font.css");
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+ul,
+ol,
+dl {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+span,
+label,
+main {
+  display: block;
+}
+a {
+  text-decoration: none;
+}
+img {
+  width: 100%;
+  object-fit: cover;
+}
+button {
+  cursor: pointer;
+}
+select {
+  margin: 0;
+}
+p {
+  margin: 0;
+  padding: 0;
+  word-break: break-all;
+}
+/*타이틀 부분*/
+@media screen and (min-width: 340px) and (max-width: 560px) {
+  .title {
+    height: 50px;
+  }
+  .title > p {
+    width: inherit;
+    height: inherit;
+    text-align: center;
+    line-height: 50px;
+    font-size: 5vw;
+    font-weight: 500;
+  }
+  /*룰렛 부분*/
+  .container {
+    height: auto;
+  }
+  .game_bg {
+    width: 100%;
+    height: 0px;
+    margin: 0 auto;
+    background: url("./r_images/event_bk.png") no-repeat top center/contain;
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .game_board {
+    width: 75vw;
+    height: 75vw;
+    max-width: 380px;
+    max-height: 380px;
+    position: absolute;
+    transition-duration: 5s;
+    transition-property: all;
+  }
+  .game_marker {
+    width: 5vw;
+    max-width: 25px;
+    top: 50%;
+    margin-top: -23%;
+    position: absolute;
+    z-index: 5;
+  }
+  .game_btn {
+    width: 20vw;
+    height: 20vw;
+    max-width: 100px;
+    max-height: 100px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -10vw;
+    cursor: pointer;
+  }
+  .msg {
+    width: 250px;
+    height: 50px;
+    border-radius: 5px;
+    border: 2px dashed darkorange;
+    background-color: rgba(255, 255, 255, 0.7);
+    position: absolute;
+    z-index: 15;
+    text-align: center;
+    line-height: 50px;
+    display: none;
+  }
+}

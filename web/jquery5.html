@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery 금요일 복습(5) - </title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(document).ready(function(){
+                /*문제6. */
+                $(".select").change(function(){
+                    var $mail = $(".select").val();
+                    $(".email").val($mail);
+                });
+                $(".btn").click(function(){
+                   var $id = $(".id").val();
+                   var $mail = $(".email").val();
+                   if($id==""){
+                       alert("이메일 아이디를 입력하세요.");
+                   }
+                   else if($mail==""){
+                       alert("메일을 선택해주세요.");
+                   }
+                   else{
+                       alert("인증메일이 발송되었습니다.");
+                   }
+                });
+
+             });
+        </script>
+        <style>
+            body{margin: 0; padding: 0;}
+            ul,ol,dl{list-style: none; margin: 0; padding: 0;}
+            span,main,label{display: block;}
+        /* 문제6. */
+            .box{display: inline-block; margin: 5px;}
+            .id, .email{width: 100px; height: 20px;}
+            .select{width: 130px; height: 25px;}
+            .btn{width: 90px; height: 30px; background-color: black; color: white;}
+        </style>
+    </head>
+    <body>
+        <!-- 문제6. -->
+        <div class="box">
+            <input type="text" class="id">@<input type="text" readonly class="email">
+            <select class="select">
+                <option value="">[메일주소 선택]</option>
+                <option value="naver.com">naver.com</option>
+                <option value="nate.com">nate.com</option>
+                <option value="gmail.com">gmail.com</option>
+            </select>
+            <input type="button" value="인증확인" class="btn">
+        </div>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/web/jquery5.html -->

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>자바스크립트 3일차(3) (중급) - return 리턴함수사용(3) </title>
+        <script>
+    //1. onclick="abc()();" 더블함수 쓰는 법
+            function abc(){
+                var a = "test";
+                var aa = "test2";
+                /*var b = new function aaa(){ // new function aaa(){}; 일때는 ()두개 필요X
+                    console.log(a);
+                };*/
+                var b = function(){ //new 없이 function만 쓸 때, onclick에 ()을 2개, return으로 변수;
+                    console.log(a);
+                };
+                var c = function(){
+                    console.log(aa);
+                }
+                return c; return b;
+            };
+
+    //2. 메소드함수 || 더블함수
+            function method(){
+                this.abc = function(){
+                    console.log("test");
+                };
+            };
+            const aa = new method(); //const = aa 변수가 클릭함수를 제어함.
+            //const 상수, 값/변수값 모두 바뀌면 안되는 것들은 const를 쓴다.
+
+            /*변수형태 종류 var vs let*/
+            //const : 상수, 변수명, 값 모두 1번 만 사용가능
+            //let : 변수명 변경 안됨, 값은 변경 가능
+            //var : 변수명, 값 모두 변경가능
+
+            var i = 1;
+            var i = 4;
+            //console.log(i); //4가 출력됨
+
+            let k = 1;
+            let k1 = 5;
+            //console.log(k);
+            //Uncaught SyntaxError: Identifier 'k' has already been declared 출력됨.
+            //let 변수값은 한 개만 지정할 수 있다. 여러 개일경우 에러가 난다.
+
+            const j = 1; 
+            //j = 4; //const는 값도 변경 불가능하다.
+            console.log(j);
+            //Uncaught TypeError: Assignment to constant variable.출력됨.
+            
+
+        </script>
+    </head>
+    <body>
+        <!-- 1번 -->
+        <input type="button" value="실행" onclick="abc()();"><br><!--()()더블함수를 동시에 호출함-->
+        <!-- 2번 -->
+        <input type="button" value="호출" onclick="aa.abc();"><br><!--더 나은 보안을 위함-->
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/middle10.html -->

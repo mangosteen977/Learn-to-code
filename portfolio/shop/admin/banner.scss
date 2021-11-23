@@ -1,0 +1,188 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700;900&display=swap");
+/* font-family: 'Noto Sans KR', sans-serif; (100, 400, 700, 900) */
+@mixin base {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+@mixin ulol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+@mixin m_sections($width, $height, $bg) {
+  margin: 0 auto;
+  width: 99.99%;
+  min-width: 320px;
+  max-width: $width;
+  height: $height;
+  background-color: $bg;
+}
+@mixin m_widths($min, $max, $bg) {
+  width: 99.99%;
+  min-width: $min;
+  min-height: $min;
+  max-width: $max;
+  max-height: $max;
+  background-color: $bg;
+}
+@mixin sections($width, $height, $bg) {
+  width: $width;
+  height: $height;
+  background-color: $bg;
+}
+@mixin flexs($wrap, $justify, $align) {
+  display: flex;
+  flex-wrap: $wrap;
+  justify-content: $justify;
+  align-content: $align;
+  align-items: $align;
+}
+@mixin font_sans($h, $c, $a, $w, $s) {
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: $h;
+  color: $c;
+  text-align: $a;
+  font-weight: $w;
+  font-size: $s;
+}
+body {
+  @include base;
+}
+img {
+  object-fit: cover;
+  width: 100%;
+}
+/*배너 리스트 및 세팅 파트*/
+.banner_setting {
+  @include sections(1200px, auto, none);
+  margin: 0 auto;
+  .bn_effect_btns {
+    @include sections(100%, 40px, none);
+    @include flexs(nowrap, flex-start, center);
+    flex-direction: row;
+    & > label {
+      margin-right: 10px;
+      text-indent: 10px;
+    }
+    & > button {
+      @include sections(100px, 30px, #c3222b);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 100%;
+      &:hover {
+        background-color: #88181e;
+      }
+    }
+  }
+  & > table {
+    @include sections(100%, auto, none);
+    @include font_sans(40px, unset, center, unset, 100%);
+    & > thead > tr > td {
+      height: 40px;
+      border-bottom: 2px solid #ccc;
+      &:nth-child(1),
+      &:nth-child(7),
+      &:nth-child(5) {
+        width: 5%;
+      }
+      &:nth-child(6) {
+        width: 15%;
+      }
+      &:nth-child(3) {
+        width: 25%;
+      }
+      &:nth-child(2) {
+        width: 25%;
+      }
+      &:nth-child(4) {
+        width: 20%;
+      }
+    }
+    & > tbody tr td:nth-child(7) > div {
+      @include sections(50%, 30px, none);
+      line-height: 30px;
+      display: inline-block;
+      background-color: #303947;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    & > tbody tr td:nth-child(3) > input {
+      @include sections(90%, 30px, none);
+      font-size: 100%;
+      border: none;
+    }
+    & > tbody tr {
+      @include sections(100%, 40px, none);
+      border-bottom: 2px solid #ccc;
+      & > td:nth-child(5) select {
+        @include sections(80%, 30px, none);
+        font-size: 100%;
+      }
+    }
+    & > tbody > .no_bn_list {
+      background-color: #ccc;
+      border-radius: 5px;
+    }
+  }
+  & > .add_bn_btn {
+    @include sections(100px, 30px, #c3222b);
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+    font-size: 100%;
+    &:hover {
+      background-color: #88181e;
+    }
+  }
+}
+/*배너 등록 파트*/
+.add_banner_page {
+  @include sections(1200px, auto, none);
+  margin: 0 auto;
+  & > form > div {
+    @include sections(inherit, auto, none);
+    padding: 50px 0;
+    & > .add_bn_form {
+      @include sections(inherit, 200px, none);
+      @include font_sans(50px, unset, left, unset, 100%);
+      & > li {
+        @include sections(20%, 50px, none);
+        float: left;
+        border: 1px solid #ccc;
+        text-indent: 20px;
+        &:nth-child(even) {
+          width: 80%;
+          border-left: 1px solid #ccc;
+          & > input {
+            @include sections(50%, 30px, none);
+            border: none;
+            border-bottom: 2px solid #ccc;
+            font-size: 100%;
+          }
+        }
+        &:nth-child(7) {
+          width: 100%;
+          text-align: center;
+          border: none;
+          & > button {
+            @include sections(100px, 30px, #c3222b);
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 100%;
+            &:hover {
+              background-color: #88181e;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery Jquery 7일차(2) - 초급코드 NODE 오브젝트 (Jquery-ui) 사용법 </title>
+        <script src="./jquery.js"></script>
+        <script src="./jquery-ui.js"></script>
+        <script>
+            
+             $(document).ready(function(){
+                var $node = 0;
+                $(".span").draggable().mouseenter(function(){
+                    $node = Number($(this).attr("data"));
+                    console.log($node);
+                });
+                $("#box").droppable({
+                    "drop":function(){
+                        var $color = $(".span").eq($node).css("background-color");
+                        $(this).css("background-color",$color);
+                    },
+                    "out":function(){
+                        $(this).css("background-color","");
+                    }
+                })
+
+
+             });
+        </script>
+        <style>
+           .box{width: 200px; height: 200px; border: 1px solid black;}
+           .span{display: block; width: 50px; height: 50px;}
+           .span:nth-of-type(1){background-color: red;}
+           .span:nth-of-type(2){background-color: blue;}
+           .span:nth-of-type(3){background-color: green;}
+        </style>
+    </head>
+    <body>
+        <div class="box" id="box"></div>
+        <!-- 임의속성이름="n" : Js/Jq_임의(임시)속성
+        :사용하고자하는 단어를 입력해서 사용가능. 꼭 data아니어도 됨./ -->
+        <span class="span" data="0"></span>
+        <span class="span" data="1"></span>
+        <span class="span" data="2"></span>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/index27.html -->

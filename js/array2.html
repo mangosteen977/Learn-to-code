@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Javascript 8일차 (5) - 중급 (배열 및 출력 총 복습 2 ) </title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <div id="ulbox"></div>
+    </body>
+    <script>
+        //문제1.
+        const array = ["결제시스템 점검이 있습니다.","상품택배 배송 지연사항 공지","적립금 혜택 이벤트 종료 안내"];
+        var ul = document.createElement("ul");
+        var k; var li ="";
+        for(k in array){
+            //console.log(array[k])
+            li += "<li>"+array[k]+"</li>";    
+        }
+        ul.innerHTML=li;
+        document.getElementById("ulbox").append(ul);
+
+        //문제2.
+        const a = {"number":["12","26","33","47","60"]};
+        //해당 배열값 중 짝수만 출력하시오.
+        var k2;
+        for(k2 in a.number){
+            if(a.number[k2]%2==0){
+                console.log(a.number[k2])
+            }
+        }
+    </script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/array2.html -->

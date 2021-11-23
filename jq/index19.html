@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery 5일차(2) - 초급코드 함수사용(슬라이드메뉴) </title>
+        <script src="./jquery.js"></script>
+        <script>
+             $(document).ready(function(){
+                var $node = $("#u>li").length; //대메뉴 갯수
+                var $width = $(".smenu>li").width(); //소메뉴 개당 가로크기
+                var $w = 0;
+                while($w<$node){
+                    //해당 대메뉴의 소메뉴 갯수
+                    var $snode = $("#u>li:eq("+$w+")>ol>li").length;
+                    //해당 소메뉴 갯수 * 소메뉴 개당 가로크기
+                    var $olwidth = ($snode*$width)+($snode*2);//snode*2는 border가 각 2px씩 있어서.
+                    //소메뉴 전체 크기-->ol에 적용
+                    $("#u>li:eq("+$w+")>ol").css("width",$olwidth+"px");
+                    $w++;
+                }
+                $("#u>li").mouseenter(function(){
+                    var $index = $(this).index();
+                    $("#u>li:eq("+$index+")>ol").fadeIn(1000);
+
+                });
+                $("#u>li").mouseleave(function(){
+                    var $index = $(this).index();
+                    $("#u>li:eq("+$index+")>ol").fadeOut(1000);
+
+                });
+            });
+        </script>
+        <style>
+            body{margin: 0; padding: 0;}
+            dl,ul,ol{list-style: none; margin: 0;padding: 0;}
+            span,main,label{display: block;}
+            /*slide-menu*/
+            .box{width: 100%; height: auto;}
+            .u{width: 150px; height: auto;}
+            .u>li{
+                width: 150px; height: 40px; border: 1px solid #ccc;
+                box-sizing: border-box; cursor:pointer;
+                line-height: 40px; text-align: center;
+                position: relative;
+                }
+            .smenu{
+                height: 40px; 
+                position: absolute; top: 0; left: 150px;
+                margin: -1px;
+                display: none;
+                }
+            .smenu>li{
+                width: 150px; 
+                height: 40px; 
+                float: left;
+                background-color: #ccf;
+                border: 1px solid #ccc;
+                }
+        </style>
+    </head>
+    <body>
+       <div class="box">
+           <ul class="u" id="u">
+               <li>menu1
+                   <ol class="smenu" id="smenu0">
+                       <li>smenu1</li>
+                       <li>smenu2</li>
+                       <li>smenu3</li>
+                   </ol>
+               </li>
+               <li>menu2
+                <ol class="smenu" id="smenu1">
+                    <li>smenu1</li>
+                    <li>smenu2</li>
+                </ol>
+               </li>
+               <li>menu3
+                <ol class="smenu" id="smenu2">
+                    <li>smenu1</li>
+                    <li>smenu2</li>
+                    <li>smenu3</li>
+                    <li>smenu4</li>
+                </ol>
+               </li>
+           </ul>
+       </div>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/index19.html -->

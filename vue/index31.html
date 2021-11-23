@@ -1,0 +1,65 @@
+<?php
+    $v = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 5일차 (3) vue 뷰 복습 응용</title>
+        <script src="../jq/jquery.js"></script>
+        <!-- vue 버전 1.6.4 ???????? -->
+        <script src="http://cdn.jsdelivr.net/npm/vue"></script>
+        <!-- <link rel="stylesheet" type="text/css" href="./index.css?v=<?=$v?>"> -->
+        <style>
+        </style>
+    </head>
+    <body>
+        <section id="box">
+            <input type="button" value="클릭" @click="abc">
+            {{ccc}}{{ddd}}
+        </section>
+        <section id="box2">
+            {{zzz}}
+        </section>
+    </body>
+    <script>
+        let a = new Vue({
+            el:"#box",
+            data:{
+
+            },
+            methods:{
+                abc(){
+                    console.log("D");
+                }
+            },
+            components:{
+
+            },
+            computed:{ //즉시 실행 함수가 적용 되는 파트
+                ccc:function(){
+                   window.open("./index30.html","","width=500 height=300")
+                },
+                ddd:function(){
+                    // this.abc();
+                    console.log("abc function");
+                }
+            }
+        })
+        let b = new Vue({
+            el:"#box2",
+            data:{
+
+            },
+            methods:{
+
+            },
+            computed:{
+                zzz:function(){
+                    a.abc(); //let a의 뷰 변수값(함수) 가져옴.
+                }
+            }
+        })
+    </script>
+</html>

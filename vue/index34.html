@@ -1,0 +1,149 @@
+<?php
+    $v = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>vue 5일차 비회원 주문조회 입력폼 A파트</title>
+        <script src="http://cdn.jsdelivr.net/npm/vue"></script>
+        <link rel="stylesheet" type="text/css" href="./index34.css?v=<?=$v?>">
+    </head>
+    <body>
+        <form id="frm" name="frm" v-on:submit.prevent="login">
+        <section id="box" class="box">
+            <ul v-bind:class="ulcss">
+                <li><div class="delivery">{{text}}</div></li>
+                <li><input v-bind:type="t" v-model="user_nm" v-bind:name="name" placeholder="주문자명을 입력하세요"></li>
+                <li><input v-bind:type="t" v-model="user_number" v-bind:name="number" maxlength="8" placeholder="주문번호 8자리를 입력하세요"></li>
+                <li><input v-bind:type="p" v-model="user_pw" v-bind:name="pass" placeholder="비회원 주문 비밀번호를 입력하세요"></li>
+                <li><btn v-bind:type="s" v-model="s_nm" v-bind:class="s_css"></btn></li>
+            </ul>
+        </section>
+        </form>
+    </body>
+    <script>
+        let v = {
+            template:"<input>"
+        }
+        let a = new Vue({
+            el:"#frm",  
+            data:{  
+                ulcss:"ulcss",
+                text:"비회원 배송조회 서비스",
+                s:"submit",
+                s_nm:"비회원 로그인",
+                s_css:"btn",
+                p:"password",
+                t:"text",
+                user_nm:"",
+                user_number:"",
+                user_pw:"",
+                name:"name",
+                number:"number",
+                pass:"pass",
+                enc:"application/x-www-form-urlencoded"
+            },
+            methods:{ 
+                login:function(){
+                    if(this.user_nm==""){
+                        alert("주문자명을 입력하세요.");
+                    }
+                    else if(this.user_number=="" || this.user_number.length<8){
+                        alert("주문번호 8자리를 입력하세요.");
+                    }
+                    else if(isNaN(this.user_number)==true){
+                        alert("주문번호는 숫자로만 입력하세요.");
+                    }
+                    else if(this.user_pw==""){
+                        alert("비밀번호를 입력하세요.");
+                    }
+                    else{
+                        location.href = './index33.html?name='+this.user_nm+'&number='+btoa(this.user_number)+'&pass='+btoa(this.user_pw);
+                        // frm.method="GET",
+                        // frm.action="./index33.html",
+                        // frm.enctype = this.enc;
+                        // frm.submit();
+                    }
+                }
+            },
+            components:{   
+                "btn":v
+            },
+            computed:{
+
+            }
+        });
+    </script>
+</html>
+<!-- 
+     <script>
+    /* 
+    //
+    let temps={
+        template:"<button @click='aaa' class='aaa'></button>",
+        methods:{
+            aaa:function(){
+               a.logins();
+            }
+        },
+    }
+    */
+    let a = new Vue({
+        el:"#box",
+        data:{
+            btns:"button",
+            midcu:"",
+            midnm:"",
+            midpa:"",  
+            btnnm:"비회원 로그인",
+            alert:"",
+            al:"alerts"
+            
+        },
+        methods:{
+            logins:function(){
+                if(this.midcu==""){
+                    this.alert = "주문자명을 입력하세요";
+                }
+                else if(this.midnm==""){
+                    this.alert = "주문번호8자리를 입력하세요.";
+                }
+                else if(this.midpa==""){
+                    this.alert = "비회원 주문 비밀번호를 입력하세요";
+                }
+                else{
+                    //console.log(this.midnm.length);
+                    if(this.midnm < 8){
+                        this.alert = "주문번호 8자리를 맞게 입력해주세요";
+                    }
+                    else if(isNaN(this.midnm)==true){
+                        this.alert = "주문번호는 숫자만 입력해주세요 ";
+                    }
+                    else{
+                        this.alert = "";
+                        location.href="./index34.html?mid="+btoa(this.midcu)+"&order="+btoa(this.midnm)+"&pw="+btoa(this.midpa);
+                        //btoa 파라미터로 전송하는 값을 암호화 함
+                        //atob 암호화값을 복호화시킴
+                    }
+                }
+    
+            }
+        },
+        components:{
+            "btn":{
+            template:"<button @click='aaa' class='aaa'></button>",
+                methods:{
+                    aaa:function(){
+                    a.logins();
+                    }
+                }
+            }
+        },
+        computed:{
+    
+        }
+    });
+    </script>
+ -->

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jquery 3일차(1) - 중급 ( 통신배열 front-back ) </title>
+        <script src="./jquery.js"></script>
+        <script>
+            let array_data = ""; //빈 전역변수를 만들어서 받은 데이터를 넣어 사용
+            function products(array){ //backend데이터를 받아오는 함수
+                array_data = array; //받아온 array값을 전역변수에 넣음.
+                // console.log(array_data)
+            }
+            $(function(){
+               $.fn.abc =function(){
+                    let $array = array_data; //backend_data>전역변수>JQ변수
+
+            //기본키(X),세부키(O)일 때.
+                    // 응용문제. 버튼 클릭시 받은 배열의 금액값의 총 합계를 출력하시오.
+                    $sum = 0;
+                    $.each($array,function($a,$b){
+                        $sum += Number($b["money"]);
+                        // $sum = $sum+Number($b["money"]);
+                        //$a : 배열갯수 0~n, $b : 각 전체 배열
+                    });
+                    console.log($sum)
+
+            //기본키(O)일 때
+                    /*$($array).each(function($a,$b){
+                        console.log($b)//각 전체 배열
+                        console.log($a)//배열갯수 0~n
+                    });*/
+                };
+                
+                $("#btn").click(function(){
+                    $.fn.abc();
+                });
+
+            });
+        /*
+            일반 함수는 products(); 혹은 이벤트함수처럼 
+            함수를 실행하는 명령이 필요.
+            단, backend로 동기식으로 data를 받아오는 함수는
+            데이터를 받는 즉시 실행이 되기 때문에 실행 명령이 따로 없다.
+            단, 파일을 받아오는 함수는 받아오는 파일보다 상위에 있어야 한다.
+            ※ 함수명은 backend와 동일한 함수명을 공유한다.
+        */
+        </script>
+        <script src="http://lovertvtest.dothome.co.kr/jq/array.php"></script>
+        <!-- 
+            backend에서 받아온 파일을 JQ에서 동기식으로 바로 로드(X).
+            JS에서 받아 전역변수에 저장한 뒤, JQ에서는 전역변수로 값을 쓴다.
+            동기식으로 받은 파일은 일회성으로 휘발되기 때문.(return 필요(X))
+         -->
+    </head>
+    <body>
+        <!-- 응용문제. 버튼 클릭시 받은 배열의 금액값의 총 합계를 출력하시오. -->
+        <input type="button" value="총 합계" id="btn">
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/middle11-1.html -->

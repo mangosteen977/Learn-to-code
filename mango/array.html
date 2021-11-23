@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title> ALL ABOUT ARRAY 배열 반복문 정리 (JS/JQ) </title>
+        <script src="../jq/jquery.js"></script>
+        <script>
+            //Jquery (jq/middle6.html~)
+            $(function(){
+                const $menus = [
+                    {
+                        "main_menu":"훈련과정",
+                        "menu_list":["국민내일배움카드 훈련과정","디지털 신기술 훈련과정","기업훈련과정","디지털 기초역량훈련"]
+                    },
+                    {
+                        "main_menu":"지원제도",
+                        "menu_list":["정부지원사업안내","정부부처별 지원사업안내","일학습병행"]
+                    },
+                    {
+                        "main_menu":"일자리직업정보",
+                        "menu_list":["구인정보","자격정보","학과정보"]
+                    },
+                    {
+                        "main_menu":"지식정보센터",
+                        "menu_list":[ "인재뱅크","훈련기관평가정보","훈련/고용통계" ]
+                    }
+                ];//배열
+
+                //선생님이 기본키가 있는 경우, 1.2.번 반복문을 사용, 세부키만 있을경우 3.번을 사용한다고 하셨다.
+                //근데 직접해보니 결과값이 같다...?
+                //1.$($menus).each(function($a,$b){});
+                $($menus).each(function($a,$b){
+                    //console.log($a); //0 1 2 3
+                    //console.log($b); //{main_menu: "훈련과정", menu_list: Array(4)}
+                    //console.log($b["main_menu"]); //훈련과정 지원제도 일자리직업정보 지식정보센터
+                    $($b["menu_list"]).each(function($c,$d){
+                    //console.log($c); //0 1 2 3
+                    //console.log($d); //국민내일배움카드 훈련과정 디지털 신기술 훈련과정 기업훈련과정 디지털 기초역량훈련
+                    });
+                });
+                //2.$($menus).map(function($a,$b){});
+                $($menus).map(function($a,$b){
+                    //console.log($a); //0 1 2 3
+                    //console.log($b); //{main_menu: "훈련과정", menu_list: Array(4)}
+                    $($b["menu_list"]).map(function($c,$d){
+                    //console.log($c); //0 1 2 3
+                    //console.log($d); //국민내일배움카드 훈련과정 디지털 신기술 훈련과정 기업훈련과정 디지털 기초역량훈련
+                    });
+                });
+                //3.$.each($menus,function($a,$b){});
+                $.each($menus,function($a,$b){
+                    //console.log($a)//0 1 2 3
+                    //console.log($b)//{main_menu: "훈련과정", menu_list: Array(4)}
+                    //console.log($b["main_menu"]) //훈련과정 지원제도 일자리직업정보 지식정보센터
+                    $.each($b["menu_list"],function($c,$d){
+                    //console.log($c)//0 1 2 3
+                    //console.log($d) //국민내일배움카드 훈련과정 디지털 신기술 훈련과정 기업훈련과정 디지털 기초역량훈련
+                    });
+                });
+
+            });
+            //JavaScript (js/middle16.html~)
+            const menus = [
+                {
+                    "main_menu":"훈련과정",
+                    "menu_list":["국민내일배움카드 훈련과정","디지털 신기술 훈련과정","기업훈련과정","디지털 기초역량훈련"]
+                },
+                {
+                    "main_menu":"지원제도",
+                    "menu_list":["정부지원사업안내","정부부처별 지원사업안내","일학습병행"]
+                },
+                {
+                    "main_menu":"일자리직업정보",
+                    "menu_list":["구인정보","자격정보","학과정보"]
+                },
+                {
+                    "main_menu":"지식정보센터",
+                    "menu_list":[ "인재뱅크","훈련기관평가정보","훈련/고용통계" ]
+                }
+            ];//배열
+            //1. for( in )
+            let key; let key2;
+            for(key in menus){
+                //console.log(key); //0 1 2 3
+                //console.log(menus[key]); //{main_menu: "훈련과정", menu_list: Array(4)}
+                //console.log(menus[key]["main_menu"]); //훈련과정 지원제도 일자리직업정보 지식정보센터
+                for(key2 in menus[key]["menu_list"]){
+                //console.log(key2); ///0123/012/012/012
+                //console.log(menus[key]["menu_list"][key2]);//국민내일배움카드 훈련과정 디지털 신기술 훈련과정 기업훈련과정 디지털 기초역량훈련
+                }
+            }
+            //2.forEach(function(a,b,c){});
+            menus.forEach(function(a,b,c){
+                //console.log(a) //{main_menu: "훈련과정", menu_list: Array(4)}
+                //console.log(b) //0 1 2 3
+                //console.log(c) //모든배열
+                //console.log(a["main_menu"]) //훈련과정 지원제도 일자리직업정보 지식정보센터
+                a["menu_list"] .forEach(function(d,e,f){
+                //console.log(d) //국민내일배움카드 훈련과정 디지털 신기술 훈련과정 기업훈련과정 디지털 기초역량훈련
+                //console.log(e) //0123/012/012/012
+                //console.log(f) //["국민내일배움카드 훈련과정", "디지털 신기술 훈련과정", "기업훈련과정", "디지털 기초역량훈련"]
+                });
+            });
+            //3. Object.keys().forEach(function(){});
+            
+
+
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

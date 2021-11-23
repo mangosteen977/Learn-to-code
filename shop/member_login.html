@@ -1,0 +1,29 @@
+<?php
+    $date=date("YmdHis")
+    ?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>쇼핑몰 만들기 - 로그인</title>
+        <link type="text/css" rel="stylesheet" href="./index.css?v=<?php echo $date?>">
+    </head>
+    <body>
+        <header class="shop_header">
+            <?php include "top.html"; ?>
+        </header><!--상단 탑 배너 및 탑메뉴-->
+        <nav class="shop_nav">
+            <?php include "menu.html"; ?>
+        </nav><!--검색 기능 및 대메뉴&소메뉴-->
+        <main class="shop_main">
+            <!-- 로그인 부분 -->
+            <section class="shop_login">
+                <?php include "login.html"; ?>
+            </section>
+        </main>
+        <footer class="shop_footer">
+            <?php include "footer.html"; ?>
+        </footer><!--카피라이터-->
+    </body>
+</html>

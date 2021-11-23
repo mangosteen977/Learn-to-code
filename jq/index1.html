@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery 1일차</title>
+        <script src="./jquery.js"></script>
+        <!-- ↑jquery 엔진은 ↓ready보다 위에 코드가 위치해야한다. -->
+        <script>
+        // $ : 함수 또는 변수 설정하는 형태도 있으며,
+        //     css에 대한 class, id를 접근할 수 있는 기호이다.
+        // $==jquery
+            $(document).ready(function(){
+        //Jquery 특징 HTML&CSS를 얼만큼 잘 설계하느냐에 따라 코드가 간편화 됨.
+        //$(document).ready : 현재 페이지에서 jquery를 로드하여 준비하는 단계.
+        //$(document).ready안에는 javaScript의 function abc()작동 안한다. 밖으로 빼야한다.
+
+                /*var $a = Number("1");
+                //javascript에서는 못 쓰는 변수. 단, var a;는 jquery에서 작동함.
+                var $b = Number("5");
+                var $c = $a+$b;
+                console.log($c);*/
+
+                /*var $a = "홍 길 동";
+                $a = $a.replace(/ /g,"")
+        //replace(a,b) : a를 b로 치환
+        //replace(/ /g,"") : 공백없애기
+                if($a=="홍길동"){
+                    alert("동일한 이름입니다.");
+                }
+                else{
+                    alert("가입되지 않았습니다.");
+                }*/
+
+                /*응용문제1.1~10까지 차례로 찍히는 console.log를 출력하시오*/
+                //for문
+                /*var $a;
+                for($a=1;$a<11;$a++){
+                    console.log($a);
+                }*/
+                //do~while문
+                /*var $a = 1;
+                do{
+                    console.log($a);
+                    $a++;
+                }while($a<11);*/
+
+                $("#btn").click(function(){ //이벤트 핸들링 형태
+        //$("#id, .class")
+                    //alert("test");
+                    var $a = $("#a").val();
+        //id a 값을 가져옴
+                    var $b = $("#b").val();
+        //val() == value
+                    var $c = $a+$b;
+                    console.log($c);
+                });
+                $("#btn2").click(function(){
+                    $("#a").val("홍길동");
+        //id a 에 value(값)을 입력함.
+                })
+
+            });
+
+        </script>
+    </head>
+    <body>
+        <input type="text" id="a">
+        <input type="text" id="b">
+        <input type="button" value="클릭" id="btn">
+        <input type="button" value="입력" id="btn2">
+    </body>
+</html>

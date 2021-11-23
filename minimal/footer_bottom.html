@@ -1,0 +1,96 @@
+<div class="footer_bottom_outline">
+	<div class="e-outline">
+
+		<div class="e-box">
+			<ul>
+				<li class="e-title">CUSTOMER CENTER</li>
+				<li class="e-title2"><a href="tel:15990000">1599-0000</a></li>
+				<li>Open : 10:00 ~ 17:00</li>
+				<li>Lunch: 10:00 ~ 17:00</li>
+				<li>Sat, Sun, Holiday Off</li>
+				<li>am 11~12시,pm 2~4시 통화 원활합니다.</li>
+			</ul>
+		</div>
+
+		<div class="e-box">
+			<ul>
+				<li class="e-title">BANK INFO</li>
+				<li>국민 1234567-84-567890</li>
+				<li>농협 301-0216-2222-11</li>
+				<li>우리 1005-105-123456</li>
+				<li>예금주: (주)그린아트컴퓨터학원</li>
+			</ul>
+		</div>
+
+		<div class="e-box2">
+			<div class="e-title" style="text-indent:10px;">COMMUNITY</div>
+			<ul class="e-left">
+				<li onclick="footck(1)">Q&A</li>
+				<li onclick="footck(2)">미확인입금자</li>
+				<li onclick="footck(3)">배송지연</li>
+				<li onclick="footck(4)">EVENT</li>
+			</ul>
+
+			<ul class="e-right">
+				<li>SHOPPOING GUIDE</li>
+				<li onclick="footck(5)">공지사항</li>
+				<li onclick="footck(6)">아이디어/쓴소리</li>
+				<li onclick="footck(7)">REVIEW</li>
+			</ul>
+		</div>
+
+		<div class="e-box4">
+			<ul id="ebox4_id">
+				<li class="e-li1" ww="https://m.sonyunara.com/intro/b2b.php">회사소개</li>
+				<li class="e-li1" ww="https://m.sonyunara.com/intro/membership_guide.php">이용안내</li>
+				<li class="e-li1" ww="https://m.sonyunara.com/intro/use.php">이용약관</li>
+				<li class="e-li1" ww="https://m.sonyunara.com/intro/privacy.php">개인정보취급방침</li>
+				<li class="e-li1" ww="https://m.sonyunara.com/intro/proposal.php">제휴문의</li>
+				<li class="e-li1" ww="https://m.sonyunara.com/intro/model.php">채용안내</li>
+			</ul>
+		</div>
+
+		<div class='e-box3'>
+			<ul>
+				<li>COMPANY : (주)그린아트컴퓨터학원</li>
+				<li>ADDRESS:<br>서울시 종로3가 국일빌딩 5F</li>
+				<li>MAIL BUSINESS LICENSE : 000-00-00000[사업자정보확인]</li>
+				<li>OWNER:(주)그린아트컴퓨터학원</li>
+				<li>TEL : 1599-0000</li>
+				<li>E-MAIL : test@naver.com</li>
+				<li>COPYRIGHT(C)(주)그린아트컴퓨터학원 ALL RIGHS RESERVED</li>
+			</ul>
+		</div>
+
+	</div>
+</div>
+<script>
+	//footer_bottom.html (JS)
+	let links = "";
+	function footck(what) {
+		switch (what) {
+			case 1:
+				links = "https://m.sonyunara.com/cs/index.php";
+				break;
+			case 2:
+				links = "https://m.sonyunara.com/cs/unknown.php";
+				break;
+			case 3:
+				links = "https://m.sonyunara.com/cs/delay.php";
+				break;
+			case 4:
+				links = "https://m.sonyunara.com/event/list.php";
+				break;
+			case 5:
+				links = "https://m.sonyunara.com/board/list.php?boardid=csnotice";
+				break;
+			case 6:
+				links = "https://m.sonyunara.com/board/list.php?boardid=cast";
+				break;
+			case 7:
+				links = "https://m.sonyunara.com/review/review_index.php";
+				break;
+		}
+		location.href = links
+	}
+</script>

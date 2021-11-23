@@ -1,0 +1,78 @@
+<?php
+    include "notice_view.php";
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Ajax (6일차) - 공지사항 글쓰기 (선생님코드) </title>
+<script src="./jquery.js"></script>
+<script>
+    $(function(){
+        //<?=$view?> 벡엔드가 주는 코드명
+        // const $data = $.parseJSON('<?=$view?>'); //JQ 1.0 ver
+        const $data = JSON.parse('<?=$view?>'); //JQ 3.0 ver == JS parse
+        $("#subject").html($data[0]["nsubject"]);
+        $("#wname").html($data[0]["nwriter"]);
+        $("#wtext").html($data[0]["ntext"]);
+
+        $("#delbtn").click(function(){
+            if(confirm("해당 게시물을 삭제 하시겠습니까?")){
+                let $p = location.search;
+                let $p2 = $p.split("?nidx=");
+                location.href="notice_del.php?nidx="+$p2[1];
+            }
+        });
+        $("#listbtn").click(function(){
+            location.href="notice_list(2).html";
+        });
+        $("#okbtn").click(function(){
+            let $p = location.search;
+            let $p2 = $p.split("?nidx=");
+            location.href="http://mangsteen977.dothome.co.kr/ajax/notice_modify.html?nidx="+$p2[1];
+        });
+    });
+</script>
+<style>
+    span{display: block;}
+    .spancss{
+        width: 200px; height: 30px; text-indent: 10px;
+        font-size: 12px; font-family: "돋움체";
+        line-height: 30px;
+    }
+    .spancss2{
+        width: 800px; height: 500px; padding-left: 10px;
+        box-sizing: border-box; overflow-y: auto;
+    }
+</style>
+</head>
+<body>
+<table border="1">
+    <tbody>
+        <tr>
+            <td>제목</td>
+            <td>
+                <span id="subject" class="spancss"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>글쓴이</td>
+            <td>
+                <span id="wname" class="spancss"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>내용</td>
+            <td>
+                <span id="wtext" class="spancss2"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<input type="button" value="수정" id="okbtn">
+<input type="button" value="목록" id="listbtn">
+<input type="button" value="삭제" id="delbtn">
+</form>
+</body>
+</html>

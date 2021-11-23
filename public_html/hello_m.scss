@@ -1,0 +1,136 @@
+@charset "UTF-8";
+@mixin flexs($wrap, $justify, $align) {
+  display: flex;
+  flex-wrap: $wrap;
+  justify-content: $justify;
+  align-content: $align;
+  align-items: $align;
+}
+@mixin sections($width, $height, $bg) {
+  width: $width;
+  height: $height;
+  background-color: $bg;
+}
+@media screen and (min-width: 320px) and (max-width: 580px) {
+  .bn_top_menu,
+  .index_floor,
+  .bn_btn,
+  .index_menu,
+  .pd_left,
+  .pd_right {
+    display: none !important;
+  }
+  .m_bn_ham_btn {
+    display: block !important;
+  }
+  .bn_top {
+    @include flexs(wrap, space-between, center);
+  }
+  .new_photos {
+    @include sections(240 * 10px, 470px/2, none);
+  }
+  .quick_ol {
+    flex-wrap: wrap;
+    justify-content: center;
+
+    display: none; //d얘 어쩌냐..
+    & > li {
+      width: 100% !important;
+      max-width: 95% !important;
+    }
+  }
+  .copy_ul {
+    line-height: 15px;
+    justify-content: space-evenly;
+    & > li {
+      margin-left: 7px;
+    }
+  }
+  .copyright_text {
+    & > span {
+      text-align: center;
+      font-size: 1vw;
+      &:nth-child(1) {
+        width: 100% !important;
+      }
+      &:nth-child(2),
+      &:nth-child(3) {
+        width: 50% !important;
+      }
+      & > ol {
+        margin: 0 auto;
+        & > li {
+          line-height: unset;
+          font-size: 1vw;
+          height: auto;
+          &:nth-child(1) {
+            font-size: 2vw;
+          }
+          & > span {
+            font-size: 1.5vw !important;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 581px) and (max-width: 784px) {
+  .bn_top_menu,
+  .index_floor,
+  .bn_btn,
+  .index_menu,
+  .pd_left,
+  .pd_right {
+    display: none !important;
+  }
+  .m_bn_ham_btn {
+    display: block !important;
+  }
+  .bn_top {
+    @include flexs(wrap, space-between, center);
+  }
+  .quick_ol {
+    flex-wrap: wrap;
+    justify-content: center;
+
+    display: none; //d얘 어쩌냐..
+    & > li {
+      width: 100% !important;
+      max-width: 95% !important;
+    }
+  }
+  .copy_ul {
+    line-height: 15px;
+    justify-content: space-evenly;
+    & > li {
+      margin-left: 7px;
+    }
+  }
+  .copyright_text {
+    & > span {
+      text-align: center;
+      font-size: 1vw;
+      &:nth-child(1) {
+        width: 100% !important;
+      }
+      &:nth-child(2),
+      &:nth-child(3) {
+        width: 50% !important;
+      }
+      & > ol {
+        margin: 0 auto;
+        & > li {
+          line-height: unset;
+          font-size: 1vw;
+          height: auto;
+          &:nth-child(1) {
+            font-size: 2vw;
+          }
+          & > span {
+            font-size: 1.5vw !important;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,80 @@
+<?php
+    $v = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 8일차 (3) vue_single_page 뷰 싱글 페이지 만들기, 선생님 index41.html </title>
+        <script src="../jq/jquery.js"></script>
+        <script src="http://cdn.jsdelivr.net/npm/vue"></script><!-- vue 버전 1.6.4 ???????? -->
+        <!-- vue router 뷰 라우터-->
+        <script src="http://unpkg.com/vue-router/dist/vue-router.js"></script><!-- 뷰싱글페이지 만들 때-->
+        <!-- lodash js src -->
+        <!-- <Script src="http://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></Script> -->
+        <style>
+        </style>
+        <script>
+            $(function(){
+               
+            })
+        </script>
+    </head>
+    <body>
+        <section id="box">
+            <!--router-view는 vue-router.js 가 있을 때 사용-->
+            <router-view name="top"></router-view>
+            <router-view name="banner"></router-view>
+            <router-view name="bottom"></router-view>
+        </section>
+    </body>
+    <script>
+        let page1 = {
+            template:` <div style="width:100%; height:100px; background-color:yellow">
+            <?php include "../scss/index2.html"?>
+            </div>`
+        };
+        let page2 = {
+            template:`<div style="width:100%; height:400px; background-color:greenyellow">
+                {{hhh}}</div>`,
+            data(){
+                return {hhh:"this is test"}
+            }
+        };
+        let page3 = {template:`
+            <div style="width:100%; height:200px; background-color:gray"></div>
+        `};
+        // vue router 함수
+        let r = new VueRouter({
+            routes:[
+                {
+                    path:"/",//같은 경로 뜻한다고 ????????????
+                    components:{//라우터는 태그명이 동일함으로 name값으로 설정함
+                        top:page1,
+                        banner:page2,
+                        bottom:page3
+                    }
+                }
+            ]
+        });
+        // vue 함수
+        let a = new Vue({
+            router:r,
+            el:"#box",
+            data:{
+                hhh:""
+            },
+            methods:{
+                
+            },
+            components:{
+
+            },
+            computed:{
+                
+            }
+        });
+    </script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/vue/vue_page.html -->

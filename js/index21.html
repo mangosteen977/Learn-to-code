@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>JavaScript 4일차(2) - 데이터 보내기 </title>
+        <script>
+            function abc(){
+                var co = fm.memo.value;
+                if(co==""){
+                    alert("댓글에 입력된 내용이 없습니다.");
+                    return false;
+                }
+                else{
+                   fm.submit();
+                   //return true;
+                }
+            }
+
+        </script>
+    </head>
+    <body>
+        <!-- 응용문제1.
+        댓글 페이지를 제작하시오.
+        댓글 입력 후, 저장이라는 버튼을 클릭해 index21.php로 POST값이 전송되게 하시오.
+        단, form의 name값은 프론트엔드 맘대로, input의 name값은 memo 이다. -->
+        <form id="fm" name="fm" method="POST" action="./index21.php" onsubmit="return abc();">
+            <input type="text" id="comment" name="memo" >
+            <input type="submit" value="댓글입력"> 
+        </form>
+
+        
+        <!-- http://mangsteen977.dothome.co.kr/js/index21.html -->
+    </body>
+</html>

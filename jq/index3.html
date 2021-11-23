@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery 1일차(3) -  객체(DOM) 및 값 전달 </title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(document).ready(function(){ //Jquery는 ready함수 없으면 작동 X
+
+                //select option에서 고른 value를 input text value에 넣기.
+                /*$("#s_mail").change(function(){
+                    var $a = $("#s_mail").val();
+                    $("#email").val($a);
+                });*/
+                $("#s_mail").change(function(){
+                    var $a = $(this).val();
+                    $("#email").val($a);
+                });
+                //function함수 id랑 변수로 가져올 id같으면 $(this) 해도 된다.
+            /*DOM 객체 이용 - css(stylesheet)의 속성 변경하기 */
+                $("#box").click(function(){
+                   // $("#box2").css("display","block");
+            //js-.style.display="none"; == jq-.css("display","none");
+                    //var $a = $("#box2").css("background-color");
+                    //console.log($a);
+            //해당 객체의 css 속성 값 확인하기
+            //css에는 style에 사용되는 모든 속성을 사용할 수 있다.
+            //용어도 동일하다. ex.)js-backgroundColor, jq-background-color
+                    /*$("#box2").css("float","left");
+                    $("#box").css("float","left");*/
+
+            //빈class를 생성해서 두 객체에 한 번에 jquery-css속성을 적용한다.
+                    $(".a").css("float","left");
+                    
+                });
+
+                $("#box3").click(function(){
+                    $(this).hide(1000);
+            //hide(n) : n초안에 줄며 사라지기, n==1000(1s) 
+                });
+
+                $("#box4").click(function(){
+                    $("#box3").show(1000);
+            //show(n) :n초안에 늘며 나타나기, n==1000(1s)
+                });
+
+            });
+        </script>
+        <!-- color, front에서는 RGB, HEX를 사용함.
+        RGB(Red,Green,Blue)빛의 3원색
+        CMYK(Cyan,Magenta,Yellow,Key==black)인쇄컬러
+        HEX(#000000~#ffffff) -->
+        <style>
+            .box{width: 100px; height: 100px; background-color: palevioletred;}
+            .box2{width: 100px; height: 100px; background-color: blueviolet;
+            display: block;}
+        </style>
+    </head>
+    <body>
+        <!-- select 값 input text에 보내기 -->
+        <input type="text" id="email">
+        <select id="s_mail">
+            <option value="">[이메일 선택]</option>
+            <option value="naver.com">네이버</option>
+            <option value="daum.net">다음</option>
+            <option value="nate.com">네이트</option>
+        </select>
+        <br><br>
+        <!-- DOM객체 -->
+        <div class="box a" id="box"></div>
+        <div class="box2 a" id="box2"></div>
+        <br><br>
+        <div class="box2" id="box3"></div>
+        <div class="box" id="box4"></div>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/index3.html -->

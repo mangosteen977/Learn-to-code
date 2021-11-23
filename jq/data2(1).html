@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery 8일차 - (GET 파라미터 값받아 처리하기_선생님 버젼) </title>
+        <script src="./jquery.js"></script>
+        <script src="./jquery-ui.js"></script>
+        <link rel="stylesheet" type="text/css" href="./jquery-ui.css">
+        <script>
+             $(document).ready(function(){
+                 //location.search : form에서 넘어온 데이터를 찾아옴
+                var $a = location.search;//넘어온 데이터를 찾아옴
+                var $data0,$data1,$data2;
+
+                var $a1 = $a.split("?a1=");
+                var $aa1 = $a1[1].split("&"); //$aa1[0] 1번 데이터 값
+                var $b1 = $a.split("&a2=");
+                var $bb1 = $b1[1].split("&")//$bb1[0] 2번 데이터 값
+                var $c1 = $a.split("&a3=");//$c1[1] 3번 데이터 값
+                
+                //데이터 10 = 그래프 1px로 변환.
+                $data0 = Number($aa1[0]*0.1);
+                $data1 = Number($bb1[0]*0.1);
+                $data2 = Number($c1[1]*0.1);
+
+                var $timer;//setTimeout을 돌릴 전역변수
+                var $node = 0; //데이터 0~2 돌릴 전역변수
+                $.fn.datas = function(){ //setTimeout을 위한 확장함수(함수는 확장함수 밑에 둔다.)
+                    $("#box>div").eq($node).animate({
+                        "height":eval("$data"+$node+"px")
+                //eval("") : ""속의 문자와 함수를 하나로 합쳐서 함수화 함(?)
+                    },500);
+                    $node += 1; // ++; == +=1 == +1;
+                    if($node<3){//0~2까지 타이머
+                        $timer = setTimeout($.fn.datas,1000);
+                    }
+                    else{
+                        clearTimeout($timer);
+                    }
+                }
+                $timer = setTimeout($.fn.datas,1000);//click함수 없이 쓸 때는 확장함수 밑에 위치시키기.
+
+             });
+        </script>
+        <style>
+            body{margin:0; padding: 0;}
+            .box {width:1000px; height:500px; background-image: url("./chart_bk.png");
+                background-repeat: no-repeat; background-image: 100%;
+                border:1px solid black; margin:0 auto; position: relative;
+                cursor: pointer;}
+            .box > div { width:80px; background-color: #454545; position: absolute; }
+            .box0 { bottom:50px; left:570px;}
+            .box1 { bottom:50px; left:710px;}
+            .box2 { bottom:50px; left:850px;}
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <div class="box0" id="box0"></div>
+            <div class="box1" id="box1"></div>
+            <div class="box2" id="box2"></div>
+        </div>
+    </body>
+</html>

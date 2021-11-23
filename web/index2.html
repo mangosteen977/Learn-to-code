@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>오브젝트 위치선정 및 레이아웃2</title>
+        <style>
+            body{margin: 0; padding: 0;}
+            ul,ol{list-style: none; margin: 0; padding: 0;}
+            span, label, main{display: block;}
+            a{text-decoration: none;}
+            .box{
+                width: 1000px;
+                height: 500px;
+                margin: 0 auto;
+                position: relative;
+                border: 1px solid black;
+            }
+            .box > span{
+                width: 50px;
+                height: 50px;
+                position: absolute;
+                top: 50%;
+                margin-top: -25px;
+                background-color: black;
+            }
+            .box > span:nth-child(2){
+                right: 0;
+            }
+            .ulcss{
+                width: 100%;
+                height: 20px;
+                text-align: center; /* float:left;일 때는 적용안됨.*/
+                bottom: 6px;
+                position: relative; /*relative 일 때 text-align:center;적용 됨.*/
+                top: 100%; /* relative 일 때 bottom안됨, 대신 top: 100%를 적용 할 수도 있음*/
+                margin-top: -36px;
+                /* position:absoliute; 일 때, , margin:auto; 안됨.*/
+            }
+            .ulcss > li{
+                width: 20px;
+                height: 20px;
+                border-radius: 20px;
+                background-color: black;
+                display: inline-block; /* float:left;은 text-align:center안됨.*/
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <span></span>
+            <span></span>
+            <ul class="ulcss">
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </body>
+</html>

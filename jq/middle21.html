@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <title>Jquery 중급 ( 메일폼 인증 (메일 인증번호 발송) 시스템 )</title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(function(){
+                
+            });
+        </script>
+        <style>
+            *{box-sizing: border-box; font-size: 12px;}
+            body{margin: 0; padding: 10px;}
+            ul,ol{list-style: none; margin: 0; padding: 0;}
+            label{display: block;}
+            .mailbox{
+                width: 645px; height: 590px; border: 1px solid #ccc;
+                position: relative; text-align: center; overflow: hidden;
+            }
+            .label2{ margin-top: 50px;}
+            .label3{ position: absolute; bottom: 0;}
+        </style>
+    </head>
+    <body>
+        <div class="mailbox">
+            <label class="label1"><img src="http://green504d.cafe24.com/images/mail_text.png"></label>
+            <label class="label2"><img src="http://green504d.cafe24.com/images/mail_btn.png"></label>
+            <label class="label3"><img src="http://green504d.cafe24.com/images/mail_link.png"></label>
+        </div>
+        <!-- 
+            이 밑에거 복사해서 메일=>html=>작성 시 postion작동 (X)임으로 margin-top으로 밈 
+                                        =>이미지 경로는 절대경로로 지정함.
+        -->
+        <div style="width: 645px; height: 590px; border: 1px solid #ccc; text-align: center; overflow: hidden;">
+            <label style="display: block;"><img src="http://green504d.cafe24.com/images/mail_text.png"></label>
+            <label style="display: block;  margin-top: 50px;">
+            <a href="http://mangsteen977.dothome.co.kr/jq/middle22.html?mailid=mo@naver.com"><img src="http://green504d.cafe24.com/images/mail_btn.png"></a>
+            </label>
+            <label style="display: block; margin-top: 50px;"><img src="http://green504d.cafe24.com/images/mail_link.png"></label>
+        </div>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/middle21.html -->

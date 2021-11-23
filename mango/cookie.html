@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../jq/jquery.js"></script>
+    <title>Document</title>
+    <link type="text/css" rel="stylesheet" href="../portfolio/shop/css/index.css">
+</head>
+
+<body>
+    <section class="popup_event" id="popup_event">
+        <div>
+            <img src="../portfolio/shop/ico/close.svg" class="pop_close_btn" id="pop_close_btn">
+            <img src="../portfolio/shop/image/event_popup1.png" class="pop_img">
+        </div>
+        <label id="hide_popup_btn"><input type="checkbox">일주일간 안볼래요.</label>
+    </section>
+    <img src="../portfolio/shop/ico/close.svg" class="pop_close_btn" id="open_btn"
+        style="background-color: aquamarine; width: 100px;">
+</body>
+<script>
+    $(function () {
+        //popup
+        $("#pop_close_btn").click(function () {
+            $("#popup_event").css("display", "none");
+        });
+        //popup=>7일간 안보기
+        $("#hide_popup_btn").click(function () {
+            let $expire_day = new Date()
+            $expire_day.setDate($expire_day.getDate() + 7);
+            document.cookie = "cowlove_popup = hide; expires=" + $expire_day.toGMTString(); + ";";
+            $("#popup_event").css("display", "none");
+        });
+
+
+
+
+
+
+
+        $("#open_btn").click(function () {
+            $("#popup_event").css("display", "block");
+        })
+    });
+</script>
+
+</html>

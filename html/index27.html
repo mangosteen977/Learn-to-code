@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>HTML 5.0 9일차 - 신규속성 </title>
+        <link type="text/css" rel="stylesheet" href="./index27.css?v=4">
+    </head>
+    <body>
+        <form method="POST" action="http://naver.com">
+            <input type="text" class="input1" placeholder="아이디를 입력하시오" required autofocus>
+            <!-- select required 사용 시 option value를 무조건 사용해야만 한다. -->
+            <!-- autofocus : 페이지 실행 시 입력부분에 커서를 깜빡이게 함.
+                 autofocus 는 페이지에서 1번만 사용 가능함. -->
+            <select class="input1" required>
+                <option value="">이메일 선택</option>
+                <option value="naver.com">네이버</option>
+                <option value="daum.net">다음</option>
+            </select>
+            <input type="checkbox" id="a" required><label for="a">보안접속</label>
+            <!-- rquired 속성 :  입력 필수 값으로 입력해야만 form이 작동한다.
+                                 select는 required 속성이 작용하려면 option value사용해야함. -->
+            <input type="submit" value="전송" class="btn">
+        </form>
+    </body>
+</html>

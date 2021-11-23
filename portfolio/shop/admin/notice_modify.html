@@ -1,0 +1,54 @@
+<?php
+    $v = date("YmdHis");
+    include "check.php";
+    include "notice_viewdata.php";
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="imagetoolbar" content="no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+    <title>쇼핑몰 관리자 페이지</title>
+    <script src="../../js/jquery.js"></script>
+    <script src="./config.js?v=<?=$v?>"></script>
+    <script src="./ckeditor/ckeditor.js"></script>
+    <link rel="stylesheet" type="text/css" href="./admin.css?v=<?=$v?>">
+    <link rel="stylesheet" type="text/css" href="./main.css?v=<?=$v?>">
+    <link rel="stylesheet" type="text/css" href="./notice.css?v=<?=$v?>">
+    <script>//get data from php
+        const notice_data = '<?php echo $notice_view?>';
+        let notice_parse = JSON.parse(notice_data);
+        let level = "<?php echo $alevel?>";
+    </script>
+</head>
+
+<body>
+    <header class="header">
+        <?php include "admin_top.html"; ?>
+    </header>
+    <section class="section" id="listview">
+        <?php include "notice_m.html"; ?>
+    </section>
+    <footer class="footer">
+        <?php include "admin_bottom.html"; ?>
+    </footer>
+</body>
+<script type="module">
+    import { notice_write, go_notice_list, print_modify, modify_notices } from "./notice_write.js?v=<?=$v?>";
+    print_modify(notice_parse);
+</script>
+<script>
+    //script for ckeditor
+    CKEDITOR.replace("notice_text", { height: 300 })
+    CKEDITOR.instances.notice_text.setData(notice_parse[0]["wtext"]);
+    //get idx value for hidden input
+    document.getElementById("notice_sidx").value = location.href.split("?sidx=")[1];
+    //admin
+    if (level != "M") {
+        document.getElementById("modify_write_notice").style.display = "none";
+    }
+</script>
+
+</html>

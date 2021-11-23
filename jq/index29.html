@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+    <title>Jquery 7일차(4),8일차(1) - 초급코드 지도 API 연결하기 </title>
+    <script src="./jquery.js"></script>
+    <script src="./jquery-ui.js?v=2"></script>
+    <link rel="stylesheet" type="text/css" href="./jquery-ui.css">
+    <script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=248c44e383766be6227a8fcb5f714e4b"></script>
+    <script>
+        //248c44e383766be6227a8fcb5f714e4b
+        //↑이거는 카카오 지도API 사이트에서 javascript 긁어온 것.
+        //API 뜻 알아오기.
+        /*:애플리케이션 프로그래밍 인터페이스
+        응용 프로그램에서 사용할 수 있도록, 운영 체제나 프로그래밍 언어가
+        제공하는 기능을 제어할 수 있게 만든 인터페이스*/
+        $(document).ready(function () {
+            var $a = document.getElementById("map");
+            var $b = { //카카오에서 제공하는 맵 좌표 코드 입니다.
+                center: new kakao.maps.LatLng(37.292427, 127.198743),
+                //구글맵 좌표와 동일함.
+                level: 3
+                //level:(1~10): 확대 정도를 정함.(숫자가 작을수록 확대됨.)
+            }
+            var $c = new kakao.maps.Map($a, $b);//해당 위치에 지도를 출력함
+            var $d = new kakao.maps.LatLng(37.292427, 127.198743);
+            var $e = new kakao.maps.Marker({//마커를 지도에 출력함.
+                position: $d
+            });
+            $e.setMap($c);
+
+            var $info = "<div class='info'>♡애증의 매쿠하♥</div>"
+            var $infomap = new kakao.maps.InfoWindow({
+                //해당코드를 작성 후 지도위에 말머리를 출력할 수 있음.
+                position: $d,
+                content: $info
+            })
+            $infomap.open($c, $e);
+
+        });
+    </script>
+    <style>
+        .map {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            border: 1px solid black;
+        }
+
+        .info {
+            width: 150px;
+            height: 40px;
+            position: absolute;
+            z-index: 10;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .btn {
+            width: 100px;
+            height: 30px;
+            background-color: coral;
+            color: white;
+            font-size: 12px;
+            text-align: center;
+            line-height: 30px;
+            position: absolute;
+            z-index: 10;
+            cursor: pointer;
+            bottom: 20px;
+            left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>[지도 API 연습하기]</p>
+    <div class="map" id="map">
+        <span class="btn">매쿠하 운영시간</span>
+    </div>
+</body>
+
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/index29.html -->

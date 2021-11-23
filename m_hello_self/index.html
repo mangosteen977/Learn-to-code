@@ -1,0 +1,175 @@
+<?php
+    $data = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <title>헬로펫 모바일</title>
+        <script src="../jq/jquery-2.0.js"></script>
+        <script src="../jq/jquery.mobile.js"></script>
+        <script src="./index.js?v=<?=$data?>"></script>
+        <link rel="stylesheet" type="text/css" href="./index.css?v=<?=$data?>">
+        <link rel="stylesheet" type="text/css" href="../jq/jquery-ui.css">
+    </head>
+    <body>
+        <section class="top_part">
+            <article class="top">
+                <span><img src="../public_html/ico/burger_btn.png"></span>
+                <span><img src="../public_html/logo/eu_logo.png"></span>
+                <span><img src="../public_html/ico/burger_btn.png"></span>
+            </article>
+            <article class="menu">
+                <span>강아지</span>
+                <span>고양이</span>
+                <span>장난감</span>
+                <span>펫사료</span>
+                <span>미용제품</span>
+                <span>기회전</span>
+            </article>
+            <article class="banner">
+                <div class="banner_img">
+                    <span><img src="../public_html/newpets/sample1.jpg"></span>
+                    <span><img src="../public_html/newpets/sample2.jpg"></span>
+                    <span><img src="../public_html/newpets/sample3.jpg"></span>
+                    <span><img src="../public_html/newpets/sample4.jpg"></span>
+                </div>
+            </article>
+        </section>
+        <section class="middle_part1">
+            <article class="items">
+                <div class="items_box">
+                    <span><img src="../public_html/newpets/sample1.jpg"></span>
+                    <span><img src="../public_html/newpets/sample2.jpg"></span>
+                    <span><img src="../public_html/newpets/sample3.jpg"></span>
+                    <span><img src="../public_html/newpets/sample4.jpg"></span>
+                    <span><img src="../public_html/newpets/sample5.jpg"></span>
+                    <span><img src="../public_html/newpets/sample6.jpg"></span>
+                </div>
+            </article>
+            <article class="items2">
+                <div class="tags" id="tags"> 
+                    <span>강아지</span>
+                    <span>고양이</span>
+                </div>
+                <div class="imgs" >
+                    <span>
+                        <img src="../public_html/newpets/sample1.jpg">
+                        <label>1</label>
+                    </span>
+                    <span>
+                        <img src="../public_html/newpets/sample1.jpg">
+                        <label>1</label>
+                    </span>
+                    <span>
+                        <img src="../public_html/newpets/sample1.jpg">
+                        <label>1</label>
+                    </span>
+                </div>
+                <div class="imgs">
+                    <span>
+                        <img src="../public_html/newpets/sample2.jpg">
+                        <label>2</label>
+                    </span>
+                    <span>
+                        <img src="../public_html/newpets/sample2.jpg">
+                        <label>2</label>
+                    </span>
+                    <span>
+                        <img src="../public_html/newpets/sample2.jpg">
+                        <label>2</label>
+                    </span>
+                </div>
+            </article>
+            <article class="items3">
+                
+            </article>
+            <article class="items4">
+                
+            </article>
+            </section>
+            <section class="last_part">
+                <article class="bottom">
+                    
+                </article>
+            </section>
+                <!--sidebanner총
+                <div class="items2_box" id="sidebanner">
+                    <div class="sidebannerdivdog" id="sidebannerdivdog">
+                        <span onclick="btn_animal(0)" id="dog_tag">cat</span>
+                        <span class="move_file">
+                            <span>
+                                <span>1<img src></span>
+                                <span>r강아지</span>
+                            </span>
+                            <span>
+                                <span>2<img src></span>
+                                <span>아이니왕자님</span>
+                            </span>
+                            <span>
+                                <span>3<img src></span>
+                                <span>아이니왕자님</span>
+                            </span>
+                        </span>
+                    </div>
+                    <div class="item_cat" id="sidebannerdivcat">
+                        <span onclick="btn_animal(1)" id="cat_tag">dog</span>
+                        <span class="move_file">
+                            <span>
+                                <span>1<img src></span>
+                                <span>고양님</span>
+                            </span>
+                            <span>
+                                <span>2<img src></span>
+                                <span>왕자님</span>
+                            </span>
+                            <span>
+                                <span>3<img src></span>
+                                <span>왕자님</span>
+                            </span>
+                        </span>
+                    </div>
+                </div>-->
+                <!--
+                <div class="items2_title">
+                    <span>NEW PETS</span>
+                    <span>신규분양중인 귀여운 아가펫 입니다.</span>
+                </div>
+                <div class="items2_box">
+                    <div class="file_items" id="dogs">
+                        <span class="file_tag"  onclick="btn_animal(0)">DOG</span>
+                        <span>
+                            <img src="../public_html/newpets/sample1.jpg">
+                            <label>아이니 왕자님</label>
+                        </span>
+                        <span>
+                            <img src="../public_html/newpets/sample1.jpg">
+                            <label>아이니 왕자님</label>
+                        </span>
+                        <span>
+                            <img src="../public_html/newpets/sample1.jpg">
+                            <label>아이니 왕자님</label>
+                        </span>
+                    </div>
+                    <div class="file_items" id="cats">
+                        <span class="file_tag"  onclick="btn_animal(1)">cat</span>
+                        <span>
+                            <img src="../public_html/newpets/sample1.jpg">
+                            <label>아이니 왕자님</label>
+                        </span>
+                        <span>
+                            <img src="../public_html/newpets/sample1.jpg">
+                            <label>아이니 왕자님</label>
+                        </span>
+                        <span>
+                            <img src="../public_html/newpets/sample1.jpg">
+                            <label>아이니 왕자님</label>
+                        </span>
+                    </div>
+                </div>
+                -->
+    </body>
+</html>

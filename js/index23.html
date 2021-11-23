@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>Javascript 4일차(4) - html 추가 태그 연결 2</title>
+        <script>
+            function abc(){
+                document.getElementById("tel").value = document.getElementById("cp").value;
+            }
+
+            function mail(z){ //가져올 값이 있는 자식객체의 부모에 mail(this.value);를 쓰면 자식 객체의 값을 mail(z)로 보냄
+//readOnly : html태그에서 readonly로 읽기전용한 것을 readOnly=false;를 써 풀 수 있다.
+//           readonly해제 후 다른 옵션 선택시 다시 입력을 막으려면 readOnly=true;를 쓴다.                 
+                if(z=="my"){ 
+                    document.getElementById("email").readOnly=false;
+                }
+                else{
+                document.getElementById("email").value = z;
+                document.getElementById("email").readOnly=true;
+                }
+            }
+        </script>
+    </head>
+    <body>
+<!-- 통신사 선택 부분 : cptel
+        op부분 : skt, kt, lgt, etc -->
+        <select id="cp" onchange="abc();">
+<!-- onchange : 클릭하면 선택한 부분을 바로 적용.
+                select에 주로 쓰임.
+                option에 value값이 있어야 한다. -->
+<!-- option에는 필수로 value값이 적용되어야 한다.
+            value=""는 값이 없음을 의미함. -->
+            <option value="">[통신사 선택]</option>
+            <option value="SKT">SKT</option>
+            <option value="KT">KT</option>
+            <option value="LGT">LGT</option>
+            <option value="알뜰폰">알뜰폰</option>
+        </select>
+        <input type="text" id="tel" readonly>
+        <!--<input type="button" value="적용" onclick="abc();">-->
+        <br><br>
+<!-- 응용문제.?
+    |아이디칸| @ |이메일주소칸| |이메일주소선택|
+    이메일 선택하면 이메일주소칸에 자동으로 값이 적용되어야 한다. -->
+    <input type="text" id="id">@<input type="text" id="email" readonly>
+    <select id="mail" onchange="mail(this.value);">
+<!--this.value : 해당 태그에 있는 값을 직접 받아 해당 함수로 보낸다..-->
+        <option value="">메일주소 선택</option>
+        <option value="nate.com">nate.com</option>
+        <option value="naver.com">naver.com</option>
+        <option value="gmail.com">gmail.com</option>
+        <option value="my">직접입력</option>
+    </select>
+    </body>
+</html>
+
+<!-- http://mangsteen977.dothome.co.kr/js/index23.html -->

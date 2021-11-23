@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery 8일차(2) - 초급코드 시간(setTimeout)(타이머) </title>
+        <script src="./jquery.js"></script>
+        <script src="./jquery-ui.js"></script>
+        <link rel="stylesheet" type="text/css" href="./jquery-ui.css">
+        <script>
+            /*setTimeout(타이머) : 해당 함수를 계속해서 n초마다 실행함.
+            jquery 제이쿼리에서는 확장함수를 사용해야만 사용이 가능하다.
+            클릭 혹은 다른 함수 없이 바로실행하는법은 index31을참고하시오.*/
+             $(document).ready(function(){
+                 var $timer;
+                 var $number = 0;
+                $("#start").click(function(){
+                    $.fn.time();
+                });
+                $.fn.time = function(){
+                        $number += 1;
+                        console.log($number);
+                        $timer = setTimeout($.fn.time,1000);
+                    };
+                $("#stop").click(function(){
+                    $.fn.stop();
+                });
+                $.fn.stop =function(){
+                    clearTimeout($timer);
+                };
+        // 응용문제1.
+                var $timer2;
+                var $node = $("#ulcss>li").length;
+                var $width = "350,220,290";
+                var $gp = $width.split(",");
+                var $start = 0;
+                $("#btn").click(function(){
+                    $.fn.time2();
+                });
+                $.fn.time2 = function(){
+                    //해당 노드값을 받아 splite을 이용한 배열값을 
+                    //적용하여 1초마다 그래프가 나오도록 함.
+                        $("#ulcss>li").eq($start).animate({
+                            "width":$gp[$start]+"px"
+                        });
+                        $timer2 = setTimeout($.fn.time2,1000)
+                        $start = $start+1;
+                        if($start>=$node){//해당 노드갯수보다 크거나 같을경우
+                            clearTimeout($timer2); //setTimeout을 정지시킴
+                        }
+                };
+        
+        //JQ_읽기전용으로 변경하는 방법
+                $("#btn2").click(function(){
+                    $("#h").attr("readonly",true);
+                });
+
+            //응용문제2.(숙제) 
+                $("#send").click(function(){
+                    var $t1 = $("#t1").val();
+                    var $t2 = $("#t2").val();
+                    var $t3 = $("#t3").val();
+                    if($t1==""||$t2==""||$t3==""){
+                        alert("휴대폰 번호를 모두 입력해주세요.")
+                    }
+                    else if(isNaN($t1)==false&&isNaN($t2)==false&&isNaN($t3)==false){
+                        $(".tel>li").eq(1).slideDown(300);
+                        $.fn.send();
+                    }
+                    else{
+                        alert("올바른 형식의 휴대폰 번호를 입력해주세요.");
+                        $("#t1").val(""); $("#t2").val(""); $("#t3").val("");
+                    }
+                });
+                var $sec60 = 60;
+                var $sec;
+                $.fn.send = function(){
+                    $sec60 -= 1;
+                    $sec = setTimeout($.fn.send,1000);
+                    $("#t5").val($sec60);
+                    if($sec60==0){
+                        clearTimeout($sec);
+                        $("#t4").attr("readonly",true);
+                    }
+                };
+                $("#re").click(function(){
+                    var $t4 = $("#t4").val();
+                    if($t4=="123456"){
+                        alert("인증이 확인되었습니다.");
+                    }
+                    else{
+                        alert("인증번호를 다시 확인해주세요.");
+                    }
+                });
+                
+             });
+        </script>
+        <style>
+           .btn{width: 100px; height: 30px; border-radius: 5px;}
+           .box{width: 100%; height: auto;}
+           .ulcss{
+                list-style: none; margin: 0; padding: 0;
+                width: 100%; height: 120px;
+           }
+           .ulcss>li{ width: 0px; height: 35px; margin-bottom: 5px;}
+           .ulcss>li:nth-child(1){ background-color: darkblue;}
+           .ulcss>li:nth-child(2){ background-color: darkorange;}
+           .ulcss>li:nth-child(3){ background-color: darkgreen;}
+           /* 응용문제2. (숙제) */
+           .tel{
+            list-style: none; margin: 0; padding: 0;
+            height: 100px;
+           }
+           .tel>li{margin:0; padding:0; height: 40px; margin-bottom: 10px;}
+           .tel>li:last-child{display: none;}
+           .tt{width: 100px; height: 25px;}
+           #s{width: 100px; height: 30px; display: inline-block; background-color: cornflowerblue;}
+           #t4{width: 200px; height: 25px;}
+           #t5{border: 0; font-size: 18px; text-align: center;}
+           .btn3{background: navy; color: white;}
+           .p{font-weight: bold; font-size: 15px;}
+        </style>
+    </head>
+    <body>
+        <input type="button" value="start" id="start" class="ui-button btn">
+        <input type="button" value="stop" id="stop" class="ui-button btn">
+        <!-- 응용문제1. 확인 클릭시 3초마다 그래프가 왼->오로 늘어남 -->
+        <div class="box">
+            <ul class="ulcss" id="ulcss">
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <input type="button" value="확인" id="btn" class="ui-button btn">
+        </div>
+        <!-- 읽기전용 만들기 예시 -->
+        <input type="text" id="h">
+        <input type="button" value="읽기전용" id="btn2">
+        
+        <br><br>
+        <!-- 응용문제2.(숙제) -->
+            <p class="p">[간편 핸드폰 인증]</p>
+            <ol class="tel">
+                <li>
+                    <input type="text" class="tt" id="t1" maxlength="3"> -
+                    <input type="text" class="tt" id="t2" maxlength="4"> -
+                    <input type="text" class="tt" id="t3" maxlength="4">
+                    <input type="button" value="인증발송" id="send" class="ui-button btn3">
+                </li>
+                <li>
+                    <input type="text" class="tt" id="t5" readonly>
+                    <input type="text" id="t4">
+                    <input type="button" value="인증확인" id="re" class="ui-button btn3">
+                </li>
+            </ol>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/index30.html --> 

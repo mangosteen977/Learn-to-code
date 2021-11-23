@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <meta name="view-port" content="width=device-width, initial-scale=1.0">
+        <title> CSS 중상급 (라디오 디자인 변동 )</title>
+        <style>
+            *{box-sizing: border-box; margin: 0; padding: 0;}
+            body{margin: 0; padding: 0;}
+            .radios{
+                width: 500px; height: 40px; border: 1px solid #ccc;
+                display: flex; flex-direction: row;
+                justify-content: center; align-items: center;
+                font-size: 12px;
+            }
+            .radios>label{
+                display: block;
+                width: 80px;
+                height: 40px;
+                line-height: 40px;
+                margin-right: 8px;
+                ;
+            }
+            .radiocss{
+                margin-right: 10px; position: relative;
+            }
+            .radiocss:before{
+                content: "";
+                width: 25px;
+                height: 25px;
+                border: 2px solid deepskyblue;
+                border-radius: 100%;
+                background-color: white;
+                position: absolute;
+                top: -9px; left: -9px;
+            }
+            .radiocss:after{
+                content: "♪";
+                width: 10px;
+                height: 10px; line-height: 10px; font-size: 14px;
+                /* border-radius: 100%; */
+                background-color: white; color: white;
+                position: absolute;
+                top: 0.4px; left: 2.5px;
+            }
+            .radiocss:checked::after{
+                color: deepskyblue;
+                /* background-color: deeppink; */
+                }
+        </style>
+    </head>
+    <body>
+        <div class="radios">
+            <input type="radio" name="a" class="radiocss" id="radio0">
+            <label for="radio0">동의함</label>
+            <input type="radio" name="a" class="radiocss" id="radio1" checked>
+            <label for="radio1">동의안함</label>
+        </div>
+    </body>
+</html>

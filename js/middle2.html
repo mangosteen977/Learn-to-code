@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>자바스크립트 1일차 (중급) - node+button(2)</title>
+        <script src="../jq/jquery.js"></script>
+        <script>
+            
+        </script>
+    </head>
+    <body>
+        <div id="box">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+        </div>
+    </body>
+    <script>
+        var a = document.getElementById("box");
+        var b = document.createElement("button");
+        //b.innerText = "로그인";
+        //a.append(b);
+        //a.appendChild(b);
+    /*
+        appendChile(); : IE(O)
+        preppend();, append(); : IE(X)
+    */
+        var c = document.createTextNode("로그인");
+    /* 
+        createTextNode("") : text 
+        객체안에 text를 생성
+    */
+        b.appendChild(c);
+        //a.appendChild(b);
+        a.insertBefore(b,a.childNodes[6]);
+    /*
+        x의 n번째 자식 노드 앞에 y출력
+        x.insertBefore(y,x.chiledNodes[n]);
+        : IE(O)
+        
+    */
+    </script>
+</html>

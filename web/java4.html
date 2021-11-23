@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE-Edge, chrome=1">
+        <title>자바스크립트 기초(4) - 응용편</title>
+        <script>
+            /*
+                응용문제10.
+                다음을 출력하시오.
+                5,4,3,2,1(가로로 console.log에 출력)
+            */
+            var a=5;
+            var b;
+            var c = "";
+            while(a>=1){
+                if(a>=2){b = a+",";}
+                else{b = a;}
+            c = c+b;
+            a--;
+           }
+           //console.log(c);
+           /*
+                응용문제11.
+                다음 반복문 2개를 이용하여 다음과 같이 출력하시오.
+                5단~7단까지 출력하시오. 뒷자리 숫자를 4까지만 출력하시오.
+           */
+            var aa = 5;
+            var cc;
+            /*var bb;
+            while(aa<=7){
+                for(bb=1;bb<=4;bb++){
+                    cc = aa*bb;
+                    console.log(aa+"X"+bb+"="+cc);
+                }
+                aa++;
+            }*/
+            do{
+                var bb=1;
+                do{
+                    var cc = aa* bb;
+                    //console.log(aa+"X"+bb+"="+cc);
+                    bb++;
+                }while(bb<=4)
+                aa++;
+            }while(aa<=7)
+            /*
+                응용문제12.
+                구구단 2~9단 중 결과값이 60이상 숫자가
+                몇 개가 있는 지 출력하시오.
+            */
+            /*
+            var a1=2;
+            var a2;
+            var a3;
+            var a4=0;
+            while(a1<=9){
+                for(a2=1;a2<=9;a2++){
+                    a3=a1*a2;
+                    if(a3>=60){
+                        a4= a4+1;}
+                }
+                a1++;
+            }console.log(a4);
+            */
+            var b1=2;
+            var zz;
+            var count=0;
+            while(b1<10){
+                var c1=1;
+                while(c1<10){
+                    zz = b1*c1;
+                    if(zz>=60){
+                        count = count+1;
+                    }
+                c1++;
+                }    
+            b1++;
+           }
+           console.log(count);
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/web/java4.html -->

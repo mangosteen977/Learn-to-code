@@ -1,0 +1,53 @@
+@charset "UTF-8";
+@mixin sections($width,$height,$bg){
+    width: $width;
+    height: $height;
+    background-color: $bg;
+}
+@mixin fonts($h,$f_size,$f_weight,$position){
+    height: $h;
+    font-size: $f_size;
+    font-weight: $f_weight;
+    line-height: $h;
+    position: $position;
+}
+.top_menus{
+    @include sections(1200px, 100px, none);
+    margin: 0 auto;
+    // 탑 배너 부분
+    &>.top1{
+        @include sections(100%, 70px, none);
+        &>.top_banner{
+            @include sections(100%, 70px, none);
+            cursor: pointer;
+            &>li{
+                @include sections(490px, 70px, none);
+                float: left;
+                &:last-child{
+                    width: 220px; //전체-배너*2개 뺀 값
+                    position: relative;
+                    &>.close{//span의 특성 : width를 안잡으면 글자크기만큼 늘어난다. height는 필요함
+                        @include fonts(70px, 25px, bold, absolute);
+                        right: 0;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+    // 탑 메뉴 부분
+    &>.top2{
+        @include sections(100%, 30px, #ccc);
+        position: relative;
+        &>.topmenu_left, &>.topmenu_right{
+            font-size: 12px;
+            position: absolute;
+            & > li{// li를 width를 안잡고 margin-left/right를 넣으면 간격이 일정하다.
+                @include fonts(30px, inherit, 400, none);
+                display: inline-block;
+                margin-left: 10px;
+                cursor: pointer;
+            }
+        }&>.topmenu_right{right: 0;}
+    }
+}

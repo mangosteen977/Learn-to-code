@@ -1,0 +1,32 @@
+@charset "UTF-8";
+@import "./config.scss";
+.notice_review_box {
+  @include sections(1200px, 300px, none);
+  @include flexs(nowrap, row, space-between, center);
+  margin: 0 auto;
+  & > div {
+    @include sections(400px, 180px, none);
+    padding: 10px;
+    border: 3px solid #ccc;
+    & > p {
+      font-weight: bold;
+      font-size: 14px;
+    }
+    & > ul {
+      list-style-type: disc;
+      padding: 0 35px;
+      & > li {
+        cursor: pointer;
+        &:hover {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  & > span {
+    @include sections(370px, 180px, none);
+    overflow: hidden;
+    border: 3px solid #ccc;
+    padding: 20px 20px 20px 30px;
+  }
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Javascript 7일차 (4) - 중급 (JS 애니메이션+필터(Javascript+filter)) </title>
+        <script src="myjquery.js?v=1"></script>
+        <style>
+            *{box-sizing: border-box;}
+            body{margin: 0; padding: 0;}
+            #top{height: 100px;}
+            .banner1{
+                margin: 0 auto; background-color: cornflowerblue;
+                width: 1000px; height: inherit; position: relative;
+            }
+            .close{
+                width: 30px; height: 30px; background-color:darkmagenta; cursor: pointer;
+                color: white; position: absolute; line-height: 30px; text-align: center;
+                font-weight: bold; font-size: 18px; right: 5px; top: 50%; margin-top: -15px;
+            }
+            .banner2{
+                margin: 0 auto; background-color:mediumpurple;
+                width: 1000px; height: 300px;
+            }
+            .open{
+                display: none;
+                width: 60px; height: 30px; border-radius: 0 0 10px 10px;
+                background-color: deeppink; color: white; text-align: center;
+                line-height: 30px; font-size: 15px; cursor: pointer;
+                position: absolute; left: 50%; margin-left: -30px;
+            }
+            .open:hover{background-color: rgb(255, 64, 166);}
+        </style>
+        <script>
+            function closes(){
+                slideUp("top");
+            };
+            function opens(){
+                slideDown("top");
+                document.getElementById("open").style.display="none";
+            }
+        </script>
+    </head>
+    <body>
+        <div class="open" id="open" onclick="opens();">▼</div>
+        <header id="top">
+            <div class="banner1">
+                <div class="close" onclick="closes();">X</div>
+                
+            </div>
+        </header>
+        <section>
+           <div class="banner2">
+           </div>
+        </section>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/middle26.html -->

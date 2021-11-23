@@ -1,0 +1,78 @@
+<?php
+    $data = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 2일차 (3) 파라미터 뷰 vue (???)</title>
+        <script src="../jq/jquery.js"></script>
+        <!-- vue 버전 1.6.4??? -->
+        <script src="http://cdn.jsdelivr.net/npm/vue"></script> <!--상용버전 값 가져옴^_~-->
+        <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> --> <!--개발버전 값 못가져옴^.^-->
+        <style>
+            /*
+            css style 사용 방식 구분 ?????
+
+            inline방식 : 태그에 style을 쓰는 것.
+            임베디드 : <style>태그에 분리해 사용.
+            파일링크(external style) : css시트 분리해 사용.
+             */
+        </style>
+    </head>
+    <body>
+        <section id="box">
+            <ul style="width: 300px; height:40px; border:1px solid black;">
+                <li v-if="m" v-on:click="abc">{{msg1}}</li>
+                <li v-else v-on:click="abc">{{msg2}}</li>
+            </ul>
+            <!-- v-if 사용하는 이유는 함수에 인자값을 사용해 컨트롤한 js와 달리
+            인자값 없이도 if문으로 사용이 가능하다. -->
+        </section>
+        <section id="box2">
+            <ol style="width: 300px; height:40px; border:1px solid #ccc;">
+                <li v-if="views && z==1" v-on:click="ccc">{{msg1}}</li>
+                <li v-else-if="views && z==2" v-on:click="ccc">{{msg2}}</li>
+                <li v-else v-on:click="ccc">{{msg3}}</li>
+                <!-- &&, || 를 이용해 v-if문에 조건을 추가할 수 있다. -->
+            </ol>
+        </section>
+    </body>
+    <script>
+        let a = new Vue({
+            el:"#box",
+            data:{
+                msg1:"vue 기초 배우기...",
+                msg2:"배고프다 점심 뭐 먹지...",
+                m:true
+            },
+            methods:{
+                abc:function(){
+                    //클릭 시 m의 값 == true를 !true 즉 false로 변경함.
+                    this.m = !this.m
+                    // if(this.m==true){ this.m=false; }
+                    // else{ this.m=true; }
+                }
+            }
+        });
+        let b = new Vue({
+            el:"#box2",
+            data:{
+                msg1:"음..아재개그",
+                msg2:"하하하...^^",
+                msg3:"재밌네...^^",
+                views:true,
+                z:1
+            },
+            methods:{
+                ccc:function(){
+                    this.z++;
+                    if(this.z>3){
+                        this.z=1;
+                    }
+                }
+            }
+        })
+    </script>
+</html>

@@ -1,0 +1,39 @@
+@charset "UTF-8";
+@import "./config.scss";
+
+header,
+nav,
+section,
+main,
+footer {
+  @include sections(100%, auto, none);
+}
+.body {
+  position: relative;
+}
+.popup_event {
+  position: absolute;
+  z-index: 80;
+  top: 3%;
+  left: 3%;
+  @include sections(500px, auto, white);
+  & > div {
+    @include sections(500px, 814px, none);
+    position: relative;
+    & > .pop_img {
+      @include sections(500px, 814px, none);
+    }
+    & > .pop_close_btn {
+      @include sections(30px, 30px, none);
+      position: absolute;
+      cursor: pointer;
+      right: 5px;
+      top: 5px;
+    }
+  }
+  & > label {
+    @include sections(500px, 30px, none);
+    @include font_sans(30px, unset, right, unset, 13px);
+    cursor: pointer;
+  }
+}

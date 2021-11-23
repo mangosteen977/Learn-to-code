@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery 8일차 - (GET 파라미터 값으로 던지기1) 팀플!with은미님:)  </title>
+        <script src="./jquery.js"></script>
+        <script src="./jquery-ui.js"></script>
+        <link rel="stylesheet" type="text/css" href="./jquery-ui.css">
+        <script>
+             $(document).ready(function(){
+                $("#btn").click(function(){
+                    var $a1 = $("#a1").val();
+                    var $a2 = $("#a2").val();
+                    var $a3 = $("#a3").val();
+
+                    if($a1==""||$a2==""||$a3==""){
+                        alert("모든 사고건수를 입력해주세요.");
+                    }
+                    else if(isNaN($a1)==true||isNaN($a2)==true||isNaN($a3)==true){
+                        alert("숫자만 입력하세요.");
+                        $("#a1").val(""); $("#a2").val(""); $("#a3").val("");
+                    }
+                    else if($a1<100||$a2<100||$a3<100){
+                        alert("100이상의 숫자를 입력하세요.")
+                        $("#a1").val(""); $("#a2").val("");  $("#a3").val("");
+                    }
+                    else{
+                        if(confirm("데이터를 전송하시겠습니까?")){
+                            $("#fm").submit();
+                        }
+                        else{
+                            $("#a1").val(""); $("#a2").val(""); $("#a3").val("");
+                        }
+                    }
+                });
+             });
+        </script>
+        <style>
+           .olcss{
+               list-style: none; margin: 0; padding: 0;
+               width:400px; height: auto;
+               display: inline-block;
+               }
+           .olcss>li{
+               width: 400px; height: 30px; 
+               margin-bottom: 20px; color: white;
+               font-size: 14px; line-height: 30px;
+               }
+            .olcss>li:last-child{font-size: 12px;}
+            .olcss li input{ width: 250px; height: 25px; margin-left: 15px;}
+            .fm{
+               width: 500px; height: 320px;
+               padding-top: 10px; box-sizing: border-box;
+               border-radius: 10px;
+               background-color: black;
+               text-align: center;
+               }
+            .fm>p{
+                width: 500px; height: 30px;
+                color: white; font-size: 16px; font-weight: bold;
+                }
+            .btn{font-size:15px; background-color: cornflowerblue; color: white; border-radius: 5px; border: 0;}
+        </style>
+    </head>
+    <body>
+        <form class="fm" id="fm" method="GET" action="http://mangsteen977.dothome.co.kr/jq/data2.html">
+            <p>[보이스피싱 현황 년도별 데이터 입력]</p>
+            <ol class="olcss">
+                <li>2018년도 사고건수   <input type="text" name="a1" id="a1" placeholder="최대 4자까지 입력" maxlength="4"></li>
+                <li>2019년도 사고건수   <input type="text" name="a2" id="a2" placeholder="최대 4자까지 입력" maxlength="4"></li>
+                <li>2020년도 사고건수   <input type="text" name="a3" id="a3" placeholder="최대 4자까지 입력" maxlength="4"></li>
+                <li>숫자만 입력하세요. 숫자 단위는 천단위까지 입니다.(100~9999)</div>
+            </ol>
+            <input type="button" id="btn" value="데이터 입력완료" class="ui-button btn">
+        </form>
+    </body>
+</html>
+
+<!-- http://mijisky.dothome.co.kr./curriculum/jq/data2.html 은미님 도메인 사이트 주소 -->

@@ -1,0 +1,58 @@
+<?php
+    $v = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 3일차 (6) vue 게시판 editor 에디터 사용하기 vue form </title>
+        <script src="../jq/jquery.js"></script>
+        <!-- vue 버전 1.6.4 ???????? -->
+        <script src="http://cdn.jsdelivr.net/npm/vue"></script> <!--상용버전 값 가져옴^_~-->
+        <!--에디터 script js : ckeditor 4.0 버전 에디터-->
+        <!-- naver, CKEditor, daum 오픈 에디터, 스마트 에디터 (웹보드 에디터) 등이 있다. -->
+        <script src="./editor/ckeditor.js?v=<?php echo $v ?>"></script>
+    </head>
+    <body>
+        <form name="frm" id="frm">
+        <section id="notice">
+            <!-- ckeditor 4.0 은 textarea에 name과 id를 넣어서 사용함. -->
+            <textarea name="editor" id="editor"></textarea>
+            <button type="button" v-text="btn" @click="boardok"></button>
+        </section>
+    </form>
+</body>
+<script>
+    //form method,action 숨길 때
+    //1. v-bind:method,v-bind:action 사용하기
+    //2. function에서 설정해서 보내기
+    //3. vue에서 z, za, enc 등으로 값을 넣어서 function에서 보내는 방법.
+    
+    //검토는 내일(화요일)에 한다고 했당!!
+    let a = new Vue({
+        el:"#notice",
+        data:{
+            btn:"등록완료",
+            z:"POST",
+            za:"http://naver.com",
+            enc:"application/x-www-form-urlencoded"
+        },
+        methods:{
+            boardok:function(){
+                //3번 방법
+                frm.method = this.z;
+                frm.action = this.za;
+                frm.enctype = this.enc;
+                //2번 방법
+                // frm.method="POST";
+                // frm.action="http://naver.com";
+                // frm.enctype = "application/x-www-form-urlencoded";
+                frm.submit();
+            }
+        }
+    });
+    /*ckeditor 불러오는 script*/
+    CKEDITOR.replace("editor",{height:260});
+    </script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>문제 4번</title>
+        <style>
+            body{margin: 0; padding: 0; box-sizing: border-box; box-sizing: border-box;}
+            ul,ol,dl{margin: 0; padding: 0; list-style: none;}
+            span,label,main{display: block;}
+            a{text-decoration: none;}
+
+            .box{
+                width: 800px;
+                height: auto;
+                margin: 0 auto;
+                margin-bottom: 40px;
+            }
+            .textbox{
+                width: 800px;
+                height: 100px;
+                overflow-y: scroll;
+            }
+            .radio{
+                text-align: right;
+            }
+        </style>
+    </head>
+    <body>
+        <ol class="box">
+            <li><textarea class="textbox">[이메일 정책]</textarea></li>
+            <li class="radio">
+                <input type="radio" name="a">동의함
+                <input type="radio" name="a" checked>동의안함
+            </li>
+        </ol>
+        <ol class="box">
+            <li><textarea class="textbox">[회원가입 정책]</textarea></li>
+            <li class="radio">
+                <input type="radio" name="b">동의함
+                <input type="radio" name="b" checked>동의안함
+            </li>
+        </ol>
+    </body>
+</html>

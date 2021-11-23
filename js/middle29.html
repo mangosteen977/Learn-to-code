@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+    <title>Javascript -팝업창(middle30과 연동) (JS cookie 쿠키)</title>
+    <script>
+        function getpopup() {
+            //쿠키가져오기
+            let cook = document.cookie;
+            console.log(cook);
+            // 쿠키 데이터 없으면 팝업, 팝업창 띄우기
+            //return cook;
+
+            //쿠키 데이터 자르기
+            var c = "";
+            var cook_data = cook.split(";");
+            cook_data.forEach(function (a) {
+                a = a.replace(" ", "");
+                var b = a.split("=");
+                if (b[0] == "popups") {//쿠키값 이름
+                    c = b[1]; //쿠키 컨텐츠(N)
+                    return true;
+                }
+            });
+            return c; //"" || true 두 개의 값을 리턴
+        };
+        function startpop() {
+            let pop = getpopup(); //return값을 받음
+            if (pop == "") { //쿠키값이 반환되지 않을 경우 팝업창 오픈
+                window.open("./middle30.html", "", "width=400 height=400");
+            }
+        }
+            //getpopup(); =>이렇게 바로 실행해도 되고, onload 로 실행해도 됨.
+    </script>
+</head>
+
+<body onload="startpop();">
+    <!-- onload : 웹페이지 실행 시 바로 이벤트 핸들링 실행함 -->
+
+</body>
+
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/middle29.html -->

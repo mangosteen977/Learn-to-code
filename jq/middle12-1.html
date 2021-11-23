@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>롤링배너 복습하기</title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(function(){
+                 // 배너이미지링크 배열값
+                 const $banner = [
+                    {"img":"./main_banner/main_0.jpg","link":"http://coupang.com"},
+                    {"img":"./main_banner/main_1.jpg","link":"http://naver.com"},
+                    {"img":"./main_banner/main_2.jpg","link":"http://google.com"},
+                    {"img":"./main_banner/main_3.jpg","link":"http://youtube.com"}
+                ]
+                //banner 출력하기
+                $.each($banner,function($a,$b){
+                    let $li_banner = "<li link='"+$b["link"]+"' node='"+$a+"' ><img src = '"+$b["img"]+"'></li>";
+                    $("#banner_ol").append($li_banner);
+                });
+                // banner_ol의 width값 넣기
+                let $banner_ea = $banner.length; //ol>li 배너 갯수
+                let $banner_width = $("#banner_ol>li").width(); //배너 한 개의 width
+                $("#banner_ol").css("width",$banner_ea*$banner_width+"px"); //li갯수*배너width;
+                //disc 출력하기
+                let $disc_n = 0;
+                let $li_disc = "<li></li> "
+                while($disc_n<$banner_ea){
+                    $("#disc_ul").append($li_disc);
+                    $disc_n++;
+                }
+                //기본 디스크(0) 켜기
+                $("#disc_ul>li:first-child").css("backgroundColor","red");
+                //배너 인터벌 돌리기.
+                let $timer;
+                $timer = setInterval(function(){
+                    $.fn.move_right();
+                },5000);
+                setTimeout($timer,1000);
+                //오른방향 이동 함수
+                $.fn.move_right = function(){
+                  $("#banner_ol").stop().animate({
+                        "left":-$banner_width+"px"
+                    },700,function(){
+                       let $copy_r = $("#banner_ol>li:first-child").clone();
+                       $("#banner_ol>li:first-child").remove();
+                       $("#banner_ol").append($copy_r);
+                       $("#banner_ol").css("left","0px");
+                       //disc 색상 켜기
+                        let $now_node = Number( $("#banner_ol>li").eq(0).attr("node") );
+                        $("#disc_ul>li").css("backgroundColor","black");
+                        $("#disc_ul>li").eq($now_node).css("backgroundColor","red"); 
+                    });
+                };
+                //오른 버튼 움직이기
+                $("#right").click(function(){
+                    $.fn.move_right();
+                });
+                //왼 버튼 움직이기
+                $("#left").click(function(){
+                    let $copy_l = $("#banner_ol>li:last-child").clone();
+                    $("#banner_ol>li:last-child").remove();
+                    $("#banner_ol").prepend($copy_l);
+                    $("#banner_ol").css("left",-$banner_width+"px");
+                    $("#banner_ol").stop().animate({
+                        "left":"0px"
+                    },700);
+                     //disc 색상 켜기
+                     let $now_node = Number( $("#banner_ol>li").eq(0).attr("node"));
+                    $("#disc_ul>li").css("backgroundColor","black");
+                    $("#disc_ul>li").eq($now_node).css("backgroundColor","red");
+                });
+                //disc 선택시 이동
+                $("#disc_ul>li").click(function(){
+                    //선택한 디스크의 노드
+                    let $click_disc = $(this).index(); 
+                    //해당 배너로 이동하기
+                    let $check = 0;
+                    while($check<$banner_ea){
+                        let $node_check = $("#banner_ol>li").eq($check).attr("node");
+                        if($node_check==$click_disc){
+                            let $ol_offset = Math.ceil($("#banner_ol").offset().left);
+                            let $offset = Math.ceil($("#banner_ol>li").eq($check).offset().left-$ol_offset);
+                            let $index = $("#banner_ol>li").eq($check).index();//선택한 배너의 현 노드번호
+                            $("#banner_ol").animate({
+                                "left":-$offset+"px"
+                            },700,function(){
+                                let $zero = 0;
+                                while($zero<$index){
+                                    let $copy_d = $("#banner_ol>li:first-child").clone();
+                                    $("#banner_ol>li:first-child").remove();
+                                    $("#banner_ol").append($copy_d);
+                                    $zero++;
+                                }//while
+                                $("#banner_ol").css("left","0px");
+                            });//animate
+                        }//if
+                        $check++;
+                        //attr(node)찾는 반복문에서 ++;해주는 명령어는
+                        //하단에 두어야 찾은 node값에서 +1이 되지 않는다..
+                    }//while
+                    //disc 켜기
+                    $("#disc_ul>li").css("backgroundColor","black");
+                    $("#disc_ul>li").eq($click_disc).css("backgroundColor","red");
+                });//disc_click
+
+            });
+        </script>
+        <style>
+            *{box-sizing: border-box;}
+            body{margin: 0; padding: 0;}
+            ul,ol{list-style: none; margin: 0; padding: 0;}
+            .banner{ height: auto; border: 1px solid yellow;}
+            .banner_box{width: 960px; height: 400px; border: 1px solid blue;
+                        margin: 0 auto; position: relative;}
+            .banner_ol{/*width: JQ로 잡기*/ height: auto; position: absolute;}
+            .banner_ol>li{width: 960px; height: 400px; float: left;}
+            .disc_ul{width: 100%; height: 30px; text-align: center;
+                    position: absolute; bottom: 10px;}
+            .disc_ul>li{width: 30px; height: 30px; border-radius: 100%;
+                        background-color: black; display: inline-block; cursor: pointer;}
+            .left, .right{width: 50px; height: inherit; cursor: pointer;
+                        font-size: 50px; color: white; line-height: 400px; position: absolute;}
+            .right{right: 0px;}
+        </style>
+    </head>
+    <body>
+        <section class="banner">
+            <aside class="banner_box">
+                <ol class="banner_ol" id="banner_ol"></ol>
+                <ul class="disc_ul" id="disc_ul"></ul>
+                <div class="left" id="left">◀</div>
+                <div class="right" id="right">▶</div>
+            </aside>
+        </section>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/middle12-1.html -->

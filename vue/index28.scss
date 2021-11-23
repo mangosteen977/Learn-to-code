@@ -1,0 +1,58 @@
+@charset "UTF-8";
+%basic {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  @mixin object($w, $h, $bg, $p) {
+    width: $w;
+    height: $h;
+    background-color: $bg;
+    position: $p;
+  }
+  @mixin ulol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  body,
+  * {
+    @extend %basic;
+    font-size: 12px;
+  }
+  .login{
+    @include object(300px, 150px, rgba(204, 204, 204, 0.5), unset);
+    text-align: center;
+    padding: 10px;
+    &>p{
+      @include object(100%, 20px, none, unset);
+      font-size: 16px;
+      line-height: 20px;
+      margin-bottom: 7px;
+      font-weight: bold;
+      color: cornflowerblue
+    }
+    &>input{
+      @include object(40%, 26px, white, unset);
+      border: none;
+      margin-bottom: 7px;
+      &:nth-of-type(3){
+        width: 90%;
+      }
+    }
+    &>button{
+      @include object(90%, 30px, cornflowerblue, unset);
+      border: none;
+      display: block;
+      margin-bottom: none;
+      margin: 0 auto;
+      font-weight: bold;
+    }
+    &>em{
+      width: 10%;
+      display: inline-block;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 14px;
+    }
+  }

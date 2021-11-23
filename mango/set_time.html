@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 면접 시험 연습 </title>
+    <script>
+        //1번 문제
+        //1초 간격으로 1+1, 2+2, 3+3 출력
+        // let timer;
+        let n = 1;
+        num_plus = function () {
+            var total = n + n;
+            console.log(total);
+            n++;
+            if (n < 4) {
+                setTimeout(num_plus, 1000);//3번만 더하기
+            }
+        }
+        // timer = setInterval(num_plus, 1000); //무한으로 더하기.
+        setTimeout(num_plus, 1000);
+
+        //3.번 문제
+        //배열값을 이용해 1,4,9을 출력
+        var arr = [1, 2, 3];
+        for (let val in arr) {
+            console.log(arr[val] * arr[val])
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+<script type="module">
+    //2. ES로 10 => 100나오도록 화살표 함수 쓰기
+    import { a } from "./set_time.js";
+    a(10);
+</script>
+
+</html>

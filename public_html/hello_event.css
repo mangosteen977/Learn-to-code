@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700;900&display=swap");
+/* font-family: 'Noto Sans KR', sans-serif; (100, 400, 700, 900) */
+.event_div {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.event_banner {
+  width: inherit;
+  height: auto;
+}
+
+.quick_background {
+  height: auto;
+  background-color: #f0f1f5;
+}
+
+.event_quick {
+  display: block;
+  max-width: 1200px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.quick_ol {
+  width: 100%;
+  height: auto;
+  max-height: 498px;
+  margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.quick_ol > li:nth-of-type(1),
+.quick_ol > li:nth-of-type(3) {
+  max-width: 282px;
+  width: 25%;
+  height: inherit;
+  margin-right: 10px;
+  margin-left: 10px;
+  float: left;
+}
+
+.quick_ol > li:nth-of-type(2) {
+  max-width: 595px;
+  width: 50%;
+  height: inherit;
+}
+
+.sub_quick {
+  width: 100%;
+  height: inherit;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -ms-flex-line-pack: justify;
+      align-content: space-between;
+}
+
+.sub_quick > li {
+  max-width: 282px;
+  width: 50%;
+  height: auto;
+}
+/*# sourceMappingURL=hello_event.css.map */

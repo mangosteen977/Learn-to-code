@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+    <title>Javascript -팝업창(middle29과 연동) JS 쿠키 cookie </title>
+    <script>
+        function closes() {//쿠키 굽는 파트
+            let ck = document.getElementById("popck").checked;
+            if (ck == true) {
+                bake_cookie("popups", "N", 1); // ("쿠키이름","쿠키컨텐츠",하루동안 안열거라서 값1)
+            }
+        };
+
+        function bake_cookie(data, val, day1) {
+            let day = new Date();
+            //day.setDate(day.getDate()+day1); //날짜로 조절(일+1)
+            day.setTime(day.getTime() + (day1 * 24 * 60 * 60 * 1000)); //시간으로 조절(1*24시간*60분*60초*1000(1초))
+            //쿠키 굽기 (쿠키를 브라우져에 저장)
+            document.cookie = data + "=" + escape(val) + "; expires=" + day.toGMTString() + ";";
+            self.close(); //선택시 자동 닫기
+
+            //path : 콘텐츠 저장 위치 (옛날 방식임, 넣을거면 ";path; expires=" 일케 둠.)
+            //expires= : 만료일자 표시 ==> 만료일자가 지나면 자동으로 쿠키가 삭제됨.
+            //";" : 종료 표시
+            console.log(day.toGMTString());
+            //toUTCString()외국시간(+9 해줘야함. 9시간 빠르니깐) , toGMTString()국내시간
+        };
+    </script>
+</head>
+
+<body>
+    <label><input onclick="closes();" type="checkbox" value="Y" id="popck">24시간 팝업 숨김</label>
+</body>
+
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/middle30.html -->
+<!-- 
+    cookie 굽기/파기 (Front/Back-end)
+    :브라우저에 데이터 저장
+
+    session (Back-end) : 메모리에 저장(컴퓨터 재부팅시 리셋)
+    -로그인 유지
+    -자동 로그인
+ -->

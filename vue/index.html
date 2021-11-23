@@ -1,0 +1,51 @@
+<?php
+    $data = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <!-- <meta name="viewport" content="width= device-width, initial-scale=1.0"> -->
+        <title> Vue ,vuejs 1일차 (1) vue 엔진 및 기본 BAsic 기본  </title>
+        <script src="../jq/jquery.js"></script>
+        <!-- vue 엔진 : safari 3.X 이상 사용해야 Vue 정상작동함. -->
+        <!-- <script src="http://cdn.jsdelivr.net/npm/vue"></script> -->
+        <!-- 컴파일 전 뷰 본체(?) -->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <aside id="ccc">
+            <div id="abc">{{test}}</div>
+            <!-- {{}} : 가상의 인스턴스(변수)값을 출력하는 곳. -->
+            <div id="bbb">{{test1}}</div>
+        </aside>
+    </body>
+    <script>
+        let a = new Vue({ //vue 실행 부분
+            el:"#ccc", //element 의 약자
+            data:{ //data : 인스턴스 파트, 가상의 변수를 만들어 출력하는 형태
+                test:"Vue 메세지 출력 연습",
+                test1:"Vue 메세지 출력 연습"
+            }
+        });
+        let b = new Vue({
+            el:"#bbb",
+            data:{
+                test1:"Vue 메세지 출력 연습2"
+            }
+        });
+    </script>
+</html>
+<!-- 
+    뷰 시작하기(CDN 설치)
+    https://kr.vuejs.org/
+
+    Vue.js devtools => vue 에러 파일 알려줌
+    https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd/related
+
+    safari 3.X 이상 사용해야 Vue 정상작동함.
+
+    CDN 설치 :  url로 해당 코드를 로드하여 출력하는 형태
+    CLI 설치 : APP개발 시 CLI로 제작
+ -->

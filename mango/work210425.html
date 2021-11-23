@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>210425 오늘의 JS복습(1)</title>
+        <script src="../jq/jquery.js"></script>
+        <script>
+            //1.
+            var random;
+            var node = 0;
+            function random_num(){
+                while(node<6){
+                    random = Math.ceil(Math.random()*45);
+                    document.getElementById("num"+node).value = random;
+                    node++;
+                }
+            }
+            //2.
+            var js_ul;
+            function lis(){
+                document.getElementById("js_ul").innerHTML+="<li></li>";
+            }
+            //3.
+            function makebox(){
+                var cks = "<input type='checkbox'>"
+                var num_node = 1;
+                while(num_node<6){
+                    document.getElementById("makebox").innerHTML += cks+num_node;
+                    num_node++;
+                }
+            };
+            function checkall(){
+                var all = document.getElementById("allck").checked;
+                var checks = document.getElementById("makebox").childNodes;
+                var checks_ea = checks.length;
+                var nodes = 0;
+                if(all==true){
+                    while(nodes<checks_ea){
+                        if(checks[nodes].nodeName=="INPUT"){
+                            checks[nodes].checked = true;
+                        }
+                        nodes++;
+                    }
+                }
+                else{
+                    while(nodes<checks_ea){
+                        if(checks[nodes].nodeName=="INPUT"){
+                            checks[nodes].checked = false;
+                        }
+                        nodes++;
+                    }
+                }
+            };
+            //4.
+            function boxs(){
+                var box = 1;
+                var box_ea = document.getElementById("box_ea").value;
+                while(box<=box_ea){
+                    document.getElementById("pbox").innerHTML += "<div></div>"
+                    box++;
+                }
+            }
+
+        </script>
+        <style>
+            body{margin: 0; padding: 0;}
+            *{box-sizing: border-box;}
+            /* 1. */
+            section{height: 250px; text-align: center; border: 1px dashed #ccc;}
+            #numbers{
+                width: 50%; height: 80%;
+                margin: 0 auto; display: flex; flex-wrap: wrap;
+                align-content: space-around;
+                justify-content: space-around;
+            }
+            .num{  width: 30%; height: 30px; border: 1px solid lightblue; }
+            p{height: 10%;}
+            #btn, #btn2{width: 50%; height: 10%; border: none; background-color: lightblue;
+                font-weight: bold; color: white;}
+            /* 2. */
+            #js_ul{
+                width: 80%; height: 65%; list-style: none;
+                margin: 0 auto; padding: 0;
+            }
+            #js_ul>li{
+                width: 25%; height: 50%; background-color: lightblue; float: left;
+            }
+            #js_ul>li:nth-child(odd){background-color: cornflowerblue;}
+            /* 3. */
+            /* 4. */
+            #pbox{width: 100px; height: auto; border: 1px solid lightblue;}
+            #no_4{height: auto;}
+            #pbox>div{width: inherit; height: 100px; background-color: lightblue;}
+            #pbox>div:nth-child(odd){background-color: aliceblue;}
+        </style>
+    </head>
+    <body>
+        <!-- 1. -->
+        <section>
+            <p>[랜덤 숫자 생성 연습(1~45)]</p>
+            <div id="numbers" name="numbers">
+                <input type="text" id="num0" class="num">
+                <input type="text" id="num1" class="num">
+                <input type="text" id="num2" class="num">
+                <input type="text" id="num3" class="num">
+                <input type="text" id="num4" class="num">
+                <input type="text" id="num5" class="num">
+                <input type="button" id="btn" value="숫자생성" onclick="random_num();">
+            </div>
+        </section>
+        <!-- 2. -->
+        <section>
+            <p>[JS로 ul>li 출력하기]</p>
+            <ul id="js_ul"></ul>
+            <input type="button" id="btn2" value="li출력" onclick="lis();">
+        </section>
+        <!-- 3. -->
+        <Section>
+            <input type="checkbox" id="allck" onclick="checkall();"> 전체선택
+            <div id="makebox"></div>
+        </Section>
+        <!-- 4. -->
+        <section id="no_4">
+            <input type="text" id="box_ea" placeholder="박스생성 *숫자만 입력*">
+            <input type="button" id="tbn3" value="박스생성" onclick="boxs();">
+            <div id="pbox"></div>
+        </section>
+    </body>
+    <script>
+        makebox();
+    </script>
+</html>

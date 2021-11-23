@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE-Edge, chrome=1">
+        <title>자바스크립트 기초(6) - 응용편</title>
+        <script>
+         /*
+            응용문제15.
+            버블링함수를 이용하여 두 값을 곱한다.
+            계산값이 20이면 정상적인 값입니다.
+            계산값이 20초과면 20보다 큽니다.
+            계산값이 20미만이면 20보다 작습니다.
+            를 출력한다.
+        */
+            function num(a,b){
+                if(a*b>20){
+                    console.log("해당 입력값은 20보다 큽니다.");
+                }
+                else if(a*b<20){
+                    console.log("해당 입력값은 20보다 작습니다.");
+                }
+                else {
+                    console.log("정상적인 값 입니다.");
+                }
+            }
+            //num(2,10)
+        /*
+            응용문제16.
+            사용자가 직접 숫자를 2개 입력합니다.
+            계산 버튼 클릭 시 해당 값을 함수로 보내어
+            이하 응용문제15와 동일.
+        */
+            function number(){
+                var a = Number(document.getElementById("a").value);
+                var b = Number(document.getElementById("b").value);
+                if(a*b>20){
+                    console.log("해당 입력값은 20보다 큽니다.");
+                }
+                else if(a*b<20){
+                    console.log("해당 입력값은 20보다 작습니다.");
+                }
+                else {
+                    console.log("정상적인 값 입니다.");
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <input type="text" id="a">
+        X
+        <input type="text" id="b">
+        <input type="button" value="계산" onclick="number();">
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/web/java6.html -->

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Ajax 4일차(4) - Ajax POST 통신4 ( 인증번호 발송 및 검토) </title>
+        <style>
+            .security{display: none;}
+        </style>
+        <script>
+            let cer_code;
+            function abc(){
+                //반복문으로 돌려도 됨.
+                let tel1 = document.getElementById("tel1").value;
+                let tel2 = document.getElementById("tel2").value;
+                let tel3 = document.getElementById("tel3").value;
+                let tel = "phone="+tel1+tel2+tel3;
+                let data;
+                if(tel.length<11){alert("전화번호 10자리 이상입력하세요.");}
+                else{
+                function windowck(){
+                    if(window.XMLHttpRequest){
+                        return new XMLHttpRequest();
+                    };
+                };
+                function tel_data(){
+                    if(data.readyState==XMLHttpRequest.DONE && data.status==200){
+                        /*
+                        코드번호 : error(데이터오류), number_error(전화번호오류)
+                        */
+                       let code = this.response;
+                       if(code=="number_error"){
+                           alert("올바른 전화번호가 아닙니다.");
+                       }
+                       else if(code=="error"){
+                           console.log("데이터 오류")
+                       }
+                       else{
+                            alert("인증번호 "+code+"를 입력해주세요.")
+                            document.getElementById("security").style.display="block";
+                            cer_code = code;
+                       }
+                    };
+                };
+                data = windowck();
+                data.onreadystatechange = tel_data;
+                data.open("POST","./index13.php",true);
+                data.setRequestHeader("content-type","application/x-www-form-urlencoded");
+                data.send(tel);
+                }
+            };
+            function certify(){
+                let se_txt = document.getElementById("se").value;
+                if(cer_code==se_txt){
+                    alert("인증되었습니다.");
+                    location.href="http://mangsteen977.dothome.co.kr/ajax/index12.html";
+                }
+                else{alert("인증번호를 다시 확인해주세요.");}
+            };
+        </script>
+    </head>
+    <body>
+        <!-- 응용문제1. index13.php로 ajax POST 전화번호 전송
+        단 전송시 name은 phone으로 전송.(숫자만) -->
+        <input type="tel" id="tel1" maxlength="3" size="4">-
+        <input type="tel" id="tel2" maxlength="4" size="5">-
+        <input type="tel" id="tel3" maxlength="4" size="5">
+        <input type="button" value="인증번호 발송" onclick="abc();">
+        <div class="security" id="security">
+            <input type="text" name="se" id="se" maxlength="4">
+            <input type="button" value="인증확인" onclick="certify();">
+        </div>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/ajax/index13.html -->

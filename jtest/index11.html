@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+        <title>문제11. 확장함수 이용한 로그인 폼</title>
+        <script>
+            function test(){
+                var a = document.getElementById("mid").value;
+                var b = document.getElementById("mpass").value;
+                var c = document.getElementById("mpass2").value;
+                var d = document.getElementById("magree").checked;
+                // var e = document.getElementById("mid").readOnly;
+                //console.log(e);
+                if(!a){alert("아이디를 입력하세요");}
+                else if(!b){alert("패스워드를 입력하세요");}
+                else if(!c){alert("패스워들 한번 더 입력하세요");}
+                else if(b!=c){alert("동일한 패스워드를 입력하세요");}
+                else if(d!=true){alert("동의에 체크하세요");}
+                // else if(e!=true){alert("중복체크를 하세요")}
+                else{
+                    // location.href="";
+                    read(1); 
+                }
+            };
+            function read(e){
+                if(e==1){
+                    var read = document.getElementById("mid").readOnly;
+                    console.log(read);
+                    if(read==false){
+                        alert("중복체크를 하세요")
+                    }
+                    else{
+                        // location.href="";
+                    }
+                }
+                else if(e==2){
+                    document.getElementById("mid").readOnly=true;
+                }
+            };
+            /*
+            function read(){
+                var a = document.getElementById("mid").value;
+                if(!a){alert("아이디를 입력하세요");}
+                else{
+                    document.getElementById("mid").readOnly=true;
+                }
+            };
+            */
+        </script>
+        <!-- 
+            클릭할 경우 모든 내용을 검토 후 중복체크를 해야 넘어가도록 하시오.
+            모든 내용 입력이 검토가 완료되면 확장함수에서 중복체크를 하며,
+            중복체크 클릭 시 아이디 입력창은 redonly가 되어야 합니다.
+         -->
+    </head>
+    <body>
+        아이디 : <input type="text" id="mid"> <input type="button" value="중복체크" onclick="read(2);"><br>
+        패스워드 : <input type="password" id="mpass"><br>
+        동일한 패스워드 : <input type="password" id="mpass2"><br>
+        개인정보 이용동의 : <input type="checkbox" id="magree">동의함<br>
+        <input type="button" value="클릭" onclick="test();"><br>
+    </body>
+</html>

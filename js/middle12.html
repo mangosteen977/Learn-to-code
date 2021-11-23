@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>자바스크립트 3일차(5) (중급) - method 메소드함수 사용(5) </title>
+        <script src="http://lovertvtest.dothome.co.kr/js/m.js?v=3"></script>
+        <!-- <script src="mangsteen977.dothome.co.kr/js/middle12.js?v=3"></script> -->
+        <script>
+            function sign(){
+               //값 
+               var money = Number(document.getElementById("money").value);
+               var sale = Number(document.getElementById("sale").value);
+               var reserve = Number(document.getElementById("reserve").value);
+
+               //상수pay의money함수로 값을 보냄
+               const a = pay.money(money,sale,reserve); 
+               
+               //값 출력부분
+               document.getElementById("box").append(a[0]); //최종금액
+               document.getElementById("get_reserve").append(a[1]); //남은적립금
+            }
+        </script>
+    </head>
+    <body>
+        합계금액 : <input type="text" id="money" value="56000" readonly><br>
+        할인율 : <input type="text" id="sale" value="70" readonly>%할인<br>
+        적립금 사용 : <input type="text" id="reserve" value="1500" readonly><br>
+        남은 적립금 : <label id="get_reserve"><!--남은적립금 여기에--></label><br>
+        <input type="button" value="결제확인" onclick="sign();"><br><br>
+        최종결제 금액 : <div id="box"><!--결제금액 여기에--></div>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/middle12.html -->
+<!-- 
+    [문제.]
+    A : 결제 최종 금액 및 남은 적립금을 출력하시오.
+        B에게 합계, 할인율, 적립금 사용금액을 보낸다.
+    B : 해당 최종 결제 금액을 계산하여, A에게 return한다.
+        단, B는 총 적립금, 10000 중 1500을 뺀, 적립금을 A사용자에게
+        최종결제금액과 함께 return한다.
+ -->

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>자바스크립트 2일차(1) (중급) - object vs Node (요소/노드) </title>
+        <script src="../jq/jquery.js"></script>
+        <script>
+            
+        </script>
+    </head>
+    <body>
+        <div>
+            <p>t   e   s   t   1</p>
+            <p>test 2</p>
+        </div>
+    </body>
+    <script>
+        //요소
+        var a = document.querySelector("div").children;
+        console.log(a.length); //2
+        console.log(a);
+        /*HTMLCollection(2) [p, p]
+            0: p
+            1: p
+            length: 2
+            //직접 쓴 코드는 공백(O)-->children으로 length;
+        */
+        /*테스트2 출력*/
+        console.log(a[1]); //<p>test 2</p>
+        //innerText / textContent
+        console.log(a[0].textContent); //t   e   s   t   1, 구ver.
+        console.log(a[1].innerText); //test 2
+
+
+        //JS 노드
+        var b = document.querySelector("div").childNodes;
+        console.log(b.length); //5
+        console.log(b);
+        /*
+        NodeList(5) [text, p, text, p, text]
+            0: text //text == 공백 (div~p)
+            1: p
+            2: text //text == 공백 (p~p)
+            3: p
+            4: text //text == 공백 (p~div)
+            length: 5
+            //공백없이 태그를 붙이면 text(공백)없어짐.
+            //append등으로 태그를 넣으면 공백(X)-->childNodes로 length;
+        */
+
+        /*테스트2 출력*/
+        console.log(b[3]); //<p>test 2</p>
+        console.log(b[3].innerText); //test 2
+    </script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/middle4.html -->

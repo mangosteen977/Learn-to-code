@@ -1,0 +1,270 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700;900&display=swap");
+/* font-family: 'Noto Sans KR', sans-serif; (100, 400, 700, 900) */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+}
+
+/*notice_list*/
+.notice_list {
+  width: 1200px;
+  height: auto;
+  background-color: none;
+  margin: 0 auto;
+}
+
+.notice_list > .search_notice_box {
+  width: 100%;
+  height: 50px;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.notice_list > .search_notice_box > input {
+  width: 100px;
+  height: 30px;
+  background-color: #c3222b;
+  font-size: 100%;
+  color: white;
+  border: none;
+  margin-left: 5px;
+}
+
+.notice_list > .search_notice_box > input:nth-child(1) {
+  width: 250px;
+  height: 30px;
+  background-color: white;
+  text-indent: 5px;
+  border: 1px solid #ccc;
+  color: black;
+}
+
+.notice_list > .notice_tb {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 40px;
+  color: unset;
+  text-align: center;
+  font-weight: unset;
+  font-size: 100%;
+}
+
+.notice_list > .notice_tb > thead > tr > td {
+  height: 40px;
+  border-bottom: 2px solid #ccc;
+}
+
+.notice_list > .notice_tb > thead > tr > td:nth-child(1), .notice_list > .notice_tb > thead > tr > td:nth-child(2) {
+  width: 5%;
+}
+
+.notice_list > .notice_tb > thead > tr > td:nth-child(3) {
+  width: 50%;
+}
+
+.notice_list > .notice_tb > thead > tr > td:nth-child(4), .notice_list > .notice_tb > thead > tr > td:nth-child(5) {
+  width: 15%;
+}
+
+.notice_list > .notice_tb > thead > tr > td:nth-child(6) {
+  width: 10%;
+}
+
+.notice_list > .notice_tb > tbody tr {
+  width: 100%;
+  height: 40px;
+  background-color: none;
+  border-bottom: 2px solid #ccc;
+}
+
+.notice_list > .notice_tb > tbody tr > td:nth-of-type(3) {
+  cursor: pointer;
+}
+
+.no_notice_list {
+  background-color: #ccc;
+  border-radius: 5px;
+}
+
+.notice_page {
+  width: 100%;
+  height: 50px;
+  background-color: none;
+  margin: 10px 0;
+}
+
+.notice_page > ul {
+  width: 100%;
+  height: inherit;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.notice_page > ul > li {
+  width: 30px;
+  height: 30px;
+  background-color: #dbb0a0;
+  cursor: pointer;
+  margin-left: 5px;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+  font-size: 100%;
+}
+
+.notice_page > ul > li:hover {
+  background-color: #be9a8d;
+}
+
+.btns_notice {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px;
+}
+
+.btns_notice > input {
+  width: 100px;
+  height: 30px;
+  background-color: #c3222b;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 30px;
+  color: unset;
+  text-align: center;
+  font-weight: unset;
+  font-size: 90%;
+  color: white;
+  border: none;
+}
+
+.btns_notice > input:nth-child(2) {
+  margin-left: 10px;
+}
+
+/*notice_w (write)*/
+.write_notice {
+  width: 1200px;
+  height: auto;
+  background-color: none;
+  margin: 0 auto;
+  padding: 50px 0;
+}
+
+.write_notice > form > .write_notice_tb {
+  width: 100%;
+  height: auto;
+  background-color: none;
+}
+
+.write_notice > form > .write_notice_tb > tbody > tr > td {
+  text-indent: 10px;
+}
+
+.write_notice > form > .write_notice_tb > tbody > tr > td:nth-child(odd) {
+  background-color: #ccc;
+}
+
+.write_notice > form > .write_notice_tb > tbody > tr > td > input[type="text"],
+.write_notice > form > .write_notice_tb > tbody > tr > td > input[type="password"] {
+  width: 30%;
+  height: 40px;
+  background-color: none;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  font-size: 100%;
+}
+
+.write_notice > form > .write_notice_tb > tbody > tr > td > input[type="radio"] {
+  border: 1px solid red;
+}
+
+.write_notice > form > .write_notice_tb > tbody > tr > td > textarea {
+  width: 100%;
+  height: 300px;
+  background-color: none;
+  border: none;
+}
+
+.write_notice > form > .write_notice_tb > tbody > tr:nth-of-type(1) > td:nth-child(2) > input[type="text"] {
+  width: 50%;
+  font-size: 100%;
+}
+
+.write_notice > form > .write_notice_tb > tbody > tr:nth-child(6) > td:nth-child(2) > label {
+  width: 80px;
+  height: auto;
+  background-color: none;
+  font-size: 110%;
+  display: inline-block;
+}
+
+.write_notice > .write_notice_btns {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 40px;
+  color: unset;
+  text-align: center;
+  font-weight: unset;
+  font-size: 100%;
+  padding: 10px;
+}
+
+.write_notice > .write_notice_btns > input {
+  width: 100px;
+  height: 30px;
+  background-color: #c3222b;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.write_notice > .write_notice_btns > input:hover {
+  background-color: #88181e;
+}
+
+.write_notice > .write_notice_btns > input:nth-child(2) {
+  margin-left: 10px;
+}
+/*# sourceMappingURL=notice.css.map */

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery 1일차(5) -  애니메이션(2) </title>
+        <script src="./jquery.js"></script>
+        <script>
+        //animate: 햄버거버튼 누르면 옆에서 나오는 메뉴 등.
+        //animate({"width":"400px"}),1000; : ({"":"","":""}),1000; 형태
+        //        : 상하좌우 제약없이 애니메이션을 사용할 수 있다.
+        //          Jquery의 가장 강력한 함수이다.
+            $(document).ready(function(){
+                $("#btn").click(function(){
+                   $("#box").delay(1000).animate({
+        //delay(n).animate : 호출 후 애니메이트 기능을 n초 동안 대기|일시정지 시킴.
+                       "width":"500px",
+                        "opacity":"1" //opacity : 0은 사라짐, 1은 나타남
+                        //background-color 는 적용 안된다.
+                    }),1000;
+                });
+
+        //graph
+                $("#btn2").click(function(){
+                //반복문(X)
+                    /*
+                    $("#b1").animate({"width":"220px"}),1000;
+                    $("#b2").delay(500).animate({"width":"160px"},1000);
+                    $("#b3").delay(1000).animate({"width":"200px"},1000);
+                    $("#b4").delay(1500).animate({"width":"85px"},1000);
+                    $("#b5").delay(2000).animate({"width":"30px"},1000);
+                    */
+                //반복문(O)
+                    var $w=1;
+                    var $d=500;
+                    var $width = "420px,160px,200px,85px,30px";
+                    var $sw = $width.split(",");
+                    while($w<6){
+                        var $v = "#b" + $w;
+                        var $dl = $d * $w;
+                        $($v).delay($dl).animate({"width":$sw[$w-1]},1000);
+                        $w++;
+                    }
+                });
+
+            });
+        </script>
+        <style>
+            .box{width: 0px; height: 40px; background-color: darkorange;}
+            /*graph*/
+            .graph{width: 500px; height: auto; list-style: none; margin: 0; padding: 0;}
+            .graph > li{width: 0px; height: 30px; margin-bottom: 20px;}
+            .graph > li:nth-child(1){background-color: blue;}
+            .graph > li:nth-child(2){background-color: yellow;}
+            .graph > li:nth-child(3){background-color: red;}
+            .graph > li:nth-child(4){background-color: violet;}
+            .graph > li:nth-child(5){background-color: black;}
+            .btn2{width: 100px; height: 50px; color: white; background-color: gray;}
+        </style>
+    </head>
+    <body>
+        <div class="box" id="box"></div>
+        <input type="button" value="start" id="btn">
+        <br><br>
+        <!-- graph -->
+        <ul class="graph" id="graph">
+            <li id="b1"></li>
+            <li id="b2"></li>
+            <li id="b3"></li>
+            <li id="b4"></li>
+            <li id="b5"></li>
+        </ul>
+        <input type="button" value="결과확인" class="btn2" id="btn2">
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/index5.html -->

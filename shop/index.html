@@ -1,0 +1,31 @@
+<?php
+    $date=date("YmdHis")
+    ?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>쇼핑몰 만들기 - 응용</title>
+        <link type="text/css" rel="stylesheet" href="./index.css?v=<?php echo $date?>">
+    </head>
+    <body>
+        <header class="shop_header"><!--상단 탑 배너 및 탑메뉴-->
+            <?php include "top.html"; ?>
+        </header>
+        <nav class="shop_nav"><!--검색 기능 및 대메뉴&소메뉴-->
+            <?php include "menu.html"; ?>
+        </nav>
+        <main class="shop_main">
+            <section class="shop_section"><!--메인 베너-->
+                <?php include "banner.html"; ?>
+            </section>
+            <article class="shop_article"><!--best product-->
+                <?php include "product.html"; ?>
+            </article>
+        </main>
+        <footer class="shop_footer"><!--카피라이터-->
+            <?php include "footer.html"; ?>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>오브젝트 위치선정 및 레이아웃3</title>
+        <style>
+            body{margin: 0; padding: 0;}
+            span, label, main{display: block;}
+            a{text-decoration: none;}
+            ul,ol{
+                list-style: none;
+                display:inline-block; 
+                margin: 0; 
+                padding: 0;
+            }
+            .box{
+              width: 1200px;
+              height: 40px;
+              margin: 0 auto;
+              padding: 0;
+              background-color: skyblue;
+             }
+             .a{
+                 width: 480px;
+                 height: 40px;
+             }
+             .b{
+                 width: 360px;
+                 float: right;
+             }
+             li{
+                 width: 120px;
+                 height: 40px;
+                 text-align: center;
+                 line-height: 40px;
+                 color: white;
+                 clear: right;
+                 float: left;
+             }
+
+
+             .c, .d{
+                 display: block;
+             }
+             .c{
+                 width: 480px;
+                 height: 40px;
+                 float:left
+             }
+             .d{
+                 width: 360px;
+                 height: 40px;
+                 float:right;
+             }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <ol class="a">
+                <li>중고조립PC</li>
+                <li>중고브랜드PC</li>
+                <li>중고노트북</li>
+                <li>중고모니터</li>
+            </ol>
+            <ul class="b">
+                <li>주간베스트</li>
+                <li>중고매입</li>
+                <li>중고장터</li>
+            </ul>
+        </div>
+        <br>
+        <br>
+        <div class="box">
+            <ol class="c">
+                <li>중고조립PC</li>
+                <li>중고브랜드PC</li>
+                <li>중고노트북</li>
+                <li>중고모니터</li>
+            </ol>
+            <ol class="d">
+                <li>주간베스트</li>
+                <li>중고매입</li>
+                <li>중고장터</li>
+            </ol>
+
+        </div>
+    </body>
+</html>

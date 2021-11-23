@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery 2일차(1) - 애니메이션(숙제)</title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#btn").click(function(){
+                    var $a = 500;
+                    var $b = 1;
+                    var $hl = "220px|140px|100px|55px|180px";
+                    var $h = $hl.split("|");
+                    while($b<6){
+                        $("#g"+$b).delay($a*$b).animate({"height":$h[$b-1]},1000);
+                        $b++;}
+                });
+
+            });
+        </script>
+        <style>
+            .box{width: 301px; height: 270px; text-align: center;}
+            .graph{list-style: none; margin: 0; padding: 0; width: 301px; height: 220px;}
+            .graph > li{height:0px; width: 30px; margin-right: 20px; display: inline-block;}
+            .graph > li:nth-child(1){width: 1px; height: 220px;}
+
+            .graph > li:nth-child(2){background-color: cornflowerblue;}
+            .graph > li:nth-child(3){background-color:mediumorchid;}
+            .graph > li:nth-child(4){background-color:palegoldenrod;}
+            .graph > li:nth-child(5){background-color: black;}
+            .graph > li:nth-child(6){background-color:indianred;}
+            .btn{width: 100px; height: 50px; background-color: gray; color: white; display: inline-block;}
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <ul class="graph" id="graph">
+                <li id="g0"></li>
+                <li id=g1></li>
+                <li id=g2></li>
+                <li id=g3></li>
+                <li id=g4></li>
+                <li id=g5></li>
+            </ul>
+            <input type="button" value="확인" class="btn" id="btn">
+        </div>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/index60.html -->

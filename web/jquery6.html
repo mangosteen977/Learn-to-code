@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <title>Jquery 금요일 복습(6) - </title>
+    <script src="./jquery.js"></script>
+<script>
+    $(document).ready(function(){
+        var $box6 = "<label class='labelcss'>NEW BOX</label> "
+        //var $n = $("#divbox>label").length-1;
+        $("#node_add1").click(function(){
+            $("#divbox").append($box6);
+            //$n = $n+1;
+        });
+        $("#node_add2").click(function(){
+            $("#divbox").prepend($box6);
+            //$n = $n+1;
+        });
+        $("#node_del1").click(function(){
+            var $n = $("#divbox>label").length-1;
+            $("#divbox>label").eq($n).remove();
+            //$n = $n-1;
+        });
+        $("#node_del2").click(function(){
+            $("#divbox>label").eq(0).remove();
+            //$n = $n-1;
+        });
+        $("#node_all").click(function(){
+            $("#divbox>label").remove();
+            //$n = 0;
+        });
+        $("#node_copy").click(function(){
+            var $copy = $("#divbox>label").eq(0).clone();
+            $("#divbox>label").eq(0).remove();
+            $("#divbox").append($copy);
+        });
+        $("#node_copy2").click(function(){
+            var $n = $("#divbox>label").length-1;
+            var $copy2 = $("#divbox>label").eq($n).clone();
+            $("#divbox>label").eq($n).remove();
+            $("#divbox").prepend($copy2);
+        });
+
+    });
+
+</script>
+<style>
+        .labelcss { width:100px; height:30px; border:1px solid red;
+        display:inline-block; }
+      
+        .divbox { width:100%; height:40px;
+        border:1px solid blue;
+        }
+  </style>
+</head>
+<body>
+<div class="divbox" id="divbox">
+    <label class="labelcss">box1</label>
+    <label class="labelcss">box2</label>
+    <label class="labelcss">box3</label>
+    <label class="labelcss">box4</label>
+    <label class="labelcss">box5</label>
+</div>
+
+<input type="button" value="노드추가(맨뒤)" id="node_add1">
+<input type="button" value="노드추가(맨앞)" id="node_add2">
+<input type="button" value="노드삭제(맨뒤)" id="node_del1">
+<input type="button" value="노드삭제(맨앞)" id="node_del2">
+<input type="button" value="노드전체삭제" id="node_all">
+<!-- 복제버튼 : eq(0)복제해 맨뒤로 이동하라. -->
+<input type="button" value="노드복제(맨앞)" id="node_copy">
+<!-- 복제버튼 : eq(막노드)복제해 맨앞으로 이동하라. -->
+<input type="button" value="노드복제(맨뒤)" id="node_copy2">
+</body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/web/jquery6.html -->

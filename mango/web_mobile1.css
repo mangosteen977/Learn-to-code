@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.fonts {
+  font-family: "Noto Sans KR", "Arial", "Roboto", sans-serif;
+  font-size: 12px;
+}
+
+.information {
+  background-color: yellow;
+  height: 250px;
+}
+
+.information > div {
+  margin: 0 auto;
+  width: 1200px;
+  height: inherit;
+  background-color: yellowgreen;
+}
+
+.information > div > span {
+  width: calc(1200px / 2);
+  height: inherit;
+  display: block;
+  float: left;
+}
+
+.information > div > span:nth-of-type(1) {
+  background-color: lavender;
+}
+
+.information > div > span:nth-of-type(2) {
+  background-color: lightcoral;
+}
+
+.information > div > span > label {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  text-indent: 10px;
+  display: block;
+  font-family: "Noto Sans KR", "Arial", "Roboto", sans-serif;
+}
+
+.information > div > span > label:nth-of-type(1) {
+  font-size: 15px;
+}
+
+.information > div > span > label:nth-of-type(2) {
+  font-size: 12px;
+}
+
+@media (min-width: 758px) and (max-width: 1023px) {
+  .information {
+    height: 200px;
+  }
+  .information > div {
+    width: 100%;
+    height: inherit;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .information > div > span {
+    width: calc(100% / 2);
+    height: inherit;
+    float: unset;
+  }
+}
+
+@media (min-width: 335px) and (max-width: 757px) {
+  .information {
+    height: auto;
+  }
+  .information > div {
+    width: 100%;
+    height: -webkit-max-content;
+    height: -moz-max-content;
+    height: max-content;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  .information > div > span {
+    width: 100%;
+    height: 150px;
+    float: unset;
+    margin: 0 auto;
+  }
+}
+/*# sourceMappingURL=web_mobile1.css.map */

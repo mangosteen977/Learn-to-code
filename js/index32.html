@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible">
+        <title>Javascript 6일차(1) - 초급코드(Node 갯수 확인)/슬라이딩 배너와 디스크 만들기 </title>
+        <script>
+            /*function abc(){
+                var a = document.getElementById("ul_id");
+                var nm = a.childNodes;
+                //console.log(nm);
+        //childnodes는 getelementbyid값, 쿼리로만 사용가능하다.
+        //console 출력 시 빈공간이 text로 인식되어 노드갯수에 포함된다.
+        //빈공간없이 tag들을 나열하면 정확한 node 갯수가 출력된다.
+        //childnodes는 해당 id의 바로 하위 자식만 인식됨.
+        //ex. ul의 childNodes를 출력하면 바로 하위의 li들만 인식하고, li의 자식인 span은 인식하지 못한다.
+                
+                var nd =a.children;
+                var ea = nd.length;
+                console.log(ea);
+        //children : 하위 자식 tag만 인식되어 출력된다. (빈공간은 인식하지 않음)
+        //children에 length로 출력하면 id의 하위 자식 tag의 갯수만 출력할 수 있다.
+        //"쌍따옴표"로 쓰는 건 DOM객체, []은 NODE객체
+            }*/
+
+
+            /*슬라이딩 배너와 디스크 만들기*/
+            function bnr(){
+                var n = document.getElementById("ol_id");
+                var bb = document.getElementById("ul_disc");
+                var ea = n.children.length;
+                var w = 0;
+                var li = "<li></li>";
+                var disc = "";
+                while(w<ea){
+                    disc = disc + li;
+                    w++;
+                }
+                bb.innerHTML = disc;
+                //console.log(ea);
+            }
+            function mv(){
+                var banner = document.getElementById("ol_id");
+                banner.style.left = "-1000px";
+                //style.left : css속성 중 left라는 속성값을 이용함. (단, css에 position을 확인할 것.)
+            }
+        </script>
+        <style>
+            /*슬라이딩 배너와 디스크 만들기*/
+            body{margin: 0; padding: 0;}
+            ul, ol ,dl{margin: 0; padding: 0; list-style: none;}
+            .banner_box{ /*배너 전체 박스틀*/
+                width: 1000px; 
+                height: 490px; 
+                border: 1px solid red; 
+                box-sizing: border-box;
+                }
+            .ol_b{ /*배너 들어있는 ol*/
+                width: 3000px;
+                height: 490px;
+                position: relative;
+                /*움직이려면 position 필요함*/
+            }
+            .ol_b > li{ /*배너 이미지 들어있는 li*/
+                width: 1000px;
+                height: 490px;
+                float: left;
+            }
+            .ul_b{ /*디스크 담긴 ul*/
+                position: relative;
+                width: 100%;
+                height: auto;
+                bottom: 50px;
+                text-align: center;
+            }
+            .ul_b > li{ /*li disc들*/
+                display: inline-block;
+                width: 25px;
+                height: 25px;
+                background-color: black;
+                border-radius: 100%;
+                margin-right: 5px;    
+            }
+            .ul_b > li:nth-child(1){
+                background-color: red;
+            }
+        </style>
+    </head>
+    <body>
+    <!--
+        <ul id="ul_id">
+            <li><span></span></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <input type="button" value="Node Count" onclick="abc();">
+    -->
+        <!-- 슬라이딩 배너와 디스크 만들기 -->
+        <div class="banner_box">
+            <ol id="ol_id" class="ol_b">
+                <li><img src="./banners/banner0.png"></li>
+                <li><img src="./banners/banner1.png"></li>
+                <li><img src="./banners/banner2.png"></li>
+            </ol>
+            <ul id="ul_disc" class="ul_b" onclick="mv();"></ul>
+        </div>
+    </body>
+    <script>
+        bnr();    
+    </script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/index32.html -->

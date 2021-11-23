@@ -1,0 +1,52 @@
+<?php
+    $v = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 5일차 (2) vue 뷰 전체선택 ?????????</title>
+        <script src="../jq/jquery.js"></script>
+        <!-- vue 버전 1.6.4 ???????? -->
+        <script src="http://cdn.jsdelivr.net/npm/vue"></script>
+        <!-- <link rel="stylesheet" type="text/css" href="./index.css?v=<?=$v?>"> -->
+        <style>
+        </style>
+    </head>
+    <body> 
+        <div id="box">
+            <ul>
+                <li><input type="checkbox" @click="selectall" v-model="all">전체선택</li>
+                <li><input type="checkbox" name="online[]" @click="one_select" v-model="s" value="a1">선택1</li>
+                <li><input type="checkbox" name="online[]" @click="one_select" v-model="s" value="a2">선택2</li>
+                <li><input type="checkbox" name="online[]" @click="one_select" v-model="s" value="a3">선택3</li>
+                <li><input type="checkbox" name="online[]" @click="one_select" v-model="s" value="a4">선택4</li>
+                <li><input type="checkbox" name="online[]" @click="one_select" v-model="s" value="a5">선택5</li>
+            </ul>
+        </div>
+    </body>
+    <script>
+        let a = new Vue({
+            el:"#box",
+            data:{
+                all:false,
+                s:[]
+            },
+            methods:{
+                selectall(){
+                    this.s = []; //배열형태로 유지
+                    if(!this.all){//처음 클릭시 checkbox false임으로 반대로 생각.
+                        for(var a=1; a<6; a++){
+                            this.s.push("a"+a); //해당 메소드를 호출
+                            //push() : 추가, url이동, method 호출,
+                        }
+                    }
+                },
+                one_select(){
+                    this.all = false;
+                }
+            }
+        })
+    </script>
+</html>

@@ -1,0 +1,45 @@
+@charset "UTF-8";
+body { margin: 0; padding: 0; font-size: 12px; font-family: "돋움체"; }
+ul,ol { list-style: none; margin: 0; padding: 0; }
+*{box-sizing: border-box;}
+.sbody { height: auto;}
+.member_view { 
+    width: 800px; height: auto; margin: 0 auto;
+    display: flex; flex-wrap: nowrap; flex-direction: column;
+    justify-content: center; align-items: center;
+}
+table { width:inherit; height: auto; }
+.thead_tr { height: 50px; font-size: 15px; font-weight: bold; }
+.tbody_tr > tr { height: 60px; font-size:14px; }
+.tbody_tr > tr:nth-of-type(6) { height: 90px; font-size:14px; }
+.tbody_tr > tr > td:nth-of-type(1) { width: 150px; padding-left: 10px; }
+.tbody_tr > tr > td:nth-of-type(2) { width: 650px; padding-left: 30px;}
+.tbody_tr > tr , td { border-bottom: 1px solid #ccc; }
+/* 부모객체가 flex일 때 버튼 움직이기 */
+/* float:left나 display:inline-block(X) ==> 버튼 두개를 <span>으로 묶으면 됨. */
+.btn{
+    width: 100px; height: 40px; border: none; border-radius: 5px;
+    background-color: black; color: white;
+}
+.btn1{background-color: crimson;}
+.td_flex{
+    display: flex; flex-wrap: wrap; height: 90px;/*flex쓰면 height 리셋(?)되서 한 번 더 씀*/
+    justify-content: space-between; align-items: center; align-content: center;
+}
+input[type="checkbox"]{/*오류가 날 수 있어서 잘 쓰진 않음*/
+    width: 15px; height: 15px; vertical-align: -3px;
+    /*vertical-align : checkbox랑 글자랑 단 높이를 맞춤*/
+    /*table상태에서만 사용, ul,ol,dl은 display:table-cell;이 필요*/
+    /*input 높이 조절*/
+}
+.input1, .input2, .input3{
+    height: 40px; width: 200px; font-size: 14px; 
+    font-family: "돋움체"; text-indent: 5px;
+}
+.input2{width: 450px;}
+.input3{width: 180px;}
+.idbtn{
+    width: 100px; height: 40px; color: white; cursor: pointer;
+    border: none; border-radius: 5px; background-color: rgb(221, 1, 93);
+}
+.idbtn:hover{background-color: rgb(241, 40, 124);}

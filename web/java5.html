@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE-Edge, chrome=1">
+        <title>자바스크립트 기초(5) - 응용편</title>
+        <script>
+    /*
+        응용문제13.
+        switch 사용해 다음을 출력하시오.
+        "Korea","KOREA","한국" 검색 했을 때, http://korea.com 으로 이동.
+        "usa","us","미국" 검색 했을 때, http://kr.usembassy.gov 으로 이동.
+        "코리아","어메리카" 검색 시, "정확한 나라명을 입력하세요" 메세지 출력.
+    */
+            var country ="코리아"
+            switch(country){
+                case "Korea":
+                case "KOREA":
+                case "한국":
+                location.href = "http://korea.com";
+                break;
+
+                case "usa":
+                case "us":
+                case "미국":
+                location.href = "http://kr.usembassy.gov";
+                break;
+
+                case "코리아":
+                case "어메리칸":
+                //alert("정확한 나라명을 입력하세요.");
+                break;
+            }
+    /*
+        응용문제14.
+        switch+for 사용하여 출력하시오.
+        구구단 "5단" 입력 시 구구단5단 출력
+        구구단 "8단" 입력 시 구구단8단 출력
+        단, for문은 한 번만 사용.
+    */
+            var s = "5단";
+            var j;
+            switch(s){
+                case "5단":
+                j=5;
+                break;
+
+                case "8단":
+                j=8;
+                break;
+            }
+            var h;
+            var g;
+            for(h=1;h<=9;h++){
+                g = h*j;
+                //console.log(j+"*"+h+"="+g)
+            }
+            /*
+            var gugudan = "5단";
+            var a;
+            var c;                    
+            for(a=1;a<=9;a++){
+                switch(gugudan){
+                    case "5단":   
+                    c = 5*a;
+                    console.log(5+"X"+a+"="+c);   
+                    break;
+
+                    case "8단":
+                    c = 8*a;
+                    console.log(8+"X"+a+"="+c);
+                    break;
+                }
+            }
+            */
+    /*
+        응용문제15.
+        
+    */
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/web/java5.html -->

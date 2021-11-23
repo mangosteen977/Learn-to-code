@@ -1,0 +1,55 @@
+<?php
+    $data = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 2일차 (2) 파라미터 뷰 vue (???)</title>
+        <script src="../jq/jquery.js"></script>
+        <!-- vue 버전 1.6.4??? -->
+        <script src="http://cdn.jsdelivr.net/npm/vue"></script> <!--상용버전 값 가져옴^_~-->
+        <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> --> <!--개발버전 값 못가져옴^.^-->
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <section id="box">
+            <input v-bind:type="btn" v-model="vbtn" v-on:click="ccc">
+            <!-- v-if 조건부 렌더링 부분
+                기본 속성 (true, false)를 구분하게 됨.
+                v-if, v-else-if, v-else -->
+            <span v-if="tf">{{msg}}</span>
+            <span v-else>{{msg2}}</span>
+            <span v-if="tt">{{msg3}}</span>
+        </section>
+    </body>
+    <script>
+        let a = new Vue({
+            el:"#box",
+            data:{
+                btn:"button",
+                vbtn:"확인",
+                msg:"메세지 출력",
+                msg2:"메세지 없음",
+                msg3:"aaaa",
+                tf:false,
+                tt:true
+            },
+            methods:{
+                ccc:function(){
+                    this.tt = !this.tt;
+                    //!this는 부정, true의 부정은 false;
+                    if(this.tf==false){
+                        this.tf=true;
+                    }
+                    else{
+                        this.tf=false;
+                    }
+                }
+            }
+        });
+    </script>
+</html>

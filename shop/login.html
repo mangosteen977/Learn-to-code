@@ -1,0 +1,101 @@
+<meta charset="UTF-8">
+<link type="text/css" rel="stylesheet" href="./login.css?v=<?php echo $date?>">
+<div class="loginpage">
+<!--테이블로 만든 부분 : 멤버로그인-->
+    <!--<P class="login_title">MEMBER LOGIN</P>
+  <form>
+        <table class="loginbox" border="0" cellspacing="0" cellpadding="0">
+            <tr class="loginbox1_1">
+                <td><input type="text" class="id"  placeholder="아이디를 입력해주세요."></td>
+                <td rowspan="3"><input type="submit" class="btn_login" value="LOGIN"></td>
+            </tr>
+            <tr>
+                <td class="emptybox"></td>
+            </tr>
+            <tr class="loginbox1_1">
+                <td><input type="password" class="id" placeholder="패스워드를 입력해주세요."></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="checkbox" id="save"><label for="save" class="saveid">아이디저장</label></td>
+            </tr>
+        </table>
+    </form>-->
+<!-- 테이블로 만든 부분 : 회원가입/아이디찾기/비밀번호찾기 -->
+    <!--<span class="loginbox2">
+        <input type="button" value="회원가입">
+        <input type="button" value="아이디찾기">
+        <input type="button" value="비밀번호찾기">
+    </span>-->
+<!-- 리스트로 만든 부분 : 멤버로그인~비밀번호찾기 부분-->
+    <form>
+        <dl class="listlogin">
+            <dt>MEMBER LOGIN</dt>
+            <dd>
+                <ol class="loginlist">
+                    <li>
+                        <input type="text" class="id"  placeholder="아이디를 입력해주세요.">
+                        <span class="emptybox"></span>
+                        <input type="password" class="id" placeholder="패스워드를 입력해주세요.">
+                    </li>
+                    <li>
+                        <input type="submit" class="btn_login" value="LOGIN">
+                    </li>
+                </ol>
+            </dd>
+            <dd><input type="checkbox" id="save2"><label for="save2" class="saveid">아이디저장</label></dd>
+            <dd>
+                <span class="loginbox2">
+                    <input type="button" value="회원가입">
+                    <input type="button" value="아이디찾기">
+                    <input type="button" value="비밀번호찾기">
+                </span>
+            </dd>
+        </dl>
+    </form>
+<!-- 테이블로 만든 부분 : 비회원 주문조회 -->
+    <span class="loginbox3">
+        <P class="box3_title">비회원 주문조회</P>
+        <form>
+            <table class="loginbox" border="0" cellspacing="0" cellpadding="0">
+                <tr class="loginbox1_1">
+                    <td><input type="text" class="id"  placeholder="주문자명을 입력해주세요."></td>
+                    <td rowspan="3"><input type="submit" class="btn_login" value="주문조회"></td>
+                </tr>
+                <tr>
+                    <td class="emptybox"></td>
+                </tr>
+                <tr class="loginbox1_1">
+                    <td><input type="password" class="id" placeholder="주문번호를 입력해주세요."></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="num_order">주문번호와 비밀번호를 잊으신 경우, 고객센터로 문의하여 주시기 바랍니다.</td>
+                </tr>
+            </table>
+        </form>
+    </span>
+</div>
+<!--선생님버전-->
+<!--<div class="member_login">
+    <p class="subtitle">MEMBER LOGIN</p>
+    <label class="login_box">
+        <span class="login_left">
+            <ol>
+                <li><input type="text" class="input1" placeholder="아이디를 입력해주세요."></li>
+                <li><input type="password" class="input1" placeholder="패스워드를 입력해주세요."></li>
+            </ol>
+        </span>
+        <span class="login_right">
+            <input type="submit" class="btn1" value="LOGIN">
+        </span>
+    </label>
+    <span class="clear"></span>
+    <table>
+        <tr cellspacing="0" cellpadding="0" class="login_table">
+            <td class="td1"><input type="text" class="input1" placeholder="주문번호를 입력해주세요."></td>
+            <td class="td2" rowspan="2"><input type="submit" class="btn1" value="주문조회"></td>
+        </tr>
+        <tr>
+            <td class="td3"><input type="password" class="input1" placeholder="주문번호를 입력해주세요."></td>
+        </tr>
+    </table>
+</div>-->

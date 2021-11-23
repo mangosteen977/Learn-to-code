@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE-Edge, chrome=1">
+        <title>자바스크립트 기초(7) - 응용편</title>
+        <script>
+            /*
+                응용문제16.
+                입력값과 버튼이 있다.
+                입력값에 사용자가 원하는 값을 입력하고자 한다.
+                단 인증하기 버튼을 클릭하지 않을 경우
+                사용자가 값을 입력값을 입력하지 못한다.
+                해당 문법을 제작하시오.
+            */
+            /*function input(){
+            var a = document.getElementById("text_input").readOnly=false;
+            }*/
+            /*
+                응용문제17.
+                제목 : [해당 사이트 중 가장 인상 깊은 이벤트는?]
+                해당 이벤트를 진행하며, 설문조사를 하는 프로그램을 제작
+                설문조사 선택은 무조건 1가지만 선택한다.
+                1. 여름특집 오싹오싹 30% 할인
+                2. 어버이날 감사의 50% 할인
+                3. 사장님이 미쳤어요 40%할인
+                4. 얼리버드 1+1 기획전
+                5. 크리스마스 선물 30% 할인
+                설문조사 참여 버튼을 눌러 제출
+           */
+          //내 답
+            /*function eventt(){
+                var b = 0;
+                while(b<6){    
+                    var a = form_event.ev[b].checked;
+                    if(a==false){
+                        alert("한 가지 이상 선택해주셔야 참여가능 합니다.");
+                        return false;}
+                    else if(a==true){
+                        alert("설문조사에 응해주셔서 감사합니다.");
+                        return;}
+                b++;}
+            }*/
+            //선생님 답
+            function eventt(){
+                var b = 0;
+                var c = "";
+                while(b<6){    
+                    var a = form_event.ev[b].checked;
+                    if(a==true){
+                        c = "ok"
+                    }
+                    b++;
+                }
+                if(c=="ok"){
+                    alert("설문조사에 응해주셔서 감사합니다.");
+                    return;
+                }
+                else{
+                    alert("한 가지 이상 선택해주셔야 참여가능 합니다.");
+                    return false;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <!--<input type="text" id="text_input" placeholder="인증하기를 눌러야 입력이 가능합니다." readonly>
+        <input type="button" value="인증하기" id="btn" onclick="input();">
+        <br><br>-->
+        <form onsubmit="return eventt();" name="form_event">
+            <p>[가장 인상 깊은 이벤트는?]</p>
+            <input type="radio" name="ev">1. 여름특집 오싹오싹 30% 할인<br>
+            <input type="radio" name="ev">2. 어버이날 감사의 50% 할인<br>
+            <input type="radio" name="ev">3. 사장님이 미쳤어요 40%할인<br>
+            <input type="radio" name="ev">4. 얼리버드 1+1 기획전<br>
+            <input type="radio" name="ev">5. 크리스마스 선물 30% 할인<br><br>
+            <input type="submit" value="설문조사 참여">
+        </form>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/web/java7.html -->

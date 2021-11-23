@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="Ko"> 
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jquery 2일차(1) - 중급 (JQ array 배열반복문 each & map) </title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(function(){
+                //key값이 업는 1차 배열
+                const $array = ["손나은","윤보미","박초롱","정은지","오하영","김남주"];
+                //each == forEach
+                var $li = "";
+                $.each($array,function($a,$b){
+                    //console.log($a) //0 1 2 3 4 5
+                    // console.log($b) //손나은 윤보미 ...
+
+                    /*$li += "<li>"+$b+"</li>";
+                    $("#ul_data").html($li);*/
+
+                    /*$li = "<li>"+$b+"</li>";
+                    $("#ul_data").append($li);*/
+
+                });
+                //속도 : map>>each
+                $.map($array,function($a,$b){//$a : 배열데이터, $b : 콜백함수
+                    //console.log($a)//손나은 윤보미 ...
+                    //console.log($b)//0 1 2 3 4 5
+                })
+                //key값이 있는 1차 배열
+                const $array2 = {
+                    "apink":["손나은","윤보미","박초롱","정은지","오하영","김남주"]
+                }
+                $($array2["apink"]).each(function($a,$b){
+                    // console.log($a) //012345
+                    // console.log($b) //손나은 윤보미 ...
+                });
+
+                $("#btn").click(function(){
+                    var $lis = "";
+                    $($array2["apink"]).each(function($a,$b){
+                        $lis += "<li>"+$b+"</li>";
+                        $("#ul_data").html($lis);
+                    });
+                });
+
+            });
+        </script>
+        <style>
+            *{box-sizing: border-box;}
+            .box{width: 100px; height: 100px; background-color: darkorange;}
+
+        </style>
+    </head>
+    <body>
+        <ul id="ul_data">
+
+        </ul>
+        <button type="button" id="btn">데이터 로드</button>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/middle6.html -->

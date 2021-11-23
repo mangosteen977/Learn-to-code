@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>자바스크립트 4일차(4) (중급) - 배열 )응용 </title>
+        <script>
+            const array = {
+                "mid":["mangosteen","mango","coconut","jackfruit","drangonfruit"],
+                "mname":["망고스틴","망고","코코넛","잭프룻","용과"],
+                "mtel":["000-0000-0000","111-1111-1111","222-2222-2222",
+                "333-3333-3333","444-4444-4444"]
+            };
+            //console.log(array["mid"]);//"mangosteen", "mango", "coconut", "jackfruit", "drangonfruit"
+            //console.log(array.mid[4]);//drangonfruit
+            var ff,zz;
+            for(ff in array){ //배열의key기준으로 3바퀴
+                for(zz in array[ff]){ //배열key[node]의 내부값 5바퀴
+                    // console.log(array[ff][0]);//mangosteen망고스틴000-0000-0000
+                    //console.log(zz);//0~4*3바퀴
+                };
+            };
+            //for in + for in으로 출력하기.
+            var key2,key3;
+            for(key2 in array.mid){
+                for(key3 in array){
+                    //console.log(array[key3][key2])
+                }
+            }
+            //응용문제2.숙제 forEach 이용해서 다음 배열을 콘솔로 출력시키시오.
+            //for in + forEach
+            var keys;
+            for(keys in array){
+                //console.log(keys)//mid mname mtel
+                array[keys].forEach(function(a,b,c){
+                   // console.log(a)
+                });
+            }
+        </script>
+        <style>
+            .ulcss { margin: 0; padding: 0; list-style: none;}
+            .ulcss > li {
+                float: left; height:30px; 
+                line-height: 30px;
+                font-size: 12px;
+                border:1px solid black;
+                text-align: center;
+            }
+            .ulcss > li:nth-child(1){ width: 100px; }
+            .ulcss > li:nth-child(2){ width: 100px; }
+            .ulcss > li:nth-child(3){ width: 200px; }
+            .list { display: block; width: 408px; height: auto;}
+            .nodata{ display: none; clear: both; width: 99.7%; height: 30px; line-height: 30px; font-size: 12px; list-style: none; margin: 0; padding: 0;}
+            .nodata > li {width: 100%; height: inherit; text-align: center; box-sizing: border-box; border: 1px solid black;}
+        </style>
+    </head>
+    <body>
+        <ul class="ulcss">
+            <li>아이디</li>
+            <li>고객명</li>
+            <li>전화번호</li>
+        </ul>
+        
+        <span id="list" class="list">
+            <ul class="nodata" id="nodata"><li>검색된 고객이 없습니다.</li></ul>
+            <!-- (출력 예시)
+            <ul class="ulcss">
+                <li>아이디</li>
+                <li>고객명</li>
+                <li>전화번호</li>
+            </ul> -->
+        </span>
+        <span style="clear: both;"></span>
+        <form id="f" name="f" enctype="application/x-www-form-urlencoded">
+        아이디 검색<input type="text" name="search" id="search">
+        <input type="button" value="검색" onclick="check();">&nbsp;
+        <input type="button" value="목록" onclick="gopage();">
+        </form>
+    </body>
+    <script>
+        function gopage(){ //목록 클릭시
+            location.href = "./middle17.html";
+        }
+        //파라미터 값을 받아 검색창에 출력
+        let ser = location.search;
+            var ser2 ="";
+            if(ser!=""){
+                ser2 = ser.split("?search=");
+                console.log(ser2[1])
+                document.getElementById("search").value = ser2[1];
+            };
+
+        //span id="list" 에 ul이랑 li랑 내용 출력~~~시키시오~~~
+        var k1,k2;
+        let sok = "no";
+        for(k1 in array.mid){
+            if(ser2[1]==array.mid[k1]){
+                var ul = document.createElement("ul"); //ul을 각 5개 만든다.
+                //ul.setAttribute("class","ulcss"); //각 ul에 class name을 지정한다.
+                ul.className = "ulcss";
+                for(k2 in array){ //3번 회전을 시킨다.
+                    var li = document.createElement("li"); //li를 3개 만든다.
+                    li.innerText = array[k2][k1]; //각 li에 아이디,고객명,전화번호를 찍는다.
+                    //li.crateTextNode = array[k2][k1]; //appendchild가 안된다.?
+                    ul.appendChild(li); //li를 ul에 넣는다.
+                    document.getElementById("list").appendChild(ul); //ul을 li에 넣는다.
+                }
+                sok = "ok";
+            }
+            else if(ser==""){
+                var ul = document.createElement("ul"); //ul을 각 5개 만든다.
+                //ul.setAttribute("class","ulcss"); //각 ul에 class name을 지정한다.
+                ul.className = "ulcss";
+                for(k2 in array){ //3번 회전을 시킨다.
+                    var li = document.createElement("li"); //li를 3개 만든다.
+                    li.innerText = array[k2][k1]; //각 li에 아이디,고객명,전화번호를 찍는다.
+                    //li.crateTextNode = array[k2][k1]; //appendchild가 안된다.?
+                    ul.appendChild(li); //li를 ul에 넣는다.
+                    document.getElementById("list").appendChild(ul); //ul을 li에 넣는다.
+                }
+                sok = "ok";
+            };
+        };
+        if(sok=="no"){
+            document.getElementById("nodata").style.display = "block";
+        }
+        //검색을 누르면 파라미터 값이 보이게 현재 페이지로 서브밋을 보내시오
+        function check(){
+            let s = document.getElementById("search").value;
+            if(s!=""){
+                f.method = "GET";
+                f.action = "./middle17.html";
+                f.submit();
+            }
+            else{
+                alert("검색어를 입력하세요.");
+            }
+        };
+    </script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/middle17.html -->

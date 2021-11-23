@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Ajax 1일차(4) - Javascript( json - index4.json ) </title>
+        <!-- Js : Javascript, o : object, n : notation(표기법) -->
+        <style>
+            *{font-size: 14px;}
+            .survey{ width: 200px; height: 300px; border: 1px solid #ccc; }
+            .blank{display: block;}
+        </style>
+    </head>
+    <body>
+        <div class="survey" id="survey">
+        </div>
+        <input type="button" value="설문제출">
+    </body>
+    <script>
+        let jm;
+        function windowck(){
+            if(window.XMLHttpRequest){
+                return new XMLHttpRequest();
+            }
+        };
+        function fileopen(){
+            if(jm.readyState==XMLHttpRequest.DONE && jm.status==200){
+                jsonfile(this);
+            }
+        };
+        jm = windowck();
+        jm.onreadystatechange = fileopen; //()없는 이유 == 콜백함수 (리턴받음)
+        jm.open("GET","./index4.json",true);
+        jm.send();
+        function jsonfile(a){
+            let j = JSON.parse(a.response);//parse : 구문분석(?)
+            //JSON.parse : 문자를 배열로 인식하게 함
+            // console.log(j.length)
+            // console.log(j[0]);
+            var f;
+            var html = "";
+            var html2;
+            
+            //IE(X) : append이용, <input><label></label>형태
+            for(f in j){
+                //input
+                html = document.createElement("input");
+                html.setAttribute("type","radio");
+                html.setAttribute("id","r"+f);
+                html.setAttribute("name","ra");
+                html.setAttribute("value",j[f]);
+                //label
+                html2 = document.createElement("label");
+                html2.setAttribute("for","r"+f);
+                html2.innerHTML=j[f];
+                //blank(radio 분리용)
+                let blank = document.createElement("span");
+                blank.className="blank";
+                //append출력
+                document.getElementById("survey").append(html,html2,blank);
+            };
+            
+           
+            // for(f in j){
+            //     //IE(X) : append이용
+            //     // html = document.createElement("input");
+            //     // html.id="r"+f;
+            //     // html.setAttribute("type","radio");
+            //     // var h = document.createTextNode(j[f]);
+            //     // document.getElementById("survey").append(html,h);
+
+            //    //IE(O) innerHtml이용
+            //    var ids = "r"+f;
+            //    html += "<input type='radio' id = '"+ids+"'value = '"+j[f]+"'>"+j[f]+"<br>"
+            // };
+            // document.getElementById("survey").innerHTML=html;
+            
+           
+            // j.forEach(function(a,b,c){
+            //     // console.log(b)
+            //     var ids = "r"+b;
+            //     html += "<input type='radio' id = '"+ids+"'value = '"+a+"'>"+a+"<br>"
+            // });
+            // document.getElementById("survey").innerHTML=html;
+            
+        }
+
+    </script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/ajax/index4.html -->
+<!-- http://mangsteen977.dothome.co.kr/ajax/index4.json -->

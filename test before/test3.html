@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>test1.html</title>
+        <style>
+            body{margin: 0; padding: 0; box-sizing: border-box;}
+            ul,ol,dl{margin: 0; padding: 0; list-style: none;}
+            span,label,main{display: block;}
+            a{text-decoration: none;}
+
+            .box{
+                width: 1000px;
+                height: 50px;
+                background-color: #afafaf;
+                position: relative;
+            }
+            .left{
+                width: 500px;
+                height: 60px;
+                position: absolute;
+            }
+            .left li{
+                float: left;
+                width: 100px;
+                font-size: 14px;
+                color: #2b2b2b;
+                height: 60px;
+                text-align: center;
+                line-height: 50px;;
+            }
+            .right{
+                width: 500px;
+                height: 50px;
+                position: absolute;
+                right: 0;
+            }
+            .right li{
+                float: right;
+                width: 100px;
+                font-size: 14px;
+                color: #2b2b2b;
+                height: 60px;
+                text-align: center;
+                line-height: 50px;;
+            }
+            .left li:nth-child(3){
+                color: #f20707;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <ul class="left">
+                <li>HOME</li>
+                <li>NEWS</li>
+                <li>PRODUCT</li>
+                <li>BEST</li>
+                <li>EVENT</li>
+            </ul>
+            <ol class="right">
+                <li>건강정보</li>
+                <li>리빙</li>
+            </ol>
+        </div>
+
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/test/test3.html -->

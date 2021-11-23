@@ -1,0 +1,1 @@
+export let a = (n) => { console.log(n*10) };

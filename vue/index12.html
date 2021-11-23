@@ -1,0 +1,72 @@
+<?php
+    $data = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 2일차 (7) vue 다중 체크 라디오</title>
+        <script src="../jq/jquery.js"></script>
+        <!-- vue 버전 1.6.4??? -->
+        <script src="http://cdn.jsdelivr.net/npm/vue"></script> <!--상용버전 값 가져옴^_~-->
+        <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> --> <!--개발버전 값 못가져옴^.^-->
+        <style>
+            *{box-sizing: border-box;}
+            
+        </style>
+    </head>
+    <body>
+        <!-- vue 체크박스 라디오 checkbox radio ==>  value와 v-model 함께 사용해야 한다.
+        체크박스/라디오 외에는 v-model만 단독 사용해도 됨.-->
+        <section id="box">
+           <input type="checkbox" value="HTML5" v-model="checks">HTNL
+           <input type="checkbox" value="CSS" v-model="checks">CSS
+           <input type="checkbox" value="Vue" v-model="checks">Vue
+           <span>{{checks}}</span>
+        </section>
+        <section id="box2">
+            <input type="radio" name="agree" value="Y" v-model="agrees">동의함
+            <input type="radio" name="disagree" value="N" v-model="agrees">동의안함
+            <input type="button" v-model="btn" v-on:click="abc">
+            <span>{{agrees}}</span>
+        </section>
+        <!-- 수량 선택 ??? 숫자 더하기 빼기 ??? 값 감소 및 증가 시키기 ????????-->
+        <section id="box3">
+            <input type="button" v-model="btn1" v-on:click="numbers--">
+            <input type="button" v-model="btn2" v-on:click="numbers++">
+            <span>{{numbers}}</span>
+        </section>
+    </body>
+    <script>
+        let c = new Vue({
+            el:"#box3",
+            data:{
+                btn1:"-",
+                btn2:"+",
+                numbers:0
+            }
+        })
+        let b = new Vue({
+            el:"#box2",
+            data:{
+                agrees:"N",
+                btn:"회원가입"
+            },
+            methods:{
+                abc:function(){
+                    if(this.agrees=="N"){
+                        alert("다음 단계 진행을 위해 동의함에 체크해주세요.");
+                    }
+                }
+            }
+        });
+        let a = new Vue({
+            el:"#box",
+            data:{
+               //checks:"" //동일 v-model의 객체가 전체 선택 됨. (true/false)
+               checks:[] //선택 된 객체 밸류값이 []에 배열로 출력 됨.
+            }
+        });
+    </script>
+</html>

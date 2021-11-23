@@ -1,0 +1,98 @@
+@charset "UTF-8";
+#body {
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  width: 1200px;
+  height: auto;
+  margin: 0 auto;
+}
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+label,
+main,
+span {
+  display: block;
+}
+
+header {
+  width: inherit;
+  height: auto;
+}
+nav {
+  width: inherit;
+  height: auto;
+}
+.section_1 {
+  width: inherit;
+  height: auto;
+}
+.section_2 {
+  width: inherit;
+  height: auto;
+  margin-top: 10px;
+}
+.section_3 {
+  width: inherit;
+  height: auto;
+  margin-top: 35px;
+}
+main {
+  width: inherit;
+  height: auto;
+}
+footer {
+  width: inherit;
+  height: auto;
+}
+.box_slide {
+  width: auto;
+  height: 946px;
+  position: absolute;
+  right: 0;
+  top: 50px;
+  z-index: 10;
+}
+.box_slide > div {
+  float: left;
+}
+.side_menu {
+  width: 35px;
+  height: 90px;
+  background-color: #303030;
+  font-size: 17px;
+  color: white;
+  border-radius: 5px 0 0 5px;
+  line-height: 35px;
+  text-align: center;
+  cursor: pointer;
+  padding-top: 27.5px;
+}
+.ch {
+  height: 35px;
+  transform: rotate(90deg);
+}
+.side_menutool {
+  background-image: url("./images/logo_channel.png");
+  background-repeat: no-repeat;
+  background-size: inherit;
+  background-position-y: 10px;
+  background-color: black;
+  display: none;
+  width: 200px;
+  height: 946px;
+  border: 1px solid black;
+}
+.slide_menu_spans {
+  width: 200px;
+  height: 35px;
+  cursor: pointer;
+}

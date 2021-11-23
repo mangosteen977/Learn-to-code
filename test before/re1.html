@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Cpmpatible" content="IE=Edge, chorome=1">
+        <title>re1</title>
+        <style>
+            body{margin: 0; padding: 0; box-sizing: border-box;}
+            ul,ol,dl{margin: 0; padding: 0; list-style: none;}
+            span,label,main{display: block;}
+            a{text-decoration: none;}
+            /*1번*/
+            .box{
+                width: 400px;
+                height: 400px;
+                background-color: blue;
+                position: relative;
+            }
+            .bbox{
+                width: 50px;
+                height: 50px;
+                background-color: black;
+                position: absolute;
+                left: 100%;
+            }
+            .rbox{
+                width: 260px;
+                height: 40px;
+                background-color: red;
+                position: absolute;
+                bottom: 50px;
+                left: 50%;
+                margin-left: -130px;
+            }
+            /* 2번 */
+            .lbox{
+                width: 1000px;
+                height: 70px;
+                background-color: blue;
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-top: 15px;
+                box-sizing: border-box;
+            }
+            .gbox{
+                width: 200px;
+                height: 40px;
+                background-color: gray;
+                display: inline-block;
+            }
+            .yul{
+                width: 400px;
+                height: 40px;
+                float: right;
+            }
+            .yul > li{
+                width: 100px;
+                height: 40px;
+                float: left;
+                background-color: black;
+            }
+            .yul > li:nth-child(odd){
+                background-color: yellow;
+            }
+            /* 3번 */
+            .bol{
+                width: 280px;
+                height: 40px;
+            }
+            .bol > li{
+                width: 140px;
+                height: 40px;
+                background-color: blue;
+                color: white;
+                float: left;
+                text-align: center;
+                line-height: 40px;
+            }
+            .bol > li:last-child{
+                background-color: gray;
+                color: black;
+            }
+            .boxol{
+                width: 600px;
+                height: 230px;
+                border: 1px solid black;
+                padding: 25px;
+                box-sizing: border-box;
+            }
+            .boxol > li{
+                width: 550px;
+                height: 30px;
+                border: 1px solid black;
+                border-bottom: 1px dashed black;
+            }
+            /* 4번 */
+            .emailul{
+                width: 800px;
+                height: auto;
+                margin: 0 auto;
+                margin-bottom: 40px;
+            }
+            .emailul > li:first-child{
+                width: 800px;
+                height: 100px;
+            }
+            .email{
+                width: 800px;
+                height: 100px;
+                overflow-y: scroll;
+            }
+            .emailul > li:last-child{
+                width: 800px;
+                height: 30px;
+                line-height: 30px;
+                text-align: right;
+            }
+            /* 5번 */
+            .bkol{
+                width: 1000px;
+                height: 30px;
+                text-align: right;
+                margin-bottom: 15px;
+                box-sizing: border-box;
+            }
+            .bkol > li{
+                width: 100px;
+                height: 30px;
+                float: right;
+                font-size: 12px;
+                font-weight: bold;
+                text-align: center;
+                line-height: 30px;
+                background-color: blue;
+                color: white;
+                margin-left: 10px;
+                box-sizing: border-box;
+            }
+            .bkol > li:first-child{
+                background-color: black;
+            }
+            .tb{
+                width: 1000px;
+                height: 90px;
+                border: 0;
+                text-align: center;
+                vertical-align: middle;
+            }
+            .btd{
+                width: 200px;
+                height: 90px;
+                background-color: blue;
+                color: white;
+            }
+            .ytd{
+                width: 200px;
+                height: 30px;
+                background-color: yellow;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 1번 -->
+        <div class="box">
+            <span class="bbox"></span>
+            <span class="rbox"></span>
+        </div><br><br>
+        <!-- 2번 -->
+        <div class="lbox">
+            <span class="gbox"></span>
+            <ul class="yul"><li></li><li></li><li></li><li></li></ul>
+        </div><br><br>
+        <!-- 3번 -->
+        <ol class="bol">
+            <li>공지사항</li>
+            <li>자유게시판</li>
+        </ol>
+        <ol class="boxol">
+            <li></li><li></li><li></li><li></li><li></li><li></li>
+        </ol><br><br>
+        <!-- 4번 -->
+        <ul class="emailul">
+            <li><textarea class="email">[이메일 정책]</textarea></li>
+            <li><input type="radio" name="email">동의함
+                <input type="radio" name="email" checked>동의안함</li>
+        </ul>
+        <ul class="emailul">
+            <li><textarea class="email">[이메일 정책]</textarea></li>
+            <li><input type="radio" name="join">동의함
+                <input type="radio" name="join" checked>동의안함</li>
+        </ul><br><br>
+        <!-- 5번 -->
+        <ol class="bkol">
+            <li>리스트 다운로드</li><li>게시판 생성</li>
+        </ol>
+        <table class="tb" border="1 sold gray" cellpadding="0" cellspacing="0">
+            <tr>
+                <td rowspan="3" class="btd">게시판 글/댓글 리스트</td>
+                <td class="ytd">공지사항</td>
+                <td class="ytd">자유게시판</td>
+                <td class="ytd">자료실</td>
+                <td class="ytd">FAQ</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>55</td>
+                <td>5</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>-</td>
+                <td>105</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+        </table><br><br>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/test%20before/re1.html -->

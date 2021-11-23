@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery 2일차(4) - NODE+DOM NODE </title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(document).ready(function(){
+                var $n = 0;
+                //eq() : Jquery node입력, eq(0~n)
+            //노드 숨김(fadeOut)
+                $("#node_del").click(function(){
+                    var $node = $(".labelcss").length;
+                    //class가 모두 동일하니깐 $(".class").length;로 갯수를 확인
+                    //console.log($node);
+                    $(".labelcss").eq($n).fadeOut();
+                    //fadeOut : 해당 노드를 숨김. 총 노드갯수 같다.
+                    $n = $n+1;
+                    if($n > $node){
+                        alert("삭제 할 노드가 없습니다.");
+                    }
+                });
+            //노드 숨김해제(fadeIn)
+                    $("#node_all").click(function(){
+                       if($n<0){
+                        alert("더이상 복원 할 노드가 없습니다.");
+                       }
+                       else{
+                           $n = $n - 1; //전역변수 노드값을 먼저 확인 후, 수식계산 후 효과를 적용
+                           $(".labelcss").eq($n).fadeIn();
+                       }  
+                });
+            //노드 삭제(remove)
+                $("#node_del2").click(function(){
+                    var $node = $(".labelcss").length;
+                    $(".labelcss").eq($n).remove();
+                    //.remove(n); : 해당 노드를 완전 삭제함. 총 노드갯수도 줄어든다.
+                    if($node==0){
+                        alert("삭제 할 노드가 없습니다.");
+                    }
+                });
+            });
+        </script>
+        <style>
+            body{margin: 0; padding: 0;}
+            label,span{display: block;}
+            /*각 label = 크기 : 100*40. 배경 : 빨/주/노/초/파*/
+            .labelcss{ width: 100px; height: 40px;}
+            .labelcss:nth-child(1){background-color: indianred;}
+            .labelcss:nth-child(2){background-color: darkorange;}
+            .labelcss:nth-child(3){background-color: gold;}
+            .labelcss:nth-child(4){background-color: darkolivegreen;}
+            .labelcss:nth-child(5){background-color: cornflowerblue;}
+            /*
+            #label0{background-color: indianred;}
+            #label1{background-color: darkorange;}
+            #label2{background-color: gold;}
+            #label3{background-color: darkolivegreen;}
+            #label4{background-color: cornflowerblue;}
+            */
+        </style>
+    </head>
+    <body>
+        <label class="labelcss" id="label0"></label>
+        <label class="labelcss" id="label1"></label>
+        <label class="labelcss" id="label2"></label>
+        <label class="labelcss" id="label3"></label>
+        <label class="labelcss" id="label4"></label>
+        <input type="button" value="DOM노드삭제" id="node_del">
+        <input type="button" value="노드삭제" id="node_del2">
+        <input type="button" value="DOM노드복원" id="node_all">
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/index9.html -->

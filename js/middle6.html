@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>자바스크립트 2일차(3) (중급) - 간편회원가입+DB(데이터베이스)연결 </title>
+        <script src="../jq/jquery.js"></script>
+        <script>
+            function joinmem(){
+                //email 값 --> hidden 보내기
+                var a = document.getElementById("mail_id").value;
+                var aa = document.getElementById("mail_id2").value;
+                var aaa = a+"@"+aa;
+                var email =document.getElementById("email").value = aaa;
+                //각 input 값
+                var id = document.getElementById("id").value;
+                var name = document.getElementById("name").value;
+                var pw = document.getElementById("pw").value;
+                var check = document.getElementById("check").checked;
+                //입력 여부 검사
+                if(id==""){alert("아이디를 입력하세요");}
+                else if(name==""){alert("이름을 입력하세요");}
+                else if(pw==""){alert("비밀번호를 입력하세요");}
+                else if(a==""||aa==""){alert("이메일을 입력하세요");}
+                else if(check != true){alert("약관에 동의해주세요");}
+                else{
+                    // form 전송 방식, 내용 숨겨서 submit 전송(?)
+                    // ==> 트러블슈팅(?) 강제로 공격?을 방지
+                    join.method="POST";
+                    join.action="join.php";
+                    join.submit();
+                    //form submit(); 전송방식을(method, action) 스크립트에 쓴다.
+                }
+            }
+        </script>
+        <style>
+            body{margin: 0; padding: 0;}
+            *{box-sizing: border-box;}
+            ul{list-style: none; margin: 0; padding: 0;}
+            /*회원가입폼*/
+            #joinbox{ height: auto; text-align: center; }
+            #joinbox>p{font-weight: bold; color: navy;}
+            #join{ width: 350px; height: auto; margin: 0 auto; }
+            #info{ width: 350px; height: 185px; margin-bottom: 15px; }
+            #info>li{ width: 350px;  height: 37px; border-bottom: 2px solid navy; }
+            #info>li>input{ width: 350px; height: 35px; border: none; text-indent: 5px;}
+            #info>li:nth-child(4)>input{width: 164px; height: 35px;}
+            #info>li:nth-child(5){line-height: 37px; text-align: left; font-size: 12px;}
+            #info>li:nth-child(5)>input{width: 15px; height: 15px;}
+            #btn{width: 120px; height: 35px; background-color: aliceblue;
+                border: none; border-radius: 5px; color: navy; font-weight: bold; cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <section id="joinbox">
+            <p>간편회원가입</p>
+            <!-- form 암호화 enctype -->
+            <form id="join" enctype="application/x-www-form-urlencoded">
+                <ul id="info">
+                    <li><input type="text" id="id" name="member_id" placeholder="아이디를 입력하세요"></li>
+                    <li><input type="text" id="name" name="member_user" placeholder="사용자명을 입력하세요"></li>
+                    <li><input type="password" id="pw" name="member_pw" placeholder="패스워드를 입력하세요"></li>
+                    <li>
+                        <input type="text" placeholder="이메일 아이디" id="mail_id">@
+                        <input type="text" placeholder="이메일 주소" id="mail_id2">
+                    </li>
+                    <li><input type="checkbox" id="check" value="Y" name="member_agree">회원 이용약관에 동의</li>
+                </ul>
+                <input type="button" id="btn" value="간편회원가입" onclick="joinmem();">
+                <input type="hidden" id="email" name="member_email">
+            </form>
+        </section>
+    </body>
+    <script>
+
+    </script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/middle6.html -->
+<!-- db.php , join.php 파일로 DB에 입력됨. -->

@@ -1,0 +1,194 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700;900&display=swap");
+/* font-family: 'Noto Sans KR', sans-serif; (100, 400, 700, 900) */
+.pd_section {
+  margin: 0 auto;
+  width: 99.99%;
+  min-width: 320px;
+  max-width: 1200px;
+  height: 580px;
+  background-color: none;
+  margin: 0 auto;
+}
+
+.pd_box {
+  width: 100%;
+  height: auto;
+  background-color: #f0f1f5;
+  position: relative;
+  text-align: center;
+  padding: 40px 0;
+  overflow: hidden;
+}
+
+.pd_box > p {
+  width: 250px;
+  height: 35px;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 35px;
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  margin: 0 auto;
+  border-bottom: 2px solid black;
+  margin-bottom: 5px;
+}
+
+.pd_box > div {
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+/* left & right */
+.pd_left,
+.pd_right {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+}
+
+.pd_left > img,
+.pd_right > img {
+  width: 30px;
+  height: 30px;
+  background-color: none;
+  cursor: pointer;
+}
+
+.pd_left {
+  left: 5px;
+}
+
+.pd_right {
+  right: 5px;
+}
+
+/*상품정렬버튼*/
+.pd_list_btns {
+  width: 250px;
+  height: 35px;
+  background-color: none;
+  margin: 0 auto;
+}
+
+.pd_list_btns > span {
+  width: 30%;
+  height: 25px;
+  background-color: rgba(90, 154, 184, 0.5);
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 25px;
+  color: white;
+  text-align: center;
+  font-weight: unset;
+  font-size: 12px;
+}
+
+.pd_list_btns > span:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+  color: black;
+}
+
+/* 상품box */
+.pd_sbox {
+  width: 80%;
+  height: auto;
+  background-color: none;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.pd_sbox > .pd_ovbox {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  margin: 0 auto;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-transition: all ease 3s;
+  transition: all ease 3s;
+  /* 상품출력 */
+}
+
+.pd_sbox > .pd_ovbox > .pd_imgb {
+  width: 220px;
+  height: auto;
+  background-color: none;
+  margin-right: 20px;
+}
+
+.pd_sbox > .pd_ovbox > .pd_imgb > span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: inherit;
+  font-size: 12px;
+}
+
+.pd_sbox > .pd_ovbox > .pd_imgb > span:nth-child(1) {
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.pd_sbox > .pd_ovbox > .pd_imgb > span:nth-child(1) > img {
+  width: 220px;
+  height: 220px;
+  background-color: none;
+}
+
+.pd_sbox > .pd_ovbox > .pd_imgb > span:nth-child(2) {
+  height: 50px;
+  border-bottom: 1.5px solid black;
+}
+
+.pd_sbox > .pd_ovbox > .pd_imgb > span:nth-child(3) {
+  height: 20px;
+}
+
+.pd_sbox > .pd_ovbox > .pd_imgb > span:nth-child(4) {
+  height: 20px;
+  color: gray;
+  font-weight: normal;
+}
+
+/* 할인 */
+.product_dc {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background-color: skyblue;
+  line-height: 50px;
+  text-align: center;
+  font-weight: 700;
+  color: white;
+  position: absolute;
+  z-index: 20;
+  right: 3%;
+  top: 3%;
+}
+
+font {
+  font-weight: bold;
+  color: black;
+}
+/*# sourceMappingURL=hello_product.css.map */

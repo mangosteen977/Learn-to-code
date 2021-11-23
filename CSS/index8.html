@@ -1,0 +1,38 @@
+<?php
+    $date=date("YmdHis")
+    ?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE-Edge, chrome=1">
+        <title>CSS 3.0 2일차 @import + img</title>
+        <link type="text/css" rel="stylesheet"
+        href="./index8.css?v=<?php echo $date?>">
+        <!-- 파빌리온(파비콘) : 웹페이지 접속 시 탭/url에 아이콘을 표시
+             모바일/PC 의 경우 아이콘을 바로가기 등으로 출력이 가능.
+             .ico 파일만 가능, img파일 ico convert과정 필요.
+             사이즈는 150*150px정도가 적당하다.
+             파일 형식은 jpg/jpeg/png(O) gif(X)-->
+        <link rel="shortcut icon" type="image/x-icon" href="./logo.ico">
+        <script>
+            function abc(){
+                location.href="http://naver.com";
+            }
+        </script>
+    </head>
+    <body>
+        <span class="font1">WEB TEST</span>
+        <!--<div class="imgs"></div>-->
+        <dl class="quick">
+            <!-- 아이콘 35*35px -->
+            <dt>Quick Menu</dt>
+            <dd title="메인페이지" onclick="javascript:void abc();"></dd><!--script>function과 함께해서 이동하게 함-->
+            <dd title="내 정보"></dd>
+            <dd title="배송확인"></dd>
+            <dd title="장바구니"></dd>
+            <dd title="결제내역"></dd>
+            <dd title="고객센터"></dd>
+        </dl>
+    </body>
+    </html>

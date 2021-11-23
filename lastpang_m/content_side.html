@@ -1,0 +1,164 @@
+<style>
+	.content_side_outline {
+		width: 360px;
+		height: 408px;
+		margin: 24px auto 24px auto;
+	}
+
+	.sidebanner_b {
+		width: 360px;
+		height: 50px;
+	}
+
+	.sidebanner_b:first-child {
+		margin-bottom: 24px;
+	}
+
+	.tab_b {
+		width: 320px;
+		height: 260px;
+		margin: 0 auto;
+		margin-bottom: 24px;
+		border: 1px solid #dbb098;
+		border-top: 0;
+	}
+
+	.tab_title_b {
+		width: 320px;
+		height: 40px;
+		clear: both;
+		border-bottom: 1px solid #dbb098;
+	}
+
+	.tab_title_b div {
+		width: 100px;
+		height: 40px;
+		float: left;
+		text-align: center;
+		line-height: 40px;
+		color: #fff;
+	}
+
+	.tab_title_b div:last-child {
+		float: right;
+	}
+
+	.tab_normal_b {
+		background-color: #dbb098;
+	}
+
+	.tab_active_b {
+		background-color: #d77772;
+	}
+
+	.tab_list_b {
+		width: 320px;
+		height: 160px;
+	}
+
+	.tab_list_b ul {
+		width: 320px;
+		height: 160px;
+		margin: 0;
+		padding: 0;
+		padding-left: 45px;
+	}
+
+	.tab_list_b li {
+		width: 275px;
+		height: 40px;
+		line-height: 40px;
+	}
+
+	.tab_button {
+		width: 320px;
+		height: 60px;
+		text-align: right;
+		padding: 15px 15px 0 0;
+		box-sizing: border-box;
+	}
+
+	.tab_button button {
+		width: 70px;
+		height: 30px;
+		font-size: 13px;
+		color: #fff;
+		background-color: #d6746f;
+		border: 0;
+		line-height: 15px;
+		border-radius: 5px;
+	}
+</style>
+
+<div class="content_side_outline">
+	<div class="sidebanner_b">
+		<img id="sidebanner1_b" src="./img/sidebanner1.png">
+	</div>
+
+	<div class="tab_b">
+		<div class="tab_title_b">
+			<div value="event">이벤트</div>
+			<div value="notice">공지사항</div>
+		</div>
+
+		<div class="tab_list_b">
+			<ul></ul>
+		</div>
+
+		<div class="tab_button">
+			<button>전체보기</button>
+		</div>
+	</div>
+
+	<div class="sidebanner_b"><img id="sidebanner2_b" src="./img/sidebanner2.png"></div>
+</div>
+
+<script>
+	$(function () {
+		//사이드배너 랜덤
+		var random1_b
+		var random2_b
+		numbering();
+
+		function numbering() {
+			random1_b = Math.ceil(Math.random() * 6);
+			random2_b = Math.ceil(Math.random() * 6);
+
+			if (random1_b == random2_b) {
+				numbering();
+			}
+
+			return random1_b, random2_b;
+		}
+
+		$("#sidebanner1_b").attr({ "src": "img/sidebanner" + random1_b + ".png" });
+		$("#sidebanner2_b").attr({ "src": "img/sidebanner" + random2_b + ".png" });
+
+		//탭
+		$(".tab_title_b div").first().attr({ "class": "tab_active_b" });
+		$(".tab_title_b div").last().attr({ "class": "tab_normal_b" });
+
+		$.get("src/event.json", function (data) {
+			$.each(data, function () {
+				$(".tab_list_b ul").append($("<li>").text(this.title));
+			});
+		}, "json");
+
+		$(".tab_title_b div").click(function () {
+			if ($(this).hasClass("tab_active_b")) {
+				return false;
+			} else {
+				$(".tab_title_b div").attr({ "class": "tab_normal_b" });
+				$(this).attr({ "class": "tab_active_b" });
+
+				$(".tab_list_b li").remove();
+				$url_b = "src/" + $(this).attr("value") + ".json";
+				$.get($url_b, function (data) {
+					$.each(data, function () {
+						$(".tab_list_b ul").append($("<li>").text(this.title));
+					});
+				}, "json");
+			};
+		});
+	});
+</script>

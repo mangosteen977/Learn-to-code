@@ -1,0 +1,130 @@
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="../js/jquery.js"></script>
+<script src="./add_member.js?v=<?=$v?>"></script>
+<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+<link rel="stylesheet" type="text/css" href="./add_member.css?v=<?php echo $v;?>">
+<!-- 필수입력 값 : 아이디, 패스워드, 고객명, 이메일, 닉네임, 휴대폰, 주소, 도로명주소, 상세주소, 자동등록방지, 히든 값 -->
+<form name="mfrm" id="mfrm" action="./add_memberok.php" method="POST" enctype="application/x-www-form-urlencoded">
+    <input type="hidden" name="terms" value="<?php echo $agree1?>">
+    <input type="hidden" name="mail_terms" value="<?php echo $agree2?>">
+    <input type="hidden" name="M_group" value="N">
+    <!--group (N:nomal, S:silver, G:gold, V:vip )-->
+    <input type="hidden" name="M_level" value="3">
+    <!--level (1:간편회원가입,2:직접회원가입,3:관리자등록)-->
+    <section class="join_detail">
+        <article>
+            <div class="svgs_box"><span class="svgs"><img src="./image/login.svg"></span><span>사이트 이용정보 입력</span></div>
+            <table border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                    <tr>
+                        <td>아이디</td>
+                        <td colspan="3">
+                            <input type="text" name="M_id" placeholder="아이디를 입력하세요">
+                            <label class="txt_s">
+                                영문자, 숫자, _만 입력 가능. 최소 3자이상 입력하세요.
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>비밀번호</td>
+                        <td><input type="password" name="M_pass" placeholder="비밀번호를 입력하세요"></td>
+                        <td>비밀번호 확인</td>
+                        <td><input type="password" id="M_pass2" placeholder="비밀번호를 한번 더 입력하세요"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+        <article>
+            <div class="svgs_box"><span class="svgs"><img src="./image/personal_setting.svg"></span><span>개인정보 입력</span>
+            </div>
+            <table border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                    <tr>
+                        <td>이름</td>
+                        <td><input type="text" name="M_name" placeholder="이름을 입력하세요"></td>
+                    </tr>
+                    <tr>
+                        <td>닉네임</td>
+                        <td>
+                            <input type="text" name="M_nick" placeholder="닉네임을 입력하세요">
+                            <label class="txt_s">
+                                공백없이 한글, 영문, 숫자만 입력가능(한글2자, 영문4자 이상).닉네임을 바꾸면 60일 이내에는 변경 할 수 없습니다.
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>E-mail</td>
+                        <td>
+                            <input type="text" name="M_email" class="middle_size" placeholder="이메일을 입력하세요">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>전화번호</td>
+                        <td><input type="text" name="M_tel2" placeholder="전화번호를 입력하세요"></td>
+                    </tr>
+                    <tr>
+                        <td>휴대폰번호</td>
+                        <td><input type="text" name="M_tel" maxlength="11" placeholder="휴대폰번호를 입력하세요" required></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">주소</td>
+                        <td>
+                            <input type="text" name="M_post" class="small_size postcodify_postcode5" maxlength="5"
+                                placeholder="우편번호" readonly>
+                            <input type="button" value="주소 검색" id="addsearch" class="small_size">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="M_road" class="big_size postcodify_address"
+                                placeholder="주소검색을 통해 도로명 주소를 입력하세요" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="M_addr" class="big_size" placeholder="상세주소를 입력하세요"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="big_size" placeholder="참고항목"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+        <article>
+            <div class="svgs_box"><span class="svgs"><img src="./image/setting.svg"></span><span>기타 개인설정</span></div>
+            <table border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                    <tr>
+                        <td>메일링서비스</td>
+                        <td><label><input type="checkbox" name="M_agree1" value="Y">정보메일을 받겠습니다.</label></td>
+                    </tr>
+                    <tr>
+                        <td>SNS 수신여부</td>
+                        <td><label><input type="checkbox" name="M_agree2" value="Y">휴대폰 문자메세지를 받겠습니다.</label></td>
+                    </tr>
+                    <tr>
+                        <td>정보공개</td>
+                        <td>
+                            <label><input type="checkbox" name="M_open" value="Y">다른분들이 나의 정보를 볼 수 있도록 합니다.</label>
+                            <label>정보공개로 바꾸시면 앞으로 0일 이내에는 변경이 안됩니다.</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">자동등록방지</td>
+                        <td>
+                            <span class="sc"><img src="./code.php" id="codes"></span>
+                            <input type="text" id="security" maxlength="6" name="M_security">
+                            <span id="refresh_btn" class="refresh_btn" onclick="refresh();" title="새로고침"><img
+                                    src="./image/refresh.svg"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label class="txt_s">자동등록방지 숫자를 순서대로 입력하세요.</label></td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+        <input type="button" value="회원등록" class="btn_new_mem" onclick="btn_new_mem();">
+    </section>
+</form>

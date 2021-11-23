@@ -1,0 +1,39 @@
+@charset "UTF-8";
+body{margin:0; padding: 0; font-size: 12px;}
+ul, ol{list-style: none; margin: 0; padding: 0;}
+span, label, main{display: block;}
+a{text-decoration: none;}
+.box{width: 100px; height: 100px; background-color: blue;
+padding-left: 50px; padding-top: 50px; box-sizing: border-box;}
+.olcss{width: 300px; height: 30px;}
+.olcss>li{width: 100px; height: 30px; text-align: center;
+    line-height: 30px; border: 1px solid black;
+    float: left; box-sizing: border-box;}
+/* box-sizing: 오브젝트의 가로,세로를 계산하여 화면에 표시하도록 함.
+    border-box; : 테두리를 기준으로 크기를 정함.
+    content-box; : 오브젝트 영역을 기준으로 크기를 정함.(기본속성)*/
+.div1{width: 300px; height: 50px; border: 10px solid blue;
+box-sizing: content-box;}
+.div2{width: 300px; height: 50px; border: 10px solid red;
+box-sizing: border-box; text-indent: 10px;}
+
+.mid{width: 200px; height: 30px; text-indent: 5px;}
+/* text-indent: 텍스트 파트에 들여쓰기를 하고 싶을 때 */
+.span1{width: 100px; height: 100px; border-radius: 100%;
+    background-color: yellow; margin: auto;
+    /* box-shadow: 0 0 30px black;*/
+    box-shadow: 3px 3px 5px darkorange;}
+.span1:hover{box-shadow: none; }
+/* box-shadow : 그림자 (X좌표 Y좌표 blur 컬러) */
+
+.menu{width: 300px; height: auto; border: 1px solid #ccc;
+margin: 0; padding: 0;}
+.menu>dt{width: 100%; height: 50px; line-height: 50px;
+    border-bottom: 1px solid #ccc; text-align: center;}
+.menu>dd{width: 100%; height: 30px; line-height: 30px;
+    text-indent: 10px; margin: 0; padding: 0; cursor: pointer;}
+    /* 
+        cursor: pointer; : 마우스 모양이 클릭할 수 있도록 적용
+    */
+
+.idpw{ margin: 0; padding: 0;}

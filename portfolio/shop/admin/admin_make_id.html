@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="imagetoolbar" content="no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+    <title>한우사랑 관리자 아이디 만들기(수정이 안되는 아이디)</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        form {
+            width: 200px;
+            height: 120px;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+
+        input {
+            display: block;
+            border: 1px solid #ccc;
+            width: 200px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <form name="make_id" method="POST" action="./admin_make.php" enctype="application/x-www-form-urlencoded">
+        <input type="hidden" name="level" value="S">
+        <input type="text" name="m_admin_id" placeholder="id">
+        <input type="password" name="m_admin_pw" placeholder="pw">
+        <input type="text" name="m_admin_nm" placeholder="name">
+        <input type="button" value="세컨 관리자 등록" onclick="make_new_admin();">
+    </form>
+
+</body>
+<script>
+    function make_new_admin() {
+        if (!make_id.m_admin_id.value || !make_id.m_admin_pw.value || !make_id.m_admin_nm.value) {
+            alert("모든 인풋 입력 요망")
+        }
+        else {
+            make_id.submit();
+        }
+    }
+</script>
+
+</html>

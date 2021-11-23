@@ -1,0 +1,58 @@
+<?php
+    $v = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="imagetoobar" content="no">
+    <meta http-equiv="X-UA-compatible" content="IE-Edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./mevent.css?v=<?php echo $v?>">
+    <title>모바일 룰렛 이벤트 페이지!</title>
+    <script src="../js/jquery.js"></script>
+    <script src="./event.js?v=<?php echo $v?>"></script>
+    <script>
+        $(document).ready(function () {
+            var $btn_w = $("#game_btn").width() / 2;
+            $("#game_btn").css({
+                "margin-left": - $btn_w + "px"
+            })
+            var $container_w = $("#container").width();
+            $("#game_bg").css({
+                "height": $container_w + 120 + "px"
+            })
+            if ($container_w >= 340 && $container_w <= 480) {
+                $("#game_board").css({
+                    "bottom": "55px"
+                })
+            }
+            else {
+                $("#game_board").css({
+                    "bottom": "75px"
+                })
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <input type="hidden" name="counter" id="counter" value="3">
+    <header class="title">
+        <p>[모바일 이벤트 룰렛 페이지]</p>
+    </header>
+    <section class="container" id="container">
+        <div class="game_bg" id="game_bg">
+            <div class="msg" id="msgbox"></div>
+            <span class="game_board" id="game_board">
+                <img src="./r_images/event_view.png">
+                <span class="game_btn" id="game_btn"><img src="./r_images/event_start_off.png"></span>
+            </span>
+            <span class="game_marker"><img src="./r_images/event_pt.png"></span>
+
+        </div>
+    </section>
+</body>
+
+</html>

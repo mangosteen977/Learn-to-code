@@ -1,0 +1,64 @@
+<?php
+    $data = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 2일차 (1) 파라미터 뷰 vue (???)</title>
+        <script src="../jq/jquery.js"></script>
+        <!-- vue 버전 1.6.4??? -->
+        <script src="http://cdn.jsdelivr.net/npm/vue"></script> <!--상용버전 값 가져옴^_~-->
+        <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> --> <!--개발버전 값 못가져옴^.^-->
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <section id="vue">
+            <input type="text" v-model="text1">
+            <!-- a : 뷰전체의 함수를 말하며, text1은 html의 text가 아니라 뷰 안에 데이터에 있는 익명의 변수 text1이다. -->
+            <input type="button" v-model="btn" v-on:click="abc(a.text1)">
+        </section>
+        <section id="vue2">
+            <input type="checkbox" v-model="ck">
+            <!-- a : 뷰전체의 함수를 말하며, text1은 html의 text가 아니라 뷰 안에 데이터에 있는 익명의 변수 text1이다. -->
+            <input type="button" v-model="btn2" v-on:click="bbb">
+        </section>
+    </body>
+    <script>
+        let a = new Vue({
+        el:"#vue",
+        data:{
+            text1:"",
+            btn:"클릭"
+        },
+        methods:{ //methods안에는 변수를 못 쓴다. vue밖에 써서 데려와야한다.
+            abc:function(aaa){
+                location.href = "./index6.html?aaa="+aaa;
+            }
+        }
+       });
+    //    뷰의 체크박스 vue checkbox checked 확인 script
+       let b = new Vue({
+        el:"#vue2",
+        data:{
+            ck:"",
+            btn2:"확인"
+        },
+        methods:{ 
+            bbb:function(){
+                //vue checked는 value값으로 검사함.
+                if(this.ck==""){
+                    alert("가입 진행을 위해 동의에 체크해주세요.");
+                }
+                else{
+                    this.ck="Y";
+                    alert("회원가입 폼으로 넘어갑니다.");
+                }
+            }
+        }
+       });
+    </script>
+</html>

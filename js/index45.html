@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>초급종합 응용1</title>
+        <script>
+            /*응용문제1.
+            사용자가 1~10 숫자 중 아무숫자를 입력한다.
+            사용자 입력값과 pc가 뽑은 랜덤하게 1~10숫자를 비교하여
+            동일할 경우 "당첨" , 다를 경우 "다음기회에" 출력하시오.*/
+            function abc(){
+                var user = Number(document.getElementById("s").value);
+                var pc =  Math.ceil(Math.random()*10);
+                console.log(user);
+                console.log(pc);
+                if(user==pc){
+                    alert("당첨XD!");
+                }
+                else{
+                    alert("다음기회에^_T~");
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <input type="text" id="s" maxlength="2" placeholder="1~10까지 숫자를 입력하세요.">
+        <input type="button" value="결과확인" onclick="abc();">
+    </body>
+</html>

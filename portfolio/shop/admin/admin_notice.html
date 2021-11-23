@@ -1,0 +1,44 @@
+<?php
+    $v = date("YmdHis");
+    include "check.php";
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="imagetoolbar" content="no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+    <title>쇼핑몰 관리자 페이지</title>
+    <script src="../../js/jquery.js"></script>
+    <script src="./config.js?v=<?=$v?>"></script>
+    <script src="http://cdn.jsdelivr.net/npm/vue"></script>
+    <link rel="stylesheet" type="text/css" href="./admin.css?v=<?=$v?>">
+    <link rel="stylesheet" type="text/css" href="./main.css?v=<?=$v?>">
+    <link rel="stylesheet" type="text/css" href="./notice.css?v=<?=$v?>">
+    <script>
+        let level = "<?php echo $alevel?>";
+    </script>
+</head>
+
+<body>
+    <header class="header">
+        <?php include "admin_top.html"; ?>
+    </header>
+    <section class="section" id="notice_vue">
+        <?php include "notice_list.html"; ?>
+    </section>
+    <footer class="footer">
+        <?php include "admin_bottom.html"; ?>
+    </footer>
+</body>
+<script src="./notice_list.js?v=<?=$v?>"></script>
+<script>
+    if (level != "M") {
+        document.getElementById("notice_btn1").style.display = "none";
+        document.getElementById("notice_btn2").style.display = "none";
+        document.getElementById("notice_btn3").style.display = "none";
+    }
+</script>
+
+</html>

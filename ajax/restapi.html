@@ -1,0 +1,102 @@
+<?php
+    $v = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RESTAPI 카카오톡 로그인 연결 API</title>
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        input {
+            display: inline-block;
+            width: 200px;
+            height: 30px;
+            line-height: 30px;
+            color: #000;
+            border: none;
+            border-bottom: 1px solid gold;
+            text-indent: 5px;
+        }
+
+        .btn {
+            display: inline-block;
+            width: 150px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            background-color: gold;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="hidden" name="target_id" value="">
+    <input type="text" name="user_id" value="" placeholder="아이디를 입력하세요">
+    <input type="password" name="user_password" value="" placeholder="패스워드를 입력하세요">
+    <div class="btn" onclick=" kakao_login();">카카오톡 로그인</div>
+    <div class="btn" onclick="kakao_logout();">카카오톡 로그아웃</div>
+    <!-- 
+        AJAX
+        XML,JSON
+
+        REST API(유료) = RESTful API(무료)
+        REST API : POST(데이터 전송,생성), GET(데이터 가져오기), PUT(수정), EDLETE(삭제)
+        =>
+        
+        
+        RESTful API : POST(데이터 전송,생성), PUT(수정), EDLETE(삭제)
+        =>
+        
+        일반적인 AJAX = test.xml, test.json 로드 예시) ./data/123.json
+
+        REST&RESRFUL API = 로드 예시) http://test.com/data/123
+        (파일확장자 안써도 123.json을 알아서 로드 함.)
+
+        
+    -->
+
+</body>
+<script>
+    Kakao.init('248c44e383766be6227a8fcb5f714e4b');
+    function kakao_login() {
+        Kakao.Auth.login({
+            success: function (r) {
+                Kakao.API.request({
+                    url: '/v2/user/me',
+                    success: function (r) {
+                        console.log(r);
+                    }
+                });
+                alert("로그인 되었습니다.");
+            },
+            fail: function (error) {
+                alert("데이터 통신 오류");
+            }
+        });
+    }
+    function kakao_logout() {
+        if (Kakao.Auth.getAccessToken()) {
+            Kakao.API.request({
+                url: '/v1/user/unlink',
+                success: function (r) {
+                    console.log(r);
+                }
+            });
+            Kakao.Auth.setAccessToken(undefined);
+            alert("로그아웃 되었습니다.");
+        };
+    }
+</script>
+
+</html>

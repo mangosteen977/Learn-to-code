@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+	<meta http-equiv="imagetoolbar" content="no">
+        <!-- 마우스 오버시 이미지 관련 툴바가 생성되지 않도록 함. -->
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title> HTML&CSS 1일차 중급(3) </title>
+        <style>
+	    </style>
+    </head>
+    <body>
+        <!-- details : 눌러서 세부정보 메뉴를 오픈하는 형태, 드롭다운 메뉴
+                       open속성은 기본이 오픈상태, IE(X),주로 모바일에서 사용함.-->
+        <details open>
+            <!-- summery : 요약정보/세부정보 내용 그룹명 -->
+            <summery>Today's Menu</summery>
+            <ul>
+                <li>김치 볶음밥</li>
+                <li>참치 볶음밥</li>
+                <li>해물 볶음밥</li>
+            </ul>
+        </details>
+        <br><br>
+        <details>
+            <summery style="color: violet;">추가상품 더 보기</summery>
+            <div style="border: 1px solid #ccc; width:300px; height:auto;">
+                <label style="display: block; width: 50px; height:50px; background-color:greenyellow;"></label>
+                <label style="display: block; width: 50px; height:50px; background-color:yellow;"></label>
+                <label style="display: block; width: 50px; height:50px; background-color:gold;"></label>
+                <label style="display: block; width: 50px; height:50px; background-color:green;"></label>
+            </div>
+        </details>
+    </body>
+</html>

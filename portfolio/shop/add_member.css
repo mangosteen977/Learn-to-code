@@ -1,0 +1,273 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap");
+/*font-family: 'Nanum Gothic', sans-serif;*/
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+label,
+span {
+  display: inline-block;
+}
+
+img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.join_detail {
+  width: 1000px;
+  height: auto;
+  background-color: none;
+  margin: 0 auto;
+}
+
+.join_detail > article > div:nth-of-type(1) {
+  width: 100%;
+  height: 50px;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 50px;
+  color: #c3222b;
+  text-align: left;
+  font-weight: bold;
+  font-size: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  border-bottom: 3px solid #c3222b;
+  text-indent: 15px;
+  margin: 30px 0;
+}
+
+.join_detail > article:nth-of-type(1) {
+  width: 1000px;
+  height: auto;
+  background-color: none;
+  margin: 20px 0 20px 0;
+}
+
+.join_detail > article:nth-of-type(1) > table {
+  width: 800px;
+  height: auto;
+  background-color: none;
+  font-size: 12px;
+  font-family: "Noto Sans KR", sans-serif;
+  margin: 0 auto;
+}
+
+.join_detail > article:nth-of-type(1) > table > tbody > tr > td {
+  width: 200px;
+  height: 50px;
+  background-color: none;
+  text-indent: 20px;
+}
+
+.join_detail > article:nth-of-type(1) > table > tbody > tr > td > input {
+  width: inherit;
+  height: 60%;
+  background-color: none;
+}
+
+.join_detail > article:nth-of-type(2) {
+  width: 1000px;
+  height: auto;
+  background-color: none;
+  margin: 20px 0 20px 0;
+}
+
+.join_detail > article:nth-of-type(2) > table {
+  width: 800px;
+  height: auto;
+  background-color: none;
+  font-size: 12px;
+  font-family: "Noto Sans KR", sans-serif;
+  margin: 0 auto;
+}
+
+.join_detail > article:nth-of-type(2) > table > tbody > tr > td {
+  width: 600px;
+  height: 50px;
+  background-color: none;
+  text-indent: 20px;
+}
+
+.join_detail > article:nth-of-type(2) > table > tbody > tr > td:nth-of-type(1) {
+  width: 200px;
+  height: 50px;
+  background-color: none;
+}
+
+.join_detail > article:nth-of-type(2) > table > tbody > tr > td > input {
+  width: 200px;
+  height: 60%;
+  background-color: none;
+}
+
+.join_detail > article:nth-of-type(2) > table > tbody > tr > td > .small_size {
+  width: 100px;
+}
+
+.join_detail > article:nth-of-type(2) > table > tbody > tr > td > .small_size:nth-of-type(2) {
+  background-color: #c3222b;
+  color: white;
+  border: 0;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.join_detail > article:nth-of-type(2) > table > tbody > tr > td > .small_size:nth-of-type(2):hover {
+  background-color: #a11d23;
+}
+
+.join_detail > article:nth-of-type(2) > table > tbody > tr > td > .middle_size {
+  width: 300px;
+}
+
+.join_detail > article:nth-of-type(2) > table > tbody > tr > td > .big_size {
+  width: 80%;
+}
+
+.join_detail > article:nth-of-type(3) {
+  width: 1000px;
+  height: auto;
+  background-color: none;
+  margin: 20px 0 20px 0;
+}
+
+.join_detail > article:nth-of-type(3) > table {
+  width: 800px;
+  height: auto;
+  background-color: none;
+  font-size: 12px;
+  font-family: "Noto Sans KR", sans-serif;
+  margin: 0 auto;
+}
+
+.join_detail > article:nth-of-type(3) > table > tbody > tr > td {
+  width: 600px;
+  height: 50px;
+  background-color: none;
+}
+
+.join_detail > article:nth-of-type(3) > table > tbody > tr > td:nth-of-type(1) {
+  width: 200px;
+  text-indent: 20px;
+}
+
+.join_detail > article:nth-of-type(3) > table > tbody > tr:nth-of-type(4) > td {
+  width: 200px;
+  height: 50px;
+  background-color: none;
+}
+
+.join_detail > article:nth-of-type(3) > table > tbody > tr:nth-of-type(4) > td:nth-of-type(2) {
+  width: 600px;
+  height: 50px;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.join_detail > article:nth-of-type(3) > table > tbody > tr:nth-of-type(4) > td:nth-of-type(2) > .sc {
+  width: 200px;
+  height: 100%;
+  background-color: none;
+  margin-right: 5px;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.join_detail > article:nth-of-type(3) > table > tbody > tr:nth-of-type(4) > td:nth-of-type(2) > .refresh_btn {
+  width: 25px;
+  height: 25px;
+  background-color: none;
+}
+
+.join_detail > article:nth-of-type(3) > table > tbody > tr:nth-of-type(4) > td:nth-of-type(2) > input {
+  width: 150px;
+  height: 50px;
+  background-color: none;
+}
+
+.join_detail > article:nth-of-type(3) > table > tbody > tr:nth-of-type(5) > td {
+  height: 20px;
+  text-indent: unset;
+}
+
+.join_detail > .btn_new_mem {
+  width: 160px;
+  height: 40px;
+  background-color: #c3222b;
+  display: block;
+  margin: 0 auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  color: white;
+  border: 0;
+  cursor: pointer;
+}
+
+.join_detail > .btn_new_mem:hover {
+  background-color: #a11d23;
+}
+
+.txt_s {
+  font-size: 10px;
+  color: #999999;
+  display: block;
+}
+
+.svgs {
+  width: 25px;
+  height: 25px;
+  background-color: none;
+  margin-right: 5px;
+  line-height: 0px;
+}
+
+.svgs > img {
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+/*# sourceMappingURL=add_member.css.map */

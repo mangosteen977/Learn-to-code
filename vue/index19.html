@@ -1,0 +1,89 @@
+<?php
+    $data = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 3일차 (3) vue + 배열 응용 게시판 이전 이후 버튼</title>
+        <script src="../jq/jquery.js"></script>
+        <!-- vue 버전 1.6.4??? -->
+        <script src="http://cdn.jsdelivr.net/npm/vue"></script> <!--상용버전 값 가져옴^_~-->
+        <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> --> <!--개발버전 값 못가져옴^.^-->
+        <link rel="stylesheet" type="text/css" href="./index19.css?v=<?=$data?>">
+    </head>
+    <body>
+        <section id="box">
+           <!--<button type="button" value="교통사항 보기" v-on:click="lists"></button>-->
+            <p>현재 고속도로 교통상황</p>
+            <ol class="tlist">
+                <li>출발</li>
+                <li>도착</li>
+                <li>시간</li>
+            </ol>
+            <!--응용문제1. "현재 도로상황" 버튼 클릭시 해당 배열 값을 출력하시오.-->
+            <ol class="tlist tlist2" v-for="(z,index) in array">
+                <li>서울</li>
+                <li>{{z.city}}</li>
+                <li>{{z.distance}}</li>
+            </ol>
+            <button type="button" v-text="prev" v-if="p" v-on:click="prev_btn"></button>
+            <button type="button" v-text="next" v-if="n" v-on:click="next_btn"></button>
+        </section>
+    </body>
+    <script>
+        //array
+        const trave = {"travel_list" : [
+            {"city":"수원","distance":"차로 1시간"},
+            {"city":"대전","distance":"차로 1시간 40분"},
+            {"city":"광주","distance":"차로 3시간 40분"},
+            {"city":"강릉","distance":"차로 2시간 30분"},
+            {"city":"부산","distance":"차로 5시간"},
+            {"city":"여수","distance":"차로 7시간"},
+            {"city":"전주","distance":"차로 3시간"},
+            {"city":"제주도","distance":"차로 6시간"}
+        ]}
+        //slice 초기/끝 값
+        var sdata = 0;
+        var edata = 3;
+        //vue => 게시판 게시물 3개만 출력하기, 이전 다음 버튼 생성하기, preview, next
+        let a = new Vue({
+            el : "#box",
+            data:{
+                // times : false,
+                btn : "현재 도로교통 상황",  
+                //slice(노드,갯수) 만큼 배열 출력함
+                array : trave.travel_list.slice(0,3), //기본 게시글 출력 3개
+                ea: trave.travel_list.length,
+                prev : "이전",
+                next : "다음",
+                p:false, //prev버튼 안보이게 함
+                n:true //next버튼 보이게 함.
+            },
+            methods:{
+                /*lists : function(){
+                    this.times=true;
+                },*/
+                prev_btn:function(){
+                    this.n = true;//이전 버튼 누르면 다음버튼 true
+                    sdata -= 3;
+                    edata -= 3;
+                    if(sdata==0){ //배열값이 처음값일 경우 이전버튼을 false
+                       this.p = false;
+                    }
+                    this.array = trave.travel_list.slice(sdata,edata);
+                },
+                next_btn:function(){
+                    this.p = true;//다음 버튼 누르면 이전버튼 true
+                    sdata += 3;
+                    edata += 3;
+                    if(edata>this.ea){ //배열 끝값일 경우 다음 버튼 falses
+                       this.n = false;
+                    }
+                    this.array = trave.travel_list.slice(sdata,edata);
+                }
+            }
+        });
+    </script>
+</html>

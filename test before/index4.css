@@ -1,0 +1,44 @@
+body{margin: 0; padding: 0;}
+label, span{display: block;}
+a{text-decoration: none;}
+ul, ol{list-style: none; margin: 0; padding: 0;}
+.ulcss{
+    width: 264px;
+    height: 40px;
+}
+.licss{
+    width: 40px;
+    height: 40px;
+    background-color: grey;
+    line-height: 40px;
+    border-radius: 5px;
+    margin: 0 2px 0 2px;
+    text-align: center;
+    font-size: 13px;
+    float: left;
+}
+.licss:hover{
+    background-color: blue;
+    color: white;
+}
+
+
+.ulcss1{
+    width: 264px;
+    height: 40px;
+}
+.licss1{
+    width: 40px;
+    height: 40px;
+    background-color:darkgray;
+    line-height: 40px;
+    border-radius: 5px;
+    margin: 0 2px 0 2px;
+    text-align: center;
+    font-size: 13px;
+    float: left;
+}
+.licss1:hover{
+    background-color:skyblue;
+    color: white;
+}

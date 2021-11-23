@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>드롭다운 메뉴 - 10분</title>
+        <style>
+            body{margin: 0; padding: 0; box-sizing: border-box; box-sizing: border-box;}
+            ul,ol,dl{margin: 0; padding: 0; list-style: none;}
+            span,label,main{display: block;}
+            a{text-decoration: none;}
+            .l{
+                width: 200px;
+                height: 40px;
+                background-color: #bfbfbf;
+                line-height: 40px;
+            }
+            ol{
+                width: 200px;
+                height: 200px;
+            }
+            li{
+                width: 200px;
+                height: 40px;
+                line-height: 40px;;
+                text-indent: 30px;
+                display: none;
+                background-color: #eaeaea;
+            }
+            li:hover{
+                font-weight: bold;
+            }
+            .l:hover ol > li {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <label class="l">계열사 목록
+            <ol class="list">
+                <li>K엔터테이먼트</li>
+                <li>K필름</li>
+                <li>K-IT인프라넷</li>
+                <li>K인체공학연구소</li>
+                <li>K AI개발연구소</li>
+            </ol>
+        </label>
+    </body>
+</html>

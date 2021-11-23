@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> JS/JQ 초급 복습3 </title>
+        <script src="../jq/jquery.js"></script>
+        <script>
+    //jq
+            $(document).ready(function(){
+                //JQ_html
+                $("#btn").click(function(){
+                    var $liss = "";
+                    var $lis = "자바스크립트,제이쿼리,데이터베이스,프론트엔드";
+                    var $li = $lis.split(",");
+                    var $n = 0;
+                    while($n<4){
+                        $liss += "<li>"+$li[$n]+"</li>";
+                        $n++;
+                    }
+                    $("#notice").html($liss);
+                });
+                //JQ_append
+                /*
+                    JQ 제이쿼리의 appnend("");는 ""안에 바로 태그를 적어도
+                    태그로 인식이된다. JS는 안됨.
+                */
+                $("#btn2").click(function(){var $liss = "";
+                    var $a = "자바스크립트,제이쿼리,데이터베이스,프론트엔드";
+                    var $b = $a.split(",");
+                    var $c = $b.length;
+                    var $w = 0;
+                    while($w<$c){
+                        $("#notice").append("<li>"+$b[$w]+"</li>");
+                        $w++;
+                    }
+                });
+
+
+            });
+    //JS
+            //js_innerhtml
+            function notice(){
+                var liss = ""
+                var lis = "자바스크립트,제이쿼리,데이터베이스,프론트엔드";
+                var li = lis.split(",");
+                var n = 0;
+                while(n<4){
+                    liss += "<li>"+li[n]+"</li>";
+                    n++;
+                }
+                document.getElementById("notice").innerHTML=liss;
+            };
+            //js_append+createTextNode
+            function notice2(){
+                var lis = "자바스크립트,제이쿼리,데이터베이스,프론트엔드";
+                var lis2 = lis.split(",");
+                var n = 0;
+                while(n<4){
+                    var li = document.createElement("li");
+                    var litxt = document.createTextNode(lis2[n]);
+                    li.appendChild(litxt);
+                    document.getElementById("notice").appendChild(li);
+                    n++;
+                }
+            };
+            //JS_appendChild+innerHtml
+            function append(){
+                var a = "자바스크립트,제이쿼리,데이터베이스,프론트엔드";
+                var b = a.split(",");
+                var c = b.length;
+                var w = 0;
+                while(w<c){
+                    var s = document.createElement("li");
+                    s.innerHTML = b[w];
+                    document.getElementById("notice").appendChild(s);
+                    w++;
+                }
+            };
+            
+        </script>
+    </head>
+    <body>
+        <ol id="notice"></ol>
+        <input type="button" value="JQ_html" id="btn">
+        <input type="button" value="JQ_append" id="btn2">
+        <input type="button" value="js_innerhtml" onclick="notice();">
+        <input type="button" value="js_append+createTextNode" onclick="notice2();">
+        <input type="button" value="JS_appendChild+innerHtml" onclick="append();">
+
+
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/rejava3.html -->

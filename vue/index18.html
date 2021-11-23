@@ -1,0 +1,63 @@
+<?php
+    $data = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 3일차 (2) vue  </title>
+        <script src="../jq/jquery.js"></script>
+        <!-- vue 버전 1.6.4??? -->
+        <script src="http://cdn.jsdelivr.net/npm/vue"></script> <!--상용버전 값 가져옴^_~-->
+        <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> --> <!--개발버전 값 못가져옴^.^-->
+        <style>
+            *{box-sizing: border-box;}
+            
+        </style>
+    </head>
+    <body>
+        <section id="box">
+            <p>전체 데이터 총{{data_ea}}개 입니다.</p>
+            <button v-on:click="abc" v-text="btn"></button>
+            <ul>
+                <li v-for="(subject,index) in arr" >{{subject}}</li>
+                <li v-for="(subject,index) in arr" v-text="index"></li>
+                <!-- vue for 반복문 v-for ="(a,b) in array" -->
+                <!-- 반복문값은 v-text혹은 {{}}형태로 확인 가능하다. 두개 같은 말. -->
+            </ul>
+        </section>
+    </body>
+    <script>
+       //배열로 사용하는 형태
+        //splite : 배열생성
+        //push : 배열에 맨 끝에 데이터를 추가
+        //splice : 배열에 특정 값만큼 나눠서 출력 (단, remove기능 있음)
+        //slice : 배열에 특정 값만큼 분활하여 출력 (단, 시작값과 출력값을 모두 변화되어야함)
+        //shift : 특정 배열 값(맨 앞에 있는 값)을 삭제
+        //unshift : 배열값을 추가할때
+        const datas = ["HTML","CSS","SCSS","Javascript","Jquery","Ajax"];
+        var sno = 0;  //배열 초기 번호값
+        var eno = 2;  //배열 출력 끝값
+        let a = new Vue({
+            el:"#box",
+            data:{
+                arr:null,
+                data_ea:datas.length,   //배열갯수
+                btn:"more",
+                no:0
+            },
+            methods:{
+                abc:function(){
+                if(eno > this.data_ea){
+                    sno=0;
+                    eno=2;
+                } 
+                this.arr = datas.slice(sno,eno);
+                sno+=2;
+                eno+=2;
+                }
+            }
+        });
+    </script>
+</html>

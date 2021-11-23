@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+    <title> Vue 다시 하기 2 - 컴포넨츠 조지기 </title>
+    <script src="http://cdn.jsdelivr.net/npm/vue"></script><!-- vue 버전 1.6.4 ???????? -->
+    <!-- vue router 뷰 라우터-->
+    <!-- <script src="http://unpkg.com/vue-router/dist/vue-router.js"></script>뷰싱글페이지 만들 때 -->
+    <!-- lodash js src -->
+    <!-- <Script src="http://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></Script> -->
+</head>
+
+<body>
+    <div id="example">
+        {{abc}}
+        <my-component></my-component>
+        <span>{{a}}</span>
+        <input type="text" v-model="a">
+    </div>
+
+    <div id="app">
+        <p>{{ foo }}</p>
+        <!-- <p>{{ foo2 }}</p> -->
+        <!-- obj.foo는 더이상 변하지 않습니다! -->
+        <button v-on:click="foo = 'baz'">Change it</button>
+        <!-- <button v-on:click="foo2 = 'baz2'">Change it</button> -->
+    </div>
+</body>
+<script>
+    // 등록
+    Vue.component('my-component', {
+        template: '<div>사용자 정의 컴포넌트 입니다!</div>'
+    })
+
+    // 루트 인스턴스 생성
+    // new Vue({
+    //     el: '#example'
+    // })
+
+    //  obj.foo는 더이상 변하지 않습니다!
+    var obj = 'foo';
+    Object.freeze(obj)
+
+    new Vue({
+        el: '#app',
+        data: {
+            obj: 'bar',
+            // foo2: 'bar'
+        }
+    })
+
+    var data = { a: 1 }
+    var vm = new Vue({
+        el: '#example',
+        data: data,
+        //옵션 / 라이프사이클 훅
+        // `this` 는 vm 인스턴스를 가리킵니다.
+        beforeCreate: function () {
+            console.log('beforeCreate a is: ' + this.a)
+        },
+        created: function () {
+            console.log('created a is: ' + this.a)
+        },
+        beforeMount: function () {
+            console.log('beforeMount a is: ' + this.a)
+            //이 훅은 서버측 렌더링 중 호출되지 않습니다
+        },
+        mounted: function () {
+            console.log('mounted a is: ' + this.a)
+            this.$nextTick(function () {
+                // 모든 화면이 렌더링된 후 실행합니다.
+                console.log('nextTick_mounted a is: ' + this.a)
+            })
+        },
+        computed: {
+            abc() {
+                this.a = '123';
+            }
+        }
+    })
+    /*
+        vm.$data === data // => true
+        vm.$el === document.getElementById('example') // => true
+    */
+    // $watch 는 인스턴스 메소드 입니다.
+    vm.$watch('a', function (newVal, oldVal) {
+        // `vm.a`가 변경되면 호출 됩니다.
+        console.log(newVal, oldVal);
+    })
+</script>
+
+</html>
+<!-- http://mangsteen977.dothome.co.kr/vue/vue_page.html -->

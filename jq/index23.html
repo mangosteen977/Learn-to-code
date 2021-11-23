@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery 6일차(3) - 초급코드 (JQ+TS 확장함수 응용) </title>
+        <script src="./jquery.js"></script>
+        <script>
+             $(document).ready(function(){
+                $.fn.makebox = function($w,$h,$l,$t){
+                    $("#popup").stop().animate({
+                        "width":$w+"px",
+                        "height":$h+"px",
+                        "left":$l+"px",
+                        "top":$t+"px"
+                    },500);
+                }
+             });
+             function popup(){
+                var w = Number(document.getElementById("pop_width").value);
+                var h = Number(document.getElementById("pop_height").value);
+                var l = Number(document.getElementById("pop_left").value);
+                var t = Number(document.getElementById("pop_top").value);
+                //isNaN : 값이 숫자 문자 인지 검토함. true는 문자, false는 숫자이다.
+                if(isNaN(w)==true||isNaN(h)==true||isNaN(l)==true||isNaN(t)==true){
+                    alert("숫자만 입력해주세요.");
+                }
+                else{
+                    if(w<100){
+                        alert("최소 100이상을 입력하세요.");
+                    }
+                    else if(h<30){
+                        alert("최소 30이상을 입력하세요.");
+                    }
+                    else if(l<0||t<0){
+                        alert("최소 1이상을 입력하세요.");
+                    }
+                    else{
+                        $.fn.makebox(w,h,l,t);
+                    }
+                }
+             }
+        </script>
+        <style>
+            .box{position: relative; display: inline-block; margin-bottom: 200px;}
+            .popup{
+                width: 100px; height: 100px; margin-bottom: 20px;
+                background-color: cornflowerblue;
+                position: absolute;
+                }
+            .input{
+                width: 150px; height: 30px;
+                margin-bottom: 5px;
+            }
+            #btn_pop{
+                display: block;
+                width: 100px; height: 40px;
+                background-color: black; color: white;
+                }
+        </style>
+    </head>
+    <body>
+        <span class="box">
+            <div class="popup" id="popup"></div>
+        </span>
+        <input type="text" class="input" id="pop_width" placeholder="popup width">*최소 100px이상을 입력하시오.
+        <br>
+        <input type="text" class="input" id="pop_height" placeholder="popup height">*최소 30px이상을 입력하시오.
+        <br>
+        <input type="text" class="input" id="pop_left" placeholder="팝업위치 가로">
+        <br>
+        <input type="text" class="input" id="pop_top" placeholder="팝업위치 세로">
+        <button type="button" id="btn_pop" onclick="popup();">팝업창 생성</button>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/index23.html -->

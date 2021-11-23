@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery 9일차(5) - JQ초급코드 응용 및 최종복습 (파라미터 받아 처리_결제확인) </title>
+        <script src="./jquery.js"></script>
+        <script src="./jquery-ui.js"></script>
+        <link rel="stylesheet" type="text/css" href="./jquery-ui.css">
+        <script>
+             $(document).ready(function(){
+                //값 받아서 나누기
+                var $buy = location.search;//rejquery4.html에서 넘어온 값.
+                var $b0 = $buy.split("?ea=");
+                var $bb0 = $b0[1].split("&"); //갯수 값은 $bb0[0]
+                var $bb1 = $bb0[1].split("dis=");//쿠폰 값은 $bb1[1]
+                var $bb2 = $bb0[2].split("pri=");//값의 값은 $bb2[1]
+                //최종 금액 계산 및 출력
+                var $total = $bb2[1]*$bb1[1]*$bb0[0];
+                $("#price").val($total)
+                //배송일자 선택
+                $("#date").datepicker();
+
+             });
+        </script>
+        <style>
+           #pay{width: 500px; height: 80px;}
+           #pay > p {width: 500px; height: 30px;}
+           #price{
+               width: 80px; height: 30px;
+               border: none; color: red; 
+               font-weight: bold; text-align: right; font-size: 20px;
+               }
+        </style>
+    </head>
+    <body>
+        <div id="pay">
+            <p>고객님이 결제하실 최종 금액은 : <input type="text" id="price" value="0" readonly> 원 입니다.</p>
+            <p>배송일자 선택 : <input type="text" id="date" readonly></p>
+        </div>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/rejquery5.html -->
+<!-- 데이터피커로 날짜 띄우기 -->

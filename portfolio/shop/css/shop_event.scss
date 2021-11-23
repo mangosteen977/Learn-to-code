@@ -1,0 +1,41 @@
+@charset "UTF-8";
+@import "./config.scss";
+
+.event_product_article {
+  @include sections(1174px, 510px, none);
+  @include flexs(nowrap, row, space-evenly, center);
+  margin: 0 auto;
+  & > aside {
+    height: 415px;
+    &:nth-child(1) {
+      width: 308px;
+    }
+    &:nth-child(2) {
+      width: 504px;
+      overflow: hidden;
+      & > ul {
+        @include sections(504px * 2, inherit, none);
+        @include flexs(nowrap, row, space-evenly, center);
+        position: relative;
+
+        & > li {
+          @include sections(504px, inherit, none);
+          & > img {
+            height: inherit;
+          }
+        }
+      }
+    }
+    &:nth-child(3) {
+      width: 305px;
+      & > ul {
+        @include sections(inherit, inherit, none);
+        @include flexs(nowrap, column, space-between, space-between);
+        & > li {
+          @include sections(inherit, 202px, none);
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

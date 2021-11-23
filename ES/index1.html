@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECMA Script 1일차(1) - 엔진설정 및 import export</title>
+    <!-- 
+        JS : var 변수
+        ES : let, const 변수
+        ES : map, for in
+     -->
+    <!-- IE작동X -->
+    <script type="module">//module 은 ECMA전용으로 사용하기 위한 기본 엔진 코드 입니다.
+        import a from "./index.js";
+        //import 가져오기
+        //a는 index.js에 있는 모든 함수 및 데이터를 받아오는 익명 변수
+        //form은 가져올 파일명
+        //import 시 같은 익명변수값 사용 불가함.
+        import { abc } from "./index.js?v=4";
+        //인스턴스는 {중괄호 안에 js export function의 이름으로 씀.}
+        //{abc} ==> abc함수를 호출
+        abc("홍길동입니다.");//abc함수를 호출하면서 인자값을 던짐.
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<?php
+    $v = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 6일차 (1) vue ajax </title>
+        <script src="../jq/jquery.js"></script>
+        <!-- vue 버전 1.6.4 ???????? -->
+        <script src="http://cdn.jsdelivr.net/npm/vue"></script>
+        <style>
+            #box{
+                width: 1000px;
+                height: 450px;
+                /* overflow: hidden; */
+            }
+            .banner{
+                width: calc(1000px*4);
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+            .banner>li{
+                width: 1000px;
+                height: 450px;
+                float: left;
+            }
+        </style>
+    </head>
+    <body>
+        <section id="box">
+            <input type="button" value="ajax load" @click="abc">
+            <ul class="banner"><!-- 시험  ???????????????? -->
+                <li v-for="b in barray" @click="gopage(b.link)"><img v-bind:src="b.img"></li>
+            </ul>
+        </section>
+    </body>
+    <script>
+        let a = new Vue({
+            el:"#box",
+            data:{
+                barray:[]
+            },
+            methods:{
+                abc(){
+                    //Vue ajax load / 뷰 에이젝스 로드
+                    //fetch는 json, XML 파일을 로드 함.
+                    //then 해당 함수 실행 후 적용되는 함수.
+                    fetch("./banner.json").then(function(response){
+                        console.log(response.ok); //ajax 로드 ok==true 정상
+                        return response.json(); //데이터를 리턴시켜 then으로 다음 함수로 이동시킴
+                    }).then((data)=>{
+                        a.bbb(data["mainbanner"]);//json()으로 리턴된 값을 받아 확장함수로 보냄.
+                    })
+                    .catch(function(error){//catch는 then 의 반댓말, 로드가 error일 경우 작동함.
+                        console.log(error); //ajax error시 출력
+                    })
+                },
+                bbb(ajax){
+                    console.log(ajax);
+                    for(f in ajax){
+                        this.barray.push({//배열에 값추가
+                            img:ajax[f][0],
+                            link:ajax[f][1]
+                        })
+                    }
+                },
+                gopage(w){
+                    location.href = w;
+                }
+            },
+            components:{
+
+            },
+            computed:{
+                
+            }
+        });
+    </script>
+</html>

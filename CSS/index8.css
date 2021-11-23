@@ -1,0 +1,70 @@
+@charset "UTF-8";
+@import url("./index8_1.css");
+/* css파일을 분리하여 관리가 편하도록 설정을 할 수 있으면,
+    또한 해당 파일만 수정할 수도 있다. */
+body{margin:0; padding: 0; font-size: 12px;}
+ul, ol{list-style: none; margin: 0; padding: 0;}
+span, label, main{display: block;}
+a{text-decoration: none;}
+.font1{font-family: 'Press Start 2P', cursive;
+    font-size: 40px; font-weight: 400;}
+/* .imgs{
+    width: 300px;
+    height: 300px;
+    border: 1px solid red;
+    background-image: url(".././cat.jpg");
+    background-repeat: no-repeat; */
+/* 반복이미지가 나오지 않도록 (바둑판X) */
+    /* background-position-x: -200px;
+    background-position-y: -50px; */
+    /* background-position: -200px -50px; */
+/* background-position: 배경 이미지의 위치조정(x축 y축); */
+    /* background-size: 200%; */
+    /*
+        background-size : 배경이미지 사이즈 조정
+        -contain : 가로,세로 비율에 맞춰서 자동 최적화(공간 남음)
+        -cover : 가로, 세로 비율을 1:1로 맞춰줌 (이미지 잘림)
+     */
+}
+.quick{
+    width: 250px;
+    height: 100px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    box-sizing: border-box;
+}
+.quick>dt{width: 100%; height: 30px;
+    line-height: 30px; border-bottom: 1px dashed #ccc;
+    font-family: 'Press Start 2P', cursive; font-weight: 400;
+    font-size: 14px; box-sizing: border-box;}
+.quick>dd{
+    width: 35px;
+    height: 35px;
+    border: 1px solid #ccc;
+    border-radius: 35px;
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 0;
+    margin-top: 17px;
+    padding: 0;
+    background-image: url("./shopico.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+.quick>dd:nth-child(3){ /*HOME*/
+    background-position: -34px 0;
+}
+.quick>dd:nth-child(4){
+    background-position: -68px 0;
+}
+.quick>dd:nth-child(5){
+    background-position: -102px 0;
+}
+.quick>dd:nth-child(6){
+    background-position: -135px 0;
+}
+.quick>dd:nth-child(7){
+    background-position: -169px 0;
+}

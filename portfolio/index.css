@@ -1,0 +1,813 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700;900&display=swap");
+/* font-family: 'Noto Sans KR', sans-serif; (100, 400, 700, 900) */
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap");
+/* font-family: 'Abril Fatface', cursive;*/
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 12px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+header,
+nav,
+main,
+section,
+aside,
+footer,
+article {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  min-width: 340px;
+}
+
+label,
+span {
+  display: inline-block;
+}
+
+img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+ul,
+ol,
+dl,
+dd {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+body {
+  position: relative;
+}
+
+.title {
+  width: 100%;
+  height: 50px;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 50px;
+  color: #7578bf;
+  text-align: unset;
+  font-weight: bold;
+  font-size: 18px;
+  text-indent: 20px;
+}
+
+.header {
+  width: 100%;
+  height: 50px;
+  background-color: #c2c4ff9d;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: stretch;
+      align-content: stretch;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  position: fixed;
+  z-index: 30;
+}
+
+.header > .menu {
+  width: 80%;
+  height: inherit;
+  background-color: none;
+}
+
+.header > .menu > ul {
+  width: 100%;
+  height: inherit;
+  background-color: none;
+  max-width: 500px;
+}
+
+.header > .menu > ul > li {
+  float: left;
+  width: 20%;
+  height: inherit;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 50px;
+  color: black;
+  text-align: center;
+  font-weight: unset;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.header > .menu > ul > li:nth-of-type(1) {
+  color: #e6f285;
+}
+
+.header > .menu2 {
+  display: none;
+  width: 30px;
+  height: auto;
+  background-color: none;
+  margin-top: 50px;
+  margin-right: 5px;
+}
+
+.header > .menu2 > ul {
+  width: 30px;
+  height: auto;
+  background-color: none;
+}
+
+.header > .menu2 > ul > li {
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  border-radius: 100%;
+  margin-top: 10px;
+}
+
+.header > .icon {
+  width: 20%;
+  height: auto;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.header > .icon > span {
+  width: 35px;
+  height: 35px;
+  background-color: none;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.banner {
+  width: 100%;
+  height: 100vh;
+  background-color: #bbbdf2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-image: url(./image/ti323a5002.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: 50px;
+  padding: 0 100px;
+}
+
+.banner > div {
+  font-size: 50px;
+  color: #e6f285;
+  font-family: "Abril Fatface", cursive;
+}
+
+.banner > .more {
+  width: 50px;
+  height: 50px;
+  background-color: #ffc3fa;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.about_me {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-bottom: 50px;
+}
+
+.about_me > .introduce {
+  width: auto;
+  height: 400px;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-right: 60px;
+}
+
+.about_me > .introduce > .me {
+  width: 200px;
+  height: 200px;
+  background-color: white;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.about_me > .introduce > .key_word {
+  width: 280px;
+  height: auto;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.about_me > .introduce > .key_word > span {
+  width: 80px;
+  height: 30px;
+  background-color: #ccc;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 30px;
+  color: black;
+  text-align: center;
+  font-weight: unset;
+  font-size: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.about_me > .introduce > .my_info {
+  width: 280px;
+  height: auto;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 30px;
+  color: black;
+  text-align: unset;
+  font-weight: unset;
+  font-size: 12px;
+}
+
+.about_me > .view_skill {
+  width: 340px;
+  height: auto;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 20px;
+}
+
+.about_me > .view_skill > span {
+  width: 100%;
+  height: 50px;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  border-radius: 15px;
+  margin-bottom: 5px;
+  border: 2px solid #ccc;
+}
+
+.about_me > .view_skill > span > label:nth-of-type(1) {
+  width: 50px;
+  height: inherit;
+  background-color: none;
+}
+
+.about_me > .view_skill > span > label:nth-of-type(1) > img {
+  width: 100%;
+  height: 50px;
+  background-color: none;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.about_me > .view_skill > span > label:nth-of-type(2) {
+  width: 290px;
+  height: inherit;
+  background-color: none;
+  padding-top: 10px;
+}
+
+.about_me > .view_skill > span > label:nth-of-type(2) > .skill_per_div {
+  width: 10px;
+  height: 30px;
+  background-color: #7578bf8e;
+  border-radius: 0 15px 15px 0;
+}
+
+main {
+  width: 100%;
+  height: auto;
+  background-color: none;
+}
+
+main .skills {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+main .skills > .skill_box {
+  width: 60%;
+  height: auto;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: justify;
+      align-content: space-between;
+  -webkit-box-align: space-between;
+      -ms-flex-align: space-between;
+          align-items: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+main .skills > .skill_box > ul {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  margin: 10px 0;
+}
+
+main .skills > .skill_box > ul > li {
+  width: 100%;
+  height: 40px;
+  background-color: none;
+  border-bottom: 2px solid #ccc;
+}
+
+main .skills > .skill_box > ul > li:nth-child(1) {
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+main .skills > .skill_box > ul > li:nth-child(2) {
+  display: none;
+  height: auto;
+  font-size: 13px;
+  padding: 15px 0 15px 10px;
+  border-bottom: none;
+}
+
+main .works {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  margin-bottom: 50px;
+}
+
+main .works > .works_box {
+  width: 80%;
+  height: auto;
+  background-color: #bbbdf2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: 0 auto;
+}
+
+main .works > .works_box > .port_list {
+  width: 100%;
+  height: auto;
+  background-color: #ccc;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+main .works > .works_box > .port_list > p {
+  width: 100px;
+  height: 50px;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 50px;
+  color: #555;
+  text-align: unset;
+  font-weight: unset;
+  font-size: 13px;
+  padding-left: 10px;
+}
+
+main .works > .works_box > .port_list > select {
+  width: 300px;
+  height: 50px;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 50px;
+  color: black;
+  text-align: unset;
+  font-weight: unset;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+}
+
+main .works > .works_box > .port_box {
+  width: 100%;
+  height: auto;
+  background-color: #eee;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding-bottom: 20px;
+}
+
+main .works > .works_box > .port_box > .port_bg {
+  width: 50%;
+  height: auto;
+  background-color: none;
+  min-width: 300px;
+  overflow: hidden;
+}
+
+main .works > .works_box > .port_box > .port_bg > img {
+  max-height: 60%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+main .works > .works_box > .port_box > ul {
+  width: 50%;
+  height: auto;
+  background-color: none;
+  min-width: 300px;
+  margin-top: 5%;
+}
+
+main .works > .works_box > .port_box > ul > li {
+  width: 100%;
+  height: 30px;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-bottom: 10px;
+}
+
+main .works > .works_box > .port_box > ul > li:nth-of-type(1) {
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 30px;
+  color: black;
+  text-align: unset;
+  font-weight: bold;
+  font-size: 2.4vh;
+}
+
+main .works > .works_box > .port_box > ul > li:nth-of-type(2) {
+  height: auto;
+  font-size: 1.5vh;
+}
+
+main .works > .works_box > .port_box > ul > li:nth-of-type(4) {
+  height: auto;
+  max-width: 400px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  line-height: 30px;
+}
+
+main .works > .works_box > .port_box > ul > li:nth-of-type(5) {
+  width: 100px;
+  background-color: #bbb;
+  cursor: pointer;
+  margin: 0 auto;
+  color: white;
+}
+
+main .works > .works_box > .port_box > ul > li > .port_icon {
+  width: 17px;
+  height: 17px;
+  background-color: none;
+}
+
+footer {
+  width: 100%;
+  height: 100vh;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: justify;
+      align-content: space-between;
+  -webkit-box-align: space-between;
+      -ms-flex-align: space-between;
+          align-items: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+footer > .my_info {
+  width: 45%;
+  height: 50vh;
+  background-color: #eee;
+  min-width: 340px;
+}
+
+footer > .my_info > label {
+  width: 100%;
+  height: 5vh;
+  background-color: none;
+  padding-left: 5px;
+  line-height: 5vh;
+  color: #555;
+}
+
+footer > .my_info > .map {
+  height: 35vh;
+}
+
+footer > .send_mail {
+  width: 45%;
+  height: 50vh;
+  background-color: #eee;
+  padding: 5px;
+  min-width: 340px;
+}
+
+footer > .send_mail > span {
+  width: 100%;
+  height: auto;
+  background-color: none;
+}
+
+footer > .send_mail > span > input {
+  width: 100%;
+  height: 4vh;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 4vh;
+  color: black;
+  text-align: unset;
+  font-weight: unset;
+  font-size: 12px;
+  border: 1px solid #ccc;
+}
+
+footer > .send_mail > span > .mail_send {
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 3vh;
+  color: white;
+  text-align: center;
+  font-weight: normal;
+  font-size: 13px;
+  border: none;
+  background-color: #bbb;
+  cursor: pointer;
+}
+
+footer > .send_mail > span > textarea {
+  width: 100%;
+  height: 31vh;
+  background-color: none;
+  border: 1px solid #ccc;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 12px;
+}
+
+footer > .copyright {
+  width: 100%;
+  height: 30px;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 30px;
+  color: #555;
+  text-align: center;
+  font-weight: unset;
+  font-size: 11px;
+}
+
+@media (min-width: 340px) and (max-width: 600px) {
+  .header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -ms-flex-line-pack: end;
+        align-content: flex-end;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .header > .menu {
+    display: none;
+  }
+  .header > .menu2 {
+    display: block;
+  }
+  .header > .icon {
+    margin-top: 7px;
+  }
+  .about_me > .introduce {
+    margin-right: 0px;
+  }
+}
+/*# sourceMappingURL=index.css.map */

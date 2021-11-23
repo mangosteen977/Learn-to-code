@@ -1,0 +1,73 @@
+@charset "UTF-8";
+/* font-family: 'Noto Sans KR', sans-serif; */
+.banners{
+    width: 1200px;
+    height: 500px;
+    margin: 0 auto;
+    overflow: hidden;
+    /* overflow:hidden; : 해당 오브젝트 크기 만큼만 보여지도록 하는 속성*/
+    position: relative;
+}
+.ol_banners{
+    width: 2400px;
+    height: 500px;
+    /* position: absolute;
+    left: -600px; */
+    /* 배너 당기는 중 ↑, 부모객체 position:relative, 자식객체 absolute */
+}
+.ol_banners > li{
+    width: 1200px;
+    height: 500px;
+    float: left;
+}
+/* 좌우 버튼 */
+.on{display: none;}
+.banners:hover > .on{display: block;}
+
+.leftbtn{
+    position: absolute;
+    width: 37px;
+    height: 74px;
+    top: 50%;
+    left: 10px;
+    margin-top: -37px;
+    cursor: pointer;
+}
+.rightbtn{
+    position: absolute;
+    width: 37px;
+    height: 74px;
+    right: 10px;
+    top: 50%;
+    margin-top: -37px;
+    cursor: pointer;
+}
+/* lineheight 를 쓰면 그 세로줄 모두를 범위로 잡힘.(지양)
+top 50%를 주고, height의 1/2값 만큼 margin-top:(-1/2값) 해준다. */
+
+/* 디스크 */
+
+/* 부모객체가 overflow:hidden;일때 자식 객체 밑에 있으면 가려짐.
+position으로 자리를 다시 잡아줘야한다. ↓ */
+/* line-height: 쓸 수 있다. */
+/* text-align: input/text/img/span(단, span은 width가 정확하고 부모가 100%일 때)
+    cf) float:left일 때 적용 안됨.
+    cf) ul/ol은 width가 정확하지 않으면 text-align:center가 안될 수도 있다. */
+.disc{
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    height: 20px;
+    text-align: center;
+}
+/* span: block; 잡혀있으니깐, inline-block. ↓ */
+.disc > span{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    margin: 0 10px 0 10px;
+    background-color: skyblue;
+    cursor: pointer;
+}
+.disc > span:hover {background-color: navy;}

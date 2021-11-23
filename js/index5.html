@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>JavaScript 1일차(5) - 조건문(연산자)</title>
+        <script>
+            var a = "이순신";
+            var b = "홍길동";
+            var c = "B";
+            //&& = and
+
+           /* if(b=="홍길동" && a=="이순신"){
+                document.write("같은 조 입니다.");
+            }
+            else{
+                document.write("서로 다른 조 입니다.");
+            }*/
+
+            // ||(파이프기호) = or
+             if(a=="홍길동" || b=="이순신" || c=="B"){
+                document.write("서로 다른 조 입니다.");
+            }
+            else{
+                document.write("서로 다른 조 입니다.");
+            }
+            /* 응용문제6.
+                임의의 숫자를 입력. 숫자범위는 1~150 이다.
+                1~50까지의 범위 한 가지와 51~100까지의 범위 한 가지,
+                101 이상의 숫자이며, 150이하까지만 입력되는 조건문을 제작하시오.
+                출력내용: 1~50까지는 "해당 임의 숫자는 50안에 들어가는 숫자입니다."
+                51~100까지는 "해당 임의 숫자는 51에서 100까지 안에 들어가는 숫자 입니다."
+                101~150까지는 "101이상 숫자 입니다.",
+                150이상 숫자를 입력하면 "해당 숫자는 150까지만 입력해야 합니다."*/
+
+            var h = 51;
+            if(h<151 && h>0){
+                if(h<151 && h>100){
+                    document.write("해당 숫자는 101이상 숫자 입니다.");
+                }
+                else if(h<101 && h>50){
+                    document.write("해당 숫자는 51에서 100사이의 숫자입니다.");
+                }
+                else{
+                    document.write("해당 숫자는 1에서 50사이의 숫자입니다.");
+                }
+            }
+            else{
+                document.write("해당숫자는 150까지만 입력해야 합니다.");
+            }
+            /* 나머지 값을 출력하여 짝수 홀수 알아내기*/
+            var kk = 87;
+            var jj = kk % 2;
+            // % 2 = 2로 인수분해
+            // 나머지가 없을 경우(0인 경우) 짝수이다.
+            if(jj==0){
+                document.write("짝수");
+            }
+            else{
+                document.write("홀수");
+            }
+        </script>
+    </head>
+</html>

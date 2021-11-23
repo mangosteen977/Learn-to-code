@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> JS/JQ 초급 복습5 + backend; </title>
+        <script src="../jq/jquery.js"></script>
+        <script>
+            /*input-button일 때 submit 보내기, submit 숨겨서 보내기*/
+            //jq
+            $(document).ready(function(){
+                /*응용문제1. : JQ 검색 클릭시 해당부서에 해당 직원이 근무하는지 유/무 조사
+                전송경로 rejava5.php, GET으로 전송, 정상데이터 : 홍길동/IT.*/
+                $("#btn").click(function(){
+                    var $mids = $("#mids").val();
+                    var $mpart = $("#mpart").val();
+                    if($mids==""){
+                        alert("검색할 사원명을 입력하시오");
+                        $mids.focus();
+                        //cursor 커서 포커스
+                    }
+                    else if($mpart==""){
+                        alert("검색할 사원의 부서를 선택하시오");
+                    }
+                    else{
+                        //location.href="rejava5.php?mids="+$mids+"?mpart="+$maprt;
+                        $("#search").attr("method","GET");
+                        $("#search").attr("action","rejava5.php");
+                        $("#search").submit();
+                    }
+                });
+
+
+            });
+            //js
+            /*응용문제2. : JS 검색 클릭시 해당부서에 해당 직원이 근무하는지 유/무 조사
+            전송경로 rejava5.php, GET으로 전송, 정상데이터 : 홍길동/IT.*/
+            function ser(){
+                var mids = document.getElementById("mids").value;
+                var mpart = document.getElementById("mpart").value;
+                if(mids==""){
+                        alert("검색할 사원명을 입력하시오");
+                        document.getElementById("mids").focus();
+                        //해당 부분에 마우스커서 (js)
+                    }
+                    else if(mpart==""){
+                        alert("검색할 사원의 부서를 선택하시오");
+                    }
+                    else{ 
+                        search.method="GET";
+                        search.action="rejava5.php";
+                        search.submit();
+                    }
+            };
+        </script>
+    </head>
+    <body>
+        <!-- 응용문제1. : JQ 검색 클릭시 해당부서에 해당 직원이 근무하는지 유/무 조사
+            전송경로 rejava5.php, GET으로 전송, 정상데이터 : 홍길동/IT.-->
+        <p>[검색할 사원명과 부서를 선택하시오]</p>
+        <form id="search" enctype="application/x-www-form-urlencoded">
+            사원명 : <input type="text" name="mids" id="mids">
+            부서명 :
+            <select name="mpart" id="mpart">
+                <option value="">[부서선택]</option>
+                <option value="IT">IT부서</option>
+                <option value="DESIGN">Design부서</option>
+                <option value="MD">MD부서</option>
+                <option value="MT">MT부서</option>
+            </select>
+            <input type="button" value="검색" id="btn">
+        </form>
+        <!-- 응용문제2. : JS 검색 클릭시 해당부서에 해당 직원이 근무하는지 유/무 조사
+            전송경로 rejava5.php, GET으로 전송, 정상데이터 : 홍길동/IT. -->
+        <!-- <p>[검색할 사원명과 부서를 선택하시오]</p>
+        <form id="search" enctype="application/x-www-form-urlencoded">
+            사원명 : <input type="text" name="mids" id="mids">
+            부서명 :
+            <select name="mpart" id="mpart">
+                <option value="">[부서선택]</option>
+                <option value="IT">IT부서</option>
+                <option value="DESIGN">Design부서</option>
+                <option value="MD">MD부서</option>
+                <option value="MT">MT부서</option>
+            </select>
+            <input type="button" value="검색" onclick="ser();">
+        </form> -->
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/rejava5.html -->

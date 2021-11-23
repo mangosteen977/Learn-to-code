@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECMA Script 1일차(5) - ES class 클래스 및 일반함수 ????????? </title>
+</head>
+
+<body>
+    <input type="text" id="mid" name="mid">
+    <input type="button" value="login" id="btn">
+    <span id="box"></span>
+</body>
+<!-- ES용 Script -->
+<script type="module">
+    import { aaa, login } from "./index5.js?v=10";
+    let a = new aaa(1, 50);
+    console.log(a.as)
+    //버튼 클릭 시 login class 호출함
+    document.querySelector("#btn").addEventListener("click", function () {
+        let l = new login();
+        document.getElementById("box").value = l.aws;
+    });
+</script>
+
+</html>

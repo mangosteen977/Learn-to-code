@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HTML&CSS 3일차(5)&4일차(1) 중급 반응형 (transform + transition) 응용 </title>
+        <script src="../jq/jquery.js"></script>
+        <script>
+           $(document).ready(function(){
+
+            //룰렛 돌리기 연습
+            var $rt = 0; //룰렛 돌리는 값 전역변수
+                $("#btn").click(function(){
+                    var $bb = $("#box").css("transform");
+                    //transform 출력-->maatrix값 출력 됨.
+                    /*matrix:기울기(왼모서리,오른모서리,오른아래모서리,왼아래모서리,X축, y축)*/
+                    //단, rotate 이전 값은 none, 
+            //각도 구하기
+                    var $m = $bb.split(",");  
+                    var $z = Math.floor(Math.abs($m[1])*100); //내림한 값에 *100을 해서 각도값 구함.
+                    /*
+                    Math.abs : 음수 값-->양수 값 변환(?) 
+                    Math.floor/around/ceil
+                    */
+                    //console.log($z) //matrix 오른상단 값.
+            //로테이션 돌리는 값 세팅
+                   var $r = Math.ceil(Math.random()*10);
+                   if(isNaN($z)==true){
+                    $rt = $rt+(20000/$r)*0.1+1800;
+                    /*20000은 55바퀴, 해당 수치가 높을수록 오차 범위(각도)가 늘어난다.*/
+                   }
+                   else{//360/$z : 멈춘 각도부터 다시 로테이션을 하기 위해.
+                    $rt += (20000/$z)*0.1+1800;
+                   }
+             //$.fn.함수이름();, $("#id").함수이름(); 형태의 확장함수도 있다.
+                    console.log($rt);
+                    $("#box").rotate($rt);
+                });
+            //로테이션 돌리는 확장함수
+                $.fn.rotate = function($rt){
+                    $(this).css({"transform":"rotate("+$rt+"deg)"});  
+                };
+           });
+        </script>
+        <style>
+            .box{
+                width: 150px; height: 150px; 
+                background: linear-gradient(315deg, black 90%, red 10% );
+                margin: 0 auto;
+                margin-top: 300px;
+                transition-duration: 5s;
+            }
+        </style>    
+    </head>
+    <body>
+        <div class="box" id="box"></div>
+        <input type="button" value="start" id="btn">
+    </body>
+</html>

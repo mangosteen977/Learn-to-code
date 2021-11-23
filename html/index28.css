@@ -1,0 +1,68 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.box{
+    width: 100px;
+    height: 100px;
+    background-color: black;
+}
+.box:hover{
+    background-color: palevioletred;
+    width: 50px;
+    height: 80px;
+}
+/* hover : 마우스 포인트가 해당 객체에 오버되었을 때 적용되는 CSS속성 */
+.box2{
+    width: 150px;
+    height: 150px;
+    display: block;
+    background-color: blue;
+}
+.box2:hover{
+    border-radius: 100px;
+}
+.main{
+    margin: 0 auto;
+    padding: 0px;
+    width: 1000px;
+    height: 500px;
+    border: 1px solid black;
+    text-align: center;
+}
+.menu_ul{
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    width: 510px;
+    height: 32px;
+    background-color: yellowgreen;
+}
+.menu_li{
+    margin: 0;
+    padding: 0;
+    width: 100px;
+    height: 30px;
+    float: left;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid black;
+    font-size: 13px;
+}
+.btn{
+    width: 100px;
+    height: 40px;
+    border: 0;
+    background-color: black;
+    color: white;
+}
+.span1{
+    width: 100px;
+    height: 40px;
+    display: block;
+    margin: 0 auto;
+}
+.cat{
+    width: 100px;
+    height: 60px;
+}

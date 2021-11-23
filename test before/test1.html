@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>test1.html</title>
+        <style>
+            body{margin: 0; padding: 0; box-sizing: border-box;}
+            ul,ol,dl{margin: 0; padding: 0; list-style: none;}
+            span,label,main{display: block;}
+            a{text-decoration: none;}
+
+            .a{/*부모div박스*/
+                width: 300px;
+                height: 300px;
+                background-color: red;
+                position: relative;
+                top: 100px;
+                left: 150px;
+            }
+            .b{/*자식span박스*/
+                width: 50px;
+                height: 50px;
+                background-color: black;
+                color: white;
+                font-size: 20px;
+                position: absolute;
+                left: 100%;
+                text-align: center;
+                line-height: 50px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="a">
+            <span class="b">X</span>
+        </div>
+
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/test/test1.html -->

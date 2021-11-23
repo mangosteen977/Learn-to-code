@@ -1,0 +1,71 @@
+<?php
+    $v = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 5일차 (4) vue 뷰 지역 컴퍼넌트 components 응용 ???????? </title>
+        <script src="../jq/jquery.js"></script>
+        <!-- vue 버전 1.6.4 ???????? -->
+        <script src="http://cdn.jsdelivr.net/npm/vue"></script>
+        <!-- <link rel="stylesheet" type="text/css" href="./index.css?v=<?=$v?>"> -->
+    </head>
+    <body>
+        <section id="box">
+            <btn v-bind:type="b" v-model="btn_name"></btn>
+            <mids v-bind:type="t" name="mid" id="mid" v-model="mid"></mids>
+        </section>
+    </body>
+    <script>
+        Vue.component({
+            //이건 전역 컴퍼넌트
+        })
+        //지역 components ??????? 차이가 뭔데....... 
+        let v = {
+            template:"<input @click='aaa'>",
+            methods:{
+                aaa:function(){
+                    a.abc(); //components 상에서는 아래에 있는 Vue로 method핸들링 가능
+                }
+            }
+        }
+        let i = {
+            // $event.target.value : 사용자가 현재 입력한 값을 가져옴
+            // v-on:input 은 키보드 입력시 마다 체크함 
+            template:"<input @input='ups($event.target.value)'>", //혹은 @change사용해도 됨.
+            // template:"<input @change='ups($event.target.value)'>",
+            methods:{
+                ups:function(d){ //v-on 함수 실행
+                   a.mid = d; //a에 있는 data중에서 mid값을 데이터에 적용함.
+                }
+            }
+        }
+       let a = new Vue({
+        el:"#box",
+        data:{
+            b:"button",
+            btn_name:"클릭",
+            t:"text",
+            mid:""
+        },
+        methods:{
+           abc:function(){
+               if(this.mid==""){
+                   alert("아이디를 입력하세요");
+                   document.getElementById("mid").focus();
+                   //components , template 에서 $refs ??? ref 사용 못 함(???)
+               }
+               else{
+                //    location.href="http://naver.com";
+               }
+           }
+        },
+        components:{
+            btn:v,
+            mids:i
+        }
+       });
+    </script>
+</html>

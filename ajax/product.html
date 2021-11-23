@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title> Ajax 7일차(1) - 쇼핑몰 상품파트</title>
+        <script src="./jquery.js"></script>
+        <!-- webp : IE(X) gif(퀄리티 떨어짐), webp = gif+jpg, webp = gif+png
+        webm : IE(X) webm = mp4+H.264(용량은 최소화질 고퀄리티) 
+        MP4 => H.264 변환(인코딩, 화질 저하)-->
+        <!-- product(키값) : p_name(상품명), p_info(상품간편설명), p_price(판매가격),
+                            P_sales(할인가), p_percent(할인율), p_img(상품이미지),
+                            p_review(리뷰글수), p_link(상품상세페이지)  -->
+        <script>
+            $(function(){
+                $.ajax({
+                    url:"./product.json",
+                    cache:false,
+                    type:"GET",
+                    dataType:"JSON",
+                    success:function($data,$ok){
+                        $.products($data); //extend>product 확장함수로 보냄
+                    },
+                    error:function(){
+                        console.log("data_error");
+                    }
+                });
+                $.extend({//≒bind, 여러 개의 확장함수를 묶는다.
+                    products:function($data){
+                        //console.log($data["product"].length)//전체 배열 갯수
+                        //한번에 찍기
+                        $.map($data["product"],function($a,$node){
+                            $html = '<div class="product_box" link="'+$data["product"][$node]["p_link"]+'"><label class="imgbox">\
+                                    <span class="p_review">♥ '+$data["product"][$node]["p_review"]+' review</span>\
+                                    <img src="'+$data["product"][$node]["p_img"]+'"></label>\
+                                    <label class="infobox">\
+                                    <span class="p_name">'+$data["product"][$node]["p_name"]+'</span>\
+                                    <span class="p_info">'+$data["product"][$node]["p_info"]+'</span>\
+                                    <span class="p_price">'+$data["product"][$node]["p_price"]+'</span>\
+                                    <span class="p_sales">'+$data["product"][$node]["p_sales"]+'</span>\
+                                    <span class="p_percent">'+$data["product"][$node]["p_percent"]+'</span>\
+                                    </label></div>';
+                            $("#scss").append($html);
+                            
+                            /*ajax로 만든 객체의 핸들링은 무조건 해당 객체를 찍은 함수 내에 둔다.*/
+                            $("#scss>div").click(function(){
+                                let $click_d = $(this).attr("link");
+                                window.open($click_d,"_blank");
+                            });
+
+                        });
+                        //더블로 찍기
+                        /*let $html = ""; $img_html =""; $html2 ="";
+                        $.map($data["product"],function($a,$node){
+                            //console.log($a["p_name"])//p_name key만 출력
+                            //Object.keys : 중괄호 속 key 갯수 구함
+                            //console.log(Object.keys($data["product"][0]).length)
+                            $html = '<div class="product_box">';
+                            $.map($data["product"][$node],function($val,$key){
+                                switch($key){
+                                    case "p_name":
+                                    $html2 = '<label class="infobox"><span class="'+$key+'">'+$val+'</span>';
+                                    break;
+                                    
+                                    case "p_info":
+                                    $html2 += '<span class="'+$key+'">'+$val+'</span>';
+                                    break;
+
+                                    case "p_price":
+                                    $html2 += '<span class="'+$key+'">'+$val+'</span>';
+                                    break;
+                                    
+                                    case "p_sales":
+                                    $html2 += '<span class="'+$key+'">'+$val+'</span>';
+                                    break;
+                                    
+                                    case "p_percent":
+                                    $html2 += '<span class="'+$key+'">'+$val+'</span></label>';
+                                    break;
+                                    
+                                    case "p_img":
+                                    $img_html = '<img src="'+$val+'">';
+                                    break;
+                                    
+                                    case "p_review":
+                                    $html += '<label class="imgbox" id="imgbox'+$node+'"><span class="p_review">♥ '+$val+' review</span></label>';
+                                    break;
+                                    
+                                    case "p_link":
+
+                                    break;
+                                }
+                            });//S_map
+                            $html += $html2+'</div>';
+                            $("#scss").append($html);
+                            $("#imgbox"+$node+"").append($img_html);
+                        });//B_map*/
+                    }//product함수
+
+                });//extend함수
+                                
+            });
+        </script>
+        <style>
+            *{box-sizing: border-box; font-size: 13px; font-family: "돋움체";}
+            body{margin: 0; padding: 0;}
+            span,label{display: block;}
+            img{width: 230px; height: 330px; object-fit: cover;}
+            /*object-fit: cover;* 필수, 이미지가 깨지는 걸 방지한다. cover를 해야 크기에 맞는다.
+             +) 사진 크기 넘치는 건 overflow: hidden;을 한다.*/
+            .scss{
+                width: 1000px; height: 630px; margin: 10px auto;
+                border: 1px solid #ccc;
+                display: flex; flex-wrap: wrap; justify-content: space-between;
+                padding: 30px 10px 30px 10px;
+            }
+            .product_box{ width: 230px; height: auto; border: 1px solid #ccc; overflow: hidden; cursor: pointer;}
+            .imgbox{
+                width: inherit; height: 330px; position: relative; overflow: hidden;
+            }
+            .p_review{
+                width: 100px; height: 30px; position: absolute; margin: 10px; line-height: 30px;
+                background-color: rgba(255, 255, 255, 0.7); text-indent: 5px;
+            }
+            .infobox{ width: inherit; height: 240px;}
+            .p_name{
+                width: inherit; height: 60px;
+                font-weight: bold; display: flex; flex-wrap: wrap;
+                justify-content: center; align-content: center;
+            }
+            .p_info{
+                width: inherit; height: 60px; display: flex; flex-wrap: wrap;
+                justify-content: center; align-content: center; padding: 0 10px 0 10px;
+            }
+            .p_price,.p_sales,.p_percent{
+                width: inherit; height: 40px; text-align: center; line-height: 40px;
+            }
+            .p_price{text-decoration: line-through;}
+            .p_sales{font-weight: bold;}
+            .p_percent{color: tomato; font-weight: bold;}
+        </style>
+    </head>
+    <body>
+        <section class="scss" id="scss">
+            <!-- 제이쿼리 출력 샘플
+            <div class="product_box">
+                <label class="imgbox">
+                    <span class="p_review">리뷰갯수</span>
+                    <img src="./product/product1.webp">
+                </label>
+                <label class="infobox">
+                    <span class="p_name">상품명<br>상품명</span>
+                    <span class="p_info">상품간편소개<br>상품간편소개</span>
+                    <span class="p_price">소비자가격</span>
+                    <span class="p_sales">할인가격</span>
+                    <span class="p_percent">할인율</span>
+                </label>
+            </div>
+            -->
+        </section>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/ajax/product.html -->

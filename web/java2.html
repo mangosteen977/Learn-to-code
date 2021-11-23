@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE-Edge, chrome=1">
+        <title>자바스크립트 기초(2) - 응용편</title>
+        <script>
+        /*
+                실수=유리수+무리수
+                정수=-1,0,1
+                유리수=0.1,0.2
+                무리수=
+        */
+        /*
+            응용문제4.
+            고객이름을 임의 입력.
+            고객은 "홍길동","이순신","유관순","강감찬" 중 한 명을 입력.
+            단, "홍길동","유관순"은 VIP등급이며, 나머지 둘은 실버등급이다.
+            문법을 작성하시오.
+        */
+            var a = "유관순"
+            if(a=="홍길동" || a=="유관순"){
+                //console.log(a+"님은 VIP등급입니다.");
+            }
+            else if(a=="이순신" || a=="강감찬"){
+                console.log(a+"님은 실버등급입니다.");
+            }
+        /*
+            응용문제5.
+            다음 제시한 고객을 확인 후 코드를 작성하시오.
+            사용자는 홍길동,이순신,유관순,강감찬,세종대왕.
+            통신사는 SKT,KT,LGT.
+            SKT : 홍길동, 이순신
+            KT : 세종대왕
+            LGT : 유관순, 강감찬
+
+            두가지 값을 입력 예) a = "홍길동", tel = "KT"
+            해당 사용자는 통신사에 등록 된 사용자가 아닙니다.
+        */
+            var tel = "KT"
+            if(tel=="KT" && a=="세종대왕"){
+                console.log(a+"님은 KT고객이 맞습니다.");
+            }
+            else if(tel=="SKT" && (a=="홍길동" || a=="이순신")){
+                console.log(a+"님은 SKT고객이 맞습니다.");
+            }
+            else if(tel=="LGT" && (a=="유관순" || a == "강감찬")){
+                console.log(a+"님은 LGT고객이 맞습니다.");
+            }
+            else{
+                console.log(a+"님은 "+tel+"에 등록된 사용자가 아닙니다.");
+            }
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/web/java2.html -->

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jquery 2일차(5) - 중급 (최대/최소값 찾기+배열 총 합계 계산) </title>
+        <script src="./jquery.js"></script>
+        <script>
+            //통신배열 자세한 내용은 middle11참고
+            $(function(){
+                const $array = [3,11,16,7,90];
+                //최대값
+                $("#btn1").click(function(){
+                    var $a = Math.max.apply("",$array);
+                    //Math.max.apply : 배열값을 비교해 최대치 값을 가져옴
+                    //""안에 값은 []를 푸는 값(?) 암거나 넣어두 상관(X)
+                    console.log($a)
+
+                    //배열이 아닌형태의 값은 apply 필요(X)
+                    // var $b = Math.max(3,4,5,6,7,8);
+                    // console.log($b)
+                });
+                //최소값
+                $("#btn2").click(function(){
+                    //Math.min.apply : 배열값을 비교해 최소치 값을 가져옴
+                    //""안에 값은 []를 푸는 값(?) 암거나 넣어두 상관(X)
+                    var $a = Math.min.apply("",$array);
+                    console.log($a)
+                });
+                //합계
+                $("#btn3").click(function(){
+                    var $z = k;
+                    console.log($z);//{product_nm: "스마트폰 액정 3EA", money: "11500"}
+                    $.each($z,function($w,$e){
+                        //console.log($w) //key값
+                        console.log($e) //값
+                    });
+                });
+
+                //연습) Js확장함수 만들고 값 리턴으로 받기
+               /* $.fn.aaa = function(){
+                    var $c = abc();
+                    console.log($c)
+                };
+                $.fn.aaa();*/
+
+            });
+            //연습) JS에서 JQ로 값 리턴
+            /*function abc(){
+                var bb = "test";
+                return bb;
+            };*/
+            var k = "";
+            function products(data){
+                k = data;
+                //배열은 백엔드에서 받아오는 값이라 휘발성임
+                // return으로 보내면 재호출이 안되서 undefind나옴.
+                //빈 전역변수를 두고 값을 넣는다.
+            }
+        </script>
+        <style>
+            *{box-sizing: border-box;}
+        </style>
+    </head>
+    <body>
+        <input type="button" value="최대값" id="btn1">
+        <input type="button" value="최소값" id="btn2">
+        <br><br>
+        
+        <input type="button" value="합계" id="btn3">
+    </body>
+    <!-- 함수명 : products -->
+    <script src="http://lovertvtest.dothome.co.kr/jq/array.php"></script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/middle10.html -->

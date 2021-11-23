@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+    <title> Jquery Ajax 7일차(3) - Ajax 외부 도메인 파일 가져오기 = CORS 크로스 도메인 이슈 </title>
+    <script src="./jquery.js"></script>
+    <script>
+        /*
+            검색 키워드 : CORS 크로스 도메인 이슈 외부 데이터 로드 가져오기
+            ajax 통신 보내기 POST GET 외부 파일 외부 도메인
+        */
+        $(function () {
+            //news.json, myinfo.json 여러 JSON 파일 Ajax 로드
+            var $urls = "http://imnotfresh.dothome.co.kr/05_ajax/data.php";
+
+            /*btn1 => 내 도메인의 파일 로드*/
+            $("#btn1").click(function () {
+                //.get, .getJSON ==> CORS작동(X): 내 서버 의외의 사이트 json못 가져옴.
+                /* json파일 GET ($.ajax보다 빠르다) */
+                $.getJSON("news.json", function ($data1) {// GET일 때.
+                    console.log($data1)
+                })
+                /* xml,json 파일 GET */
+                $.get("index2.xml", function ($data) {
+                    console.log($data)
+                });
+                /* POST 전송은 $.ajax 써야함. */
+            });
+
+
+            /*btn2 => 외부 도메인의 파일 로드*/
+            /*  실무에서는 web(html,css,js)서버와 DB(json,xml)서버, img(img파일들)서버를 분리하여
+                web서버와 DB서버 사이에 통신하며 파일을 주고받는다.
+                DB서버와 img서버 또한 연결되어 web=DB 사이만 통신하면된다. */
+            /*
+                면접 AJAX 관련
+                1. js,jq 형태의 포트폴리오.
+                2. XML,JSON parse 형태 사용 有?
+                3. async 사용 有? (async : true가 기본(비동기식), false(동기식))
+                4. 비동기와 동기의 차이점?
+            */
+            $("#btn2").click(function () {
+                //윤경님 서버의 php파일 로드하기
+
+                //ver.1 (chrome,IE,EDGE 모두 작동함)
+                //비동기식 CORS 데이터 가져오기
+                $.ajax({
+                    // url:"http://imnotfresh.dothome.co.kr/05_ajax/data.php",
+                    url: $urls, //전역변수에서 가져와도 됨.
+                    cache: false, //cache 저장(X)
+                    dataType: "jsonp", //외부파일 로드 시 jsonp ,자신 도메인 json
+                    type: "GET",
+                    jsonpCallback: "test", //back-end가 말한 통신키 값
+                    success: function ($data2) {
+                        console.log($data2);
+                    }
+                });
+                //ver.2(IE에서만 작동함.)
+                /*
+                $.ajax({
+                    url:"http://imnotfresh.dothome.co.kr/05_ajax/notice_number.php?v=1",
+                    cache:false,
+                    type:"GET",
+                    dataType:"JSON",
+                    crossDomain:true,
+                    success:function($data2){
+                        $("#box").append($data2);
+                    },
+                    error:function(){
+                        console.log("data_error");
+                    }
+                });*/
+                //ver.3(IE에서만 작동함.)
+                /*
+                $.ajax({
+                    url:"http://imnotfresh.dothome.co.kr/05_ajax/data.php",
+                    type:"GET",
+                    dataType:"jsonp", //CORS 오류 없애기 위해 사용
+                    contentType:"javascript/jsonp, charset=utf-8",
+                    data:{ //back-end 요청시 사용하는 통신코드
+                        "mname":"hong" 
+                    },
+                    async:false, //async : true가 기본(비동기식), false(동기식)
+                    jsonp:'callback', //동기식으로 값 요청시, 다시 응답받는 콜백 함수
+                    success:function($data2){
+                        $("#box").append($data2);
+                    },
+                    error:function(){
+                        console.log("data_error");
+                    }
+                });*/
+            });
+
+
+        });
+    </script>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <input type="button" value="내 서버의 데이터 로드" id="btn1">
+    <input type="button" value="외부 서버의 데이터 로드" id="btn2">
+</body>
+
+</html>
+<!-- http://mangsteen977.dothome.co.kr/ajax/jqindex8.html -->
+<!-- jndex -->

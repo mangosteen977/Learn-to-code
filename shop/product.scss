@@ -1,0 +1,180 @@
+@charset "UTF-8";
+/* font-family: 'Noto Sans KR', sans-serif; 100,400,700
+   font-family: 'Raleway', sans-serif; */
+@mixin product_box($w,$h,$p_l,$p_r){
+    width: $w;
+    height: $h;
+    margin: 0 auto;
+    padding-left: $p_l;
+    padding-right: $p_r;
+    box-sizing: border-box;
+}
+.product{
+    @include product_box(1200px, 500px, 25px, 25px);
+    &>.p_title{
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+}
+/* 베스트상품 칸 */
+.p_best{
+    width: 100%;
+    height: 300px;
+    box-sizing: border-box;
+}
+.p_best > li{
+    overflow: hidden; /* 규격 외 안보이게 */
+    width: 280px;
+    height: auto;
+    border: 1px solid black;
+    float: left;
+    margin-right: 10px;
+    box-sizing: border-box;
+}
+.p_best > li:last-child{
+    margin-right: 0;
+}
+.product_dl{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.product_dl > dt{
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+.product_dl > dd{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    height: 50px;
+    text-align: center;
+    width: 100%;
+}
+.product_dl > dd:nth-child(2){
+    /* display:table-cell; + vertical-align:middle; 세로 중앙에 정렬 */
+    display: table-cell;
+    /* 표의 칸<td>으로 인식하게 함, width 다시 설정해줘야함.
+    <td>로 인식하고 vertical-align을 하면 여러줄을 써도 중앙정렬이 용이.
+    line-height는 한줄일 경우만 가능함. */
+    vertical-align: middle;/* <td>형태의 요소를 세로중앙정렬(top/bottom/middle) */
+    width: 280px;
+}
+.product_dl > dd:nth-child(3){
+    display: block;
+    line-height: 50px;
+    font-weight: 700;
+}
+.product_dl > dd:nth-child(3) >label{
+    display: inline-block;
+}
+.product_dl > dd:nth-child(3) >label:first-child{
+    color: orange;
+}
+.coupon{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 50px;
+    height: 50px;
+}
+
+
+/*
+원래 css file
+@charset "UTF-8";
+.product{
+    width: 1200px;
+    height: 500px;
+    margin: 0 auto;
+    padding-left: 25px;
+    padding-right: 25px;
+    box-sizing: border-box;
+}
+.p_title{
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+//베스트상품 칸
+.p_best{
+    width: 100%;
+    height: 300px;
+    box-sizing: border-box;
+}
+.p_best > li{
+    overflow: hidden; // 규격 외 안보이게
+    width: 280px;
+    height: auto;
+    border: 1px solid black;
+    float: left;
+    margin-right: 10px;
+    box-sizing: border-box;
+}
+.p_best > li:last-child{
+    margin-right: 0;
+}
+.product_dl{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.product_dl > dt{
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+.product_dl > dd{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    height: 50px;
+    text-align: center;
+    width: 100%;
+}
+.product_dl > dd:nth-child(2){
+    // display:table-cell; + vertical-align:middle; 세로 중앙에 정렬
+    display: table-cell;
+    // 표의 칸<td>으로 인식하게 함, width 다시 설정해줘야함.
+    // <td>로 인식하고 vertical-align을 하면 여러줄을 써도 중앙정렬이 용이.
+    // line-height는 한줄일 경우만 가능함.
+    vertical-align: middle;// <td>형태의 요소를 세로중앙정렬(top/bottom/middle)
+    width: 280px;
+}
+.product_dl > dd:nth-child(3){
+    display: block;
+    line-height: 50px;
+    font-weight: 700;
+}
+.product_dl > dd:nth-child(3) >label{
+    display: inline-block;
+}
+.product_dl > dd:nth-child(3) >label:first-child{
+    color: orange;
+}
+.coupon{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 50px;
+    height: 50px;
+}
+*/

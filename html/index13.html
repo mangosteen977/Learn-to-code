@@ -1,0 +1,42 @@
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>HHTML 4.0 5일차 - 기본 레이아웃 + CSS 2.0</title>
+        <style>
+            body{margin: 0; padding: 0;}
+            /* div 객체, 사이즈 150*150, 배경 파란색 */
+            .a{padding-top: 50px; padding-left: 50px; background-color: blue; width: 100px; height: 100px;}
+            /*  padding : 안쪽 여백 공간을 만들 때 사용. */
+            .b{padding-top: 35px; padding-left: 35px; width: 65px; height: 65px; background-color: green;}
+            /* 부모-자식 태그=여유공간/2-->padding-left/top.
+                padding 사용 시 주의사항 4.0기준에서는
+                padding사용시 width,height높이가 추가됨,
+                실제 width,hieght조정해야함 */
+            .c{width: 30px; height: 30px; background-color: yellow;}
+            .d{padding: 150px 0 0 150px; width: 50px; height: 50px; background-color: grey;}
+            /* padding: 0 0 0 0; 시계방향으로 top, right bottom, left; */
+            .e{width: 50px; height: 50px; background-color: black;}
+            .img{width: 200px; height: 200px; border: 1px solid black;}
+            .cat{width: 100px; height: 100px;}
+            .c2{margin: -100px 0 0 100px;}
+        </style>
+    </head>
+    <body>
+        <div class="a"></div>
+        <div class="b">
+            <div class="c"></div>
+        </div>
+        <div class="d">
+            <div class="e"></div>
+        </div>
+        <div class="img">
+            <!-- class, name, id -->
+            <!-- class : 여러개의 클래스를 사용할 수 있다. 또한 중복사용도 가능. -->
+            <a href="http://naver.com"><img src="./cat.jpg" class="cat"></a>
+            <a href="http://nate.com"><img src="./cat2.jpg" class="cat c2"></a>
+            <img src="./cat3.jpg" class="cat">
+            <img src="./cat4.jpg" class="cat c2">
+        </div>
+        <!-- tag 당 class 갯수의 권고 사항 : 최대 4~6개. 속도가 느려짐 -->
+    </body>
+</html>

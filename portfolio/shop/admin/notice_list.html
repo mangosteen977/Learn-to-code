@@ -1,0 +1,53 @@
+<meta charset="UTF-8">
+<article class="adm_main">
+    <span>공지사항 리스트</span>
+    <ol class="admin_main_ul">
+        <li onclick="fontclass('1');"><img src="../image/ts01.gif" alt="../img/ts01.gif" title="보통"></li>
+        <li onclick="fontclass('2');"><img src="../image/ts02.gif" alt="../img/ts02.gif" title="크게"></li>
+        <li onclick="fontclass('3');"><img src="../image/ts03.gif" alt="../img/ts03.gif" title="더크게"></li>
+    </ol>
+</article>
+<form name="notice_list_frm" id="notice_list_frm" method="POST" enctype="application/x-www-form-urlencoded">
+    <article class="notice_list">
+        {{data_load}}
+        <div class="search_notice_box">
+            <input type="text" placeholder="검색어를 입력해주세요" v-model="search_notice_word">
+            <input type="button" value="검색" @click="search_notice_data">
+            <input type="button" value="전체목록" @click="view_all_notice_data" id="notice_btn1">
+        </div>
+        <table class="notice_tb">
+            <thead>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>번호</td>
+                    <td>제목</td>
+                    <td>글쓴이</td>
+                    <td>날짜</td>
+                    <td>조회</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(n_val,n) in notice_arr" v-if="notice_data==true">
+                    <td><input type="checkbox" name="notice_fidx[]" :value="n_val.sidx"></td>
+                    <td v-text="ea-n"></td>
+                    <td v-html="n_val.subject" @click="go_to_notice_modify(n_val.sidx)"></td>
+                    <td v-text="n_val.id"></td>
+                    <td v-text="n_val.windate.substr(0,10)"></td>
+                    <td v-text="n_val.wcount"></td>
+                </tr>
+                <tr v-else>
+                    <td colspan="6" class="no_notice_list">등록 된 게시물이 없습니다.</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="notice_page">
+            <ul>
+                <li v-for="page in page_num" @click="page_click(page)">{{page}}</li>
+            </ul>
+        </div>
+        <div class="btns_notice">
+            <input type="button" value="공지사항 등록" @click="go_to_notice_write" class="add_notice_btn" id="notice_btn2">
+            <input type="button" value="공지사항 삭제" @click="del_notice" class="del_notice_btn" id="notice_btn3">
+        </div>
+    </article>
+</form>

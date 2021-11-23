@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html land="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>Jquery8일차 - (GET 파라미터 값으로 던지기1) 팀플!with은미님코드:)</title>
+        <script src="./jquery.js"></script>
+        <script src="./jquery-ui.js?v=2"></script>
+        <link rel="stylesheet" type="text/css" href="./jquery-ui.css?v=1">
+        <!-- 선생님 버전 코드는 data(2).html 참고. (eval 사용법) -->
+        <script>
+            $(document).ready(function(){
+                var $url = location.search;
+                // console.log($url); //?a1=243&a2=234&a3=231
+
+                var $a=$url.split("?a1=");     //console.log($a);  //?a1=232&a2=234&a3=231
+                var $a1=$a.splice("&");       //console.log($a1); // ["", "232&a2=234&a3=231"]
+                var $a2=$a1[1].split("&");    //console.log($a2); //"232", "a2=234", "a3=231"]
+                var $b1=$a2[1].split("=");    //"a2","234"
+                var $c=$url.split("&a3=");    //["?a1=300&a2=500", "900"]
+            
+            // console.log($c);
+                
+                /*값가져오는거 체크 !
+                var $h0=$a2[0];//1번째값
+                var $h1=$b1[1];//2번째 값..
+                var $h2=$c[1];//3번째 값!!
+                */    
+                var $ht=String($a2[0]+","+$b1[1]+","+$c[1])     
+                var $nn=$ht.split(",");
+
+
+                var $timer;
+                var $aa=0;
+                $.fn.abc =function(){
+                    var $node = $("#gr>span").length;
+                    $("#gr>.grt").eq($aa).animate({"height":($nn[$aa]*0.1)+"px"},1000);
+                    //   console.log($h0);
+                    console.log($nn[$aa]);    
+                    $timer= setTimeout($.fn.abc,1000);
+                    $aa +=1;
+                    if($aa>=$node){
+                        clearTimeout($timer);
+                    }
+                };
+                $timer = $.fn.abc();//setTimeout 함수->확장함수로 던짐(확장함수보다 밑에 있아야함.)
+            });
+        </script>
+        <style>
+            body{margin: 0;padding: 0;}
+            span,label{display: block;}
+            /*이미지 1000*500*/
+            .box{width: 1000px; height: 500px; position: relative;}
+            .box > img{width: 1000px; height: 500px; position: absolute;}
+            .gr{width: 500px; height: 450px; position: absolute; right: 0;}
+            .grt{
+                width: 100px; height: 0;
+                background-color: gray;
+                position: absolute; bottom: 0; left:55px
+            }
+            .grt:nth-child(2){left:200px;}
+            .grt:nth-child(3){left:345px;}
+
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <img src="./chart_bk.png">
+            <label class="gr" id="gr">
+                <span class="grt" id="g0"></span>
+                <span class="grt" id="g1"></span>
+                <span class="grt" id="g2"></span>
+            </label>
+        </div>
+    </body>
+</html>

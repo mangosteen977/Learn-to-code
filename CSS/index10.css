@@ -1,0 +1,76 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700;900&display=swap');
+/*
+font-family: 'Noto Sans KR', sans-serif; (100, 400, 700, 900)
+*/
+/* viewport SCSS에서 쓸 때는 이렇게 함.(모바일 디바이스용 설정)*/
+/* @-ms-viewport{width:device-width;}
+@viewport{width:device-width; zoom:1; min-zomm:0.5; max-zoom:2;}
+*/
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 100%; /*(모바일) 최소 font-size : 14px;이상이어야 한다.*/
+    font:inherit; /* inherit : (모바일) 부모기준으로 폰트 기준을 상속 받아 사용함.*/
+}
+ul, ol{list-style: none; margin: 0; padding: 0;}
+span, label, main{display: block;}
+a{text-decoration: none;}
+/* root : css기본 형태를 특정문자로 저장시키도록 함. */
+:root{
+    --box-width:100px;
+    --box-height:100px;
+    --box-color:red;
+    --aa:2px solid blue;
+    --f1:'Noto Sans KR', sans-serif;
+}
+/* "--" : 특정문자의 시작 */
+/* var : :root 에서 지정 된 특정문자를 호출함.
+         css를 암호화 할 수 있다. */
+/* .box{
+    width:var(--box-width);
+    height:var(--box-height);
+    background-color: var(--box-color);
+    border: var(--aa);
+    font-family: var(--fq);
+} */
+/* 모바일 CSS의 기초 */
+/* 각 분류별 제목 부분 높이 최소 40px;이상이어야 한다. */
+.top{
+    height: 60px;
+    background-color: gray;
+    position: relative;
+    box-sizing: border-box;
+    padding-top: 5px;
+
+}
+.btn1{/*hamburger-menu*/
+    width: 50px;
+    height: 50px;
+    background-color: yellow;
+    position: absolute;
+}
+.btn2{
+    width: 150px;
+    height: 50px;
+    background-color: green;
+    position: relative;
+    margin: 0 auto;
+}
+.btn3{/*login,infomation,etc*/
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    position: absolute;
+    top: 5px;
+    right: 0;
+    /*float:left;(X) (모바일) 가로 사이즈가 정확하지 않아서 안됨.
+      display:inline-block;(△)간혹 쓰긴 함.*/
+}
+.cs{
+    font-size: 5vw;
+}
+/* 1vw=화면가로의 1/100. ex.가로900일 때 1vw=9px
+   1vh=화면가로의 1/100. ex.세로400일 때 1vh=4px
+   1vw : 가로길이 기준, 1vh : 세로길이 기준
+   vmin, vmax : 글자의 최소/최대 사이즈 조절함. */

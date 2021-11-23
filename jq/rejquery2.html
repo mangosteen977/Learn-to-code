@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery 9일차(2) - JQ초급코드 응용 및 최종복습 _ 시간+배너 </title>
+        <script src="./jquery.js"></script>
+        <script src="./jquery-ui.js"></script>
+        <link rel="stylesheet" type="text/css" href="./jquery-ui.css">
+        <script>
+             $(document).ready(function(){
+                //ol width 계산
+                var $b_width = $("#olcss>li").width();
+                var $node = $("#olcss>li").length;
+                var $ol_width = $b_width*$node;
+                //ol width 적용
+                $("#olcss").css("width",$ol_width);
+                //배너 움직이기
+                var $timer;
+                var $n = 1;
+                $.fn.banner = function(){//타이머 확장함수 : JQ_setTimeout은 확장함수에서만 작동한다.
+                    $("#olcss").stop().animate({
+                        "left":-($b_width*$n)+"px"
+                    },500);
+                    $n += 1;
+                    if($n>=$node){$n =0;}
+                    $timer = setTimeout($.fn.banner,5000);
+                };
+                //setTimeout 은 var $전역변수를 꼭 붙여서 써야 정확히 (clearTimeout)등이 작동한다.
+                $timer = setTimeout($.fn.banner,5000);//5초의 한번 타이머 작동, 확장함수로 던진다.
+                //배너에 마우스 올라가면 멈추기
+                $("#banner").mouseenter(function(){
+                    clearTimeout($timer);
+                });
+                $("#banner").mouseleave(function(){
+                    $timer = setTimeout($.fn.banner,5000);
+                });
+
+             });
+        </script>
+        <style>
+            body{margin: 0; padding: 0;}
+            ol{list-style: none; margin: 0; padding: 0;}
+           .banner{width: 1000px; height: 490px; border: 1px solid black; overflow: hidden; }
+           .olcss{ height: 490px; position: relative;}
+           .olcss>li{width: 1000px; height: 490px; float: left;}
+        </style>
+    </head>
+    <body>
+        <div class="banner" id="banner">
+            <ol class="olcss" id="olcss">
+                <li><img src="../js/banners/banner0.png"></li>
+                <li><img src="../js/banners/banner1.png"></li>
+                <li><img src="../js/banners/banner2.png"></li>
+            </ol>
+        </div>
+        
+        
+        
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/rejquery2.html -->

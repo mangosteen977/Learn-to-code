@@ -1,0 +1,43 @@
+<?php
+    $v = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 4일차 (4) vue 전역 컴퍼넌트 3 ??? components template 템플릿 가짜 태그 ?????????</title>
+        <script src="../jq/jquery.js"></script>
+        <!-- vue 버전 1.6.4 ???????? -->
+        <script src="http://cdn.jsdelivr.net/npm/vue"></script> <!--상용버전 값 가져옴^_~-->
+        <style>
+        </style>
+    </head>
+    <body>
+        <section id="box3">
+            <ul>
+                <gom v-bind:aaa="list" v-for="list in arrs"></gom>
+            </ul>
+        </section>
+    </body>
+    <script>
+        //Vue 코드 순서 : 1.배열,ajax 2.component 3.new Vue
+        Vue.component("gom",{ //new Vue 보다 상위에 존재해야 출력이 된다.
+            props:["aaa"],
+            template:"<li>{{aaa[0]}} - {{aaa[1]}}</li>"
+        });
+        const arr = [ //배열은 new Vue보다 위에 둔다. 
+            ["이은미","A형"],
+            ["안찬익","B형"],
+            ["민서현","AB형"],
+            ["이시우","O형"],
+            ["정아름","A형"]
+        ];
+        let a = new Vue({
+            el:"#box3",
+            data:{
+                arrs:arr
+            }
+        });
+    </script>
+</html>

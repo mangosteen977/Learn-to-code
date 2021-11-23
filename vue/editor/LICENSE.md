@@ -1,0 +1,1 @@
+d:\mangsteen977\html\vue\editor\LICENSE.md

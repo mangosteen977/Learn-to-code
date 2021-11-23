@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery 4일차(3) - 추가 이벤트 핸들링 </title>
+        <script src="./jquery.js"></script>
+        <script>
+        //mouseover+mouseout = 해당 오브젝트만 범위로 인식함(자식X)
+        //mouseenter+mouseleave = 해당 오브젝트와 자식객체까지 범위로 인식함.
+            $(document).ready(function(){
+                var $a =0;
+                var $b =0;
+                $("#box1").mouseover(function(){
+        //mouseover : 마우스가 객체 오버되었을 경우
+                    $(this).css("background-color","black");
+                });
+                $("#box1").mouseout(function(){
+        //mouseout : 마우스가 객체 밖으로 나올 경우
+        //범위에서 자식 객체 미포함 == 자식객체 쪽으로 마우스가 넘어가면 out로 인식
+                    $(this).css("background-color","");//""빈칸은 원래 색으로 돌아오기
+                    $("#box1>p").css("color","white");
+                });
+                $("#box2").mouseenter(function(){
+                    $(this).css("background-color","black");
+                });
+                $("#box2").mouseleave(function(){
+        //mouseout : 마우스가 객체 밖으로 나올 경우
+        //범위에서 자식 객체 포함 == 자식객체 쪽으로 마우스가 넘어가도 enter로 인식
+                    $(this).css("background-color","");
+                    $("#box2>p").css("color","white");
+                });
+
+                // 메뉴들
+                $(".ulcss>li").mouseenter(function(){
+                    var $node = $(this).index();
+                    console.log($node);
+                    $(".ulcss>li:eq("+$node+")>.olcss").slideDown();
+                });
+                $(".ulcss>li").mouseleave(function(){
+                    var $node = $(this).index();
+                    console.log($node);
+                    $(".ulcss>li:eq("+$node+")>.olcss").slideUp();
+                });
+
+            });
+        </script>
+        <style>
+            .box{width: 100px; height: 100px; background-color: orange;}
+            .box2{width: 100px; height: 100px; background-color: yellowgreen;}
+            p{width: 100%; height: 30px; border: 1px solid red;}
+            /*메뉴들*/
+            .ulcss{width: 300px; height: 35px; display: block;}
+            .olcss{width: 100px; height: 90px;  display: block; display: none;}
+            .ulcss, .olcss{list-style: none; margin: 0; padding: 0;}
+            .ulcss > li{box-sizing: border-box; float: left; text-align: center; width: 100px; height: auto; border: 1px solid black;}
+            .olcss > li{box-sizing: border-box; text-align: center; width: 100px; height: 30px; border: 1px solid black; }
+        </style>
+    </head>
+    <body>
+        <div class="box" id="box1"><p>i'm box</p></div>
+        <div class="box2" id="box2"><p>i'm box</p></div>
+        <br><br>
+        <ul class="ulcss">
+            <li class="li0">menu1
+                <ol class="olcss">
+                    <li class="ol_li1">smenu1</li>
+                    <li class="ol_li2">smenu2</li>
+                    <li class="ol_li3">smenu3</li>
+                </ol>
+            </li>
+            <li class="li2">menu2
+                <ol class="olcss">
+                    <li class="ol_li1">smenu1</li>
+                    <li class="ol_li2">smenu2</li>
+                    <li class="ol_li3">smenu3</li>
+                </ol>
+            </li>
+            <li class="li3">menu3
+                <ol class="olcss">
+                    <li class="ol_li1">smenu1</li>
+                    <li class="ol_li2">smenu2</li>
+                    <li class="ol_li3">smenu3</li>
+                </ol>
+            </li>
+        </ul>
+    </body>
+</html>

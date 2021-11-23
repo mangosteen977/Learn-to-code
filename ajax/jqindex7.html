@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head> 
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Jquery Ajax 7일차(2) - Ajax 배열 형태 POST 전송 </title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(function(){
+                $("#member") .click(function(){
+                    //익명함수 = > 배열 만들기 위한 함수
+                    member = function($data1,$data2,$data3,$data4){
+                        //back-end 가 요구한 name값 데이터에 부여함.
+                        this.mname = $data1;
+                        this.mid = $data2;
+                        this.memail = $data3;
+                        this.tel = $data4;
+                        //this : 
+                    }
+                    let $mname = $("#mname").val();
+                    //let $data가 function보다 아래에 둘 것.
+                    let $data = new member($mname,"hong","hong@mail.com","010-1234-5678");
+                    //member = 기본키인 배열형태.
+                    //member {mname: "홍길동", mid: "hong", memail: "hong@mail.com", tel: "010-1234-5678"}
+                    
+                    //배열값으로 데이터 전송 ==> POST만 가능
+                    // location.href = "주소"+$data; 형태로 보내면 object로만 파라미터 뜸;;
+                    
+                });
+            });
+        </script>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <input type="text" id="mname" placeholder="name" value="">
+        <input type="button" value="회원가입" id="member">
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/ajax/jqindex7.html -->
+<!-- jndex -->

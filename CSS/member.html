@@ -1,0 +1,43 @@
+<?php
+    $date=date("YmdHis")
+    ?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE-Edge, chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>자비스 회원가입 페이지 만들기</title>
+        <link type="text/css" rel="stylesheet" href="./member.css?v=<?php echo $date?>">
+        <script src="./member.js?v=<?php echo $date?>" charset="UTF-8"></script>
+    </head>
+    <body>
+        <section class="member">
+            <div class="view">
+                <p>간편 회원가입</p>
+                <ul class="ul_member">
+                    <li>
+                        <input type="text" id="cp" class="input1" placeholder="회사명">
+                    </li>
+                    <li>
+                        <input type="text" id="email" class="input1" placeholder="이메일">
+                    </li>
+                    <li>
+                        <input type="password" id="pw" class="input1" placeholder="비밀번호">
+                    </li>
+                    <li>
+                        <input type="text" id="hp" class="input1" placeholder="휴대폰 번호" onkeyup="telcheck(this.value)">
+                        <!--this.value : 버튼(함수onclick)을 안눌러도 바로 값이 함수에 전달되어야해서-->
+                    </li>
+                    <li>
+                       <div type="button" class="btn" onclick="member();">가입완료</div>
+                    </li>
+                </ul>
+
+            </div>
+
+        </section>
+        
+        
+    </body>
+</html>

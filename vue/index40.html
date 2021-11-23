@@ -1,0 +1,134 @@
+<?php
+    $v = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+    <title> Vue ,vuejs 8일차 (1) vue + JS + JQ + ajax </title>
+    <script src="../jq/jquery.js"></script>
+    <script src="http://cdn.jsdelivr.net/npm/vue"></script><!-- vue 버전 1.6.4 ???????? -->
+    <!-- lodash js src -->
+    <script src="http://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <style>
+        .board_css {
+            display: block;
+        }
+
+        .board_view {
+            width: 400px;
+            height: auto;
+            border: 1px solid black;
+        }
+
+        .board_view>ul {
+            width: inherit;
+            height: auto;
+
+        }
+
+        .board_view>ul>li {
+            width: 350px;
+            height: 30px;
+            position: relative;
+            line-height: 30px;
+            font-size: 12px;
+        }
+
+        .board_view>ul>li>span {
+            position: absolute;
+            right: 0;
+        }
+
+        .search {
+            width: 100px;
+            height: 40px;
+        }
+    </style>
+    <script>
+        function handel() {
+            let board = [
+                { subject: "졸려요~~~", write: "장남혁", upvotes: 1 },
+                { subject: "다음 주 금요일 시험... 아", write: "김은진", upvotes: 71 },
+                { subject: "다음 주 학원 오프라인 안되요!", write: "김하영", upvotes: 32 },
+                { subject: "학원 계단에서 수업들을까요?", write: "김주리", upvotes: 94 },
+                { subject: "스크립트랑 제이쿼리랑 뷰랑 모두 어려워요~", write: "민서현", upvotes: 103 },
+                { subject: "다음엔 김은진님 셀카로 하시죠", write: "장남혁", upvotes: 11 }
+            ]
+            return board;
+        }
+        $(function () {
+
+        })
+    </script>
+</head>
+
+<body>
+    <section id="box">
+        {{cpt}}
+        <select v-model="search" class="search" v-on:change="sh">
+            <option value="">전체보기</option>
+            <option v-for="wr in free2" v-bind:value="wr.write">{{ wr.write }}</option>
+        </select>
+        <div class="board_view">
+            <ul class="board_css">
+                <li v-for="w in arrays" v-if="part==1">{{w.subject}} ({{w.votes}})<span>{{w.write}}</span></li>
+                <li v-for="w in sfree" v-if="part==2">{{w.subject}} ({{w.vote}})<span>{{w.writer}}</span></li>
+            </ul>
+        </div>
+    </section>
+</body>
+<script>
+    let vues = new Vue({
+        el: "#box",
+        data: {
+            search: "",
+            arrays: "",
+            free2: [],
+            sfree: [],
+            part: 1
+        },
+        methods: {
+            sh: function () {
+                let bbb = this.search;
+                if (this.search != "") {
+                    this.part = 2;
+                    /*
+                    .filter(function(a,b,c){
+                        return ; 필터는 무조건 리턴을 사용합니다.
+                    });
+                    
+                    */
+                    this.sfree = this.arrays.filter(function (a, b, c) {
+                        //a.write 에서 bbb와 같으면 return 하라.
+                        //if문 같은 건가...?
+                        return a.write == bbb;
+                        // console.log(a.subject);//a : 각각의 배열 그룹 출력
+                        // console.log(b);//b : 배열 그룹의 노드값을 출력
+                        // console.log(c);//c : 전체 배열 출력
+                    });
+                }
+                else {
+                    this.part = 1;
+                }
+            },
+            all_list(jdata) {
+                this.free2 = _.uniqBy(jdata, "write");
+            }
+        },
+        components: {
+
+        },
+        computed: {
+            cpt: function () {
+                this.arrays = handel();
+                this.all_list(this.arrays);
+            }
+        }
+    });
+</script>
+
+</html>
+<!-- http://mangsteen977.dothome.co.kr/vue/index40.html -->

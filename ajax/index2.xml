@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<apink>
+<success>
+    <pizza>미스터피자</pizza>
+    <chicken>닭다리 2EA</chicken>
+    <pasta>오븐치즈스파게티</pasta>
+</success>
+<success>
+    <pizza>도미노피자</pizza>
+    <chicken>핫윙 2EA</chicken>
+    <pasta>봉골레파스타</pasta>
+</success>
+<success>
+    <pizza>파파존스피자</pizza>
+    <chicken>팝콘치킨</chicken>
+    <pasta>볼로네제 라자냐</pasta>
+</success>
+<success>
+    <pizza>알볼로피자</pizza>
+    <chicken>치즈볼</chicken>
+    <pasta>라구파스타</pasta>
+</success>
+</apink>

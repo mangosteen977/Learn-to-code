@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Ajax 1일차(2) - Javascript (XMLhttpRequest 통신형태 + XML) </title>
+        <!-- XML : Extensible Markup Language -->
+        <style>
+            *{box-sizing: border-box;}
+            label{display: block;}
+            /*제목*/
+            .pizza_product{
+                width: 550px; height: 30px;
+                background-color: crimson;
+                color: white;
+            }
+            .pizza_product>label,.product_list>label{
+                float: left;
+                text-align: center; font-size: 12px;
+                height: 30px; line-height: 30px;
+            }
+            /* 부모 height:auto;에서 자식객체가 float:left;일 때는 width %가 적용 (X) */
+            .li0{width: 30%;}
+            .li1{width: 35%;}
+            .li2{width: 35%;}
+            /*내용*/
+            .product_list{
+                width: 550px; height: auto;
+                background-color: cornsilk;
+                color: black;
+            }
+            .product_list>label{background-color: cornsilk;}
+        </style>
+        <script>
+            let pm; //ajax에서 데이터를 가지고 올 변수
+            function ajax(){
+                function windowck(){ //현재 적용되어 있는 브라우져
+                    if(window.XMLHttpRequest){ //모든 종류의 데이터를 받아서 사용
+                        return new XMLHttpRequest();//
+                    }
+                }
+                function fileopen(){
+                    if(pm.readyState==XMLHttpRequest.DONE && pm.status==200){
+                            //console.log(this.responseXML);
+                            xmlfile(this); //this : 파일로 가져온 배열 데이터
+                    }
+                }
+                pm = windowck(); //데이터를 받아오기 위한 통신 연결 준비상태
+                pm.onreadystatechange = fileopen; // 해당 파일상태가 올바른지 파악함
+                pm.open("GET","index2.xml?v=3",true); //POST,GET,PUT,Delete
+                //open : method를 어떤 파일 형태로 사용하는 지 정함
+                pm.send(); //해당 통신파일을 체크해 적용 = send(비동기)
+            }
+            function xmlfile(a){//XML파일 배열 출력
+                const x = a.responseXML;//xml,json(태그,배열 시 사용)
+                //const x = a.responseText;//xml,json(태그,배열 아닌경우 사용)
+                var test = x.getElementsByTagName("success");//xml파일의 태그명==배열 키를 가져옴
+                //console.log(test[0].getElementsByTagName("pizza")[0].childNodes[0].nodeValue);
+                //console.log(x.getElementsByTagName("success")[0].getElementsByTagName("pizza")[0].childNodes[0].nodeValue);
+                let productnm, productop, productsp;
+                let html1,html2,html3;
+                let ea = test.length;
+                let f;
+                /*
+                for(f=0;f<ea;f++){
+                    productnm = test[f].getElementsByTagName("pizza")[0].childNodes[0].nodeValue;
+                    productop = test[f].getElementsByTagName("chicken")[0].childNodes[0].nodeValue;
+                    productsp = test[f].getElementsByTagName("pasta")[0].childNodes[0].nodeValue;
+                    html1 = document.createElement("label");
+                    html1.className = "li0";
+                    html1.innerHTML = productnm;
+                    html2 = document.createElement("label");
+                    html2.className = "li0";
+                    html2.innerHTML = productop;
+                    html3 = document.createElement("label");
+                    html3.className = "li0";
+                    html3.innerHTML = productsp;
+                    document.getElementById("product_list").append(html1);
+                    document.getElementById("product_list").append(html2);
+                    document.getElementById("product_list").append(html3);
+                }
+                */
+               for(f in test){
+                    //console.log(test[f])
+                    //console.log(test.item(f).getElementsByTagName("pizza")[0].childNodes[0].nodeValue);
+                    console.log(test.item(f));
+
+                   if(isNaN(f)==false){
+                    productnm = test[f].getElementsByTagName("pizza")[0].childNodes[0].nodeValue;
+                    productop = test[f].getElementsByTagName("chicken")[0].childNodes[0].nodeValue;
+                    productsp = test[f].getElementsByTagName("pasta")[0].childNodes[0].nodeValue;
+                    html1 = document.createElement("label");
+                    html1.className="li0";
+                    html1.innerHTML = productnm;
+                    html2 = document.createElement("label");
+                    html2.className="li0";
+                    html2.innerHTML = productop;
+                    html3 = document.createElement("label");
+                    html3.className="li0";
+                    html3.innerHTML = productsp;
+                    document.getElementById("product_list").append(html1,html2,html3);
+                   }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="pizza_product">
+            <label class="li0">피자브랜드</label>
+            <label class="li1">피자옵션</label>
+            <label class="li2">사이드메뉴옵션</label>
+        </div>
+        <div class="product_list" id="product_list">
+            <!--예시)
+            <label class="li0">피자회사</label>
+            <label class="li1">상품명</label>
+            <label class="li2">사이드메뉴</label>
+            -->
+        </div>
+        <span style="clear:both; display:block;";></span>
+        <!-- 빈태그 만들어서 clear:both; display:block으로 버튼이 옆에 붙는걸 막음 -->
+        <input type="button" value="피자 브랜드별 현황" onclick="ajax();">
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/ajax/index2.html -->
+<!-- http://mangsteen977.dothome.co.kr/ajax/index2.xml -->
+<!-- 
+    XML : Extensible Markup Language
+    xml파일에는 주석(X) : 주석도 함께 출력됨, 통신 시 주석이 방해할 수 O
+
+    <?//xml version="1.0" encoding="UTF-8"?> : xml파일 시작 태그
+    version : xml 버전 표기
+    encoding : 사용 언어 표기
+    // : xml태그가 주석안에 넣어도 출력되는걸 막음
+ -->

@@ -1,0 +1,177 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700;900&display=swap");
+/* font-family: 'Noto Sans KR', sans-serif; (100, 400, 700, 900) */
+@mixin base {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+@mixin ulol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+@mixin m_sections($width, $height, $bg) {
+  margin: 0 auto;
+  width: 99.99%;
+  min-width: 320px;
+  max-width: $width;
+  height: $height;
+  background-color: $bg;
+}
+@mixin m_widths($min, $max, $bg) {
+  width: 99.99%;
+  min-width: $min;
+  min-height: $min;
+  max-width: $max;
+  max-height: $max;
+  background-color: $bg;
+}
+@mixin sections($width, $height, $bg) {
+  width: $width;
+  height: $height;
+  background-color: $bg;
+}
+@mixin flexs($wrap, $justify, $align) {
+  display: flex;
+  flex-wrap: $wrap;
+  justify-content: $justify;
+  align-content: $align;
+  align-items: $align;
+}
+@mixin font_sans($h, $c, $a, $w, $s) {
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: $h;
+  color: $c;
+  text-align: $a;
+  font-weight: $w;
+  font-size: $s;
+}
+img {
+  object-fit: cover;
+  width: 100%;
+}
+//section
+.bn_tb {
+  @include m_sections(2560px, 600px, none);
+  position: relative;
+}
+/*top*/
+.bn_top {
+  @include m_sections(2560px, auto, none);
+  position: absolute;
+  z-index: 5;
+  margin: 0 auto;
+  padding: 20px 20px 0 20px;
+  & > span {
+    @include sections(200px, 20px, none);
+    @include flexs(nowrap, center, center);
+    flex-direction: row;
+    border-bottom: 2px solid #ccc;
+    & > input {
+      @include sections(180px, 20px, transparent);
+      border: none;
+    }
+    & > label {
+      display: inline;
+      & > img {
+        @include sections(25px, 25px, none);
+        cursor: pointer;
+      }
+    }
+  }
+  & > .m_bn_ham_btn {
+    @include sections(25px, 25px, none);
+    display: none;
+  }
+  & > .bn_top_menu {
+    @include sections(auto, 20px, none);
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    right: 0;
+    & > li {
+      @include sections(80px, inherit, none);
+      @include font_sans(20px, unset, center, unset, 12px);
+      border-left: 1px solid black;
+      cursor: pointer;
+      float: left;
+      &:nth-child(1) {
+        border-left: none;
+      }
+    }
+  }
+  & > .bn_logo {
+    @include m_sections(2560px, 55px, none);
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 35px;
+    & > img {
+      @include sections(275px, 55px, none);
+      cursor: pointer;
+    }
+  }
+}
+
+/*banner*/
+.bn_banner {
+  @include m_sections(2560px, 600px, none);
+  position: absolute;
+  & > .bn_imgs {
+    @include m_sections(inherit, 613px, none);
+    margin: 0 auto;
+    position: relative;
+    & > span {
+      @include m_sections(inherit, 600px, none);
+      position: absolute;
+      display: none;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      &:nth-child(1) {
+        display: block;
+      }
+    }
+  }
+  /*좌우*/
+  & > .bn_btn {
+    @include m_sections(1200px, inherit, none);
+    @include flexs(nowrap, space-between, center);
+    flex-direction: row;
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    img {
+      @include sections(65px, 65px, none);
+      cursor: pointer;
+      position: absolute;
+      z-index: 20;
+      &:nth-child(1) {
+        left: 0;
+      }
+      &:nth-child(2) {
+        right: 0;
+      }
+    }
+  }
+  /*디스크*/
+  & > .bn_disc {
+    @include sections(100%, 20px, none);
+    text-align: center;
+    position: absolute;
+    z-index: 35;
+    bottom: 20px;
+    & > li {
+      @include sections(20px, 20px, #ccc);
+      margin-left: 5px;
+      cursor: pointer;
+      border-radius: 100%;
+      display: inline-block;
+      &:first-child {
+        background-color: rgb(90, 154, 184);
+        margin-left: 0;
+      }
+    }
+  }
+}

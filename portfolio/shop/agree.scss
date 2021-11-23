@@ -1,0 +1,178 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap");
+/*font-family: 'Nanum Gothic', sans-serif;*/
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+// font-family: 'Roboto', sans-serif;
+@mixin base {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+@mixin ulol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+@mixin sections($width, $height, $bg) {
+  width: $width;
+  height: $height;
+  background-color: $bg;
+}
+@mixin m_sections($width, $height, $bg) {
+  margin: 0 auto;
+  width: 99.99%;
+  min-width: 320px;
+  max-width: $width;
+  height: $height;
+  background-color: $bg;
+}
+@mixin flexs($wrap, $d, $justify, $align) {
+  display: flex;
+  flex-wrap: $wrap;
+  justify-content: $justify;
+  align-content: $align;
+  align-items: $align;
+  flex-direction: $d;
+}
+@mixin font_sans($h, $c, $a, $w, $s) {
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: $h;
+  color: $c;
+  text-align: $a;
+  font-weight: $w;
+  font-size: $s;
+}
+
+.section_agree {
+  @include sections(100%, auto, none);
+}
+.agree_view {
+  @include sections(1200px, auto, none);
+  margin: 0 auto;
+  & > p {
+    @include sections(100%, 40px, none);
+    @include font_sans(40px, black, center, bold, 25px);
+    margin: 80px 0;
+  }
+  & > .agree_text {
+    @include sections(100%, auto, none);
+    & > li {
+      @include sections(100%, 50px, none);
+      @include flexs(nowrap, row, flex-end, center);
+      text-indent: 5px;
+      &:nth-of-type(1) {
+        justify-content: flex-start;
+        border-bottom: 3px solid #aaa;
+      }
+      & > label {
+        cursor: pointer;
+      }
+    }
+  }
+  .text_box {
+    @include sections(100%, 250px, none);
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    display: block;
+  }
+  .agree_btn {
+    @include sections(180px, 50px, rgb(100, 99, 99));
+    @include font_sans(50px, white, center, unset, 12px);
+    margin: 0 auto;
+    margin-top: 25px;
+    display: block;
+  }
+}
+
+/*welcom_ok.html*/
+.welcome_box {
+  @include sections(550px, auto, none);
+  padding: 80px 0;
+  margin: 0 auto;
+  & > p {
+    @include sections(100%, 40px, none);
+    @include font_sans(40px, black, unset, bold, 25px);
+    padding-left: 10px;
+  }
+  & > .welcome_text_box {
+    @include sections(100%, auto, none);
+    @include flexs(nowrap, column, center, center);
+    padding: 80px 0;
+    border: 1px solid #ccc;
+    & > ul {
+      @include sections(90px, auto, none);
+      @include flexs(nowrap, row, space-between, center);
+      padding: 30px 0;
+      margin: 0 auto;
+      & > li {
+        @include sections(15px, 15px, #c3222b);
+        border-radius: 100%;
+      }
+    }
+    & > span {
+      @include sections(90%, 50px, none);
+      margin: 0 auto;
+      margin-bottom: 20px;
+      display: block;
+      &:nth-of-type(1) {
+        @include font_sans(50px, unset, center, bold, 16px);
+      }
+      &:nth-of-type(2) {
+        height: auto;
+        @include font_sans(unset, #aaa, center, unset, 12px);
+        padding-bottom: 80px;
+        margin-bottom: 0px;
+        border-bottom: 2px solid #ccc;
+        & > label {
+          font-weight: bold;
+          color: black;
+        }
+      }
+      &:nth-of-type(3) {
+        //.welcom_info_14
+        height: auto;
+        border: 1px solid #ccc;
+        padding: 15px;
+        margin-top: 80px;
+        & > label {
+          @include sections(100%, 30px, none);
+          @include flexs(wrap, row, flex-start, center);
+          margin: 10px 0;
+          &:nth-of-type(1) {
+            font-size: 12px;
+            font-weight: bold;
+          }
+          &:nth-of-type(2) {
+            color: #aaa;
+            height: 60px;
+            & > a {
+              text-decoration: none;
+              color: black;
+              font-weight: bold;
+            }
+          }
+          &:nth-of-type(3) {
+            @include sections(230px, 20px, #fff);
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            & > img {
+              width: 20px;
+            }
+          }
+          & > img {
+            width: 30px;
+          }
+        }
+      }
+    }
+    & > .welcom_btn {
+      @include sections(230px, 50px, #c3222b);
+      @include font_sans(50px, white, center, unset, 16px);
+      margin-top: 20px;
+      border: none;
+      border-radius: 5px;
+    }
+  }
+}
+.color_red {
+  color: #c3222b;
+}

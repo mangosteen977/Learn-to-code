@@ -1,0 +1,32 @@
+<meta charset="UTF-8">
+<script>
+    function aaa(){
+        self.close();
+        /* close != self.close : 다르다.
+        close가 작동이 안되는 사이트도 있음.
+        self.close는 알아서 닫히게 할 수도 있다.
+        cf. widow.close :  또 다름.*/
+    }
+    function bbb(d){
+        //1. 부모창에 form이 있을 때.
+
+        //window.opener.f.product.value = d;
+        //self.close(); //동작 수행 후 스스로 닫음.
+        //window.opener(팝업을 연 부모창).form name.테스트를 넣을 input id.value = d;       
+        
+        //2. 부모창에 form이 없을 때.
+        
+        window.opener.document.getElementById("product").value = d;
+        self.close(); //동작 수행 후 스스로 닫음.
+        //window.opener(팝업을 연 부모창).getElementById("").value = d;
+    };
+</script>
+<!-- 
+    this.outerText : 외부 text값을 가져옴. (getattribute 느낌)
+ -->
+<ul>
+    <li onclick="bbb(this.outerText);">컴퓨터</li>
+    <li onclick="bbb(this.outerText);">모니터</li>
+    <li onclick="bbb(this.outerText);">키보드</li>
+</ul>
+<input type="button" value="창닫기" onclick="aaa();">

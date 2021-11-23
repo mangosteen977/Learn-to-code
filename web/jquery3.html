@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery 금요일 복습(3) - </title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(document).ready(function(){
+                /*문제3.
+                orange : 서서히 사라짐, navy : 세로길이 0으로 변함,
+                violet : 가로길이 0으로 변함, grey : 왼쪽상단 기준으로 줄어듬.*/
+                $(".orange").click(function(){
+                    $(".orange").fadeOut(1000);
+                });
+                $(".navy").click(function(){
+                    $(".navy").animate({"height":"0px"},1000);
+                });
+                $(".violet").click(function(){
+                    $(".violet").animate({"width":"0px"},1000);
+                });
+                $(".grey").click(function(){
+                    $(".grey").hide(1000);
+                });
+             });
+        </script>
+        <style>
+            body{margin: 0; padding: 0;}
+            ul,ol,dl{list-style: none; margin: 0; padding: 0;}
+            span,main,label{display: block;}
+        /* 문제3. */
+            .box >div{width: 100px; height: 100px;}
+            .orange{background-color: orange;}
+            .navy{background-color: navy;}
+            .violet{background-color: violet;}
+            .grey{background-color: grey;}
+        </style>
+    </head>
+    <body>
+        <!-- 문제3. -->
+        <div class="box">
+            <div class="orange"></div>
+            <div class="navy"></div>
+            <div class="violet"></div>
+            <div class="grey"></div>
+        </div>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/web/jquery3.html -->

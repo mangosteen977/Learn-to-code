@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jquery 1일차(4) - 중급 (JQ-mobile & JQ-ui 주요사항) </title>
+        <script src="./jquery-2.0.js"></script>
+        <script src="./jquery-ui.js"></script>
+        <script src="./jquery.mobile.js"></script>
+        <!-- jquery.mobile은 jquery3.0을 지원 안해서. jquery2.0버전 사용 -->
+        <!-- 
+            Jquery.mobile 사용 시 jquery 본 엔진은 1.8~2.1까지의 엔진만 사용 됨.
+            jquery 3.x 는 사용 불가.
+         -->
+        <link rel="stylesheet" type="text/css" href="./jquery-ui.css">
+        <script>
+            $(function(){
+                $("#sdate").datepicker();
+                //.swiperight : 왼->오 밀기
+                $("#btn").swiperight(function(){
+                    $(this).animate({
+                        "right":0
+                    },700);
+                });
+                $("#btn").swipeleft(function(){
+                    $(this).animate({
+                        "left":0
+                    },700,function(){
+                        $(this).attr("style","none");
+                        //right값이 남아있으면 left값이랑 충돌하니깐
+                        //left0, right0이후 style값 초기화함.
+                    });
+                });
+                //양방향 모두 작동함.
+                $("#btn2").swipe(function(){
+                    $(this).animate({
+                        "left":0
+                    },700);
+                });
+
+
+            });
+        </script>
+        <style>
+            *{box-sizing: border-box;}
+            body{margin: 0; padding: 0;}
+            .search{width: 500px; height: 30px; border: 1px solid lightblue;
+            display: block;}
+
+            .box{
+                width: 95%; min-width: 340px; max-width: 620px;
+                margin: 0 auto; height: 50px; border: 1px solid red;
+                position: relative;
+            }
+            .btn{
+                display: block; width: 15vw; max-width: 100px;
+                background-color: darkseagreen; height: inherit;
+                position: absolute;
+            }
+            .box2{
+                width: 95%; min-width: 340px; max-width: 620px;
+                margin: 0 auto; height: 50px; border: 1px solid red;
+                position: relative;
+                display: flex; flex-wrap: nowrap; justify-content: center;
+            }
+            /* .center{left: 50%; margin-left: -7.5vw;} */
+
+        </style>
+    </head>
+    <body>
+        <!--datepicker를 묶는 부모객체는 label을 쓰면
+            빈공간을 눌러도 달력이 켜짐 datepicker쓸 때는 label(X)-->
+        <!-- <span class="search">
+            <input type="text" name="sdate" id="sdate" readoly>
+            -
+            <input type="text" name="edate" id="edate" readonly>
+            <input type="button" value="검색">
+        </span> -->
+        <div class="box">
+            <span class="btn" id="btn"></span>
+        </div>
+        <br><br>
+        <div class="box2">
+            <span class="btn center" id="btn2"></span>
+        </div>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/middle4.html -->

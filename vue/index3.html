@@ -1,0 +1,66 @@
+<?php
+    $data = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 1일차 (3) vue bind(이벤트 발생) + value 사용법 </title>
+        <script src="../jq/jquery.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <style>
+            .box2{width: 100px; height: 100px; background-color: darkred; display: none;}
+        </style>
+    </head>
+    <body>
+        <div id="box">
+            <input type="button" v-model="btn" v-on:click="bb">
+        </div>
+        <div id="box2" class="box2"></div>
+        <select v-on:change="cc"><option>1</option><option>2</option></select>
+        <div id="box3" class="box3">
+            <input v-bind:type="btn" v-model="btnname" v-on:click="loginok">
+            <input v-bind:type="in1" v-model="input1">
+        </div>
+        <input type="text" id="aaa" onclick="abc(this.value)">
+    </body>
+    <script>
+        let v = new Vue({
+            el:"#box",
+            data:{
+                btn:"클릭"
+            },
+            methods:{ //행동역할 + 이벤트 처리
+                bb:function(){//vue 이벤트 함수
+                    document.getElementById("box2").style.display="block";
+                    //부모 밖의 객체 컨트롤할 때.
+                },
+                cc:function(){
+                    alert("ddd");
+                }
+            }
+        });
+        let box3 = new Vue({
+            el:"#box3",
+            data:{
+                btn:"button",
+                in1:"text",
+                btnname:"로그인",
+                input1:""
+            },
+            methods:{
+                loginok:function(){
+                    if(this.input1==""){
+                        // vue 에서의 this 는 data의 해당 인스턴스(속성)을 지칭
+                        alert("아이디를 입력하세요");
+                        this.$refs.mid.focus();
+                    }
+                    else{
+                        window.open("http://naver.com","_blank");
+                    }
+                }
+            }
+        });
+    </script>
+</html>

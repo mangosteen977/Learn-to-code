@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>연습</title>
+        <script src="../jq/jquery.js"></script>
+        <script>
+            $(function(){
+                $.fn.prac = function(){
+                    $.ajax({
+                        url:"../public_html/json/hello_copyright.json",
+                        cache:false,
+                        type:"GET",
+                        dataType:"JSON",
+                        success:function($copyright,$ok){
+                            $.fn.copyright($copyright);
+                            console.log($copyright);
+                        },
+                        error:function(){
+                            console.log("error_data_copyright");
+                        }
+                    });
+                };
+                $.fn.prac();
+                $.fn.copyright = function($data){
+                    $.map($data,function($a,$n){
+                        $.map($data[$n],function($val,$key){
+                            // console.log($key)
+                            if($key=="account_bank" || $key=="account_bankno"){
+                                $.map($data[$n][$key],function($x,$y){
+                                    // console.log($x)
+                                //은행&계좌 출력
+                                    switch($key){
+                                        case "account_bank":
+                                        // console.log($x["bank_name"])
+                                        $("#account_bank"+$y).text($x["bank_name"]);
+                                        break;
+                                        case "account_bankno":
+                                        // console.log($x["bank_no"])
+                                        $(".account_bankno").eq($y).text($x["bank_no"]);
+                                        break;
+                                    }
+                                });
+                            }
+                            else{
+                                //회사정보 출력
+                                // console.log($key + "|" + $val)
+                                $("#"+$key).text($val);
+                            }
+                        });
+                    });
+                };
+
+                //2nd
+                $.fn.prac2 = function(){
+                    $.ajax({
+                        url:"../public_html/json/hello_banner.json",
+                        cache:false,
+                        type:"GET",
+                        dataType:"JSON",
+                        success:function($banner,$ok){
+                            $.fn.$banner_print($banner);
+                            console.log($banner);
+                        },
+                        error:function(){
+                            console.log("error_data_copyright");
+                        }
+                    });
+                };
+                $.fn.prac2();
+                $.fn.$banner_print = function($data){
+                    // console.log($data["banners"])
+                    let $html = "";
+                    $.map($data["banners"],function($a,$n){
+                        console.log($a[0])
+                        $html = "<img src='../public_html/"+$a[0]+"' links='"+$a[1]+"'>";
+                        $("#banners>span").eq($n).html($html);
+                    });
+
+                    $("#banners>span").click(function(){
+                        let $now = $(this).index();
+                        let $link_li = $("#banners>span:eq("+$now+")>img").attr("links");
+                        window.open($link_li,"_blank");
+                    });
+                }
+
+
+
+
+
+            });
+        </script>
+    </head>
+    <body>
+        <div id="banners">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+        <div>
+            <span>회사명 : </span><span id="company"></span><br>
+            <span>대표명 : </span><span id="owner"></span><br>
+            <span>회사메일 : </span><span id="officer"></span><br>
+        </div>
+        <div id="bank">
+            <span id="account_bank0"></span>
+            <span class="account_bankno"></span>
+            <br>
+            <span id="account_bank1"></span>
+            <span class="account_bankno"></span>
+        </div>
+    </body>
+</html>

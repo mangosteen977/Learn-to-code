@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery 2일차(5) - DOM NODE(2) </title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(document).ready(function(){
+                //var $n = 3;
+                var $n = $(".trcss").length-1;
+                console.log($n);
+                $("#del").click(function(){
+                    if($n>0){
+                        $(".trcss").eq($n).fadeOut();
+                        $n = $n-1;
+                        console.log($n); //그냥 확인용ㅎㅎ
+                    }
+                    else{ 
+                        alert("더 이상 지울 게시물이 없습니다.");
+                    }    
+                });
+                $("#add").click(function(){
+                    if($n>=3){
+                        alert("더 이상 추가 할 게시물이 없습니다.");
+                    }
+                    else{
+                        $n = $n+1;
+                        console.log($n);//그냥 확인용ㅎㅎ
+                        $(".trcss").eq($n).fadeIn();
+                        
+                    }
+                });
+
+            });
+        </script>
+        <style>
+            .tbox{
+                width: 400px;
+                height: 160px;
+                text-align: center;
+            }
+            .tbox > input{
+                display: inline-block;
+                width: 100px;
+                height: 30px;
+                background-color: plum;
+                border: none;
+                border-radius: 5px;
+                color: white;
+                margin-top: 10px;
+            }
+            .tb{
+                width: 400px;
+                height: 120px;
+                margin: 0;
+                padding: 0;
+                border: none;
+                text-align: center;
+            }
+            .trcss > td{
+                width: 100px;
+                height: 30px;
+            }
+            .trcss > td:nth-child(odd){
+                background-color: plum;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="tbox">
+            <table class="tb" border="1px solid black" cellspacing="0" cellpadding="0">
+                <tr class="trcss">
+                    <td>번호</td>
+                    <td>제목</td>
+                    <td>글쓴이</td>
+                    <td>추천수</td>
+                </tr>
+                <tr class="trcss">
+                    <td>1</td>
+                    <td>공지사항</td>
+                    <td>이은미</td>
+                    <td>20</td>
+                </tr>
+                <tr class="trcss">
+                    <td>2</td>
+                    <td>시스템점검</td>
+                    <td>이시우</td>
+                    <td>30</td>
+                </tr>
+                <tr class="trcss">
+                    <td>3</td>
+                    <td>결제시스템</td>
+                    <td>박재희</td>
+                    <td>100</td>
+                </tr>
+            </table>
+            <input type="button" value="게시물 삭제" class="del" id="del">
+            <input type="button" value="게시물 복원" class="add" id="add">
+        </div>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/index10.html -->

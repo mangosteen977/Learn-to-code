@@ -1,0 +1,61 @@
+<?php
+    $data = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 3일차 (4) vue return function 리턴 함수 </title>
+        <script src="../jq/jquery.js"></script>
+        <!-- vue 버전 1.6.4??? -->
+        <script src="http://cdn.jsdelivr.net/npm/vue"></script> <!--상용버전 값 가져옴^_~-->
+        <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> --> <!--개발버전 값 못가져옴^.^-->
+        <!-- <link rel="stylesheet" type="text/css" href="./index19.css?v=<?=$data?>"> -->
+    </head>
+    <body>
+        <section id="box">
+           <input type="text" id="mid" name="mid" v-model="mid" ref="mid">
+           <input type="button" v-model="btn" @click="checks">
+            <!-- @click == v-on:click , @ == v-on -->
+        </section>
+    </body>
+    <script>
+        
+        let a = new Vue({
+            el:"#box",
+            data:{
+                btn:"중복확인",
+                mid:""
+            },
+            methods:{
+                checks:function(){
+                    if(this.mid==""){
+                        alert("아이디를 입력하세요.");
+                        //vue 포커스 focus 사용하기
+                        this.$refs.mid.focus();
+                    }
+                    else{
+                        //return으로 확장함수
+                        let r = this.idcheck(this.mid);
+                        alert(r);
+                        //vue readonly 적용하기
+                        //vue에서 속성 가져올 때 $refs 사용(?)
+                        this.$refs.mid.readOnly = true;
+                    }
+                },
+                idcheck:function(id_data){
+                    let msg="";
+                    if(id_data=="hong"){
+                        msg = "중복 된 아이디 입니다."
+                    }
+                    else{
+                        msg = "사용 가능 한 아이디 입니다."
+                    }
+                    return msg;
+                    //리턴함수 값 여러개 넘길 때 ==> [ , ] 대괄호 속에 배열형식으로 넘긴다.
+                }
+            }
+        });
+    </script>
+</html>

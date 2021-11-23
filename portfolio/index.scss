@@ -1,0 +1,389 @@
+@charset "UTF_8";
+@import "./media.scss";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700;900&display=swap");
+/* font-family: 'Noto Sans KR', sans-serif; (100, 400, 700, 900) */
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap");
+/* font-family: 'Abril Fatface', cursive;*/
+@mixin base {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+@mixin ulol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+@mixin sections($width, $height, $bg) {
+  width: $width;
+  height: $height;
+  background-color: $bg;
+}
+@mixin m_sections($width, $height, $bg) {
+  margin: 0 auto;
+  width: 99.99%;
+  min-width: 320px;
+  max-width: $width;
+  height: $height;
+  background-color: $bg;
+}
+@mixin flexs($wrap, $d, $justify, $align) {
+  display: flex;
+  flex-wrap: $wrap;
+  justify-content: $justify;
+  align-content: $align;
+  align-items: $align;
+  flex-direction: $d;
+}
+@mixin font_sans($h, $c, $a, $w, $s) {
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: $h;
+  color: $c;
+  text-align: $a;
+  font-weight: $w;
+  font-size: $s;
+}
+@mixin font_title($h, $c, $a, $w, $s) {
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: $h;
+  color: $c;
+  text-align: $a;
+  font-weight: $w;
+  font-size: $s;
+}
+//base
+* {
+  box-sizing: border-box;
+}
+body {
+  @include base;
+  font-size: 12px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+header,
+nav,
+main,
+section,
+aside,
+footer,
+article {
+  @include sections(100%, auto, none);
+  min-width: 340px;
+}
+label,
+span {
+  display: inline-block;
+}
+img {
+  width: 100%;
+  object-fit: cover;
+}
+ul,
+ol,
+dl,
+dd {
+  @include ulol;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+body {
+  position: relative;
+  // background-color: #bce6fe;
+}
+.title {
+  @include sections(100%, 50px, none);
+  @include font_title(50px, #7578bf, unset, bold, 18px);
+  text-indent: 20px;
+}
+//header_menu
+.header {
+  @include sections(100%, 50px, #c2c4ff9d);
+  @include flexs(nowrap, row, space-between, stretch);
+  position: fixed;
+  z-index: 30;
+  //PC 메뉴
+  & > .menu {
+    @include sections(80%, inherit, none);
+    & > ul {
+      @include sections(100%, inherit, none);
+      max-width: 500px;
+      & > li {
+        float: left;
+        @include sections(20%, inherit, none);
+        @include font_title(50px, black, center, unset, 13px);
+        cursor: pointer;
+        &:nth-of-type(1) {
+          color: #e6f285;
+        }
+      }
+    }
+  }
+
+  //모바일 메뉴
+  & > .menu2 {
+    display: none;
+    @include sections(30px, auto, none);
+    margin-top: 50px;
+    margin-right: 5px;
+    & > ul {
+      @include sections(30px, auto, none);
+      & > li {
+        @include sections(30px, 30px, #fff);
+        border-radius: 100%;
+        margin-top: 10px;
+      }
+    }
+  }
+  //icon
+  & > .icon {
+    @include sections(20%, auto, none);
+    @include flexs(nowrap, row, flex-end, center);
+    & > span {
+      @include sections(35px, 35px, none);
+      margin-left: 5px;
+      cursor: pointer;
+    }
+  }
+}
+//banner
+.banner {
+  @include sections(100%, 100vh, #bbbdf2);
+  @include flexs(nowrap, column, center, center);
+  background-image: url(./image/ti323a5002.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: 50px;
+  padding: 0 100px;
+  & > div {
+    font-size: 50px;
+    color: #e6f285;
+    font-family: "Abril Fatface", cursive;
+  }
+  & > .more {
+    @include sections(50px, 50px, rgb(255, 195, 250));
+    border-radius: 100%;
+    cursor: pointer;
+  }
+}
+
+//about_me
+.about_me {
+  @include sections(100%, auto, none);
+  @include flexs(wrap, row, center, center);
+  margin-bottom: 50px;
+  & > .introduce {
+    @include sections(auto, 400px, none);
+    @include flexs(nowrap, column, space-around, center);
+    margin-right: 60px;
+    & > .me {
+      @include sections(200px, 200px, white);
+      border-radius: 100%;
+      overflow: hidden;
+    }
+    & > .key_word {
+      @include sections(280px, auto, none);
+      @include flexs(wrap, row, space-between, center);
+      & > span {
+        @include sections(80px, 30px, #ccc);
+        @include font_sans(30px, black, center, unset, 12px);
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    }
+    & > .my_info {
+      @include sections(280px, auto, none);
+      @include font_sans(30px, black, unset, unset, 12px);
+    }
+  }
+  & > .view_skill {
+    @include sections(340px, auto, none);
+    @include flexs(nowrap, column, space-between, center);
+    padding: 20px;
+    & > span {
+      @include sections(100%, 50px, none);
+      @include flexs(nowrap, row, flex-start, center);
+      border-radius: 15px;
+      margin-bottom: 5px;
+      border: 2px solid #ccc;
+      & > label {
+        &:nth-of-type(1) {
+          @include sections(50px, inherit, none);
+          & > img {
+            @include sections(100%, 50px, none);
+            object-fit: contain;
+          }
+        }
+        &:nth-of-type(2) {
+          @include sections(290px, inherit, none);
+          padding-top: 10px;
+          & > .skill_per_div {
+            @include sections(10px, 30px, #7578bf8e);
+            border-radius: 0 15px 15px 0;
+          }
+        }
+      }
+    }
+  }
+}
+main {
+  @include sections(100%, auto, none);
+  //skills
+  .skills {
+    @include sections(100%, auto, none);
+    @include flexs(nowrap, column, center, center);
+    margin: 0 auto;
+    margin-bottom: 50px;
+    & > .skill_box {
+      @include sections(60%, auto, none);
+      @include flexs(wrap, row, center, space-between);
+      & > ul {
+        @include sections(100%, auto, none);
+        margin: 10px 0;
+        & > li {
+          @include sections(100%, 40px, none);
+          border-bottom: 2px solid #ccc;
+          &:nth-child(1) {
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+          }
+          &:nth-child(2) {
+            display: none;
+            height: auto;
+            font-size: 13px;
+            padding: 15px 0 15px 10px;
+            border-bottom: none;
+          }
+        }
+      }
+    }
+  }
+  //works
+  .works {
+    @include sections(100%, auto, none);
+    margin-bottom: 50px;
+    & > .works_box {
+      @include sections(80%, auto, #bbbdf2);
+      @include flexs(wrap, row, space-between, center);
+      margin: 0 auto;
+      & > .port_list {
+        @include sections(100%, auto, #ccc);
+        @include flexs(wrap, row, flex-start, center);
+        & > p {
+          @include sections(100px, 50px, none);
+          @include font_title(50px, #555, unset, unset, 13px);
+          padding-left: 10px;
+        }
+        & > select {
+          @include sections(300px, 50px, none);
+          @include font_sans(50px, black, unset, unset, 12px);
+          border: none;
+          cursor: pointer;
+        }
+      }
+      & > .port_box {
+        @include sections(100%, auto, #eee);
+        @include flexs(wrap, row, center, center);
+        padding-bottom: 20px;
+        & > .port_bg {
+          //jq출력파트
+          @include sections(50%, auto, none);
+          min-width: 300px;
+          overflow: hidden;
+          & > img {
+            max-height: 60%;
+            object-fit: contain;
+          }
+        }
+        & > ul {
+          @include sections(50%, auto, none);
+          min-width: 300px;
+          margin-top: 5%;
+          & > li {
+            @include sections(100%, 30px, none);
+            @include flexs(wrap, row, center, center);
+            margin-bottom: 10px;
+            &:nth-of-type(1) {
+              @include font_sans(30px, black, unset, bold, 2.4vh);
+            }
+            &:nth-of-type(2) {
+              height: auto;
+              font-size: 1.5vh;
+            }
+            &:nth-of-type(4) {
+              height: auto;
+              max-width: 400px;
+              margin: 0 auto;
+              margin-bottom: 10px;
+              line-height: 30px;
+            }
+            &:nth-of-type(5) {
+              //button
+              width: 100px;
+              background-color: #bbb;
+              cursor: pointer;
+              margin: 0 auto;
+              color: white;
+            }
+            & > .port_icon {
+              @include sections(17px, 17px, none);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+//footer
+footer {
+  @include sections(100%, 100vh, none);
+  @include flexs(wrap, row, center, space-between);
+  & > .my_info {
+    @include sections(45%, 50vh, #eee);
+    min-width: 340px;
+    & > label {
+      @include sections(100%, 5vh, none);
+      padding-left: 5px;
+      line-height: 5vh;
+      color: #555;
+    }
+    & > .map {
+      height: 35vh;
+    }
+  }
+  & > .send_mail {
+    @include sections(45%, 50vh, #eee);
+    padding: 5px;
+    min-width: 340px;
+    & > span {
+      @include sections(100%, auto, none);
+      & > input {
+        @include sections(100%, 4vh, none);
+        @include font_sans(4vh, black, unset, unset, 12px);
+        border: 1px solid #ccc;
+      }
+      & > .mail_send {
+        @include font_sans(3vh, white, center, normal, 13px);
+        border: none;
+        background-color: #bbb;
+        cursor: pointer;
+      }
+      & > textarea {
+        @include sections(100%, 31vh, none);
+        border: 1px solid #ccc;
+        font-family: "Noto Sans KR", sans-serif;
+        font-size: 12px;
+      }
+    }
+  }
+  & > .copyright {
+    @include sections(100%, 30px, none);
+    @include font_title(30px, #555, center, unset, 11px);
+  }
+}
+
+//반응형
+@include mobile1;

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Javascript 7일차 (3) - 중급 (JS 애니메이션(Javascript)) </title>
+        <style>
+            *{box-sizing: border-box;}
+            body{margin: 0; padding: 0;}
+            .box{width: 500px; height: 500px; background-color: deeppink; position: relative;}
+            .sbox{
+                display: block; width: 50px; height: 50px;
+                background-color: deepskyblue; position: absolute;
+            }
+            /*문제1.*/
+            .banner{width: 400px; height: 400px; position: relative;}
+            .b1{width: inherit; height: inherit; display: block; 
+                position: absolute; background-color: green; z-index: 10;}
+            .b2{width: inherit; height: inherit; display: block; 
+                position: absolute; background-color: orange; opacity: 0;}
+        </style>
+        <script>
+            /*
+            setTimeout : 1회만 반복
+            setInterval(함수명,sec); : 계속해서 반복 
+            clearInterval(인터벌이 담긴 변수);
+            */
+            var timer;
+            function ani(){
+                var s = document.getElementById("sbox");
+                timer = setInterval(j,1); //0.001초마다 j()함수를 호출
+                var t = 0; //top,left값 조정
+                var f = 1; //투명도 조정
+                function j(){
+                    t++;
+                    if(t==450){clearInterval(timer);}//setInterval()멈춤
+                    else{
+                        f=f-0.00223; //1(sec)/450(px)=0.002222...
+                        s.style.top=t+"px";
+                        s.style.left=t+"px";
+                        s.style.opacity=f;
+                    }
+                };
+            };
+            /*문제1.*/
+            var fade;
+            function banner(){
+                var b1 = document.getElementById("b1");
+                var b2 = document.getElementById("b2");
+                fade = setInterval(fa,10);
+                var op = 1; //투명도 조정
+                var op2 = 0;
+                function fa(){
+                    op = op-0.01;
+                    op2 = op2+0.01;
+                    if(op==0){
+                        clearInterval(fade);
+                    }
+                    else{
+                        b1.style.opacity=op;
+                        b2.style.opacity=op2;
+                    }
+                };
+            };
+        </script>
+    </head>
+    <body>
+        <div class="box">
+            <span class="sbox" id="sbox" onclick="ani();"></span>
+        </div>
+        <!-- 응용문제 -->
+        <div class="banner" onclick="banner();">
+            <span class="b1" id="b1"></span>
+            <span class="b2" id="b2"></span>
+        </div>
+    </body>
+    <script>
+
+    </script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/middle25.html -->

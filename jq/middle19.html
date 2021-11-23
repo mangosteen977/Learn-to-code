@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="imagetoolbar" content="no">
+        <title>Jquery 6일차(2) - 중급 ( 모바일 전용페이지 보안 )</title>
+        <script src="./jquery-2.0.js"></script>
+        <script src="./jquery.mobile.js?v=1"></script>
+        <script>
+            $(function(){
+                //난수작업
+                /*
+                //응용문제) 0~9까지 중 한 가지 숫자가 나오도록 콘솔로 출력.
+                //가내수공업
+                let $random1 = Math.floor(Math.random()*10);
+                let $random2 = Math.floor(Math.random()*10);
+                let $random3 = Math.floor(Math.random()*10);
+                let $random4 = Math.floor(Math.random()*10);
+                let $li1 = "./number/no"+$random1+".png";
+                let $li2 = "./number/no"+$random2+".png";
+                let $li3 = "./number/no"+$random3+".png";
+                let $li4 = "./number/no"+$random4+".png";
+                $("#ulcss>li:eq(0)>img").attr("src",$li1);
+                $("#ulcss>li:eq(1)>img").attr("src",$li2);
+                $("#ulcss>li:eq(2)>img").attr("src",$li3);
+                $("#ulcss>li:eq(3)>img").attr("src",$li4);
+                */
+               //난수~img출력 반복문 출력
+                $.fn.reloads = function(){
+                let $n = 0;
+                let $random;
+                    while($n<4){
+                        $random = Math.floor(Math.random()*10);
+                        let $li = "./number/no"+$random+".png";
+                        $("#ulcss>li:eq("+$n+")>img").attr("src",$li);
+                        $n++;
+                    }
+                };
+                $.fn.reloads();
+                //확인 클릭
+                $("#fm").submit(function(){
+                    let $scnum = Number($("#scnum").val());
+                    if(!$scnum){alert("보안코드 4자리 입력필수"); return false;}
+                    else{ return true; }
+                });
+                //새로고침 클릭
+                $("#reload").tap(function(){
+                    $.fn.reloads();
+                });
+
+            });
+        </script>
+        <style>
+            *{box-sizing: border-box;}
+            body{margin: 0;padding: 0;}
+            ul,ol{list-style: none; margin: 0; padding: 0;}
+            .security{
+                width: 200px; height: 80px;
+                background: url("./number/security_back.png") ;
+            }
+            .security>ul{
+                width: inherit; height: inherit;
+            }
+            .security>ul>li{
+                width: 50px; height: inherit; float: left;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 세큐리티 파일 : 250,000원 -->
+        <form name="fm" id="fm" action="" method="" enctype="application/x-www-form-urlencoded">
+            <div class="security">
+                <ul id="ulcss">
+                    <li><img src=""></li>
+                    <li><img src=""></li>
+                    <li><img src=""></li>
+                    <li><img src=""></li>
+                </ul>
+            </div>
+            <input type="tel" name="scnum" id="scnum" maxlength="4" placeholder="보안코드4자리">
+            <input type="submit" value="확인" id="btn">
+            <input type="button" value="새로고침" id="reload">
+        </form>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/middle19.html -->

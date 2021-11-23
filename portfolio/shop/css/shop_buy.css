@@ -1,0 +1,562 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700;900&display=swap");
+/* font-family: 'Noto Sans KR', sans-serif; (100, 400, 700, 900) */
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 12px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+label,
+span {
+  display: inline-block;
+}
+
+img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+ul,
+ol,
+dl,
+dd {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.shop_buy_section {
+  width: 1200px;
+  height: auto;
+  background-color: none;
+  margin: 0 auto;
+}
+
+.shop_buy_box {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  padding: 80px 0;
+}
+
+.shop_buy_box > .shop_buy_title {
+  width: 100%;
+  height: 100px;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 100px;
+  color: unset;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.shop_buy_box > .shop_buy_title2 {
+  width: 100%;
+  height: 50px;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 50px;
+  color: unset;
+  text-align: unset;
+  font-weight: bold;
+  font-size: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding-left: 10px;
+}
+
+.shop_buy_box > .shop_buy_title2 > img {
+  width: 25px;
+}
+
+.shop_buy_box > .shop_buy_tb {
+  width: 100%;
+  height: auto;
+  background-color: none;
+}
+
+.shop_buy_box > .shop_buy_tb > thead > tr > th {
+  padding: 15px 0;
+  height: 40px;
+  background-color: #eee;
+  border-top: 3px solid #ccc;
+  border-bottom: 3px solid #ccc;
+  color: #666666;
+}
+
+.shop_buy_box > .shop_buy_tb > tbody > tr > td {
+  padding: 15px 0;
+  height: 80px;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: unset;
+  color: #333333;
+  text-align: center;
+  font-weight: unset;
+  font-size: 12px;
+  border-bottom: 3px solid #ccc;
+}
+
+.shop_buy_box > .shop_buy_tb > tbody > tr > td > label {
+  width: 100%;
+  height: 40px;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 40px;
+  color: #666666;
+  text-align: center;
+  font-weight: unset;
+  font-size: 12px;
+}
+
+.shop_buy_box > .shop_buy_tb > tbody > tr > td > img {
+  min-width: 80px;
+  max-height: 80px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.shop_buy_box > .shop_buy_tb .bold_font {
+  font-weight: bold;
+}
+
+.shop_buy_box .shop_buy_order_box {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  border: 3px solid #ccc;
+  padding: 30px 0;
+  margin-bottom: 80px;
+}
+
+.shop_buy_box .shop_buy_order_box > label {
+  width: 100%;
+  height: 20px;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 20px;
+  color: #666666;
+  text-align: right;
+  font-weight: unset;
+  font-size: 12px;
+  padding-right: 10px;
+}
+
+.shop_buy_box .shop_buy_order_box > ul {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.shop_buy_box .shop_buy_order_box > ul > li {
+  width: auto;
+  height: 50px;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 50px;
+  color: #666666;
+  text-align: center;
+  font-weight: unset;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.shop_buy_box .shop_buy_order_box > ul > li > img {
+  width: 35px;
+}
+
+.shop_buy_box .shop_buy_order_box .bold_font {
+  font-weight: bold;
+}
+
+.shop_buy_customer_box {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  margin-bottom: 80px;
+}
+
+.shop_buy_customer_box > .shop_buy_title2 {
+  width: 100%;
+  height: 50px;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 50px;
+  color: unset;
+  text-align: unset;
+  font-weight: bold;
+  font-size: 15px;
+  border-bottom: 3px solid #ccc;
+  padding-left: 10px;
+}
+
+.shop_buy_customer_box > .shop_buy_tb2 {
+  width: 100%;
+  height: auto;
+  background-color: none;
+}
+
+.shop_buy_customer_box > .shop_buy_tb2 > tbody > tr > td {
+  height: 60px;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: unset;
+  color: #333333;
+  text-align: flex-start;
+  font-weight: unset;
+  font-size: 12px;
+  padding-left: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.shop_buy_customer_box > .shop_buy_tb2 > tbody > tr > td:nth-of-type(odd) {
+  background-color: #eee;
+}
+
+.shop_buy_customer_box > .shop_buy_tb2 > tbody > tr > td > select {
+  width: 250px;
+  height: 40px;
+  background-color: none;
+  border: 1px solid #ccc;
+}
+
+.shop_buy_customer_box > .shop_buy_tb2 > tbody > tr > td > input[type="text"] {
+  width: 300px;
+  height: 40px;
+  background-color: none;
+  border: 1px solid #ccc;
+}
+
+.shop_buy_customer_box > .shop_buy_tb2 > tbody > tr > td > input[type="text"].post_num {
+  width: 100px;
+  margin-right: 10px;
+}
+
+.shop_buy_customer_box > .shop_buy_tb2 > tbody > tr > td > input[type="button"] {
+  width: 100px;
+  height: 40px;
+  background-color: #c3222b;
+  cursor: pointer;
+  color: white;
+  border: none;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+.shop_buy_customer_box > .shop_buy_tb2 > tbody > tr > td > .shop_buy_checks {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  margin-right: 5px;
+}
+
+.shop_buy_customer_box > .shop_buy_tb2 > tbody > tr > .shop_buy_del_adr {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
+  -webkit-box-align: space-around;
+      -ms-flex-align: space-around;
+          align-items: space-around;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.shop_buy_customer_box > .shop_buy_tb2 > tbody > tr > .shop_buy_del_adr > input[type="button"] {
+  margin-right: 500px;
+}
+
+.shop_buy_customer_box > .shop_buy_tb2 > tbody > tr > .shop_buy_del_adr > .addr_input {
+  width: 300px;
+  margin-right: 10px;
+}
+
+.shop_buy_way_box {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  margin-bottom: 80px;
+}
+
+.shop_buy_way_box > .shop_buy_title2 {
+  width: 100%;
+  height: 50px;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 50px;
+  color: unset;
+  text-align: unset;
+  font-weight: bold;
+  font-size: 15px;
+  border-bottom: 3px solid #ccc;
+  padding-left: 10px;
+}
+
+.shop_buy_way_box > ul {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 50px;
+  color: #666666;
+  text-align: center;
+  font-weight: unset;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.shop_buy_way_box > ul > li {
+  width: 100%;
+  height: 50px;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding-left: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.shop_buy_way_box > ul > li > .shop_buy_checks {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  margin-right: 5px;
+}
+
+.shop_buy_way_box > ul > li:nth-child(1), .shop_buy_way_box > ul > li:nth-child(4) {
+  background-color: #eee;
+}
+
+.shop_buy_way_box > ul > .shop_buy_banks {
+  width: 100%;
+  height: 80px;
+  background-color: none;
+}
+
+.shop_buy_way_box > ul > .shop_buy_banks > label {
+  width: 400px;
+  height: 40px;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-right: 50px;
+}
+
+.shop_buy_way_box > ul > .shop_buy_banks > label > input[type="text"],
+.shop_buy_way_box > ul > .shop_buy_banks > label > select {
+  width: 300px;
+  height: 40px;
+  background-color: none;
+  border: 1px solid #ccc;
+}
+
+.shop_buy_way_box .shop_buy_payself {
+  display: none;
+}
+
+.shop_buy_way_box > .shop_buy_last_step {
+  width: 100%;
+  height: 100px;
+  background-color: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 50px;
+  color: #666666;
+  text-align: right;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 20px;
+  border: 3px solid #eee;
+  margin-bottom: 80px;
+}
+
+.shop_buy_way_box > .shop_buy_last_step > label {
+  width: 200px;
+  height: 45px;
+  background-color: none;
+}
+
+.shop_buy_agree_btn {
+  width: 100%;
+  height: auto;
+  background-color: none;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 50px;
+  color: #666666;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+.shop_buy_agree_btn > input[type="button"] {
+  width: 250px;
+  height: 45px;
+  background-color: #c3222b;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 40px;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.bold_font {
+  font-weight: bold;
+}
+
+.red_font {
+  color: #c3222b;
+}
+/*# sourceMappingURL=shop_buy.css.map */

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Jquery 3일차(2)&4일차(1)&5일차(3) - 중급 ( 배열 + 롤링 배너 ) </title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(function(){
+                // 배너이미지링크 배열값
+                const $banner = [
+                    {"img":"./main_banner/main_0.jpg","link":"http://coupang.com"},
+                    {"img":"./main_banner/main_1.jpg","link":"http://naver.com"},
+                    {"img":"./main_banner/main_2.jpg","link":"http://google.com"},
+                    {"img":"./main_banner/main_3.jpg","link":"http://youtube.com"}
+                ]
+                // 배너 전체 사이즈 조정
+                let $view_width = $(".banner").width(); //배너 이미지 ol이 담긴 객체 가로길이
+                let $array_ea = $banner.length; //배열 갯수
+                $("#banner_image").width($view_width*$array_ea+"px");
+                //배너이미지&디스크출력
+                let $lis = "";
+                $.each($banner,function($a,$b){//세부키만 있는 배열
+                // 배너이미지 출력
+                    $lis = "<li links='"+$b["link"]+"' node='"+$a+"'><img src='"+$b["img"]+"'></li>";
+                    $("#banner_image").append($lis);
+                    //node='"+$a+"' 는 li가 복제/삭제로 섞여도 순서가 유지되도록 임의노드를 정함.
+                //disc(li) 출력
+                    let $disc_li = "<li dnode='"+$a+"'></li> " //공백은 li사이 간격용(inline-block이니깐.)
+                    $("#disc").append($disc_li);
+                });
+                //첫 화면 디스크 색상켜기
+                $("#disc>li").css("background-color","gray");
+                $("#disc>li").eq(0).css("background-color","red");
+                // 우측버튼
+                $("#right").click(function(){
+                    $("#banner_image").stop().animate({
+                        "left":-$view_width+"px" //banner담긴 ol의 left를 li width만큼 당김
+                    },700,function(){//animate끝난 이후, 다음 함수를 작동시킴.
+                        let $clone_li = $("#banner_image>li").eq(0).clone();//첫번 째 li복사
+                        $("#banner_image").append($clone_li);//복사 li를 맨 끝에 붙임
+                        $("#banner_image>li").eq(0).remove(); //당겨진 첫번 째 li를 삭제
+                        $("#banner_image").css("left","0px") //-width만큼 당겨진 ol의 left값 원상복귀
+                        //디스크 색상 켜기
+                        let $node_now = Number($("#banner_image>li").eq(0).attr("node"));//현재0번노드 배너의 임의속성 (고유)node값;)
+                        $("#disc>li").css("background-color","gray");
+                        $("#disc>li").eq($node_now).css("background-color","red");
+                    });
+                });
+                // 좌측버튼
+                $("#left").click(function(){
+                    //et $clone_li = $("#banner_image>li").eq($array_ea-1).clone();
+                    let $clone_li = $("#banner_image>li:last-child").clone();//마지막 li복사
+                    $("#banner_image>li:last-child").remove();//마지막 li 삭제
+                    $("#banner_image").css("left",-$view_width+"px");//ol의 left -width만큼 당긴후
+                    $("#banner_image").prepend($clone_li);//당겨진 앞 부분에 복사한 li 붙여넣기
+                    $("#banner_image").stop().animate({
+                        "left":"0px"//당겨진 left:0px로 되돌리기
+                    },700);
+                    //디스크 색상 켜기
+                    let $node_now = Number($("#banner_image>li").eq(0).attr("node"));//현재0번노드 배너의 임의속성 (고유)node값;)
+                    $("#disc>li").css("background-color","gray");
+                    $("#disc>li").eq($node_now).css("background-color","red");
+                });
+                //좌우버튼 애니메이션 (호버상태)
+                $("#banner").bind({
+                    "mouseenter":function(){
+                        $("#left").fadeIn(500); $("#right").fadeIn(500);
+                    },
+                    "mouseleave":function(){
+                        $("#left").fadeOut(500); $("#right").fadeOut(500);
+                    }
+                });
+                /*
+                [재호출 이벤트?.?]
+                1.
+                $("#id").click(function(){});(JQ)
+
+                    기존 핸들링 함수가 노드변경 시 핸들링 되지 않는 현상 발생함.
+                    해당 되는 함수는 최초 페이지 로드시에만 적용되는 핸들링으로 강제
+                    노드 변경 시 click자체 핸들링 정지됨.
+                2.    
+                $(document).on("click","#id",function(){});(JQ)
+
+                    노드 삭제,생성,수정과 관계없이 기존 핸들링을 메모리에 지정해서 사용함.
+                    ==addEventListener(JS) node가 꼬여도 인식 가능(복제,복사,삭제 이후)
+                */
+                //배너 클릭시 새탭으로 이동
+                $(document).on("click","#banner_image>li",function(){
+                    var $node = $(this).index();//누른 li의 node;
+                    var $href = $("#banner_image>li").eq($node).attr("links");//링크값
+                    window.open($href,"_blank"); //window.open(링크,타겟속성);
+                });
+                //disc 선택시 애니메이션/이동
+                $("#disc>li").click(function(){
+                    //선택시 색상 켜기
+                    var $n = $(this).index();
+                    //선택 disc li의 node번호 가져오기
+                    $("#disc>li").css("background-color","gray");//모든 li의 bg 끄기
+                    $("#disc>li").eq($n).css("background-color","red");//해당 node만 bg 켜기
+                    
+                    //선택한 디스크 해당 배너로 이동
+                    let $w = 0; //while문 돌리는 변수
+                    var $nos;   //html에 있는 임의속성node를 입력시키는 변수
+                    while($w<$array_ea){//0~배너갯수만큼 반복문 돌림.
+                    $nos= $("#banner_image>li").eq($w).attr("node");//반복문으로 해당 node의 실제 번호를 모두 확인함.
+                    if($n==$nos){ //$n :사용자가 클릭한 디스크 == $nos : 배너 속성node번호 인 경우
+                        var $or = Math.ceil($("#banner_image").offset().left);//margin : auto; 니깐 정확한 ol(banners)위치를 확인.
+                        var $offset =  Math.ceil($("#banner_image>li").eq($w).offset().left-$or); //이동할 left값구하기 = 이동할 배너left위치값-ol의left위치값.
+                        var $clickno = $w; //$w : 반복문돌려서 얻은 이동할 배너의 현 노드위치값. 
+                        /*$w는 전역변수인데 지역변수의 값(반복문 속 값)을 유지시킬려면 
+                        새로운 함수에 값을 넘겨준 뒤 다른 펑션(애니메이션펑션)에서 값을 계속 가지도록 한다.*/
+                        $("#banner_image").stop().animate({
+                            "left":-$offset+"px"
+                        },700,function(){
+                        //$clickno = $w; : $w는 반복문돌려서 얻은 이동할 배너의 현 노드위치값. 
+                        var $index_no = $("#banner_image>li").eq($clickno).index();
+                        //해당 노드의 위치를 확인해 이전 배너 노드들을 복제+삭제+맨 뒤로 이동시킴.
+                        var $w2;//배너복제를 위한 회전값
+                        for($w2=0;$w2<$index_no;$w2++){
+                            var $cp = $("#banner_image>li").eq(0).clone();
+                            $("#banner_image>li").eq(0).remove();
+                            $("#banner_image").append($cp);
+                        };
+                        //이동할 배너 앞에 위치한 배너를 모두 맨 뒤로 이동시킨 후, 밀어뒀던 left값을 원상복귀시킴
+                        $("#banner_image").css("left","0px"); //ul left값 되돌림
+                        });  //  animate함수
+                    }  //  if문
+                    $w++;
+                    }  //  while문 
+                });  //  disc클릭함수
+            });  //  JQ함수
+
+            //추가작업 필요
+        </script>
+        <style>
+            * { box-sizing: border-box; }
+            body { margin: 0; padding: 0; }
+            span { display: block;} 
+            ol, ul { list-style: none; margin: 0; padding: 0; }
+            img { width: 100%; height: 100%; }
+            .banner { 
+                width: 960px; 
+                height: 400px; 
+                margin: 0 auto;
+                position: relative;
+                /* overflow: hidden; */
+            }
+            .banner_image { 
+                /*JQ로 width 값 계산*/
+                height: inherit;
+                position: absolute;
+            }
+            .banner_image > li { 
+                width: 960px; height: 400px;
+                float: left;
+            }
+            .banner_image > li > img { width: 960px; height: 400px; }
+            .left, .right { display: none; cursor: pointer;}
+            .left { 
+                width: 46px; 
+                height: 70px;  
+                position: absolute;
+                top: 50%;
+                margin-top: -35px;
+            }
+            .right { 
+                width: 46px; 
+                height: 70px; 
+                position: absolute;
+                top: 50%; 
+                right: 0;
+                margin-top: -35px;
+            }
+            .disc { 
+                position: absolute; 
+                bottom: 10px; 
+                width: 100%; 
+                height: 20px;
+                text-align: center; 
+            }
+            .disc > li { 
+                width: 20px;
+                height: 20px; 
+                border-radius: 20px;
+                display: inline-block;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <section class="banner" id="banner">
+            <ol class="banner_image" id="banner_image"><!--배열로 배너이미지 출력--></ol>
+            <span class="left" id="left"><img src="./main_banner/left_btn.svg"></span>
+            <span class="right" id="right"><img src="./main_banner/right_btn.svg"></span>
+            <ul class="disc" id="disc"><!-- disc(li) 출력 --></ul>
+        </section>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/middle12.html -->

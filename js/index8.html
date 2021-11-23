@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>JavaScript 2일차(1) -반복문2 </title>
+        <script>
+            // for < while < do~while < each < for in (~>더 빠름)
+
+            var a = 1; //초기값
+            while(a < 11){ //범위값
+            //    document.write(a+"<br>");
+                a++; //증가 혹은 감소
+            }
+
+            /* 응용문제1. while문으로 10~1까지 역순 반복문을 작성하시오. */
+            var b =10;
+            while(b>=1){
+            //    document.write(b+"<br>");
+                b--;
+            }
+
+    /*do~while*/
+            var c = 1; //초기값
+            do{
+            //    document.write(c + "<br>");
+                c++; //증가,감소
+            }while(c<11)
+
+            /* 응용문제2. 구구단8단 while문으로 작성 */
+            var d = 1; //while 초기값
+            var e = 8; //8단 기본값
+            var f; //계산 결과값
+            while(d<=9){
+                f = e * d //계산 수식구
+            //    document.write(e + "X" + d + "=" + f + "<br>");
+                d++; //증가
+            }
+
+            var t=1;
+            while(t<11){ //while+if 해당 조건에 맞는 부분만 출력함.
+                if(t > 5){
+            //        document.write(t+"<br>");
+                }
+                t++;
+            }
+
+            /* 응용문제3. 100~50 내림차순 중 짝수만 출력함.
+            단, while이용함. */
+            //내 답
+            var g =100;
+            while(g>=50){
+                if(g%2==0){
+            //        document.write(g + "<br>");
+
+                }
+                g--;
+            }
+            //선생님 답
+            var m = 100;
+            var n;
+            while(m>=50){
+                n = m % 2;
+                if(n!=1){
+            //        document.write(m+"<br>");
+                }
+                m--;
+            }
+
+        </script>
+    </head>
+    <body>
+        <!-- http://mangsteen977.dothome.co.kr/js/index8.html -->
+    </body>
+</html>

@@ -1,0 +1,116 @@
+<?php
+    $data = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 1일차 (5) vue 핸들링 : 사용자 입력 값 이용하기 </title>
+        <script src="../jq/jquery.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <style>
+            *{box-sizing: border-box;}
+            span{display: block;}
+            .login_box{
+                width: 450px; height: 130px;
+                border: 2px solid darkred;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+                align-items: center;
+                padding-top: 10px;
+                margin-top: 50px;
+            }
+            .idpw{width: 230px; height: auto;}
+            .inputs{width: 230px; height: 40px; border: 1px solid darkred;}
+            .inputs:nth-child(1){margin-bottom: 5px;}
+            .lo_btn{
+                width: 150px;
+                height: 90px;
+                border: none;
+                background-color: darkred;
+                color: wheat;
+                font-size: 14px;
+                font-weight: bold;
+            }
+            .alerts{
+                width: 90%;
+                height: 20px;
+                line-height: 20px;
+                font-size: 12px;
+                color: red;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box">
+            <input type="text" name="input1" v-model="text1"> + 
+            <input type="text" name="input2" v-model="text2">
+            <input type="button" v-model="btn" v-on:click="abc">
+            <div>{{text3}}</div>
+        </div>
+        <div id="box2" v-bind:class="c1">
+            <span v-bind:class="c2">
+                <input v-bind:type="in1" v-model="mid"  v-bind:class="c3">
+                <input v-bind:type="in2" v-model="mpass"  v-bind:class="c3">
+            </span>
+            <button  v-bind:type="btns"  v-bind:class="c4" v-on:click="logins">{{lo}}</button>
+            <div v-bind:class="al">{{alert}}</div>
+        </div>
+    </body>
+    <script>
+        let login_box = new Vue({
+            el:"#box2",
+            data:{
+                c1:"login_box",
+                c2:"idpw",
+                in1:"text",
+                in2:"password",
+                mid:"",
+                c3:"inputs",
+                mpass:"",
+                btns:"button",
+                c4:"lo_btn",
+                lo:"로그인",
+                alert:"",
+                al:"alerts"
+            },
+            methods:{
+                logins:function(){
+                    if(this.mid==""){
+                        this.alert = "아이디를 입력하세요.";
+                    }
+                    else if(this.mpass==""){
+                        this.alert = "패스워드를 입력하세요.";
+                    }
+                    else{
+                        this.alert = this.mid+"님 로그인 되었습니다.";
+                    }
+                }
+            }
+        })
+        let a = new Vue({
+            el:"#box",
+            data:{
+                text1:"",
+                text2:"",
+                text3:"",
+                btn:"클릭"
+            },
+            methods:{
+                abc:function(){
+                    if(this.text1=="" || this.text2==""){
+                        this.text3 = "계산할 값을 달라.";
+                    }
+                    else{
+                        this.text3 = Number(this.text1) + Number(this.text2);
+                    }
+                }
+            }
+        })
+        
+    </script>
+</html>

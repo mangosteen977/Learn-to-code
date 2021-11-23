@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head> 
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Jquery Ajax 6일차(1) - Jquery Ajax ( JSON - fadeIn / fadeOut 배너 ) </title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(function(){
+                $.ajax({
+                    url:"./banner.json",
+                    cache:false,
+                    type:"GET",
+                    dataType:"JSON",
+                    success:function($data, $ok){
+                        $.fn.html_make($data);//확장함수로 보냄
+                    },
+                    error:function(){
+                        console.log("data error");
+                    }
+                });
+            
+                //배너&디스크 출력
+                let $banner_ea;//배너갯수
+                $.fn.html_make = function($array){//확장함수로 json데이터 받음
+                    $banner_ea = $array["mainbanner"].length;
+                    $($array["mainbanner"]).map(function($node,$name){
+                        $("#banners").append("<li><img src='"+$name[0]+"'></li>");
+                        $("#disc").append("<li></li> ");
+                    });
+                    //디스크 클릭
+                    /*script로 출력한 객체들 핸들링은 객체 출력한 함수 속에 넣어야 작동함*/
+                    $("#disc>li").click(function(){
+                            $("#banners>li").eq($no).fadeOut(600);
+                            $("#disc>li").eq($no).css("background-color","black");
+                            $no = $(this).index();
+                            $("#banners>li").eq($no).fadeIn(600);
+                            $("#disc>li").eq($no).css("background-color","crimson");
+                    });
+                };
+                //배너&디스크 애니메이션 (5초에 한 번 작동)
+                let $timer;
+                let $no = 0;
+                $.fn.times = function(){
+                    // $timer= setInterval(function(){
+                    $timer = setTimeout(function(){
+                        $("#banners>li").eq($no).fadeOut(600);
+                        $("#disc>li").eq($no).css("background-color","black");
+                        if($no<$banner_ea-1){$no++;}
+                        else if($no==$banner_ea-1){$no=0;}
+                        $("#banners>li").eq($no).fadeIn(600);
+                        $("#disc>li").eq($no).css("background-color","crimson");
+                    },5000);
+                    $timer= setTimeout($.fn.times,5000);
+                };
+                // setTimeout($.fn.times,100);
+                $.fn.times();
+                //좌우 아이콘 fadeIn&Out
+                $("#box1").bind({
+                    "mouseenter":function(){
+                        $("#btns").fadeIn();
+                    },
+                    "mouseleave":function(){
+                        $("#btns").fadeOut();
+                    }
+                });
+                //右버튼 클릭
+                $("#r").click(function(){
+                    $("#banners>li").eq($no).fadeOut(600);
+                    $("#disc>li").eq($no).css("background-color","black");
+                    if($no<$banner_ea-1){$no++;}
+                    else if($no==$banner_ea-1){$no=0;}
+                    $("#banners>li").eq($no).fadeIn(600);
+                    $("#disc>li").eq($no).css("background-color","crimson");
+                });
+                //左버튼 클릭
+                $("#l").click(function(){
+                    $("#banners>li").eq($no).fadeOut(600);
+                    $("#disc>li").eq($no).css("background-color","black");
+                    if($no>0){$no--;}
+                    else if($no==0){$no=$banner_ea-1;}
+                    $("#banners>li").eq($no).fadeIn(600);
+                    $("#disc>li").eq($no).css("background-color","crimson");
+                });
+                //바디 => 타이머조절
+                $("#body").bind({
+                    "mouseenter":function(){
+                        clearTimeout($timer);
+                    },
+                    "mouseleave":function(){
+                        $timer= setTimeout($.fn.times,5000);
+                    }
+                });
+                
+            });
+        </script>
+        <style>
+            *{box-sizing: border-box;}
+            body{margin: 0; padding: 0;}
+            img{width: 100%;}
+            ul,ol,dl{list-style: none; margin: 0; padding: 0;}
+            .box1{
+                width: 1000px; height: 450px; margin: 0 auto;
+                position: relative; /*overflow: hidden;*/
+            }
+            .banners{
+                /*li 겹쳐서 fadeIn/Out = ul:relative, ul>li:absolute*/
+                width: 1000px; height: 450px; position: relative;
+            }
+            .banners>li{
+                width: 1000px; height: 450px; position: absolute;
+                display: none;
+            }
+            .banners>li:first-child{display: block;}
+            .disc{
+                width: inherit; text-align: center;
+                position: absolute; bottom: 5px; z-index: 10;
+                /*display: inline; margin: 0 auto;*/
+                }
+            .disc>li{
+                width: 25px; height: 5px; display: inline-block;
+                background-color: black; cursor: pointer;
+            }
+            .disc>li:nth-of-type(1){background-color: crimson;}
+            .btns{
+                width: inherit; height: 50px; position: absolute;
+                top: 50%; margin-top: -25px; display: none;
+            }
+            .l, .r{
+                position: absolute; width: 50px; height: 50px;
+                cursor: pointer;
+            }
+            .r{right: 5px;}
+        </style>
+    </head>
+    <body id="body">
+        <div class="box1" id="box1">
+            <ol class="banners" id="banners">
+                <!--
+                배너이미지 출력 샘플 (1000*450 px)
+                <li><img src="./ajaxbanner/ajaxbanner/banner0.png"></li>
+                 -->
+            </ol>
+            <ul class="disc" id="disc"><!-- 디스크 출력 --></ul>
+            <div class="btns" id="btns">
+                <label class="l" id="l"><img src="./ajaxbanner/carat-l-black.svg"></label>
+                <label class="r" id="r"><img src="./ajaxbanner/carat-r-black.svg"></label>
+            </div>
+        </div>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/ajax/jqindex6.html -->
+<!-- jndex -->
+<!-- 05/26 조별활동(정윤경 님) -->

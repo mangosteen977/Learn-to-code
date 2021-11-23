@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible">
+        <title>Javascript 5일차(5) - 초급코드 (객체 DOM 사용하기) </title>
+        <script>
+            //ver.1,2,3은 같은 결과 값. 쓰는 법이 다름.
+            //ver.1 : 태그의 id값을 변수로 묶은 뒤 +=로 누적시킴
+    //+= : 결과값 누적
+    // "a=a+1" == "a+=1" , "a=a-1" == "a-=1"
+            function abc(){
+                var i = 1;
+                var cc = document.getElementById("list");
+                do{
+                    var t = "<li></li>";
+                    cc.innerHTML += t;
+                    i++;
+                }while(i<9);    
+            }
+            //ver.2 : 공백 변수를 만들어서 공백+태그로 누적시켜서 출력함.
+            function abc2(){
+                var i = 1;
+                var t = "<li></li>";
+                var cc = "";
+                do{
+                    cc = cc+t;
+                    i++;
+                }while(i<9);
+                document.getElementById("list").innerHTML = cc;
+            }
+            //ver.3 : 태그를 +=를 이용해 누적시킴.
+            function abc3(){
+                var i = 1  
+                 do{
+                    var t = "<li></li>";
+                    document.getElementById("list").innerHTML += t;
+                    i++;
+                }while(i<9);  
+            }
+
+        </script>
+        <style>
+            body{margin: 0; padding: 0;}
+            #list{margin: 0; padding: 0; list-style: none;
+                width: 1200px; height: 40px;}
+            #list > li {width: 150px; height: 40px; float: left;}
+            #list > li:nth-child(even){background-color: pink; }
+            #list > li:nth-child(odd){background-color: darksalmon;}
+        </style>
+    </head>
+    <body>
+        <ul id="list"></ul>
+        <input type="button" value="출력" onclick="abc();">
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/index29.html -->

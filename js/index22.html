@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>Javascript 4일차(3) - HTML 추가 태그 연결 </title>
+        <script>
+            function aaa(){
+                var a = document.getElementById("ck").checked;
+                var b =document.getElementById("ra").checked;
+    //checkbox/radio 는 checked; (text/password의 value와 동일.)
+    //체크되면 true, 체크안되면 false로 반영됨.
+                if(a==false){
+                    alert("필수 동의입니다.");
+                }
+                else if(b==false){
+                    alert("필수 동의입니다.");
+                }
+    //if(false/true를 radio/checkbox &&로 함께 검토하지 못함)
+    //단, 같은 속성의 태그의 한해서는 가능하다.
+    //ex. if(a==false && b==false) (X) 작동하지 않는다. radio/checkbox 함께 검토 안됨.
+    //false/true는 "쌍따옴표"에 넣지 않는다. 변수이름으로도 불가능 ex. var true; (X)
+                
+            }
+        //응용문제2.
+            function agree(){
+                /*var ok = document.getElementById("aa").checked;
+                if(ok==false){
+                    alert("서비스를 등록하지 못합니다.");
+                }*/
+                var bb = fmm.a[0].checked;
+    // form name.radio name[node number 0~n].ckecked;
+    // js node는 0부터 시작한다. *cf. css node는 1부터 시작한다.
+                if(bb==false){
+                    alert("서비스를 등록하지 못합니다.");
+                }
+            }
+    //DOM , NODE 객체 차이 알기
+    // DOM getElementBuId, querySelect
+    // NODE [], getElementBuId (: 더 빠르다.)
+
+
+    //응용문제3.
+            function frt(){
+                var a = 5;
+                var b;
+                var c;
+                var d = 0; //체크 갯수 카운터
+                for(b=0;b<a;b++){
+                    c = ff.fruit[b].checked;
+                    if(c==true){
+                        d = d +1;
+                    }
+                }
+                if(d < 2){
+                    alert("2이상 선택해주세요.");
+                }
+                else{
+                    alert("해당 정보를 전송합니다.");
+                }
+            }
+            
+
+
+        </script>
+    </head>
+    <body>
+        <input type="checkbox" id="ck">동의함<br>
+        <input type="radio" id="ra">동의함
+        <input type="button" value="확인" onclick="aaa();">
+        <br><br>
+    <!-- 응용문제2.
+    [광고수신 동의에 대해 선택해 주시길 바랍니다.]
+    수신동의, 수신차단 2가지를 선택하는 HTML코드를 작성하시오.
+    버튼이름은 "서비스 등록"입니다.
+    
+    추가옵션 서비스 등록 버튼 클릭시 수신동의가 안되면
+    "서비스를 등록하지 못합니다."를 출력하시오.-->
+        <form id="fmm" name="fmm">
+        <p>[광고수신 동의에 대해 선택해 주시길 바랍니다.]</p>
+        <input type="radio" name="a" id="aa">수신동의
+        <input type="radio" name="a" id="bb" checked>수신차단
+        <input type="button" value="서비스 등록" onclick="agree();">
+        </form>
+        <br><br>
+        
+    <!-- 응용문제3.
+        무조건 2가지 이상이 선택되어야만 등록이 가능하게 하시오.
+        2개미만의 선택시에는 "2가지 이상 과일을 선택하세요" 출력,
+        2개 이상 선택 시 "정상적으로 등록되었습니다." 출력 -->
+        <form name="ff">
+        <p>자신이 좋아하는 과일을 2가지 이상 선택 하세요.</p>
+        <input type="checkbox" name="fruit">사과
+        <input type="checkbox" name="fruit">딸기
+        <input type="checkbox" name="fruit">바나나
+        <input type="checkbox" name="fruit">망고스틴
+        <input type="checkbox" name="fruit">키위
+        <input type="button" value="등록" onclick="frt();">
+        </form>
+
+
+
+
+        <!-- http://mangsteen977.dothome.co.kr/js/index22.html -->
+    </body>
+</html>

@@ -1,0 +1,24 @@
+@charset "UTF-8";
+body{margin: 0; padding: 0;}
+ul, ol, dl{list-style: none; margin: 0; padding: 0;}
+span, label, main{display: block;}
+a{text-decoration: none;}
+/*문제1.*/
+.text_perinfo{
+    width: 600px;
+    height: 100px;
+}
+.agreebox{
+    width: 600px;
+    height: 30px;
+    text-align: right;
+}
+.label_agree{
+    display: inline-block;
+}
+/*문제2.*/
+.blue_box{
+    width: 300px;
+    height: 300px;
+    bac
+}

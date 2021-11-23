@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery 7일차(1) - 초급코드 DOM 오브젝트 (Jquery-ui) 사용법 </title>
+        <script src="./jquery.js"></script>
+        <script src="./jquery-ui.js"></script>
+        <script>
+             $(document).ready(function(){
+            //더블 핸들링 : $("#idname").draggable().click(function(){});
+                $("#box").draggable().click(function(){
+                    $(this).animate({
+                        "width":"200px",
+                        "height":"200px"
+                    },500)
+                });
+            //어떤 오브젝트를 움직이는 중인지 표시할 때 등.(mouseover/out)
+                $("#box2").draggable().mouseover(function(){
+                    $(this).css("background-color","crimson");
+                });
+                $("#box2").mouseout(function(){
+                    $(this).css("background-color","");
+                });
+                /* 응용문제1.
+                50*50 black 객체를 마우스로 움직인 후 클릭하면 원으로 바뀌게 하라.*/
+                $("#box3").draggable().click(function(){
+                    $(this).css("border-radius","100%");
+                });
+
+
+            /*수업내용 [DOM객체 사용]*/
+            
+                //해당 부모객체 (document)에서 모든 (".classname")을 가진 자식노드를 find
+                //eq()함께 사용(O)
+                var $color = ""; //전역변수
+                $(".span").draggable().mouseenter(function(){
+                    $color = $(this).css("background-color");
+                    //해당 클래스의 백그라운드 컬러를 전역변수 $color에 적용
+                });
+                
+                $("#big").droppable({// 오브젝트 기준으로 사용되는 이벤트
+                    "over":function(){//오브젝트에 1/2이상 객체가 겹쳐졌을 때
+                        //$(this).css("background-color","red");
+                    },
+                    "out":function(){//오브젝트에 1/2이상 나갈 경우.
+                        $(this).css("background-color","");
+                    },
+                    "drop":function(){//오브젝트 안에 객체가 완전히 안에 들어왔을 때
+                        $(this).css("background-color",$color);
+                        //전역변수 $color값을 적용
+                    }
+                });
+
+
+
+             });
+        </script>
+        <style>
+           .box{width: 100px; height: 100px; background-color: pink;}
+           .box3{width: 50px; height: 50px; background-color: black;}
+           .big{width: 200px; height: 200px; border: 1px solid black;}
+           .span{width: 50px; height: 50px; background-color: red; display: block;}
+           .span:last-child{width: 50px; height: 50px; background-color: green; display: block;}
+        </style>
+    </head>
+    <body>
+       <div class="box" id="box"></div>
+       <div class="box" id="box2"></div>
+       <!-- 응용문제1. -->
+       <div class="box3" id="box3"></div>
+       <br><br>
+       <div class="big" id="big"></div>
+        <span class="span" id="span"></span>
+        <span class="span" id="span2"></span>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/index26.html -->

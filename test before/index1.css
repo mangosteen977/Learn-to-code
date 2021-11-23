@@ -1,0 +1,14 @@
+body{margin: 0; padding: 0;}
+span, label{display: block;}
+ul, ol{list-style: none; margin: 0; padding: 0;}
+a{text-decoration: none;}
+.info{
+    width: 600px;
+    height: 100px;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+.box{display: inline-block;}
+.box1{width: 600px; height: 30px;text-align: right;}
+
+/* px, ;,  */

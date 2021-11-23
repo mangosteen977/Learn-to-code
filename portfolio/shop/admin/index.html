@@ -1,0 +1,36 @@
+<?php
+    $v = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="imagetoolbar" content="no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+    <title>쇼핑몰 관리자 페이지</title>
+    <script src="../../js/jquery.js"></script>
+    <script src="./config.js?v=<?=$v?>"></script>
+    <link rel="stylesheet" type="text/css" href="./admin.css?v=<?=$v?>">
+</head>
+
+<body>
+    <form onsubmit="return checks();" name="adm" id="adm" enctype="application/x-www-form-urlencoded">
+        <div class="box">
+            <img src="../ico/logo.png" class="logo_login">
+            <input type="text" placeholder="아이디를 입력하세요" name="a_id" class="ids" id="ids" autocomplete="off">
+            <input type="password" placeholder="패스워드를 입력하세요" name="a_pw" class="pass">
+            <input type="submit" class="login" value="로그인">
+            <div class="mid">
+                <label><input type="checkbox" name="a_save" value="Y" onclick="id_save();"> 아이디 저장</label>
+                <span class="find">아이디/비밀번호 찾기</span>
+            </div>
+            <div class="bottom">※관리자의 로그인 기록은 모두 저장 됩니다.</div>
+        </div>
+        <input type="hidden" name="adm_login" value="1">
+        <input type="hidden" name="returnurl" value="mangsteen977.dothome.co.kr">
+    </form>
+</body>
+<script src="./cookie.js?v=<?=$v?>"></script>
+
+</html>

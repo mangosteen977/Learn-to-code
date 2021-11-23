@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>문제 6번</title>
+        <style>
+            body{margin: 0; padding: 0; box-sizing: border-box; box-sizing: border-box;}
+            ul,ol,dl{margin: 0; padding: 0; list-style: none;}
+            span,label,main{display: block;}
+            a{text-decoration: none;}
+
+            .banner{
+                margin: 0 auto;
+                width: 1000px;
+                height: 400px;
+                box-sizing: border-box;
+                position: relative;
+            }
+            ol{
+                width: 1000px;
+                height: 400px;
+            }
+            ol > li{
+                width: 1000px;
+                height: 400px;
+            }
+            ul{
+                width: 1000px;
+                height: 15px;
+                text-align: center;
+                position: absolute;
+                bottom: 20px;
+            }
+            ul >li{
+                width: 15px;
+                height: 15px;
+                border-radius: 15px;
+                background-color: black;
+                display: inline-block;
+                margin-left: 10px;
+            }
+            ul > li:first-child{
+                margin-left: 0;
+            }
+            ul > li:nth-child(3){
+                background-color: blue;
+            }
+            span{
+                width: auto;
+                height: 400px;
+                line-height: 400px;
+                position: absolute;
+                cursor: pointer;
+            }
+            .btn{
+                width: 50px;
+                height: 50px;
+            }
+            .r{
+                right: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="banner">
+            <span><img src="./image/left.png" class="btn"></span>
+            <span class="r"><img src="./image/right.png"  class="btn"></span>
+            <ul>
+                <li></li><li></li><li></li><li></li>
+            </ul>
+            <ol>
+                <li><img src="./image/background.png"></li>
+            </ol>
+        </div>
+    </body>
+</html>

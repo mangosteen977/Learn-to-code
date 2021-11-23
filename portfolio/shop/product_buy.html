@@ -1,0 +1,251 @@
+<form name="pd_buy_pay_form" method="POST" enctype="application/x-www-form-urlencoded">
+    <input type="hidden" name="product_img" value="<?php echo $_POST['product_img'] ?>">
+    <input type="hidden" name="goodsno" value="<?php echo $_POST['goodsno'] ?>">
+    <input type="hidden" name="version" value="1.0">
+    <!--빈값-->
+    <input type="hidden" name="mid" value="">
+    <input type="hidden" name="goodname" value="<?php echo $_POST['goodname'] ?>">
+    <!--빈값-->
+    <input type="hidden" name="oid" value="">
+    <input type="hidden" name="price" id="hidden_price">
+    <input type="hidden" name="goodea" value="<?php echo $_POST['goodea'] ?>">
+    <input type="hidden" name="currency" value="WON">
+    <!--빈값-->
+    <input type="hidden" name="mkey" value="">
+    <input type="hidden" name="offerPeriod" value="">
+    <input type="hidden" name="payViewType" value="overlay">
+    <input type="hidden" name="charset" value="UTF-8">
+    <input type="hidden" name="product_option" value="<?php echo $_POST['product_option'] ?>">
+    <!-- ~hidden -->
+
+    <!-- 주문내역 -->
+
+    <aside class="shop_buy_box">
+        <div class="shop_buy_title"><u>ORDER</u></div>
+        <div class="shop_buy_title2">주문내역</div>
+        <table class="shop_buy_tb" border="0" cellpadding="0" cellspacing="0">
+            <thead>
+                <tr>
+                    <th colspan="2" style="width: 30%;">상품/옵션 정보</th>
+                    <th style="width: 10%;">수량</th>
+                    <th style="width: 10%;">상품금액</th>
+                    <th style="width: 10%;">할인/적립</th>
+                    <th style="width: 10%;">합계금액</th>
+                    <th style="width: 30%;">배송비</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="width: 8%;"><img src="<?php echo $_POST['product_img'] ?>"></td>
+                    <td style="width: 17%;">
+                        <label class="bold_font">
+                            <?php echo $_POST['goodname'] ?>
+                        </label>
+                        <label>
+                            옵션 :
+                            <?php echo $_POST['product_option'] ?>
+                        </label>
+                    </td>
+                    <td>
+                        <?php echo $_POST['goodea'] ?>EA
+                    </td>
+                    <td class="bold_font">
+                        <?php echo $_POST['price'] ?>원
+                    </td>
+                    <td>-</td>
+                    <td class="bold_font pd_buy_price_total_price">
+                        <!--제품가격*갯수-->
+                    </td>
+                    <td>
+                        <label class="pd_buy_delivery_price">
+                            <!--배송비-->
+                        </label>
+                        <label class="pd_buy_total_price_for_real">
+                            <!--(제품가격*갯수)+배송비-->
+                        </label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="shop_buy_title2"><img src="./order/shopping_cart.svg">장바구니 바로가기</div>
+        <div class="shop_buy_order_box">
+            <ul>
+                <li>총 상품금액</li>
+                <li class="bold_font">
+                    <!--제품가격*갯수-->
+                    <label class="pd_buy_price_total_price"></label>
+                </li>
+                <li><img src="./order/plus.png"></li>
+                <li class="pd_buy_delivery_price">
+                    <!--배송비-->
+                </li>
+                <li><img src="./order/total.png"></li>
+                <li class="bold_font pd_buy_total_price_for_real">
+                    <!--(제품가격*갯수)+배송비-->
+                </li>
+            </ul>
+            <label>
+                적립예정 마일리지 : <span>0</span>원
+            </label>
+        </div>
+    </aside>
+
+    <!-- 주문자 정보 -->
+
+    <aside class="shop_buy_customer_box">
+        <div class="shop_buy_title2">주문자 정보</div>
+        <table class="shop_buy_tb2" border="0" cellpadding="0" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td style="width:20%;">주문하시는분*</td>
+                    <td><input name="buyername" type="text" value="김한국" readonly></td>
+                </tr>
+                <tr>
+                    <td>주소*</td>
+                    <td>
+                        <input type="text" name="order_post" class="post_num" value="012345" readonly>
+                        <input type="text" name="order_addr1" value="서울특별시 성북구 돈암동" readonly>
+                        <input type="text" name="order_addr2" value="한국아파트 101동 101호" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>전화번호</td>
+                    <td><input type="text" name="buy_tel" maxlength="11" value="021234567" readonly></td>
+                </tr>
+                <tr>
+                    <td>휴대폰번호*</td>
+                    <td><input type="text" name="buyertel" maxlength="11" value="01012345678" readonly></td>
+                </tr>
+                <tr>
+                    <td>이메일*</td>
+                    <td>
+                        <input type="text" id="email_id_select">@
+                        <select onchange="email_site_selects(this.value)" id="email_site_select">
+                            <option value="">이메일 선택</option>
+                            <option value="@naver.com">naver.com</option>
+                            <option value="@daum.net">daum.net</option>
+                            <option value="@google.com">google.com</option>
+                            <option value="@nate.com">nate.com</option>
+                            <option value="my_self">직접입력</option>
+                        </select>
+                        <input type="text" id="email_site_self" style="display: none;"
+                            onkeyup="email_site_my_self(this.value);">
+                        <input type="hidden" name="buyeremail">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </aside>
+
+
+    <!-- 배송정보 -->
+
+    <aside class="shop_buy_customer_box">
+        <div class="shop_buy_title2">배송정보</div>
+        <table class="shop_buy_tb2" border="0" cellpadding="0" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td style="width:20%;" 9>배송지 확인</td>
+                    <td>
+                        <label class="shop_buy_checks"><input type="radio" name="">기본배송지</label>
+                        <label class="shop_buy_checks"><input type="radio" name="">최근배송지</label>
+                        <label class="shop_buy_checks"><input type="radio" name="">신규배송지</label>
+                        <label class="shop_buy_checks"><input type="radio" name="" onclick="same_as_buyer();">주문정보와
+                            동일</label>
+                        <input type="button" value="배송지 관리">
+                    </td>
+                </tr>
+                <tr>
+                    <td>받을실분*</td>
+                    <td><input type="text" name="receiver_name"></td>
+                </tr>
+                <tr>
+                    <td>받을실곳*</td>
+                    <td style="height: 150px;" class="shop_buy_del_adr">
+                        <input type="text" name="receiver_post" class="post_num postcodify_postcode5" readonly>
+                        <input type="button" value="우편번호검색" id="addsearch">
+                        <input type="text" name="receiver_addr" class="addr_input postcodify_address" readonly>
+                        <input type="text" name="receiver_addr2" class="addr_input">
+                        <label class="shop_buy_checks"><input type="checkbox">나의 배송지에 추가합니다.</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>전화번호</td>
+                    <td><input type="text" name="receiver_tel" maxlength="11"></td>
+                </tr>
+                <tr>
+                    <td>휴대폰번호*</td>
+                    <td><input type="text" name="receiver_hp" maxlength="11"></td>
+                </tr>
+                <tr>
+                    <td>남기실 말씀</td>
+                    <td><input type="text" name="receiver_say"></td>
+                </tr>
+                <tr>
+                    <td>회원정보 반영</td>
+                    <td>
+                        <label class="shop_buy_checks"><input type="checkbox">위 내용을 회원정보에 반영합니다.</label>
+                        <label>(주소/전화번호/휴대폰번호)</label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="shop_buy_title2">* 은 필수 입력 값 입니다.</div>
+    </aside>
+
+    <!-- 결제수단 선택/결제 -->
+
+    <aside class="shop_buy_way_box">
+        <div class="shop_buy_title2">결제수단 선택/결제</div>
+        <ul>
+            <li>
+                <label class="shop_buy_checks" onclick="choose_pay_way(0)">
+                    <input type="radio" name="gopaymethod" value="directbank">일반결제
+                </label>
+                <label class="shop_buy_checks" onclick="choose_pay_way(1)">
+                    <input type="radio" name="gopaymethod" value="Card" checked>신용카드 결제
+                </label>
+                <label class="shop_buy_checks" onclick="choose_pay_way(2)">
+                    <input type="radio" name="gopaymethod" value="HPP">휴대폰 결제
+                </label>
+            </li>
+        </ul>
+        <ul id="shop_buy_payself" class="shop_buy_payself">
+            <li>
+                <label class="shop_buy_checks"><input type="radio" name="bank_step" checked>무통장입금</label>
+                <label>(무통장 입금의 경우 입금확인 후부터 배송단계가 진행됩니다.)</label>
+            </li>
+            <li class="shop_buy_banks ">
+                <label class="bold_font">입금자명<input type="text" name="banksend_name"></label>
+                <label class="bold_font" name="bank_name">입금은행
+                    <select>
+                        <option value="">선택하세요</option>
+                        <option value="국민">국민은행</option>
+                        <option value="하나">하나은행</option>
+                        <option value="신한">신한은행</option>
+                    </select>
+                </label>
+            </li>
+            <li>
+                <label class="bold_font">현금영수증/계산서 발행</label>
+                <label class="shop_buy_checks"><input type="radio" name="choice_tax" value="N" checked>신청안함</label>
+                <label class="shop_buy_checks"><input type="radio" name="choice_tax" value="tax">세금계산서</label>
+            </li>
+        </ul>
+        <div class="shop_buy_last_step">
+            <label>최종 결제금액</label>
+            <label class="pd_buy_total_price_for_real red_font">
+                <!--(제품가격*갯수)+배송비-->
+            </label>
+        </div>
+    </aside>
+    <aside class="shop_buy_agree_btn">
+        <div class="shop_buy_checks">
+            <label>
+                <input type="checkbox" value="Y" name="ordercheck">
+                <label class="red_font bold_font">(필수)</label>구매하실 상품의 결제정보를 확인하였으며, 구매진행에 동의합니다.
+            </label>
+        </div>
+        <input type="button" value="결제하기" onclick="pd_buy_go_pay();">
+    </aside>
+</form>

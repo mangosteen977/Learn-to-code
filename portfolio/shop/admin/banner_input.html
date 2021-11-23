@@ -1,0 +1,27 @@
+<meta charset="UTF-8">
+<article class="adm_main">
+    <span>신규 배너등록</span>
+    <ol class="admin_main_ul">
+        <li onclick="fontclass('1');"><img src="../image/ts01.gif" alt="../img/ts01.gif" title="보통"></li>
+        <li onclick="fontclass('2');"><img src="../image/ts02.gif" alt="../img/ts02.gif" title="크게"></li>
+        <li onclick="fontclass('3');"><img src="../image/ts03.gif" alt="../img/ts03.gif" title="더크게"></li>
+    </ol>
+</article>
+<article class="add_banner_page">
+    <form name="add_bn_frm" enctype="multipart/form-data">
+        <div>
+            <ul class="add_bn_form">
+                <li>배너명</li>
+                <li><input type="text" name="bname" v-model="i1"></li>
+                <li>링크주소</li>
+                <li><input type="text" name="blink" v-model="i2"></li>
+                <li>배너 이미지</li>
+                <li><input type="file" accept="image/png, image/gif, image/jpg, image/jpeg, image/svg" name="bimg"
+                        v-model="i3"><label>* 업로드 배너 용량은 3MB 이하입니다.</label></li>
+                <li><button type="button" @click="upload_bn_list">배너등록</button> <button type="button"
+                        @click="back_to_bn_list">목록</button></li>
+            </ul>
+            <input type="hidden" name="banner_url" value="http://mangsteen977.dothome.co.kr">
+        </div>
+    </form>
+</article>

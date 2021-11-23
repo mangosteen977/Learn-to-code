@@ -1,0 +1,1 @@
+d:\mangsteen977\html\ajax\notice_view.php

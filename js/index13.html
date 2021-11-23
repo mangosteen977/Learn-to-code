@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>JavaScript 3일차(1) - 기초 함수(명령어) </title>
+        <script>
+            var a ="연습입니다.";
+    // alert(a); //경고메세지를 출력
+    // console.log(a); //개발자 콘솔을 이용해 출력(f12창-엘리먼트 옆 메뉴-콘솔)
+            var b =1;
+            while(b < 11){
+            //console.log(b);
+                b++;
+            }
+    // 모든 개발이 끝난 이후에는 console.log를 주석달거나 지운다. 해킹우려
+            /*if(confirm("네이버로 이동하시겠습니까?")){
+                location.href = "http://naver.com";
+            }
+            else{
+                location.href ="http://mangsteen977.dothome.co.kr/js/index13.html";
+            }*/
+    // confirm(); :확인/취소 선택메세지.
+    // if(확인)/else(취소)와 함께 사용할 수 있다.
+            /*
+            var c = prompt("보안 접속 코드를 입력하세요.");
+            //alert(c="비정상 코드 입니다.");
+            console.log(c); //입력받은 메세지를 콘솔로 출력
+            if(c==12345){
+                alert("정상적으로 접속 하셨습니다.");
+            }
+            else{
+                alert("정상적인 코드를 입력하세요.");
+            }
+            */
+    // prompt :사용자가 입력할 수 있는 입력창 메세지 출력.
+    // prompt+if+alert 를 결합해 입력 메세지에 대한 메세지 가능
+            
+            var d = prompt("이동할 접속 URL을 입력해 주세요.");
+            if(d==""){
+    // "" 쌍따옴표 두개만 쓰면 아무것도 입력되지 않은 상태를 의미한다.
+                alert("주소를 입력하셔야만 이동 됩니다.");
+            }
+            else{
+                location.href = d;
+            }
+
+
+
+        </script>
+    </head>
+    <body>
+        <!-- http://mangsteen977.dothome.co.kr/js/index13.html -->
+    </body>
+</html>

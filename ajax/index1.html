@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Ajax 1일차(1) - Javascript node 연결 </title>
+        <script>
+            function nodes(){
+                let n = 1;
+                let bodys = document.getElementById("bodys");
+                let ul = document.createElement("ul");
+                //ul.id="ulcss";
+                ul.setAttribute("id","ulcss");
+                bodys.append(ul);
+                while(n<5){
+                    let li = document.createElement("li");
+                    li.innerText="공지사항"+n;
+                    document.getElementById("ulcss").append(li);
+                    n++;
+                }
+            };
+        </script>
+        <style></style>
+    </head>
+    <!-- 
+        Ajax : Javascript & Jquery(통신언어) - XML, JSON (비동기 방식)
+        Ajax : 동기방식 (Node.js) - 순서에 맞춰 데이터를 실시간으로 반영하는 형태
+    -->
+    <body id="bodys">
+        <input type="button" value="통신" onclick="nodes();">
+        <!-- 
+            응용문제 1. 이곳에 다음과 같이 출력하시오.
+            ·공지사항1
+            ·공지사항2
+            ·공지사항3
+            ·공지사항4
+         -->
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/ajax/index1.html -->

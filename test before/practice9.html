@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title></title>
+        <style>
+            body{margin: 0; padding: 0; box-sizing: border-box; box-sizing: border-box;}
+            /* ul,ol,dl{margin: 0; padding: 0; list-style: none;} */
+            span,label,main{display: block;}
+            a{text-decoration: none;}
+            /*1번*/
+            .box{
+                width: 500px;
+                height: 500px;
+                background-color: blue;
+            }
+            .box:hover{
+                background-color: red;
+            }
+            /*2번*/
+            .box2{
+                width: 1000px;
+                height: 100px;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+            .box2 > li{
+                width: 500px;
+                height: 100px;;
+                float: left;
+                border: 1px solid black;
+                box-sizing: border-box;
+            
+            }
+            .ul2, .ol2{
+                width: 500px;
+                height: 100px;
+                box-sizing: border-box;
+                padding-top: 15px;
+                padding-left: 50px;
+            }
+            .ul2{
+                list-style: disc;
+            }
+            .ol2{
+                list-style:decimal;
+            }
+            /* 3번 */
+            .v{
+                width: 600px;
+                height: 600px;
+            }
+            /* 4번 */
+            .bluebox{
+                width: 1000px;
+                height: 60px;
+                background-color: blue;
+                text-align: center;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                padding-top: 5px;
+                box-sizing: border-box;
+            }
+            .bluebox > li{
+                width: 50px;
+                height: 50px;
+                border-radius: 50px;
+                background-color:black;
+                margin-left: 15px;
+                display: inline-block;
+            }
+            .bluebox > li:first-child{
+                margin-left: 0;
+                background-color: red;
+            }
+            /* 5번 */
+            .tbox{
+                width: 500px;
+                height: 800px;
+                background-color: blue;
+                overflow-y: scroll;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 1번 -->
+        <div class="box"></div>
+        <!-- 2번 -->
+        <ol class="box2">
+            <li>
+                <ul class="ul2">
+                    <li>리스트 항목</li>
+                    <li>리스트 항목</li>
+                    <li>리스트 항목</li>
+                </ul>
+            </li>
+            <li>
+                <ol class="ol2">
+                    <li>리스트 항목</li>
+                    <li>리스트 항목</li>
+                    <li>리스트 항목</li>
+                </ol>
+            </li>
+        </ol>
+        <!-- 3번 -->
+        <!--<video class="v" autoplay muted controls loop>
+            <source src="http://mekeyace.dothome.co.kr/videoplayback.mp4" type="video/mp4">
+        </video>-->
+        <!-- 4번 -->
+        <ol class="bluebox">
+            <li></li><li></li><li></li>
+        </ol>
+        <br><br>
+        <!-- 5번 -->
+        <textarea class="tbox">
+
+
+        </textarea>
+    </body>
+</html>

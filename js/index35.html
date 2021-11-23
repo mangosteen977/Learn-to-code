@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible">
+        <title>Javascript 6일차(4) - 초급코드(문장처리방식)) </title>
+        <script>
+            function abc(){
+                var a = "abcdefg";
+                //var b = a.substring(3,6);
+                //substring(Node번호(0~n),출력할 끝글자의 순번(1~n));
+                var b = a.substr(5,1);
+                //substr(Node번호(0~n),출력할 글자 수(1~n));
+                console.log(b);
+            }
+            function bbb(){
+                var a = "010-1234-1004";
+                var b = a.split("-");
+                //split("") : ""을 기준으로 배열로 나눔.
+                var c = b[0]+b[1]+b[2];
+                console.log(c);
+                //[0,1,2,3] = 배열
+                var aa = "홍길동,이순신,강감찬";
+                var bb = aa.split(",").length;
+                console.log(bb);
+            }
+        </script>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <input type="button" value="click" onclick="bbb();">
+    </body>
+    <script>
+        
+    </script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/index35.html -->

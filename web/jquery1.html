@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery 금요일 복습(1) - </title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(document).ready(function(){
+                /*문제1.
+                검정버튼 클릭시 팝업창 서서히 사라짐.
+                빨간 버튼 클릭시 네이버로 이동함.*/
+                $("#x").click(function(){
+                    $("#box1").fadeOut(1000);});
+                    $("#bar").click(function(){location.href="http://naver.com";
+                });
+             });
+        </script>
+        <style>
+            body{margin: 0; padding: 0;}
+            ul,ol,dl{list-style: none; margin: 0; padding: 0;}
+            span,main,label{display: block;}
+        /* 문제1. */
+            .box1{width: 400px; height: 400px;
+            position: relative; background-color: blue;}
+            .x{width: 50px; height: 50px;
+            position: absolute; left: 100%; background-color: black;}
+            .bar{width: 260px; height: 40px; 
+            position: absolute; bottom: 50px; 
+            left: 50%; margin-left: -130px; background-color: red;}
+        </style>
+    </head>
+    <body>
+        <!-- 문제1. -->
+        <div class="box1" id="box1">
+            <div class="x" id="x"></div>
+            <div class="bar" id="bar"></div>
+        </div>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/web/jquery1.html -->

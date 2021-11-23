@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <title>Jquery 중급 ( 도로명 API 연결 - 우편번호 검색 찾기 )</title>
+        <script src="./jquery.js"></script>
+        <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+        <script>
+            $(function(){
+                $("#btn").postcodifyPopUp();
+            });
+        </script>
+        <style>
+            *{box-sizing: border-box; font-size: 12px;}
+            body{margin: 0; padding: 10px;}
+            ul,ol{list-style: none; margin: 0; padding: 0;}
+            .adr_t{width: 450px; height: 30px; line-height: 30px; font-size: 15px; font-weight: bold; margin: 0 auto; text-indent: 5px;}
+            .adr_t_s{font-size: 11px; font-weight: lighter; color: #ccc; margin-left: 5px;}
+            .adr{width: 450px; height: auto; border: 1px solid rgb(90,90,90); margin: 0 auto;}
+            .adr>li{height: 30px; text-indent: 5px; margin: 5px;}
+            .adr>li:nth-child(1)>input{width: 100px; height: inherit; border-radius: 5px; border: 1px solid #ccc; text-indent: 5px;}
+            .adr>li>input{width: 98%; height: inherit; border-radius: 5px; border: 1px solid #ccc; text-indent: 5px;}
+            .adr_btn{border: none; background-color: rgb(70,70,70); color: white; cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <!-- https://www.poesis.org/postcodify/guide/example 이 사이트의 API사용, 적용예제 참고 -->
+        <div class="adr_t">우편번호 검색<label class="adr_t_s">: API 이용하는 방법</label></div>
+        <ul class="adr">
+            <li>
+                <input type="text" class="postcodify_postcode5" placeholder="우편번호" readonly>
+                <input type="button" value="우편번호 검색" id="btn" class="adr_btn">
+            </li>
+            <li><input type="text" class="postcodify_address"  placeholder="도로명 주소" readonly></li>
+            <li><input type="text" placeholder="상세 주소"></li>
+        </ul>
+        <!-- 
+            우편번호 검색
+            1. 국내
+            -BE의 DB를 이용해 적용
+            -API 이용해 우편번호 검색해 적용 => 우체국, 다음도로명주소, 도로명주소 안내시스템
+            2. 국외
+            -worldpostalcode.com  API 이용해 zip-code(우편번호) 검색해적용
+         -->
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/middle20.html -->

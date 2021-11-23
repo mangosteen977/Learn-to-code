@@ -1,0 +1,21 @@
+@charset "UTF-8";
+body{margin:0; padding: 0; font-size: 12px;}
+ul, ol{list-style: none; margin: 0; padding: 0;}
+span, label, main{display: block;}
+a{text-decoration: none;}
+.box{width: 200px; height: auto; border: 1px solid grey;}
+/* height: auto; : 자식 오브젝트가 모두 height가 지정되어 있는 경우,
+   부모 오브젝트 높이를 자동으로 맞춤 */
+.box>label{border-bottom: 1px solid purple;
+/* 노드가 한개만 있을 경우 nth문법을 사용하지 않음, 돔객체로 그대로 사용. */
+text-align: center; width: 100%; height: 30px; line-height: 30px;}
+.box>span {width: 100%; height: 30px; text-align: center;
+    line-height: 30px; border-bottom: 1px dashed grey;}
+    .box>span:last-child {border-bottom: none;}
+    .box>span:nth-of-type(2){background-color: grey;}
+    .box>span:nth-of-type(4){background-color: grey;}
+    .box>span:nth-of-type(odd){font-weight: bold;}
+
+    .olcss{border: 1px solid grey; width: 200px; height: auto; text-align: left;}
+    .olcss>li{width:200px; height: 30px; line-height: 30px;}
+    .olcss>li:first-child{color: white; background-color: #729df6; text-align: center;}

@@ -1,0 +1,130 @@
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible", content="Ie-Edge, chrome=1">
+        <title>HTTP 4.0 8일차 - 페이지 프레임</title>
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+                position: relative;
+            }
+            div{width: 1000px;}
+            .topmenu{
+                height: 30px;
+                background-color: grey;
+                margin: 0 auto; /*부모기준으로 중앙정렬*/
+                color: whitesmoke;
+            }
+            .mainmenu{
+                height: 80px;
+                background-color: pink;
+                margin: 0 auto;
+            }
+            .banner{
+                height: 480px;
+                background-color:cornflowerblue;
+                margin: 0 auto;
+            }
+            .board{
+                height: 300px;
+                background-color: beige;
+                margin: 0 auto;
+            }
+            .copy{
+                height: 40px;
+                background-color: bisque;
+                margin: 0 auto;
+                color: grey;
+                text-align: center;
+                line-height: 40px;
+                font-size: 13px;
+                font-family: "돋움체";
+            }
+            .ul_tmenu{
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                float: right;
+            }
+            .li_tmenu{
+                clear: right;
+                float: left;
+                width: 70px;
+                height: 30px;
+                font-size: 12px;
+                font-family: "돋움체";
+                line-height: 30px;
+                text-align: center;
+            }
+            .left_b{
+                display: inline-block;
+                /* 
+                inline-block : 가로형태 정렬, 한 객체당 6px의 여백공간 생성
+                여백공간 없애기 : 태그를 한 줄로 이어서 작성*/
+                width: 300px;
+                height: 300px;
+                background-color: turquoise;
+            }
+            .right_b{
+                display: inline-block;
+                width: 694px;
+                height: 300px;
+                background-color: violet;
+            }
+            .popup{
+                width: 300px;
+                height: 550px;
+                background-color: hotpink;
+                display: block;
+                position: absolute;
+                left: 25%;
+                top: 20%;
+            }
+            .X{
+                width: 50px;
+                height: 50px;
+                display: block;
+                background-color: indianred;
+                position: relative;
+                left: 100%;
+                font-size: 30px;
+                font-family: "돋움";
+                color: ivory;
+                text-align: center;
+                line-height: 50px;
+            }
+        </style>
+    </head>
+    <!-- FHD, UHD, QHD >> 4k, 8k 해상도 차이점 알아볼 것 -->
+    <body>
+        <!-- 팝업창 -->
+            <span class="popup">
+                <span class="X">X</span>
+            </span>
+        <!-- 최상단 -->
+        <div class="topmenu">
+            <span>
+                <ul class="ul_tmenu">
+                    <li class="li_tmenu">HOME</li>
+                    <li class="li_tmenu">LOGIN</li>
+                    <li class="li_tmenu">MEMBER</li>
+                    <li class="li_tmenu">CUSTOMER</li>
+                </ul>
+            </span>
+        </div>
+        <!-- 상단 메뉴 7 UI+Bi -->
+        <div class="mainmenu"></div>
+        <!-- 배너 -->
+        <div class="banner"></div>
+        <!-- 게시판 및 보도자료 -->
+        <div class="board">
+            <span class="left_b"></span>
+            <span class="right_b"></span>
+        </div>
+        <!-- copyright -->
+        <div class="copy">
+            copyright publisher By mangosteen all right reserved.
+        </div>
+    </body>
+</html>

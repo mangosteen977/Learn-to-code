@@ -1,0 +1,158 @@
+<?php
+    $v = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="image-toobar" content="no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Front-End 개발자 모수빈입니다.</title>
+    <link rel="stylesheet" type="text/css" href="./index.css?=<?php echo $v?>">
+    <link rel="icon" href="./shop/ico/ico128.png">
+    <link rel="apple-touch-icon-percomposed" href="./shop/ico/ico128.png">
+    <script src="./js/jquery.js"></script>
+    <script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9963d1df7c1516a9aafee2a865eb615d"></script>
+    <script src="./index.js?=<?php echo $v?>"></script>
+</head>
+
+<body class="body">
+    <header class="header">
+        <!-- 메뉴_PC -->
+        <div class="menu" id="menu">
+            <ul>
+                <li title="프롤로그" onclick="down_page('banner',0)">prologue</li>
+                <li title="소개" onclick="down_page('about_me',1)">about_me</li>
+                <li title="기술리스트" onclick="down_page('skills',2)">skill</li>
+                <li title="포토폴리오" onclick="down_page('works',3)">portfolio</li>
+                <li title="연락" onclick="down_page('footer',4)">contact</li>
+            </ul>
+        </div>
+        <!-- 아이콘 -->
+        <div class="icon">
+            <span title="깃허브로 이동">
+                <img src="./image/git.png" onclick="menu_popup(0,'http://github.com/mangosteen977')">
+            </span>
+            <span title="카카오톡 친구 추가">
+                <img src="./image/kakao.png" onclick="menu_popup(1,'./image/kakao_q.png')">
+            </span>
+        </div>
+        <!-- 메뉴_Mobile -->
+        <div class="menu2" id="menu2">
+            <ul>
+                <li onclick="down_page('banner',0)"><img src="./image/home.svg"></li>
+                <li onclick="down_page('about_me',1)"><img src="./image/face.svg"></li>
+                <li onclick="down_page('skills',2)"><img src="./image/good.svg"></li>
+                <li onclick="down_page('works',3)"><img src="./image/computer.svg"></li>
+                <li onclick="down_page('footer',4)"><img src="./image/mail.svg"></li>
+            </ul>
+        </div>
+    </header>
+    <!-- 배너 -->
+    <section class="banner" id="banner">
+        <div>Hi! I'm SUBIN</div>
+        <div>FRONT-END DEVELOPER!</div>
+        <span class="more" onclick="down_page('about_me',1)"><img src="./shop/ico/more.svg"></span>
+    </section>
+    <!-- 소개 -->
+    <section class="about_me" id="about_me">
+        <p class="title">about_me</p>
+        <div class="introduce">
+            <label class="me">
+                <img src="./shop/ico/ico.png" id="about_me_img">
+            </label>
+            <label class="key_word" id="key_word">
+                <span>BIRTH</span>
+                <span>MBTI</span>
+                <span>Blood-Type</span>
+            </label>
+            <label class="my_info">
+                FRONT-END 신입 개발자 모수빈입니다. 계획적인 것을 좋아하는 저는 모든 일을 보다 효율적으로 하는 방법을 연구하곤 합니다.
+                밝은 에너지와 꼼꼼한 성격을 바탕으로 보다 효율적인 삶을 만드는 개발을 하고 싶습니다.
+
+            </label>
+        </div>
+        <div class="view_skill" id="view_skill">
+            <span>
+                <label title="HTML"><img src="./image/html_icon.png"></label>
+                <label per="95%">
+                    <div class="skill_per_div"></div>
+                </label>
+            </span>
+            <span>
+                <label title=" CSS"><img src="./image/css_icon.png"></label>
+                <label per="90%">
+                    <div class="skill_per_div"></div>
+                </label>
+            </span>
+            <span>
+                <label title="JavaScript"><img src="./image/js.png"></label>
+                <label per="95%">
+                    <div class="skill_per_div"></div>
+                </label>
+            </span>
+            <span>
+                <label title="Jquery"><img src="./image/jquery.png"></label>
+                <label per="95%">
+                    <div class="skill_per_div"></div>
+                </label>
+            </span>
+            <span>
+                <label title="SCSS"><img src="./image/scss.png"></label>
+                <label per="75%">
+                    <div class="skill_per_div"></div>
+                </label>
+            </span>
+            <span>
+                <label title="Ajax"><img src="./image/ajax.png"></label>
+                <label per="75%">
+                    <div class="skill_per_div"></div>
+                </label>
+            </span>
+        </div>
+    </section>
+    <main>
+        <!-- 스킬 -->
+        <section class="skills" id="skills">
+            <p class="title">skill</p>
+            <article class="skill_box" id="skill_box"></article>
+        </section>
+        <!-- 포폴사이트정리 -->
+        <section class="works" id="works">
+            <p class="title">portfolio</p>
+            <span class="works_box" id="works_box">
+                <div class="port_list">
+                    <p>portfolio list</p>
+                    <select id="port_select"></select>
+                </div>
+                <div class="port_box" id="port_box"></div>
+            </span>
+        </section>
+    </main>
+    <!-- 마무리 컨텍트 -->
+    <footer id="footer">
+        <p class="title">contact</p>
+        <div class="my_info">
+            <label>NAME: MOSUBIN</label>
+            <label>EMAIL : mosubin977@daum.net</label>
+            <label>ADRESS : Dongsomun-ro, Seongbuk-gu, Seoul</label>
+            <label id="map" class="map"></label>
+        </div>
+        <form name="send_mail" enctype="application/x-www-form-urlencoded" class="send_mail">
+            <span>
+                <input type="text" name="pernm" placeholder="담당자 성함을 입력해주세요">
+                <input type="tel" name="pertel" placeholder="담당자 연락처를 입력해주세요." maxlength="11">
+                <input type="email" name="peremail" placeholder="담당자 이메일을 입력해주세요.">
+                <textarea name="pertext" placeholder="이메일 수신 후 최대한 빠르게 회신하겠습니다:)" style="resize: none;"></textarea>
+                <input type="hidden" name="myemail" value="mosubin977@naver.com">
+                <input type="button" value="메일전송" class="mail_send" onclick="mail_send();">
+            </span>
+        </form>
+        <p class="copyright">COPYRIGHT ⓒ 2021 MOSUBIN ALL RIGHTS RESERVED.</p>
+    </footer>
+</body>
+
+</html>

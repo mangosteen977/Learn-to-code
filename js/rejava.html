@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> JS/JQ 초급 복습 </title>
+        <script src="../jq/jquery.js"></script>
+        <script>
+            //jq
+            $(document).ready(function(){
+            //응용문제2. jq로 해당 값을 입력받아 네이버로 get으로 전송하시오.
+                $("#n_fm").submit(function(){
+                    var a = $("#datas").val();
+                    if(a==""){
+                        alert("내용을 입력하시오");
+                        return false;
+                    }
+                    else{return true;}
+                });
+
+            
+            });
+            //js
+            /*응용문제1. js로 해당 값을 입력받아 네이버로 get으로 전송하시오.*/
+            /*function naver(){
+                var a = n_fm.datas.value;
+                if(a==""){
+                    alert("내용을 입력하시오");
+                    return false;
+                }
+                else{ return true; }
+            };*/
+        </script>
+    </head>
+    <body>
+        <!-- 응용문제1. js로 해당 값을 입력받아 네이버로 get으로 전송하시오. -->
+        <!-- <form name="n_fm" onsubmit="return naver();" method="GET" action="http://naver.com">
+            <input type="text" name="datas" id="datas">
+            <input type="submit" value="확인">
+        </form> -->
+        <!-- 응용문제2. jq로 해당 값을 입력받아 네이버로 get으로 전송하시오. -->
+        <form name="n_fm" id="n_fm" method="GET" action="http://naver.com">
+            <input type="text" name="datas" id="datas">
+            <input type="submit" value="확인">
+        </form>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/rejava.html -->

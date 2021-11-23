@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible">
+        <title>Javascript 8일차(3) - 초급코드(함수연결 및 keyCode연결 응용) </title>
+        <script>
+            var k = 0, kk=0;
+            var j = 10, jj=10;
+            function abc(){
+                //상38 하40 좌37 우39 스페이스 32
+                var a = event.keyCode;
+                game(a);
+                console.log(a);
+            }
+            function game(a){
+                /*
+                js에서 css를 적용할 때에는 "-"대신 "-"의 다음 알파벳을 대문자로 쓴다.
+                ex. style.text-align="center";(X)
+                ex. style.textAlign="center";(O)
+                */
+                switch(a){
+                    case 40:
+                    //k = k + j;
+                    k += j;
+                    document.getElementById("box").style.top=k+"px";
+                    break;
+
+                    case 38:
+                    //k = k - j;
+                    k -= j;
+                    document.getElementById("box").style.top=k+"px";
+                    break;
+
+                    case 39:
+                    //kk = kk + jj;
+                    kk += jj;
+                    document.getElementById("box").style.left=kk+"px";
+                    break;
+
+                    case 37:
+                    //kk = kk - jj;
+                    kk -= jj;
+                    document.getElementById("box").style.left=kk+"px";
+                    break;
+
+                    case 32:
+                    document.getElementById("box").style.backgroundColor="pink";
+                    //document.getElementById("box").style.textAlign="center";
+                    break;
+
+                    case 13:
+                    document.getElementById("box").style.display="none";
+                    break;
+                }
+            }
+        </script>
+        <style>
+            body{margin: 0; padding: 0;}
+            .box{width: 100px; height: 100px; border-radius: 100px;
+            background-color: red; position: absolute;}
+        </style>
+    </head>
+    <body onkeydown="abc();">
+        <div class="box" id="box"></div>
+    </body>
+    <script>
+        
+    </script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/index43.html -->

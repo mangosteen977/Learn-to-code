@@ -1,0 +1,51 @@
+<meta charset="UTF-8">
+<article class="shop_top_banner">
+    <img src="./banner/top_event_banner.jpg">
+</article>
+<article class="shop_top_menu">
+    <aside>
+        <div title="즐겨찾기"><span class="shop_top_ham_btn"><img src="./ico/star.svg"></span> 즐겨찾기</div>
+        <div title="고객센터"><a href="tel: 02-0123-4567">고객센터 02-0123-4567</a></div>
+    </aside>
+    <aside>
+        <div title="로그인" id="shop_top_login_btn">로그인</div>
+        <div title="로그아웃" id="shop_top_logout_btn" style="display: none;"> 로그아웃</div>
+        <div title="회원가입" id="shop_top_join_btn">
+            회원가입
+            <div class="shop_top_pointer" id="shop_top_pointer">2000p<span></span></div>
+        </div>
+        <div title="마이페이지">마이페이지<span></span></div>
+        <div title="장바구니">장바구니(<label class="shop_top_cart">0</label>)</div>
+        <div title="고객센터">고객센터</div>
+    </aside>
+
+</article>
+<article class="shop_top_logo">
+    <form name="shop_top_frm" onsubmit="return shop_top_search_frm()"
+        action="http://mangsteen977.dothome.co.kr/portfolio/shop/search.html"
+        enctype="application/x-www-form-urlencoded" id="shop_top_search_btn">
+        <div title="구매금액별 사은품 증정">
+            <img src="./image/gift_banner.jpg">
+        </div>
+        <div title="한우사랑">
+            <a href="./index.html"><img src="./ico/logo.png"></a>
+        </div>
+        <div>
+            <ul>
+                <li title="검색">
+                    <input class="shop_top_search" name="searchwd" id="shop_top_search" type="text"
+                        placeholder="검색어를 입력하세요">
+                    <span onclick="shop_top_search_frm()"><img src="./image/btn_top_search.png"> </span>
+                </li>
+                <li id="shop_top_notice_box">
+                    <div class="shop_top_notice">
+                        <ul id="shop_top_notice_ul">
+                        </ul>
+                    </div>
+                    <span><img src="./image/btn_top_notice_prev.png" id="shop_top_notice_pre" title="공지사항"></span>
+                    <span><img src="./image/btn_top_notice_next.png" id="shop_top_notice_next" title="공지사항"></span>
+                </li>
+            </ul>
+        </div>
+    </form>
+</article>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <meta name="view-port" content="width=device-width, initial-scale=1.0">
+        <title> CSS + (media + Javascript )</title>
+        <style>
+            *{box-sizing: border-box; margin: 0; padding: 0;}
+            body{margin: 0; padding: 0;}
+            #box{width: 200px; height: 40px; border: 1px solid #ccc;}
+        </style>
+    </head>
+    <body>
+        <div id="box"></div>
+        <input type="button" value="연습" onclick="abc();">
+    </body>
+    <script>
+        var mode = window.matchMedia("screen and (min-width:560px)");//최소 560까지
+        //matchMedia : JS 자바스크립트 media 미디어 쿼리
+        if(mode.matches){ //matches : 현 브라우저의 가로 크기 확인해서 작동
+            document.write("<script src='./javascript1.js'><"+"/script>") //역슬래시 에러나서 중간에 나눔
+        }
+        else{//560보다 작을 경우
+            document.write("<script src='./javascript2.js'><"+"/script>")
+        };
+    </script>
+</html>

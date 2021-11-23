@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>롤링배너 복습하기</title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(function(){
+                var $banner_width = $("#banner_ol>li").eq(0).width(); //배너 하나 가로사이즈
+                var $ea_banner = $("#banner_ol>li").length; //전체 배너의 갯수
+                //타이머 세팅하기
+                var $timer;
+                $timer = setInterval(function(){
+                    $.fn.timer_right();//오른쪽으로 배너를 당기는 함수
+                },4000);
+                //첫화면에 첫번째 디스크 표시
+                $("#disc_ul>li:first-child").css("background-color","black");
+                //오른버튼 슬라이드
+                $("#btn_right").click(function(){
+                    $.fn.timer_right();//오른쪽으로 배너를 당기는 함수
+                });
+                $.fn.timer_right = function(){//오른쪽으로 배너를 당기는 함수
+                    $("#banner_ol").stop().animate({
+                        "left":-$banner_width
+                    },700,function(){
+                        let $copy_f = $("#banner_ol>li:first-child").clone();
+                        $("#banner_ol>li:first-child").remove();
+                        $("#banner_ol").append($copy_f);
+                        $("#banner_ol").css("left","0px");
+                        //디스크 이동
+                        let $node_now = Number($("#banner_ol>li").eq(0).attr("node"));//현재0번노드 배너의 임의속성 (고유)node값;)
+                        $("#disc_ul>li").css("background-color","lightsalmon");
+                        $("#disc_ul>li").eq($node_now).css("background-color","black");
+                    });   
+                };
+                //왼버튼 슬라이드
+                $("#btn_left").click(function(){
+                    $("#banner_ol").css("left",-$banner_width+"px");
+                    let $copy_l = $("#banner_ol>li:last-child").clone();
+                    $("#banner_ol>li:last-child").remove();
+                    $("#banner_ol").prepend($copy_l);
+                    $("#banner_ol").stop().animate({
+                        "left":"0px"
+                    },700);
+                    //디스크 이동
+                    let $node_now = Number($("#banner_ol>li").eq(0).attr("node"));//현재0번노드 배너의 임의속성 (고유)node값;)
+                    $("#disc_ul>li").css("background-color","lightsalmon");
+                    $("#disc_ul>li").eq($node_now).css("background-color","black");
+                });
+                //disc 눌러서 이동
+                $("#disc_ul>li").click(function(){
+                    let $click_disc = $(this).index(); //클릭한 디스크의 노드값
+                    //클릭한 디스크에 불켜기
+                    $("#disc_ul>li").css("background-color","lightsalmon");
+                    $("#disc_ul>li").eq($click_disc).css("background-color","black");
+                    //클릭한 디스크 해당 배너 이동
+                    //...다시할것..
+                    // let $node_now2 = Number($("#banner_ol>li").eq(0).attr("node"));
+                    // let $cal = $node_now2-$click_disc;
+                    // if($cal<0){
+                    //     var $cal2 = String($cal).split("-");
+                    //     $cal = $cal2[1];
+                    // }
+                    // console.log($cal)
+                    //     let $zero ;
+                    //     if($node_now2!=$click_disc){
+                    //         $("#banner_ol").stop().animate({
+                    //             "left":-$banner_width
+                    //             },700,function(){
+                    //             for($zero=0;$zero<=$cal;$zero++){
+                    //                 let $copy_d = $("#banner_ol>li:first-child").clone();
+                    //                 $("#banner_ol>li:first-child").remove();
+                    //                 $("#banner_ol").append($copy_d);
+                    //                 $zero++;
+                    //                 console.log($zero)
+                    //             }
+                    //             $("#banner_ol").css("left","0px");
+                    //         });
+                    //     } 
+                });
+
+
+
+            });
+        </script>
+        <style>
+            *{box-sizing: border-box;}
+            ul,ol{list-style: none; margin: 0; padding: 0;}
+            body{margin: 0; padding: 0;}
+            .banner_section{height: auto; text-align: center;}
+            .banner_box{width: 100px; height: 50px; border: 1px solid salmon; margin: 0 auto;
+                        position: relative;}
+            .banner_ol{width: 400px; height: inherit; position: absolute;}
+            .banner_ol>li{width: 100px; height: inherit; float: left;}
+            .img{width: 100px; height: 50px; background-color: lightcoral;}
+            .img2{width: 100px; height: 50px; background-color: lightblue;}
+            
+            .disc_ul{margin-top: 20px; width: 100%; height: 20px; text-align: center;}
+            .disc_ul>li{width: 20px; height: inherit; display: inline-block; background-color: lightsalmon;}
+            #btn_left,#btn_right{margin: 20px;}
+
+        </style>
+    </head>
+    <body>
+        <section class="banner_section">
+            <aside class="banner_box" id="banner_box">
+                <ol class="banner_ol" id="banner_ol">
+                    <li node="0"><div class="img">0</div></li>
+                    <li node="1"><div class="img2">1</div></li>
+                    <li node="2"><div class="img">2</div></li>
+                    <li node="3"><div class="img2">3</div></li>
+                </ol>
+            </aside>
+            <ul class="disc_ul" id="disc_ul">
+                <li>0</li>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+            <input type="button" value="<" id="btn_left">
+            <input type="button" value=">" id="btn_right">
+        </section>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/middle13-1.html -->

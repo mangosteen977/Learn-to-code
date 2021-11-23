@@ -1,0 +1,272 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+/*font-family: 'Nanum Gothic', sans-serif;*/
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700;900&display=swap');
+/* font-family: 'Noto Sans KR', sans-serif; (100, 400, 700, 900) */
+@mixin base{
+    margin: 0;
+    padding: 0;
+    font-family: "돋움";
+}
+@mixin ulol{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+@mixin sections($width,$height,$bg){
+    width: $width;
+    height: $height;
+    background-color: $bg;
+}
+@mixin m_sections($width,$height,$bg){
+    margin: 0 auto;
+    width: 99.99%;
+    min-width: 320px;
+    max-width: $width;
+    height: $height;
+    background-color: $bg;
+}
+@mixin flexs($wrap,$justify,$align){
+    display: flex;
+    flex-wrap: $wrap;
+    justify-content: $justify;
+    align-content: $align;
+}
+@mixin font_sans($h,$c,$a,$w,$s){
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: $h;
+    color: $c;
+    text-align: $a;
+    font-weight: $w;
+    font-size: $s;
+}
+*{box-sizing: border-box}
+body{
+    @include base;
+    font-size: 12px;
+    position: relative;
+}
+label,span{display: block;}
+img{width: 100%; object-fit: cover;}
+//햄버거메뉴
+.ham_menu{
+    @include m_sections(480px, 1680px, rgba(0,0,0,0.8));
+    position: absolute; z-index: 15;
+    left: -480px;
+    &>label{
+        @include m_sections(480px, 500px, #ffffff);
+        padding: 10px;
+        &>span{
+            &>img{ width: 13px; };
+            @include sections(100%, 24px, none);
+            @include font_sans(none,black,left,400,14px);
+            &:nth-of-type(1){width: 5%; height: 5%;}
+            &:nth-of-type(2){
+                height: 24px*5;
+                &>ul{
+                    @include sections(100%, auto, none);
+                    @include ulol;
+                    padding: 0 10px 0 34px;
+                    &>li{
+                        @include sections(100%, 24px, none);
+                        @include font_sans(none,black,left,300,16px);
+                        @include flexs(wrap, space-between, center);
+                        flex-direction: row;
+                        &>img{ width: 13px; }
+                    };
+                };
+            };
+        };
+    };
+};
+//팝업파트
+.popup{
+    @include m_sections(480px, 60px, #484848);
+    @include flexs(nowrap, space-between, center);
+    flex-direction: row;
+    &>label{
+        @include flexs(wrap, center, center);
+        flex-direction: row;
+        color: white;
+        padding: 10px;
+        &:nth-of-type(1){
+            @include sections(80%, inherit, none);
+            min-width: 200px;
+            font-family: "돋움체";
+            font-size: 12px;
+            font-weight: bold;
+        }
+        &:nth-of-type(2){
+            cursor: pointer;
+        }
+    }
+}
+//메뉴파트
+.menu{
+    @include m_sections(480px, auto, none);
+    position: relative;
+    &>.top_menu{
+        @include sections(100%, 60px, none);
+        @include flexs(nowrap, space-between, space-around);
+        flex-direction: row;
+        max-width: 480px;
+        position: absolute; z-index: 3;
+        padding: 10px;
+        &>label{
+            @include sections(8%, auto, none);
+            cursor: pointer;
+            &:nth-of-type(2){width: 60%;}
+        }
+    }
+    &>.top_search{
+        @include sections(100%, 60px, #484848);
+        @include flexs(nowrap, space-around, space-around);
+        position: absolute; top: 60px;
+        z-index: 10;
+        flex-direction: row;
+        padding: 10px;
+        &>label{
+            &:nth-of-type(1){
+                &>.input1{
+                    @include m_sections(350px, 40px, white);
+                    min-width: 280px;
+                    border-radius: 10px;
+                }
+            }
+            &:nth-of-type(2){
+                &>.btn{
+                    @include m_sections(60px, 40px, white);
+                    min-width: 60px;
+                    font-size: 11px;
+                    font-weight: bold;
+                    border-radius: 10px;
+                }
+            }
+        }
+        display: none;
+    }
+}
+//배너파트
+.main{
+    @include m_sections(480px, auto, none);
+    overflow: hidden;
+    position: relative;
+    &>ul{
+        @include ulol;
+        position: relative;
+        width: 200%;
+        //screen.width ****
+        min-width: 320px*2;
+        max-width: 480px*2;
+        height: auto;
+        &>li{
+            width: 50%;
+            min-width: 320px;
+            max-width: 480px;
+            float: left;
+        }
+    }
+}
+.products{
+    @include m_sections(480px, auto, none);
+    &>.product1{
+        @include sections(100%, auto, white);
+        padding: 10px;
+        &>div{
+            @include sections(100%, auto, none);
+            @include flexs(nowrap, space-around, space-around);
+            flex-direction: row;
+            &>span{
+                @include sections(33.33%, auto, none);
+            }
+        }
+    }
+    &>.product2{
+        @include sections(100%, auto, none);
+        &>div{
+            @include sections(100%, auto, none);
+            @include flexs(wrap, space-around, space-around);
+            flex-direction: row;
+            &>span{
+                @include sections(50%, auto, none);
+                position: relative;
+                &>img:nth-child(1){
+                    @include sections(15%, auto, none);
+                    position: absolute;
+                    left: 10px;
+                    top: 10px;
+                }
+            }
+        }
+    }
+}
+.search{
+    @include m_sections(480px, auto, none);
+    @include flexs(wrap, space-around, space-around);
+    flex-direction: row;
+    &>.mb_search{
+        @include m_sections(400px, 360px, none);
+        &>span:nth-of-type(1){
+            @include sections(100%, 40px, #000000);
+            @include font_sans(40px,white,center,500,18px);
+        }
+        &>span:nth-of-type(2){
+            @include m_sections(400px, 150px, #f7f7f8);
+            @include font_sans(none,black,center,400,15px);
+            border-bottom: 1px solid #ccc;
+            display: table-cell;
+            vertical-align:middle;
+        }
+        &>span:nth-of-type(3){
+            @include m_sections(400px, 170px, #f7f7f8);
+            @include flexs(wrap, space-around, space-around);
+            @include font_sans(none,black,center,400,15px);
+            &>label:nth-of-type(2){
+                @include font_sans(none,#ff0304,center,400,15px);
+                &>.input[type="text"]{
+                    @include sections(150px, 20px, none);
+                }
+            }
+            &>label:nth-of-type(3){
+                @include sections(100%, auto, none);
+                text-align: center;
+                &>.btn{
+                    @include sections(110px, 35px, #000000);
+                    @include font_sans(none,black,center,400,15px);
+                    border-radius: 10px;
+                    color: white;
+                }
+            }
+        }
+        &>span:nth-of-type(4){
+            @include m_sections(400px, auto, none);
+            font-family: "돋움";
+            font-size: 10px;
+            text-decoration: underline;
+            text-align: center;
+        }
+    }
+}
+.copyright{
+    @include m_sections(480px, auto, none);
+    &>ul{
+        @include sections(100%, auto, none);
+        @include ulol;
+        margin-top: 30px;
+        text-align: center;
+        &>li{
+            @include sections(100%, 40px, none);
+            @include font_sans(40px,#666666,center,400,17px);
+            &:nth-of-type(1){
+                @include font_sans(40px,#006ac6,center,100,13px);
+            }
+            &:nth-of-type(6){font-size: 15px;}
+            &:nth-of-type(7){
+                font-size: 15px;
+                &>img{height: 15px; width: 15px;}
+            }
+            &:nth-of-type(8),&:nth-of-type(9){font-size: 12px;}
+            &:nth-of-type(8){height: auto;}
+        }
+    }
+}

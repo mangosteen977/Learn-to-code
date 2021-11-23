@@ -1,0 +1,51 @@
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>HTML 4.0 6일차 - CSS 2.0 position</title>
+        <style>
+            body{margin: 0px; padding: 0px;}
+            /* div *3 100*100 배경 blue,red,black*/
+            .a{width: 100px; height: 100px; background-color: blue; float: left;}
+            .b{width: 100px; height: 100px; background-color: red; float: left;}
+            .c{width: 100px; height: 100px; background-color: black; float: left;}
+            .d{width: 100px; height: 100px; background-color: green; clear: left; float:left;}
+            .e{width: 100px; height: 100px; background-color: grey; float:left;}
+            .ulcss{ list-style: none; margin:0; padding:0; clear: both; }
+            .licss{width: 100px; height: 40px; border: 1px solid black; float: left;
+            text-align: center; line-height: 40px;}
+            /*
+            1.
+            float : (DOM, Node) 객체를 어떻게 배치할 것 인가?
+            left(왼쪽기준으로 객체를 배치),
+            tight(오른쪽 기준으로 개체를 배치),
+            center(가운데 위치로 객체를 배치)
+            2.
+            clear: both; --> float:left/right; 모두 초기화
+            clear: left(float:left; 초기화), 
+                   right(float:right; 초기화),
+                   both(float:left/right; 초기화)
+            3. text-align : 텍스트, 이미지, 버튼 정렬할 때 사용.
+               (left, right, center)
+            4. line-hight :  줄 간격 높이,
+            단, 메뉴 사용시 한줄에 적용할 시 문제가 없으나, 두 줄 이상일 경우 문제가 발생
+            */
+        </style>
+    </head>
+    <body>
+        <div class="c"></div>
+        <div class="b"></div>
+        <div class="a"></div>
+        <div class="d"></div>
+        <div class="e"></div>
+        <br><br><br>
+
+        <ul class="ulcss">
+            <li class="licss">메뉴1</li>
+            <li class="licss">메뉴2</li>
+            <li class="licss">메뉴3</li>
+            <li class="licss">메뉴4</li>
+            <li class="licss">메뉴5</li>
+        </ul>
+    </body>
+</html>

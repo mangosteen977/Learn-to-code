@@ -1,0 +1,44 @@
+<?php
+    $v = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 4일차 (3) vue 외장 컴퍼넌트 222 ??? components template 템플릿 가짜 태그 ?????????</title>
+        <script src="../jq/jquery.js"></script>
+        <!-- vue 버전 1.6.4 ???????? -->
+        <script src="http://cdn.jsdelivr.net/npm/vue"></script> <!--상용버전 값 가져옴^_~-->
+        <style>
+        </style>
+    </head>
+    <body>
+        <section id="box">
+            <snack v-text="btn"></snack>
+        </section>
+    </body>
+    <script>
+        Vue.component("snack",{
+            template:"<button @click='abc'></button>",
+            methods:{ //컴퍼넨트의 abc 핸들링 호출
+                abc:function(){
+                    a.bbb("aaa");
+                    //단, data에 있는 각종 vue 변수가 없어서 한계가 있다.
+                    //실제 vue엔진에 있는 확장함수로 데이터를 보냄.
+                }
+            }
+        })
+        let a = new Vue({
+            el:"#box",
+            data:{
+                btn:"클릭"
+            },
+            methods:{
+                bbb:function(a){
+                    alert(a)
+                }
+            }
+        })
+    </script>
+</html>

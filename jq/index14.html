@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery 4일차(1) - NODE추가 </title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(document).ready(function(){
+        //remove : 해당 노드 삭제
+                $("#node_del").click(function(){//노드삭제
+                    $("#menu>li").eq(2).remove();
+                });
+                $("#node_add").click(function(){//노드추가1(맨 끝)
+        //append : 해당 부모객체 내 마지막 자식node로 추가함.
+                    $("#menu").append("<li>append</li>");
+                });
+                $("#node_add2").click(function(){//노드추가2(맨 처음)
+        //prepend : 해당 부모객체 내 첫 자식node로 추가함.
+                    $("#menu").prepend("<li>prepend</li>");
+                });
+                $("#node_add3").click(function(){//노드추가3(중간)
+        //insertAfter : 해당 부모객체 내 지정 자식객체 노드 다음 node로 추가함.
+                    $("<li>insertAfter</li>").insertAfter("#menu>li:eq(1)");
+                });
+                $("#node_add4").click(function(){//노드추가4(중간)
+        //insertBefore : 해당 부모객체 내 지정 자식객체 노드 이전 node로 추가함.
+                    $("<li>insertBefore</li>").insertBefore("#menu>li:eq(1)");
+                });
+
+
+            // 박스추가
+                $("#btn").click(function(){
+                    $("#box").prepend("<div></div>");
+                });
+
+            // 박스안에 박스추가2
+                var $a = $("#box2 > div").length+1;
+                $("#btn2").click(function(){
+                    console.log($a);
+                    if($a<4){
+                        $("#box2").append("<div class=a"+$a+"></div>");
+                        $a = $a+1;
+                    }
+                });
+            // 박스2의 박스 삭제 
+               /* $("#btn3").click(function(){
+                    $node = $("#box2 > div").length-1;
+                    console.log($node);
+                    $("#box2 > div:eq("+$node+")").remove();
+                });*/
+                $("#btn3").click(function(){
+                    var $box_ea = $("#box2>div").length;
+                    if($box_ea==0){
+                        alert("지울 박스가 없다.");
+                    }
+                    else{
+                        $("#box2 > div").eq($box_ea-1).remove();
+                    }
+                });
+            });
+        </script>
+        <style>
+            .box{
+                width: 300px;
+                height: 300px;
+                background-color: cornflowerblue;
+                position: relative;
+            }
+            .box > div{
+                width: 50px;
+                height: 50px;
+                background-color: black;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+            }
+            /* 박스만들기 2 */
+            .box2{
+                width: 300px;
+                height: 300px;
+                padding: 25px;
+                box-sizing: border-box;
+                background-color: cornflowerblue;
+                position: relative;
+            }
+            .a1{
+                width: 250px;
+                height: 250px;
+                background-color: red;
+                position: relative;
+            }
+            .a2{
+                width: 200px;
+                height: 200px;
+                background-color: green;
+                position: absolute;
+                top: 50px;
+                left:50px;
+            }
+            .a3{
+                width: 150px;
+                height: 150px;
+                position: absolute;
+                top: 75px;
+                left: 75px;
+                background-color: yellow;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <!-- 메뉴 li추가 -->
+        <ul id="menu">
+            <li>메뉴1</li>
+            <li>메뉴2</li>
+            <li>메뉴3</li>
+            <li>메뉴4</li>
+        </ul>
+        <input type="button" value="remove" id="node_del">
+        <input type="button" value="append" id="node_add">
+        <input type="button" value="prepend" id="node_add2">
+        <input type="button" value="insertAfter" id="node_add3">
+        <input type="button" value="insertBefore" id="node_add4">
+        <br><br>
+        <!-- 박스추가 -->
+        <div class="box" id="box"></div>
+        <input type="button" value="박스생성" id="btn">
+        <!-- 박스추가+삭제 -->
+        <div class="box2" id="box2"></div>
+        <input type="button" value="박스생성2" id="btn2">
+        <input type="button" value="박스삭제" id="btn3">
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/index14.html -->

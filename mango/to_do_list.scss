@@ -1,0 +1,157 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700;900&display=swap");
+/* font-family: 'Noto Sans KR', sans-serif; (100, 400, 700, 900) */
+@mixin base {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+@mixin ulol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+@mixin m_sections($width, $height, $bg) {
+  margin: 0 auto;
+  width: 99.99%;
+  min-width: 320px;
+  max-width: $width;
+  height: $height;
+  background-color: $bg;
+}
+@mixin m_widths($min, $max, $bg) {
+  width: 99.99%;
+  min-width: $min;
+  min-height: $min;
+  max-width: $max;
+  max-height: $max;
+  background-color: $bg;
+}
+@mixin sections($width, $height, $bg) {
+  width: $width;
+  height: $height;
+  background-color: $bg;
+}
+@mixin flexs($wrap, $d, $justify, $align) {
+  display: flex;
+  flex-direction: $d;
+  flex-wrap: $wrap;
+  justify-content: $justify;
+  align-content: $align;
+  align-items: $align;
+}
+@mixin font_sans($h, $c, $a, $w, $s) {
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: $h;
+  color: $c;
+  text-align: $a;
+  font-weight: $w;
+  font-size: $s;
+}
+* {
+  box-sizing: border-box;
+}
+button,
+input[type="button"],
+input[type="submit"] {
+  cursor: pointer;
+}
+img {
+  width: 100%;
+  object-fit: cover;
+}
+body {
+  @include base;
+  font-size: 12px;
+}
+.todobox {
+  @include sections(500px, auto, #eee);
+  box-shadow: 5px 5px 3px 5px rgba(0, 0, 0, 0.4);
+  padding: 50px 0;
+  margin: 0 auto;
+  margin-top: 50px;
+  & > p {
+    @include sections(100%, 30px, none);
+    @include font_sans(30px, black, center, bold, 25px);
+  }
+  & > .btns {
+    @include sections(100%, auto, none);
+    padding: 10px;
+    & > button {
+      @include sections(60px, 25px, black);
+      @include font_sans(unset, white, "", unset, 12px);
+      border: none;
+      border-radius: 5px;
+      &:hover {
+        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+      }
+    }
+    & > .alldone {
+      width: 100px;
+      float: right;
+    }
+  }
+  & > .new_todo {
+    @include sections(100%, auto, none);
+    @include flexs(nowrap, row, center, center);
+    padding: 10px;
+    & > input[type="text"] {
+      @include sections(400px, 40px, none);
+      border-radius: 5px 0 0 5px;
+      text-indent: 5px;
+    }
+    & > button {
+      @include sections(80px, 40px, black);
+      @include font_sans(unset, white, "", unset, 12px);
+      border: none;
+      border-radius: 0 5px 5px 0;
+      &:hover {
+        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+  & > .dotolist {
+    @include sections(100%, auto, none);
+    @include ulol;
+    @include flexs(wrap, column, center, center);
+    padding: 10px;
+    & > li {
+      @include sections(100%, 40px, white);
+      @include flexs(nowrap, row, center, center);
+      box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
+      border-radius: 5px;
+      padding: 5px;
+      margin-bottom: 10px;
+      & > .check {
+        display: block;
+        @include sections(25px, 25px, none);
+        cursor: pointer;
+        background-image: url(./check1.svg);
+        background-size: cover;
+      }
+      & > label {
+        @include sections(375px, 40px, none);
+        @include font_sans(40px, unset, left, unset, 13px);
+        text-indent: 10px;
+      }
+      & > button {
+        @include sections(80px, 25px, black);
+        @include font_sans(unset, white, "", unset, 12px);
+        border: none;
+        border-radius: 5px;
+        &:hover {
+          box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+        }
+      }
+    }
+    & > .done {
+      & > .check {
+        background-image: url(./check2.svg);
+      }
+      & > label {
+        text-decoration: line-through;
+        color: #aaa;
+      }
+    }
+  }
+}

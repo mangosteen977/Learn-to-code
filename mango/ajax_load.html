@@ -1,0 +1,16 @@
+<!-- 
+    1. JQ에서 ajax 로드, get으로 불러오기
+    $.get("./admin/admin_notice.json?v="+nos,function($notice_data){
+    })
+    .done(function($notice_data2){//파일로드
+        $.map($notice_data2,function($arr,$node){
+           if($arr["subject"].length>20){
+               $("#shop_top_notice_ul").append("<li title='"+$arr["subject"]+"'>"+$arr["subject"].substr(0,20)+"...</li>");
+           }
+           else{
+            $("#shop_top_notice_ul").append("<li title='"+$arr["subject"]+"'>"+$arr["subject"]+"</li>");
+           }
+        })
+    })
+    .fail(function($error){console.log($error)})
+ -->

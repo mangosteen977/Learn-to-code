@@ -1,0 +1,61 @@
+body{margin: 0; padding: 0;}
+label, span{display: block;}
+a{text-decoration: none;}
+ul, ol {list-style: none; margin: 0; padding: 0;}
+/* 응용문제.2 */
+.box{
+    width: 300px;
+    height: 180px;
+    background-color: blue;
+    padding-top: 120px;
+    position: relative;
+}
+.sbox{
+    width: 60px;
+    height: 60px;
+    background-color: yellow;
+    position: absolute;
+    right: 0;
+}
+/* 응용문제.3 */
+.box2{
+    width: 337.5px;
+    height: 50px;
+    background-color: blue;
+    padding-left: 162.5px;
+    padding-top: 10px;
+}
+.sbox2{
+    width: 175px;
+    height: 40px;
+    float: left;
+}
+.sbox2 span{
+    width: 80px;
+    height: 40px;
+    background-color: yellow;
+    float: left;
+}
+.ssbox{
+    margin-right: 15px;
+}
+/* 답 */
+.bbox{
+    width: 500px;
+    height: 60px;
+    background-color: blue;
+}
+.ulcss{ 
+    position: relative; 
+    top:10px; 
+    margin: 0 auto;
+    width: 175px; 
+    height: 40px;
+}
+.ulcss li{
+    width: 80px; 
+    height: 40px; 
+    background-color: yellow;
+    float: left;
+}
+.licss{margin-right:15px;}

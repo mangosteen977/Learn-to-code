@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>JavaScript 3일차(4) - 함수호출(HTML결합) </title>
+        <script>
+           /* 응용문제3.
+           사용자 : 홍길동, 닉네임 : html(==HTML)
+           두 정보가 맞을 경우 "해당 사용자는 정상입니다."
+           그 외의 정보는 "해당 사용자는 올바른 정보가 아닙니다."
+           라고 출력하시오. 단, member 라는 함수를 사용하시오.)
+           */
+          //내 답안
+          /*
+         function member(n,nn){
+            if(n=="홍길동"){
+                if(nn=="html" || nn=="HTML"){
+                    alert("해당 사용자는 정상입니다.");
+                }
+                else{
+                    alert("해당 사용자는 올바른 정보가 아닙니다.");
+                }
+            }
+            else{
+                    alert("해당 사용자는 올바른 정보가 아닙니다.");
+                }
+         }
+         member("홍길동","html")
+         */
+
+         //선생님 답
+         /*
+         function member(n,nn){
+            // if((a=="aa" && b=="bb")||(a=="bb" && b=="aa"))도 가능
+            if(n=="홍길동" && (nn=="html" || nn=="HTML")){
+                    alert("해당 사용자는 정상입니다.");
+                }
+            else{
+                    alert("해당 사용자는 올바른 정보가 아닙니다.");
+                }
+         }
+         member("홍길동","html")
+         */
+
+         //function은 함수값이 적용될 때까지 작동을 하지 않는다.
+         //이후 사용자가 값을 입력하거나 클릭해서 함수값이 적용되면
+         //그제야 function이 작동한다.
+         //따라 명령어가 값보다 상위에 적혀도, 
+         function abc(){
+             //document.getElementById : HTML에서 id 속성값을 가져오는 명령어.
+             //
+             //value는 입력된 값을 가져오는 것을 말한다.
+             var a = document.getElementById("mid").value;
+             //alert(a);
+             //alert("테스트");
+             var b = Number(document.getElementById("test").value);
+             var c =typeof(b); //입력 된 값의 속성을 확인(문자/숫자)
+             //input에 있는 모든 값은 문자로 인식된다.
+             //input의 값을 숫자로 인식하게 하려면 Number를 사용해야 한다.
+             alert(c);
+         }
+
+
+
+
+        </script>
+    </head>
+    <body>
+        <input type="text" id="mid" value="홍길동">
+        <!-- value 는 html 속성이며, 값을 미리 넣어둘 수 있다. -->
+        <input type="text" id="test">
+        <!-- id : 중복해서 사용하면 안됨.! -->
+        <input type="button" value="확인" onclick="abc()">
+        <!-- onclick : 자바스크립트 함수와 연결할 수 있는 이벤트 속성이다. -->
+
+
+
+
+        <!-- http://mangsteen977.dothome.co.kr/js/index16.html -->
+    </body>
+</html>

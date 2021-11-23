@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+    <title>Jquery 5일차(3) - 초급코드 onepage drop menu </title>
+    <script src="./jquery.js"></script>
+    <script>
+        // ???????????? 위아래 움직이기 탭 위 아래 클릭 버튼
+        $(document).ready(function () {
+            //$(window)대신 $(document)써도 scrollTop Okay;
+            //window || document 차이점 알아오기.
+            $(window).scroll(function () {
+                //scroll : 마우스의 스크롤 기능을 가져옴.
+                //var $sc = $(this).scrollTop();
+                //scrollTop : 상단 스크롤바의 세로 값
+                //scrollLeft : 하단 스크롤바 가로 값
+                //console.log($sc);
+                /*연습*/
+                /*
+                if($sc>400){
+                    alert("더 이상 스크롤을 사용하실 수 없습니다");
+                    //html만 사용 : chrome,firefox(O), cf(X)
+                    //body만 사용 : IE,Edge,OPera,safari(O)
+                    //그래서 둘 다 써야 모든 브라우져에서 작동(O)
+                    $("html,body").animate({
+                        "scrollTop":0
+                    },1000);
+                }*/
+                /*응용*/
+                var $sct = $(this).scrollTop();
+                var $fm = $("#up").offset().top; //offset().top/left : 상단/왼쪽 기준의 객체 위치 값.
+                var $mv = 0;
+                if ($sct == 0) {
+                    $mv = 130;
+                }
+                else {
+                    if ($sct < 300) {
+                        $mv = $sct + $fm;
+                    }
+                    else {
+                        $mv = $sct + 130;
+                    }
+                }
+                //해당 if범위에 한하여 animate를 해당 top 수치만큼 움직이도록 함.
+                $("#up").stop().animate({ //animate 앞에 stop을 써야 계속해서 적용되는 효과 막음.
+                    "top": $mv + "px"
+                }, 100);
+            });
+            $("#menu>li").click(function () { //메뉴1.2.3 클릭
+                var $node = $(this).index();
+                var $id = $("#a" + $node).offset().top;//상단 위치 정보만 가져옴
+                //offset(); : 상단 기준 객체의 위치 값, top(상단위치), left(좌우위치)
+                $("html,body").animate({
+                    "scrollTop": $id + "px"
+                }, 1000);
+            });
+            $("#up>li").click(function () { //상단.하단 클릭
+                var $node = $(this).index();
+                if ($node == 0) {//상단클릭
+                    $("html,body").animate({
+                        "scrollTop": "0px"
+                    }, 1000);
+                }
+                else {//하단클릭
+                    var $top = $("#a3").offset().top;
+                    $("html,body").animate({
+                        "scrollTop": $top + "px"
+                    }, 1000);
+                }
+            });
+        });
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        dl,
+        ul,
+        ol {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        span,
+        main,
+        label {
+            display: block;
+        }
+
+        /*one drop page menu*/
+        .box {
+            width: 100%;
+            height: auto;
+            position: relative;
+        }
+
+        .up {
+            width: 100px;
+            height: 80px;
+            background-color: darkgrey;
+            position: absolute;
+            right: 30px;
+            top: 130px;
+            font-size: 13px;
+            color: white;
+        }
+
+        .up>li {
+            width: 100px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+        }
+
+        .menu {
+            width: 300px;
+            height: 40px;
+        }
+
+        .menu>li {
+            width: 100px;
+            height: 40px;
+            float: left;
+            background-color: cornflowerblue;
+            color: white;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+        }
+
+        .yellow {
+            clear: both;
+            width: 100%;
+            height: 300px;
+            background-color: gold;
+        }
+
+        .green {
+            width: 100%;
+            height: 800px;
+            background-color: green;
+        }
+
+        .blue {
+            width: 100%;
+            height: 700px;
+            background-color: cornflowerblue;
+        }
+
+        .black {
+            width: 100%;
+            height: 300px;
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul class="up" id="up">
+            <li>상단</li>
+            <li>하단</li>
+        </ul>
+        <ol class="menu" id="menu">
+            <li>메뉴1</li>
+            <li>메뉴2</li>
+            <li>메뉴3</li>
+        </ol>
+        <div class="yellow" id="a0"></div>
+        <div class="green" id="a1"></div>
+        <div class="blue" id="a2"></div>
+        <div class="black" id="a3"></div>
+    </div>
+</body>
+
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/index20.html -->

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Javascript 6일차 (2) - 중급 (부모, 자식창 통신하기) </title>
+        <script>
+            function data(){
+                window.open("./popup.html","","width=500 height=500");
+            }; 
+        </script>
+    </head>
+    <body>
+        <form id="f" name="f">
+            <input type="text" name="product" id="product" readonly>
+            <input type="button" value="데이터 출력" onclick="data();">
+        </form>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/middle19.html -->

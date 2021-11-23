@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>HTML 5.0 9일차 - 기본태그2 </title>
+        <link type="text/css" rel="stylesheet" href="./index26.css?v=3">
+    </head>
+    <body>
+        <form oninput="aa.value=parseInt(a.value)">
+            <!-- 모바일 전용 input type -->
+            <input type="number"><br><!--숫자입력키보드
+                (안드로이드:숫자만가능, 아이폰:기호페이지 나오지만 글자입력 가능한디..?)
+                number를 쓸 바엔 tel을 쓰자!-->
+            <input type="color"><br><!--컬러피커-->
+            <input type="date"><br><!--날짜입력(캘랜더)-->
+            <input type="time"><br><!--시간입력(시간디바이스)-->
+            <input type="week"><br><!--주를 입력하는 창(아이폰에 안나오는디..?) 그닥 안쓴다.-->
+            <input type="datetime-local"><br><!--날짜,시간 함께 입력-->
+            <input type="tel"><br><!--전화번호 입력(숫자만 있는 키보드)-->
+            <input type="email"><br><!--영문키보드+@ 함께 나온다.(한글입력 안되야하지만 아이폰은 가능한디..?)-->
+            
+            1<input type="range" min="1" max="10" id="a">10 <br><!--음량조절버튼-->
+            <br>
+            <output for="a" name="aa"></output>
+            <!-- output : input에 사용된 값을 받아서 보여주는 태그이다. -->
+        </form>
+        <input type="image" src="./cat.jpg" class="btn">
+        <!--이미지를 버튼처럼 사용가능하지만, 사용 잘 안함-->
+        <br>
+        <!-- <video poster="./cat.jpg" class="v" autoplay muted controls loop>
+            <source src="./video.mp4" type="video/mp4">
+                <track kind="subtitles" src="./test.vtt" srclang="en" label="english">
+        </video> -->
+        <!-- 
+            video : HTML5.0전용 비디오 태그
+            mp4, avi, ogg, mpeg (모바일에서 최소화질로 영상을 빠르게 출력)
+            control : 영상 도구를 사용
+            muted : 음소거
+            source : 영상을 불러오는 태그 src경로 함께 사용
+            type : video, image, audio
+            poster : 썸네일 이미지 속성
+            track : 자막을 사용할 때 이용 src(vtt파일), srclang, label 함께 사용
+            loop : 반복재생
+            autoplay : 자동재생, 단, chrome에서 작동 안됨, muted를 함께 써야 자동재생 됨.
+         -->
+    </body>
+</html>

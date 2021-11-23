@@ -1,0 +1,65 @@
+@charset "UTF-8";  
+
+@mixin object($w,$h,$display,$position){
+    width: $w;
+    height: $h;
+    display: $display;
+    position: $position;
+}
+
+ul,li{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.section{
+    width: 360px;
+    margin: 0 auto;}
+.servicetext1{
+    //text
+    & > span:nth-of-type(1){
+        @include object(360px,50px,block,relative);
+    }
+    //텍스트 area
+    & > div:nth-of-type(1){
+        @include object(360px,50px,block,relative);
+        border: 1px solid black;
+        box-sizing: border-box;
+    }
+    //스와이프 버튼
+    & > div:nth-of-type(2){  
+        position: relative;
+        width: 80px;
+        height: 40px;
+        background-color: royalblue;
+        border-radius: 20px;
+        margin:20px 0 0 270px;
+        line-height: 40px;
+
+        &> div:nth-of-type(1){
+        @include object(30px,30px,block,absolute);
+        background-color: red;
+        border-radius:30px;
+        text-align: center;
+        float: left;
+        margin-top: 5px;
+        transition: all 0.5s ease;
+        }
+    }
+}
+
+.btn{
+    @include object(300px,40px,center,relative);
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: salmon;
+    border:1px solid salmon;
+    text-align: center;
+    color: white;
+    font-size: large;
+    font-weight: bold;
+    line-height: 40px;
+    margin-left: 35%;
+}
+

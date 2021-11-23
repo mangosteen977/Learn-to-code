@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible">
+        <title>OCN_menu연습</title>
+        <script src="../jq/jquery.js"></script>
+        <script>
+            $(function(){
+                $.ajax({
+                    url:".././www/json/menu.json",
+                    cache:false,
+                    type:"GET",
+                    dataType:"JSON",
+                    success:function($mdata,$ok){
+                        $.fn.menu_print($mdata);
+                    },
+                    error:function(){
+                        console.log("DATA_ERROR");
+                    }
+                });
+                $.fn.menu_print = function($mdata){
+                    console.log($mdata)
+                    let $uls ="";
+                    $mdata.map(function($a,$b){
+                        $uls += '<li>'+$a["main_menu"];
+                        if($a["menu_list"]!=""){
+                            $uls += '<ol class="s_menu">';
+                            $a["menu_list"].map(function($aa,$bb){
+                                $uls += '<li>'+$aa+'</li>';
+                            });
+                            $uls += '</ol>';
+                        }
+                        $uls += '</li>';
+                        $("#b_menu").html($uls);
+                    $("#b_menu>li").bind({
+                        "mouseenter":function(){
+                            let $this_li = $(this).index();
+                            $("#b_menu>li:eq("+$this_li+")>ol").slideDown(300);
+                            $("#b_menu>li:eq("+$this_li+")").css("border-bottom","2px solid gold");
+                        },
+                        "mouseleave":function(){
+                            let $this_li = $(this).index();
+                            $("#b_menu>li:eq("+$this_li+")>ol").slideUp(300);
+                            $("#b_menu>li:eq("+$this_li+")").css("border-bottom","none");
+                        }
+                    });
+                    });
+                };
+            });
+        </script>
+        <style>
+            *{box-sizing: border-box;}
+            body{margin: 0; padding: 0;}
+            ul,ol{list-style: none; margin: 0; padding: 0;}
+            .menu{width: 1200px; height: 50px; margin: 0 auto;}
+            .b_menu{width: inherit; height: inherit; line-height: 50px; text-align: center;
+                display: flex; flex-wrap: nowrap; justify-content: space-between;}
+            .b_menu>li{width: 150px; height: inherit; float: left; }
+            .s_menu{width: inherit; height: 25px; line-height: 25px; text-align: center; display: none;}
+            .s_menu>li{width: 150px; height: inherit;}
+        </style>
+    </head>
+    <body>
+        <section class="menu" id="menu">
+            <ul class="b_menu" id="b_menu">
+                <!-- <li>
+                    대메뉴 자리~0
+                    <ol class="s_menu">
+                        <li>소메뉴 자리~</li>
+                    </ol>
+                </li> -->
+            </ul>
+        </section>
+    </body>
+</html>

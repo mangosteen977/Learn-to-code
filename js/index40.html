@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible">
+        <title>Javascript 7일차(3) - 초급코드(문자치환) </title>
+        <script>
+            /*치환버튼 클릭 시 사용자 입력값 콘솔로 출력하시오.*/
+            function abc(){
+                var a = document.getElementById("w").value;
+                var b = a.replace("일본","한국");
+                var c = a.replaceAll("일본","한국");
+                var d = a.replaceAll(" ","");
+    //replae("A","B"); : A를 B로 치환한다.
+    //동일한 단어가 있을 경우, 첫번 째 해당되는 단어에만 작동한다.
+    //replaceAll : 해당되는 모든 단어를 변경함.
+    //replaceAll : IE11, Edge에서 오류가 발생함.
+    //replace(" ",""); : 공백 제거함.
+    //trim : 앞뒤의 공백제거 (중간은 제거 안함.)
+                console.log(d);
+            }
+    /*응용문제1. 휴대폰 번호를 입력해 주세요.*/
+            function bcd(){
+                var a = document.getElementById("tel").value;
+                var b = a.replace(/-/g,"");
+    //replace에서 정규식 코드로 사용 시 모든 브라우져에서 사용가능하다.
+                console.log(b);
+            }
+        </script>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <input type="text" id="w">
+        <input type="button" value="치환" onclick="abc();">
+
+        <input type="text" id="tel" maxlength="11" placeholder="휴대폰 번호를 입력해주세요">
+        <input type="button" value="전송" onclick="bcd();">
+    </body>
+    <script>
+        
+    </script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/index40.html -->

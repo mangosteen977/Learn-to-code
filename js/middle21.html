@@ -1,0 +1,101 @@
+<!-- middle20.html 팝업창 페이지 -->
+<meta charset="UTF-8">
+<style>
+    *{box-sizing: border-box;}
+    .b{width: 550px; height: auto; text-align: right;}
+    #tb{width: 550px; height: auto; text-align: center; font-size: 12px; margin-bottom: 5px; border: 1px solid black;}
+    button{width: 80px; height: 25px; border: none; background-color: cornflowerblue; color: white; cursor: pointer;}
+    td{height: 30px;}
+    #tb2 tr td:nth-child(2){text-align: left;}
+    .f > td:first-child{width: 150px;}
+    .f > td:nth-child(2){width: 300px;}
+    .f > td:nth-child(3){width: 100px;}
+</style>
+<body>
+    <div class="b">
+        <table id="tb" border="1" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr class="f">
+                    <td>우편번호</td>
+                    <td>도로명 주소</td>
+                    <td>적용</td>
+                </tr>
+            </thead>
+            <tbody id="tb2"></tbody>
+        </table>
+        <button onclick="btn_close();">창닫기</button>
+    </div>
+</body>
+
+<script>
+    //값 부모창(middle20.html)에 넘기기
+    function ddd(a,b){
+        window.opener.document.getElementById("addr").value = a;
+        window.opener.document.getElementById("addr_dtc").value = b;
+        self.close();
+    }
+
+    //외부 배열값
+    function address(a){
+        let k,k2;
+        var v1,v2;
+        var btn; 
+        for(k in a.addnum){
+            var tr = document.createElement("tr");
+            var tds = "";
+            for(k2 in a){
+                if(k2 == "adddtc"){
+                    v2 = a[k2][k];
+                }
+                else{ v1 = a[k2][k];}
+                var td = "<td>"+a[k2][k]+"</td>"
+                tds = tds + td;
+            }
+            btn = "<td><button onclick='ddd("+v1+','+v2+");'>적용</button></td>"
+            tr.innerHTML=(tds+btn);
+            document.getElementById("tb2").append(tr);  
+        };
+    };
+    //창닫기 버튼
+    function btn_close(){
+        self.close();
+    };
+
+    /* 선생님 코드
+    let f,f2;   //for사용
+    var html1,html2;    //html 코드
+    var btns1,btns2;    //함수값에 사용
+    function address(a){
+        
+        for(f in a.addnum){ //7바퀴
+            html1 = document.createElement("tr");
+
+            for(f2 in a){   //2바퀴
+                html2 = document.createElement("td");
+                if(f2 == "adddtc"){
+                html2.className="ad";
+                btns2 = a[f2][f];
+                }
+                else{
+                btns1 = a[f2][f];   
+                }
+                html2.innerText = a[f2][f];
+                html1.appendChild(html2);
+            }
+            html2 = document.createElement("td");
+            //버튼 생성
+            var html3 = document.createElement("input");
+            html3.className = "btn";
+            html3.setAttribute("type","button");
+            html3.setAttribute("value","적용");
+            html3.setAttribute("onclick","ddd('"+btns1+"','"+btns2+"')");
+            html2.appendChild(html3);
+            //버튼 생성 끝
+            html1.appendChild(html2);
+            document.getElementById("table").appendChild(html1);
+        }
+    }
+    */
+</script>
+<script src="http://lovertvtest.dothome.co.kr/js/addr.php"></script>
+<!-- http://mangsteen977.dothome.co.kr/js/middle20.html -->

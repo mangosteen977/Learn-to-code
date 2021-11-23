@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HTML&CSS 2일차(3) 중급 반응형 width,max-width,min-width</title>
+        <script>
+           
+        </script>
+        <style>
+            body{margin: 0; padding: 0;}
+            div{text-align: right; height: 50px;}
+            .box1{width: 700px; background-color: lightcoral;}
+            /* 
+            max-width : 가로 최대 길이이며, width와 함께 사용하지 않는다.
+            min-width : 최소 가로 길이이며, width:1000%와 함께 사용가능하다.
+            같이 사용 : 최대 길이와 최소 범위를 함께 지정함.
+            */
+            .box2{width: 100%; max-width: 700px; background-color: lightgreen;}
+            .box3{min-width: 700px; background-color: lightseagreen;}
+            .box4{max-width: 700px; min-width: 400px; background-color: lightsalmon;}
+
+
+            .box5{
+                max-width: 560px; min-width: 400px; height: 50px;
+                padding-top: 5px; box-sizing: border-box;
+                background-color: black; position: relative;
+            }
+            .sbox1{
+                width: 40px; height: 40px; background-color: gold;
+                position: absolute; left: 5px;
+            }
+            .sbox2{
+                width: 40px; height: 40px; background-color: gold;
+                position: absolute; right: 5px;
+            }
+        
+        
+        </style>
+    </head>
+    <body>
+            <div class="box1">TEST</div>
+            <div class="box2">TEST</div>
+            <div class="box3">TEST</div>
+            <div class="box4">TEST</div>
+
+            <br><br>
+            <div class="box5">
+                <div class="sbox1"></div>
+                <div class="sbox2"></div>
+            </div>
+    </body>
+</html>

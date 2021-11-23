@@ -1,0 +1,109 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700;900&display=swap");
+/* font-family: 'Noto Sans KR', sans-serif; (100, 400, 700, 900) */
+@mixin base {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+@mixin ulol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+@mixin m_sections($width, $height, $bg) {
+  margin: 0 auto;
+  width: 99.99%;
+  min-width: 320px;
+  max-width: $width;
+  height: $height;
+  background-color: $bg;
+}
+@mixin m_widths($min, $max, $bg) {
+  width: 99.99%;
+  min-width: $min;
+  min-height: $min;
+  max-width: $max;
+  max-height: $max;
+  background-color: $bg;
+}
+@mixin sections($width, $height, $bg) {
+  width: $width;
+  height: $height;
+  background-color: $bg;
+}
+@mixin flexs($wrap, $justify, $align) {
+  display: flex;
+  flex-wrap: $wrap;
+  justify-content: $justify;
+  align-content: $align;
+  align-items: $align;
+}
+@mixin font_sans($h, $c, $a, $w, $s) {
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: $h;
+  color: $c;
+  text-align: $a;
+  font-weight: $w;
+  font-size: $s;
+}
+.event_div {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  margin: 0 auto;
+}
+.event_banner {
+  width: inherit;
+  height: auto;
+}
+.quick_background {
+  height: auto;
+  background-color: rgb(240, 241, 245);
+}
+.event_quick {
+  display: block;
+  max-width: 1200px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  box-sizing: border-box;
+}
+.quick_ol {
+  width: 100%;
+  height: auto;
+  max-height: 498px;
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+.quick_ol > li:nth-of-type(1),
+.quick_ol > li:nth-of-type(3) {
+  max-width: 282px;
+  width: 25%;
+  height: inherit;
+  margin-right: 10px;
+  margin-left: 10px;
+  float: left;
+}
+.quick_ol > li:nth-of-type(2) {
+  max-width: 595px;
+  width: 50%;
+  height: inherit;
+}
+.sub_quick {
+  width: 100%;
+  height: inherit;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-content: space-between;
+  & > li {
+    max-width: 282px;
+    width: 50%;
+    height: auto;
+  }
+}

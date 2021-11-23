@@ -1,0 +1,51 @@
+<meta charset="UTF-8">
+<aside class="login_box">
+    <p>회원 로그인</p>
+    <input type="hidden" name="login_part" value="person">
+    <div class="login_div">
+        <label id="log_data1"><input type="radio" name="log_data" id="log_data1" value="person" v-on:click="ops(1)"
+                checked><span>개인회원</span></label>
+        <label id="log_data2"><input type="radio" name="log_data" id="log_data2" value="corp"
+                v-on:click="ops(2)"><span>사업자 회원</span></label>
+        <span class="login_in" v-if="views">
+            <em>
+                <ul class="login_ul">
+                    <li><input type="text" name="person_id" class="login_txt" v-model="mid" ref="mid"
+                            placeholder="아이디를 입력하세요">
+                    </li>
+                    <li></li>
+                    <li><input type="password" name="person_pw" class="login_txt" v-model="mpass" ref="mpass"
+                            placeholder="패스워드를 입력하세요"></li>
+                </ul>
+            </em>
+            <em></em>
+            <em><button type="submit" class="login_btn" @click="login_btn(0)">로그인</button></em>
+        </span>
+        <span class="login_in_corp" v-if="views2">
+            <em>
+                <ul class="login_ul">
+                    <li><input type="text" name="person_id" v-model="nid" ref="nid" class="login_txt"
+                            placeholder="아이디를 입력하세요"></li>
+                    <li></li>
+                    <li><input type="text" name="corp_no" v-model="nnum" ref="nnum" class="login_txt"
+                            placeholder="사업자 번호를 입력하세요"></li>
+                    <li></li>
+                    <li><input type="password" name="person_pw" v-model="npass" ref="npass" class="login_txt"
+                            placeholder="패스워드를 입력하세요"></li>
+                </ul>
+            </em>
+            <em></em>
+            <em><button type="submit" class="login_btn btn_cp" @click="login_btn(1)">사업자<br>로그인</button></em>
+        </span>
+
+
+        <span class="login_in1">
+            <button class="member_btn1">{{member_btn1}}</button>
+            <button class="member_btn2">{{member_btn2}}</button>
+            <button class="member_btn2">{{member_btn3}}</button>
+        </span>
+        <span class="login_in2">
+            ※ 개인회원 및 사업자 회원을 선택한 후 로그인 하시면 됩니다.
+        </span>
+    </div>
+</aside>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head> 
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Jquery Ajax 5일차(4) - Jquery Ajax ( JQ POST - 아이디 중복 체크 ) </title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(function(){
+                //click함수
+                // $("#btn").click(function(e){
+                //     // this : 자기자신($("#btn"))
+                //     $(this).addClass("btn");
+                // });
+
+                //JQ 화살표 함수 arrow function
+                // $("#btn").click((e)=>{
+                //     // this : global(window)
+                //     $(e.target).addClass("btn");
+                // });
+                /* 핸들링 함수 vs 화살표 함수
+                global : 전역변수
+                핸들링 함수와 화살표 함수의 가장 큰 차이점 = "this"
+                핸들링함수의 this : 자기 자신을 출력
+                화살표함수의 this : global(document)를 지칭하며 
+                                   선택한 오브젝트 및 자식 오브젝트도 컨트롤(O)
+                                   target을 이용함.
+                
+                */
+               $("#btn").click(()=>{
+                let $id = $("#make_id").val();
+                if(!$id){
+                    alert("아이디를 입력하세요");
+                }
+                else{
+                    /*callsign이 ok인 경우, 입력안되게 하시오.*/
+                    $.ajax({
+                        url:"./jndex4ok.php",
+                        cache:false,
+                        type:"POST",
+                        dataType:"JSON",
+                        data:"make_id="+$id, //name값 붙임
+                        contentType:"application/x-www-form-urlencoded", //암호화 필요
+                        success:function($data,$ok){
+                            //callsign : cancel(data오류), no(중복), ok(사용가능)
+                            if($data=="no"){alert("중복아이디 입니다.");}
+                            else if($data=="ok"){
+                                alert("사용가능한 아이디입니다.");
+                                $("#make_id").attr("readonly",true); //읽기전용
+                                $("#btn").unbind("click"); //클릭 비활성화하기.
+                            }
+                            else{alert("해당 아이디는 사용할 수 없습니다.");}
+                        },
+                        error:function(){
+                            alert("error")
+                        }
+
+                    });
+                }
+               });
+            });
+        </script>
+        <style>
+            *{margin: 0; padding: 0; box-sizing: border-box;}
+            .btn{width: 100px; height: 30px;background-color: lightcyan;}
+        </style>
+    </head>
+    <body>
+        <input type="text" id="make_id" placeholder="아이디를 입력하세요">
+        <input type="button" value="중복체크" id="btn">
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/ajax/jqindex4.html -->
+<!-- jndex -->
+<!-- 05/26 조별활동(정윤경 님) -->

@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+    <title>Jquery 문제5</title>
+    <script src="../jq/jquery.js"></script>
+        <script>
+            $(document).ready(function(){
+               $("#btn").click(function(){
+                   /*var $n = 1;
+                   while($n<9){
+                    $(".box:eq("+$n+")").attr("class","box2");
+                    $n = $n+1;
+                   }*/
+                   var $n = 0;
+                   while($n<8){
+                       if($n%2!=0){
+                        $(".box:eq("+$n+")").addClass("box2");
+                       }
+                       $n++
+                   }
+               });
+            });
+    </script>
+    <style>
+        body { margin: 0; padding: 0;}
+        .box {
+			width:60px;
+			height: 60px;
+			background-color:#009ac8;
+			float: left;
+			margin: 15px;
+			border:4px solid white;
+        }
+        .box2 { 
+            width:60px;
+			height: 60px;
+			background-color:green;
+			float: left;
+			margin: 15px;
+			border:4px solid white;
+        }
+    </style>
+    <!-- 문제5. 
+        클릭버튼 클릭시 짝수 box만 색상이
+        box2 색상으로 변화 되도록 합니다.
+    -->
+</head>
+<body>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+    <div class="box"></div>
+    <br><br>
+    <div style="clear:both;"></div>
+    <input type="button" value="클릭" id="btn">
+</body>
+</html>

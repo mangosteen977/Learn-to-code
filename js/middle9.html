@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>자바스크립트 3일차(2) (중급) - return 리턴함수사용(2) </title>
+        <script>
+            //1.
+            function aaa(){
+                var a = bbb("22a"); //확장함수 호출(1)
+                var b = bbb("111"); //한 확장함수에 여러개 던져도 리턴 각각 돌아옴
+                if(a==false){
+                    alert("숫자만 입력하시오!");
+                }
+                console.log(b);
+            };
+            function bbb(b){    
+                var c = Number(b);
+                if(isNaN(c)==true){
+                    return false;
+                }
+                else{
+                    return "숫자입니다."; //본 함수로 값을 리턴
+                }
+            };
+            //2. 여러 값을 배열형태로[node]로 리턴함수보내고 받기.
+            function ddd(){
+                var k =fff();
+                console.log(k[0],k[1],k[2]); //배열형태로 보낸 값은 변수[node]로 출력한다.
+            };
+            function fff(){
+                var a = 1;
+                var b = 2;
+                var c = 3;
+                return [a,b,c]; //값 여러개 한 함수에 리턴시킬 때는 [node0,node1]배열형태로 보낸다.
+            }
+            //3.
+            function cals(){
+                var num1 = Number(document.getElementById("num1").value);
+                var num2 = Number(document.getElementById("num2").value);
+                if(num1>=num2){
+                    var a = cal(num1,num2);
+                }
+                else if(num1<num2){
+                    var a = cal(num2,num1);
+                }
+                console.log(a[0],a[1],a[2],a[3]);
+            };
+            function cal(num1,num2){
+                var p = num1+num2;
+                var m = num1-num2;
+                var mm = num1*num2;
+                var d = num1/num2;
+                return [p,m,mm,d];
+            };
+        </script>
+    </head>
+    <body>
+        <!-- 1번 -->
+        <input type="button" value="false" onclick="aaa();"><br>
+        <!-- 2번 -->
+        <input type="button" value="double" onclick="ddd();"><br>
+        <!-- 3번. 응용문제. 입력받은 두 값을 +,-,*,/ 값을 계산해 각 결과를 출력하시오.-->
+        <input type="text" id="num1">
+        <input type="text" id="num2">
+        <input type="button" value="결과확인" onclick="cals();"><br>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/middle9.html -->

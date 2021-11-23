@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECMA Script 2일차(6) - ES 첨부파일 이미지 미리보기 </title>
+</head>
+
+<body>
+    <form name="frm">
+        <input type="hidden" name="url_key" value="http://mangsteen977.dothome.co.kr/ES/index12.html">
+        <input type="text" name="person_name" id="person_name" placeholder="고객명을 입력하세요">
+        <input type="password" name="person_pw" id="person_pw" placeholder="패스워드를 입력하세요">
+        <textarea name="person_text" id="person_text" placeholder="댓글 내용을 입력하세요"></textarea>
+        <input type="button" value="댓글등록" id="btn">
+    </form>
+</body>
+<!-- ES용 Script -->
+<script type="module">
+    import { re } from "./index12.js?v=2";
+</script>
+
+</html>

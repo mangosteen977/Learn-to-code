@@ -1,0 +1,82 @@
+<?php
+    $v = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="imagetoobar" content="no">
+        <meta http-equiv="X-UA-compatible" content="IE-Edge, chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="./picture.css?v=<?php echo $v?>">
+        <title>틀린 그림 찾기</title>
+        <script src="../js/jquery.js"></script>
+        <script src="./picture.js?v=<?php echo $v?>"></script>
+        <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+    </head>
+    <body>
+        
+        <div class="dark"><input type="button" value="s t a r t" class="start" id="start"></div>
+        <aside class="game_box">
+            <p>2021 Luckey Summer Event!</p>
+            <div class="game_image">
+                <span><img src="./game/game_poto2.png"></span>
+                <span>
+                    <label class="aw"></label>
+                    <label class="aw"></label>
+                    <label class="aw"></label>
+                    <label class="aw"></label>
+                    <label class="aw"></label>
+                    <img src="./game/game_poto1.png" id="game_board">
+                </span>
+                <div class="hand_count"><img src="./game/no_5.png" id="hand_count"></div>
+                <div class="win" id="win">축하합니다! 모든 정답을 찾으셨습니다!<br>하단에 배송정보를 입력해주세요.</div>
+                <div class="win" id="fail">모든 기회를 소진하셨습니다.<br>내일 다시 도전해주세요.</div>
+            </div>
+            <div class="help_memo">
+                ※<span class="color">2021년도 08월 01일 ~ 08월 31일</span>까지 이벤트가 진행됩니다.<br>
+                ※숨은 그림 찾기 게임은 하루에 한 번만 진행할 수 있으며, 회원에 한하여 참여가능합니다.<br>
+                ※총 <span class="color">5번의 기회</span>가 있으며, 틀린 그림은 모두 <span class="color">5곳</span> 입니다.<br>
+                ※5번 모두 틀릴 경우 게임은 종료됩니다.<br>
+                <span class="color">※틀린그림을 모두 찾으신 고객님께는 상품배송 입력란이 자동으로 나타납니다.</span>
+            </div>
+            <div class="gift" id="gift">
+                <form name="gift_form" method="POST" action="../shop/eventok.php" enctype="application/x-www-form-urlencoded">
+                    <span>
+                        <label>이벤트 경품 발송을 위해 개인정보 수집 방침에 동의해주세요.</label>
+                        <textarea id="event_agree" readonly style="resize: none;"></textarea>
+                        <label>개인정보 수집 및 이용 약관에 모두 동의합니다. <input type="checkbox" name="e_agree" value="Y"></label>
+                    </span>
+                    <input type="hidden" name="e_tel">
+                    <input type="hidden" name="e_id" value="mango"> <!--쇼핑몰 페이지 연결 시 자동으로 들어가게 할 것.-->
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td class="nbsp">고객명</td>
+                                <td>
+                                    <input type="text" name="e_name">
+                                </td>
+                                <td class="nbsp">휴대폰번호</td>
+                                <td>
+                                    <input type="text" maxlength="3" id="tel0"> - <input type="text" maxlength="4" id="tel1"> - <input type="text" maxlength="4"  id="tel2">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="nbsp">배송지 주소</td>
+                                <td colspan="3">
+                                    <input type="text" name="e_addr" class="postcodify_postcode5" readonly><input type="button" value="주소찾기" class="find_addr" id="find_addr">
+                                    <input type="text" name="e_road" class="postcodify_address" readonly>
+                                    <input type="text" name="e_dtc">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <input type="button" value="이벤트 참여" class="btn_gift" onclick="event_ck();">
+                </form>
+            </div>
+        </aside>
+    </body>
+    <script>
+        event_agree();
+    </script>
+</html>

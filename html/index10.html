@@ -1,0 +1,69 @@
+<html lang="Ko">
+    <!--lang(language) : Ko(Korea), Eu ... -->
+    <head>
+        <meta charset="UTF-8">
+        <title>HTML 4.0 + CSS2.0 4일차</title>
+    </head>
+    <body>
+        <ul>
+            <!--
+                ul : (un-order list) 목차 리스트 태그, li 갯수에 맞춰 리스트 출력됨.
+                ● : 디스크, 리스트 앞에 검정 작은 원
+            -->
+            <li>← 얘 이름은 디스크</li>
+            <li>공지사항2</li>
+            <li>공지사항3</li>
+        </ul>
+        <br>
+        <ol> <!--ol : (order list) cf. dl도 있다고 함.(html5.0)-->
+            <li>주요이슈사항1</li>
+            <li>주요이슈사항2</li>
+            <li>주요이슈사항3</li>
+        </ol>
+        <br>
+        <span style="border: 1px solid #000000;">망고스틴</span>
+        <!--style="border" : 외각선 1px 두께 solid 외줄 외각선 색상-->
+        <br><br>
+        <span style="border: 1px dashed #000000;">회원가입</span>
+        <br><br>
+        <span style="border: 1px dotted #000000;">로그인</span>
+        <br><br>
+        <span style="border: 4px double #000000;">가입취소</span>
+        <br><br>
+        <span style="border: 1px solid #000000; width: 100px; height: 30px; display:block;">구매하기</span>
+        <!--display:block 레이아웃을 보여지도록 함. 단, span에는 display를 사용해야만 크기조정 가능-->
+        <br>
+        <span style="border: 1px solid red; display:block; width: 100px; height: 30px;">장바구니</span>
+        <!--display:none; : 보여지지 않도록 숨김 (반대: display:block;)-->
+        <br>
+        인증번호 : <input type="text" style="display: block;">
+        <!--Javascript이용해서 none에서 block으로 바꿔서 인증번호창 보이게 할 수 있다.-->
+        <br>
+        <div style="border: 1px solid #000000; width: 100px; height: 30px;">창닫기</div>
+        <!--
+            div :  레이아웃 태그
+            span과 div의 차이 : div는 display를 사용하지 않고 사용 가능
+        -->
+        <br>
+        <input type="text" readonly>
+        <!--input의 readonly속성 : 읽기전용 적용, 데이터 전송 가능(O)-->
+        <br>
+        <input type="checkbox" checked disabled>동의함
+        <!--
+            checkbox에서는 readonly 사용 불가함. 속성적용 안됨.
+            cf. disabled로 checkbox를 비활성화 할 수 있음.(체크불가)
+            disabled는 데이터 전송 불가함. 실무에서 거의 사용하지 않음.
+        -->
+        <br>
+        <strike>30,000원</strike> → 25,000원
+        <!--strike : 취소선-->
+
+        <!--
+            solid: 실선 -
+            dashed : 절취선 ----
+            dotted : 점선 ....
+            double : 이중선 = ***2px이상 사용해야 보임. 근데 직접 해보니 4px은 되어야 좀 보임.
+        -->
+
+    </body>
+</html>

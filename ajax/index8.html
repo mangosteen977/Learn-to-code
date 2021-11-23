@@ -1,0 +1,85 @@
+<?php
+    $date = date("YMDHis");
+?>
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title> Ajax 3일차(2) - Javascript ( JSON - 지역별 회원 분석 그래프 )</title>
+        <link rel="stylesheet" type="text/css" href="./index8.css?v=<?=$date?>">
+    </head>
+    <body>
+        <section class="section" id="section">
+            <div class="dataview" id="dataview">
+                <!-- <p>건강보험 지역별 회원 분석</p> -->
+                <!--예시)
+                <dl class="dlcss">
+                    <dt>서울특별시<span id="area0">(0)명</span></dt>
+                    <dd><span class="gp">그래프바</span></dd>
+                </dl>
+                -->
+            </div>
+            <div class="total"><input type="button" value="가입페이지" onclick="javascript:location.href='index7-1.html';"></div>
+        </section>
+    </body>
+    <script>
+        const area = ["서울특별시","세종","인천","대전","광주","대구","울산","부산","경기도","강원도","충정도","경상도","전라도","제주도"];
+        let dlcss = "<p>건강보험 지역별 회원 분석</p>";
+        area.forEach(function(city,no,whole){
+            dlcss += "<dl class='dlcss'>\
+                <dt>"+city+"(<span id='per"+no+"'>0</span>)명</dt>\
+                <dd><span class='gp' id='gp"+no+"'></span></dd></dl>";
+        });
+        document.getElementById("dataview").innerHTML = dlcss;
+        /*JSON데이터 불러오기*/
+        let data;
+        function windowck(){
+            if(window.XMLHttpRequest){
+                return new XMLHttpRequest();
+            }
+        };
+        function file(){
+            if(data.readyState==XMLHttpRequest.DONE && data.status==200){
+                // console.log(this);
+                dataview(this);
+            }
+        };
+        data = windowck();
+        data.onreadystatechange = file;
+        data.open("GET","nhiss.json?v=<?=$date?>",true);
+        data.send();
+
+
+        function dataview(d){
+            const list =JSON.parse(d.response);
+            /*큰반복문(area)*/
+            let area_ea = area.length; //지역이름 갯수
+            let w = 0;
+            do{//데이터에서 지역명 출력 및 검사
+                let area_data = area[w]; //지역 배열값을 적용
+                /*작은 반복문(list)*/
+                let list_ea = list.length; //JSON갯수도 마찬가지
+                let z = 0; //더블반복문이니깐 변수 큰반복문 안에 두기
+                let count = 0;
+                do{
+                    //지역과 사용자가 가입한 지역을 비교하는 조건문
+                    if(area_data==list[z]["user_area"]){
+                        count++; //지역별 가입자 카운트
+                        document.getElementById("per"+w).innerHTML = count;
+                    };
+                    z++;
+                }while(z<list_ea)
+                //1명 당 30px 그래프 출력
+                document.getElementById("gp"+w).style.width = count*30+"px";
+                w++;
+            }while(w<area_ea)
+            let list_ea2 = list.length;
+            /*전체 가입자 수 출력*/
+            let total_div = document.createElement("div");
+            total_div.setAttribute("class","total");
+            total_div.innerText = "전체 가입자 수 :"+list_ea2+" 명";
+            document.getElementById("section").append(total_div);
+        }//dataview
+    </script>
+</html>

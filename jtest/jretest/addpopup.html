@@ -1,0 +1,56 @@
+<!-- http://mangsteen977.dothome.co.kr/jtest/jretest/addpopup.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <title>Javascript&jquey 재시험</title>
+    <link rel="stylesheet" href="./join.css?v=4">
+    <script src="../../jq/jquery.js"></script>
+    <script>
+        function list(txt){
+            let result0 = document.getElementsByClassName(txt)[0].innerText;
+            let result1 = document.getElementsByClassName(txt)[1].innerText;
+            window.opener.document.getElementById("m_post").value = result0;
+            window.opener.document.getElementById("m_addr").value = result1;
+            self.close();
+        };
+        function close_btn(){
+            self.close();
+        };
+    </script>
+    <!--
+        문제5. 팝업창에서 주소를 선택하면 부모창으로 우편번호, 도로명 주소가
+        입력 되어야 하며, 동시에 창이 닫혀져야 합니다.
+        
+
+        창닫기 클릭시 자식창은 창이 닫혀져야 합니다.
+
+        문제6. 우편번호 검색 클릭시
+        우편번호 리스트가 드롭형태로 애니메이션이 나오도록 출력합니다. (jquery)
+    -->
+</head>
+<body>
+    <div class="list_addr">
+        <p>[도로명 주소 리스트]</p>
+        <ul class="list_header">
+            <li>우편번호</li>
+            <li>도로명 주소</li>
+        </ul>
+        <ul class="list_data" id="list_data">
+            <li class="list0" onclick="list('list0');">03176</li>
+            <li class="list0" onclick="list('list0');">서울특별시 종로구 경희궁길 27(신문로2가)</li>
+            <li class="list1" onclick="list('list1');">03057</li>
+            <li class="list1" onclick="list('list1');">서울특별시 종로구 계동길 128(계동)</li>
+            <li class="list2" onclick="list('list2');">03128</li>
+            <li class="list2" onclick="list('list2');">서울특별시 종로구 김상옥로 29(연지동)</li>
+            <li class="list3" onclick="list('list3');">03093</li>
+            <li class="list3" onclick="list('list3');">서울특별시 종로구 낙산길 250(창신동)</li>
+        </ul>
+        <span class="span_css"><input type="button" value="창닫기" class="close_btn" onclick="close_btn();"></span>
+    </div>
+</body>
+<script>
+    $(function(){ $("#list_data").slideDown(500); });
+</script>
+</html>

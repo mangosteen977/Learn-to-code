@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Javascript 8일차 (1) - 중급 (JS txt 파일 로드) </title>
+        <style>
+            *{box-sizing: border-box;}
+            body{margin: 0; padding: 0;}
+            .agree{width: 800px; height: 300px; border: 1px solid #ccc;
+            overflow-y: auto; font-size: 10px;}
+        </style>
+        <!-- 
+            txt파일을 로드하여 출력함. 서버에 charset에 맞춰 인코딩저장. 
+            ex) 서버가 UTF-8 => 인코딩 UTF-8로 txt저장.
+            그 외 UTF-16 LE, ANSI 등
+        -->
+        <script>
+            function abc(){ //통신== 동기화/비동기화 통신이 있다.
+                //동기화(동기식) : 클라이언트 요청 > 서버에서 응답, 주로 사용한다.
+                //동기식의 예) : 신호 출석, 일반적 사이트들 (... 신호를 보내도 서버에서 응답이 없을경우 계속해서 로딩되는 페이지..?)
+                //비동기화(비동기식) : 서버에서 지속적으로 대기상태의 신호를 발생시킴
+                //비동기식의 예) 비콘 출석, 카카오톡 메세지, 실시간위치/날씨 등 계속해서 신호를 연결
+                //계속해서 신호를 보내기 때문에 딜레이가 있을 수도 있다(느려질 수도 있다).
+
+
+                var a = new XMLHttpRequest();//데이터를 요청-->동기식
+                /* XMLHttpRequest() : 데이터를 요청하는 함수(txt,img,html등의 파일가져올 수 있다.) */
+                
+                a.open("GET","agree.txt?v=1",true);//: 파일을 열어서 확인
+                 //로드 파일이 변경되면 실시간으로 변경이 된다.
+
+                /*
+                    open("GET/POST/PUT/DELETE","주소",true/false) 
+                    통신 method == GET(보내기?)/POST(가져오기?)/PUT(데이터추가)/DELETE(데이터삭제);
+                    form method == GET/POST;
+                */
+                a.onreadystatechange = function(){//자동으로 응답요청을 받도록 함(서버)
+                    if(a.readyState===XMLHttpRequest.DONE && a.status===200){
+                        //readyState : 응답형태
+                        //status : 네트워크 응답형태 (F12=>Network에서 확인 가능)
+                        //응답형태 예) 200_정상요청확인, 404_요청한 파일이 없을 때, 403_코드오류, 401_권한없음(접근불가), 
+                        
+                        var b = a.response; //responseText 등은 옛방식이다.
+                        document.getElementById("agree").innerHTML = b;
+                    }
+                }
+                a.send(); //send == 요청
+            };
+            function aaa(){
+                var a = new XMLHttpRequest();
+                a.open("GET","img.html",true);
+                //html파일의 script는 로드되지 않는다.
+
+                a.onreadystatechange = function(){
+                    if(a.readyState===XMLHttpRequest.DONE && a.status===200){
+                        var b = a.response;
+                        document.getElementById("agree").innerHTML = b;
+                    }
+                }
+                a.send();
+                //html파일의 script는 로드되지 않는다.
+                //htlml script파일은 로드되는 페이지 script에 써야한다.
+                var timer;
+                timer = setTimeout(t,5000);
+                function t(){
+                    document.getElementById("box").style.backgroundColor="deeppink";
+                };
+            };
+        </script>
+    </head>
+    <body>
+        <!-- 태그가 들어간 파일을 로드/출력 시
+            textarea보다는 div등을 쓰고, overflow-y:auto;를 준다.
+            textarea는 innerhtml이어도, 태그들이 출력됨.-->
+        <div class="agree" id="agree"></div>
+        <!-- <textarea id="data" cols="100" rows="30"></textarea> -->
+        <input type="button" value="텍스트 파일 로드" onclick="abc();">
+        <input type="button" value="HTML 파일 로드" onclick="aaa();">
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/middle27.html -->
+<!-- http://mangsteen977.dothome.co.kr/js/img.html -->

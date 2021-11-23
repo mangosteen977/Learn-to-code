@@ -1,0 +1,74 @@
+<meta charset="UTF-8">
+<article class="adm_main">
+    <span>FAQ 리스트</span>
+    <ol class="admin_main_ul">
+        <li onclick="fontclass('1');"><img src="../image/ts01.gif" alt="../img/ts01.gif" title="보통"></li>
+        <li onclick="fontclass('2');"><img src="../image/ts02.gif" alt="../img/ts02.gif" title="크게"></li>
+        <li onclick="fontclass('3');"><img src="../image/ts03.gif" alt="../img/ts03.gif" title="더크게"></li>
+    </ol>
+</article>
+<article class="faq_list">
+    {{get_faq_list}}
+    <div class="search_faq_box">
+        <input type="text" placeholder="검색어를 입력해주세요" v-model="search_faq_list">
+        <input type="button" value="검색" class="faq_list_search_btn" @click="search_faq">
+        <select class="faq_list_search_btn" @change="cates" v-model="cate">
+            <option value="">카테고리</option>
+            <option value="1">배송문의</option>
+            <option value="2">반품/교환/환불</option>
+            <option value="3">주문/결제</option>
+            <option value="4">회원서비스</option>
+            <option value="5">안전거래</option>
+        </select>
+        <input type="button" value="전체목록" class="faq_list_search_btn" @click="view_all_list">
+    </div>
+    <form>
+        <table class="faq_tb">
+            <thead>
+                <tr>
+                    <td>카테고리</td>
+                    <td>제목</td>
+                    <td>글쓴이</td>
+                    <td>입력날짜</td>
+                </tr>
+            </thead>
+            <tbody v-for="fq in faq_data">
+                <tr @click="open_qna_a_text(fq.fidx)">
+                    <td>
+                        <select :value="fq.category" disabled>
+                            <option value="1">배송문의</option>
+                            <option value="2">반품/교환/환불</option>
+                            <option value="3">주문/결제</option>
+                            <option value="4">회원서비스</option>
+                            <option value="5">안전거래</option>
+                        </select>
+                    </td>
+                    <td v-if="fq.fqtext.length>45">
+                        {{fq.fqtext.substr(0,45)+'...'}}<img src="./svg/arrow.svg" class="updown_txt"
+                            v-bind:id="'a_img'+fq.fidx">
+                    </td>
+                    <td v-else>
+                        {{fq.fqtext}}<img src="./svg/arrow.svg" class="updown_txt" v-bind:id="'a_img'+fq.fidx">
+                    </td>
+                    <td v-text="fq.fwriter"></td>
+                    <td v-text="fq.findate.substr(0,10)"></td>
+                </tr>
+                <tr class="faq_a_text" v-bind:id="'a_text'+fq.fidx">
+                    <td>
+                        <img src="./svg/arrow2.svg">
+                    </td>
+                    <td v-html=" fq.fatext" colspan="2"></td>
+                    <td>
+                        <input type="button" value="수정" @click="faq_view(fq.fidx)" class="modify_buttons">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="faq_page">
+            <ul>
+                <li v-for="n in pageing_num" v-text="n" @click="page(n)"></li>
+            </ul>
+        </div>
+        <input type="button" value="FAQ등록" id="add_faq_btn" class="add_faq_btn" @click="faq_insert()">
+    </form>
+</article>

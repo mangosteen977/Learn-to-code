@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible">
+        <title>Javascript 6일차(5) - 초급코드(split-응용) </title>
+        <script>
+            var menus = "메일|카페|블로그|지식IN|쇼핑|고객센터|회원정보" //백엔드 데이터 들어갈 자리
+            var m = menus.split("|"); //메뉴 배열단위로 나눔
+            var m_ea = m.length; //메뉴 갯수 파악
+            function abc(){
+                var w = 0;
+                while(w < m_ea){
+                    var code = "<li onclick='link("+w+")'>"+m[w]+"</li>";
+                    //html 코드 생성 시 이벤트 핸들링 함수 생성 가능.
+                    document.getElementById("menu").innerHTML += code;
+                    w++;
+                }
+            }
+            function link(aa){
+                switch(aa){
+                    case 0 :
+                    location.href="http://naver.com";
+                    break;
+
+                    case 1 :
+                    alert("현재 서비스 준비중 입니다.");
+                    break;
+
+
+
+                }
+            }
+        </script>
+        <style>
+            body{margin: 0; padding: 0;}
+            ul,ol{list-style: none; margin: 0; padding: 0;}
+            .menu{
+                margin: 0 auto;
+                padding: 0;
+                width: 100%;
+                height: 30px;
+                position: relative;
+                text-align: center; 
+            }
+            .menu > li {
+                width: 150px;
+                height: 30px;
+                line-height: 30px;
+                display: inline-block;
+                border: 1px solid blue;
+                box-sizing: border-box;
+                cursor: pointer;
+            /*만약에 inline-block에서 여백없앨거면 margin-left:-6px;*/
+            }
+        </style>
+    </head>
+    <body>
+        <ul id="menu" class="menu"></ul>
+    </body>
+    <script>
+        abc();
+    </script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/index36.html -->

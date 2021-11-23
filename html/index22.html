@@ -1,0 +1,87 @@
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>HTML 4.0 7일차 - ul&li</title>
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+            }
+            .ulcss{
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+            .licss{
+                width: 100px;
+                height: 30px;
+                border: 1px solid black;
+                float: left;
+                line-height: 30px;
+                text-align: center;
+            }
+            .no2{
+                border-left: none;
+                 border-right: none;
+            }
+            a{
+                text-decoration: none;
+            }
+            /* text-decoration : a 태그의 외각라인 혹은 밑줄을 삭제함 */
+            .banner{
+                width: 1000px;
+                height: 450px;
+                background-color: green;
+                clear:both;
+                position: relative;
+            }
+            .oldisc{
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                position: absolute;
+                bottom: 30px;
+                left: 50%;
+                margin-left: -55px;
+            }
+            .disc{
+                width: 20px;
+                height: 5px;
+                background-color: black;
+                float: left;
+                /* border-radius: 10px; */
+
+                margin-right: 10px;
+            }
+            .disc_view{
+                background-color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <ul class="ulcss">
+            <!-- a href 를 list 안에 넣으면 텍스트를 클릭하면 이동
+                list 밖에 a href를 넣으면 공간을 눌러도 이동 -->
+            <!--
+                Tree트리구조 : 
+                document-html-head/body-title/a/meta/link-header/main/footer-aside=ul/li/div/span
+                --->
+            <li class="licss no2"><a href="http://naver.com" target="block">메뉴1</a></li>
+            <a href="http://nate.com" target="block"><li class="licss">메뉴2</li></a>
+            <li class="licss">메뉴3</li>
+        </ul>
+        <!-- 배너 만들기 -->
+        <div class="banner">
+            <ol class="oldisc"> <!--배너의 디스크 생성 태그/position을 이용할 것-->
+                <li class="disc disc_view"></li> <!--li의 디스크 모양,크기를 셋팅, 현재 보고있는 오브젝트를 표시-->
+                <li class="disc"></li>
+                <li class="disc"></li>
+                <li class="disc"></li>
+            </ol>
+        </div>
+    </body>
+</html>
+
+
+<!-- html tree 구조 유튜브에 검색할 것 -->

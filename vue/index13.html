@@ -1,0 +1,64 @@
+<?php
+    $data = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+    <title> Vue ,vuejs 2일차 (8) vue 상품구매페이지 응용 </title>
+    <script src="../jq/jquery.js"></script>
+    <!-- vue 버전 1.6.4??? -->
+    <script src="http://cdn.jsdelivr.net/npm/vue"></script>
+    <!--상용버전 값 가져옴^_~-->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <!--개발버전 값 못가져옴^.^-->
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="box">
+        <div>
+            상품 선택 : <select v-model="p" v-on:change="abc">
+                <option value="">상품선택</option>
+                <option value="167000">모니터-167,000원</option>
+                <option value="18000">키보드-18,000원</option>
+                <option value="37000">마우스-37,000원</option>
+            </select>
+        </div>
+        <div>
+            수량 선택 : <select v-model="ea" v-on:change="abc">
+                <option value="">수량 선택</option>
+                <option value="1">1ea</option>
+                <option value="2">2ea</option>
+                <option value="3">3ea</option>
+            </select>
+        </div>
+        <div>{{price}}원</div>
+    </section>
+</body>
+<script>
+    let a = new Vue({
+        el: "#box",
+        data: {
+            price: "",
+            ea: "",
+            p: ""
+        },
+        methods: {
+            abc: function () {
+                this.price = (Number(this.p) * Number(this.ea)).toLocaleString();
+                // this.total_number=(Number(this.s)*Number(this.ea)).toLocaleString();
+                //toLocaleString(Number(this.s)*Number(this.ea));  이렇게 쓰면 인식 못하는 경우가 있어서
+                //이런식으로 한번 받아주면 오류를 줄일수 있다.
+            }
+        }
+    });
+</script>
+
+</html>

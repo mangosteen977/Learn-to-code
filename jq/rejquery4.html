@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title>Jquery 9일차(4) - JQ초급코드 응용 및 최종복습 (파라미터보내기_결제) </title>
+        <script src="./jquery.js"></script>
+        <script src="./jquery-ui.js"></script>
+        <link rel="stylesheet" type="text/css" href="./jquery-ui.css">
+        <script>
+             $(document).ready(function(){
+                $("#btn_buy").click(function(){
+                    var $ea = $("#ea").val();
+                    var $dis = $(".dis").is(":checked");
+                    if($ea==""){
+                        alert("수량을 선택해주세요.");
+                    }
+                    else if($dis==false){
+                        alert("쿠폰적용 여부를 선택해주세요.");
+                    }
+                    else if(confirm("결제페이지로 이동하시겠습니까?")){
+                        $("#buy").submit();
+                    }
+                });
+             });
+        </script>
+        <style>
+           body{padding: 0; margin: 0;}
+           #buy{
+               width: 400px; height: 210px; 
+               padding: 10px; box-sizing: border-box;
+               text-align: center;
+               }
+            #tb_buy{width: 380px; height: 150px; font-size: 14px;}
+            #tb_buy  tr > td:first-child{text-align: right; width: 120px; height: 50px;}
+            #tb_buy  tr > td:nth-child(2){text-align: left; text-indent: 20px;  box-sizing: border-box;}
+            #btn_buy{
+                width: 100px; height: 30px; 
+                margin-top: 5px; box-sizing: border-box;
+                border: none; background-color: black; color: white;
+                line-height: 20px;
+                }
+        </style>
+    </head>
+    <body>
+        <form id="buy" method="GET" action="./rejquery5.html">
+            <table id="tb_buy" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td>EA:</td>
+                    <td>
+                        <select name="ea" id="ea">
+                            <option value="">수량선택</option>
+                            <option value="1">1개</option>
+                            <option value="2">2개</option>
+                            <option value="3">3개</option>
+                            <option value="4">4개</option>
+                            <option value="5">5개</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>쿠폰적용:</td>
+                    <td>
+                        <input type="radio" class="dis" name="dis" value="0.8">20%할인
+                        <input type="radio" class="dis" name="dis" value="1">적용안함
+                    </td>
+                </tr>
+                <tr>
+                    <td>소비자금액:</td>
+                    <td><input type="text" value="30000" name="pri" readonly>원</td>
+                </tr>
+            </table>
+            <input type="button" value="결제하기" id="btn_buy">
+        </form>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/rejquery4.html -->
+<!-- 소비자 금액 변경 안되도록,  -->

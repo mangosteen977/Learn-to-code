@@ -1,0 +1,16 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.search{
+    width: 200px; 
+    height: 30px; 
+    border: 0; 
+    border-bottom: 1px solid violet;
+}
+.box{ /*label 사용시 display: block을 사용해야 보인다.*/
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    display: block;
+}

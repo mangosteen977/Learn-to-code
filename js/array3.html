@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Javascript 8일차 (6) - 중급 (배열 및 출력 총 복습 3 ) </title>
+        <script>
+            //console.log로 배열의 데이터 모두 출력
+            const array = {
+                "number1":"5",
+                "number2":"10",
+                "number3":"15",
+                "number4":"20",
+                "number5":"25"
+            }
+            var k;
+            for(k in array){
+                //console.log(array[k])
+            }
+            Object.keys(array).forEach(function(a,b,c){
+                //console.log(array[a])
+            });
+
+            //다음 배열값을 확인하여 모두 출력하시오~~~
+            const user = {
+                "info":[
+                    {
+                        "mid":"hong",
+                        "mname":"홍길동",
+                        "mblood":"B형",
+                        "memail":"hong@naver.com"
+                    }
+                ]
+            }
+            var k2;
+            for(k2 in user.info[0]){
+                console.log(user.info[0][k2])
+            }
+        </script>
+    </head>
+    <body>
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/js/array3.html -->

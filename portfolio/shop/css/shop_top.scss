@@ -1,0 +1,159 @@
+@charset "UTF-8";
+@import "./config.scss";
+//장바구니용 숫자 CSS
+.shop_top_cart {
+  display: inline;
+  color: #c3222b;
+}
+.shop_top_banner {
+  @include sections(100%, 80px, #fee63c);
+  @include flexs(nowrap, row, space-evenly, center);
+  cursor: pointer;
+  & > img {
+    @include sections(1174px, inherit, none);
+  }
+}
+.shop_top_menu {
+  @include sections(1174px, 40px, none);
+  @include flexs(nowrap, row, space-between, center);
+  position: relative;
+  border-bottom: 1px solid #ccc;
+  margin: 0 auto;
+  & > aside {
+    @include sections(auto, inherit, none);
+    @include flexs(nowrap, row, flex-start, center);
+    &:nth-child(1) {
+      & > div {
+        @include sections(90px, auto, none);
+        @include flexs(nowrap, row, flex-start, center);
+        cursor: pointer;
+        &:nth-child(1) > span {
+          margin-right: 5px;
+          &:nth-of-type(1) {
+            @include sections(20px, 20px, none);
+          }
+        }
+        & > a {
+          //일단 보류
+          text-decoration: none;
+          color: black;
+        }
+        &:nth-child(2) {
+          width: 160px;
+        }
+      }
+    }
+    &:nth-child(2) {
+      & > div {
+        height: auto;
+        padding: 0 25px;
+        cursor: pointer;
+        position: relative;
+        &:after {
+          content: "|";
+          color: #ccc;
+          position: absolute;
+          right: 0;
+        }
+        &:last-child:after {
+          content: "";
+        }
+        // &:nth-child(2) {
+        //   display: none;
+        // }
+        &:nth-child(3) {
+          position: relative;
+          & > .shop_top_pointer {
+            @include sections(60px, 18px, #303947);
+            @include font_sans(18px, white, center, unset, 11px);
+            border-radius: 7px;
+            position: absolute;
+            top: 150%;
+            left: 50%;
+            margin-left: -30px;
+            cursor: pointer;
+            & > span {
+              @include sections(11px, 5px, none);
+              position: absolute;
+              bottom: 100%;
+              left: 50%;
+              margin-left: -5.5px;
+              background-image: url("../image/joinpoin_bg.png");
+              background-repeat: no-repeat;
+              background-size: inherit;
+            }
+          }
+        }
+        &:nth-child(3) > span {
+          @include sections(11px, 5px, none);
+          background-image: url("../image/joinpoin_bg.png");
+          background-repeat: no-repeat;
+          background-size: inherit;
+          transform: rotateX(180deg);
+        }
+      }
+    }
+  }
+}
+.shop_top_logo {
+  & > form {
+    @include sections(1174px, 140px, none);
+    @include flexs(nowrap, row, space-between, center);
+    border-bottom: 1px solid #ccc;
+    margin: 0 auto;
+    & > div:nth-child(1) {
+      @include sections(279px, 86px, none);
+      cursor: pointer;
+    }
+    & > div:nth-child(2) {
+      @include sections(288px, 72px, none);
+      cursor: pointer;
+    }
+    & > div:nth-child(3) {
+      @include sections(270px, auto, none);
+      & > ul {
+        @include sections(inherit, auto, none);
+        & > li:nth-child(1) {
+          @include sections(inherit, auto, none);
+          @include flexs(nowrap, row, center, center);
+          & > .shop_top_search {
+            @include sections(235px, 35px, none);
+            border: 1px solid #303947;
+            border-radius: 7px 0 0 7px;
+            text-indent: 10px;
+          }
+          & > span {
+            @include sections(35px, 35px, #303947);
+            border-radius: 0 7px 7px 0;
+            cursor: pointer;
+          }
+        }
+        & > li:nth-child(2) {
+          @include sections(inherit, auto, none);
+          @include flexs(nowrap, row, center, center);
+          & > .shop_top_notice {
+            @include sections(235px, 35px, none);
+            @include font_sans(35px, black, unset, unset, 12px);
+            text-indent: 10px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            //notice_print_ul
+            & > ul {
+              @include sections(100%, auto, none);
+              position: relative;
+              & > li {
+                @include sections(100%, 35px, white);
+                cursor: pointer;
+              }
+            }
+          }
+          & > span {
+            @include sections(35px/2, 35px/2, none);
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

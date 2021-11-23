@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>JavaScript 1일차(4) - 더블 조건문</title>
+        <script>
+            var a = "hong";
+            var b = "a123 45";
+            //더블조건문
+            if(a=="honㅎg"){
+                if(b=="a12345"){
+                    document.write("로그인 하셨습니다.")
+                }
+                else{
+                    document.write("패스워드가 다릅니다.")
+                }
+            }
+            else{
+                document.write("가입되지 않은 사용자 입니다.")
+            }
+
+            var url = "google";
+            //location.href : 해당 페이지를 다른 페이지로 이동시킴.
+            if(url=="naver"){
+                location.href = "http://www.naver.com";
+            }
+            else if(url=="daum"){
+                location.href = "http://www.daum.net";
+            }
+            else if(url=="nate"){
+                location.href = "http://nate.com";
+            }
+            else{
+                document.write("이동할 url을 찾지 못했습니다.");
+            }
+
+            /*응용문제4.
+            임의숫자 1~30까지 입력
+            5단위로 해당숫자 검토.
+            5이하 10이하 15이하 25이하 25이상*/
+        //선생님 답안
+            var aa = 10;
+            if(aa < 5){
+                document.write("5이하");
+            }
+            else if(aa<10){
+                document.write("10이하");
+            }
+            else if(aa<15){
+                document.write("15이하");
+            }
+            else if(aa<20){
+                document.write("20이하");
+            }
+            else if(aa<25){
+                document.write("25이하");
+            }
+            else{
+                document.write("25이상");
+            }
+        //내답안
+            var aaa = 30;
+            if(aaa>5){
+                if(aaa>10){
+                    if(aaa>15){
+                        if(aaa>20){
+                            if(aaa>25){
+                                if(aaa<30){
+                                    document.write("25이상")
+                                }
+                            }
+                            else{
+                                document.write("25이하")
+                            }
+                        }
+                        else{
+                            document.write("20이하");
+                        }
+                    }
+                    else{
+                        document.write("15이하");
+                    }
+                }
+                else{
+                    document.write("10이하");
+                }
+            }
+            else{
+                document.write("5이하");
+            }
+
+
+        /*응용문제5. 임의숫자 1~130까지 중
+        다음과 같이 출력.
+        
+        10이하 숫자입니다.
+        10이상 숫자입니다.
+        20이상 숫자입니다.
+        42이상 숫자입니다.
+        100이상 숫자입니다.*/
+        
+        //내답안
+        var ccc = 9;
+        if(ccc<100){
+            if(ccc<42){
+                if(ccc<20){
+                    if(ccc<10){
+                        document.write("10이하 숫자입니다.");
+                    }
+                    else{
+                        document.write("10이상 숫자입니다.");
+                    }
+                }
+                else{
+                    document.write("20이상 숫자입니다.");
+                }
+            }
+            else{
+                document.write("42이상 숫자입니다.");
+            }
+        }
+        else{
+            document.write("100이상 숫자입니다.");
+        }
+        //선생님 답안
+        var n = 116;
+        if(n>100){
+            document.write("100이상 숫자입니다.");
+        }
+        if(n>42){
+            document.write("42이상 입니다.");
+        }
+        if(n>20){
+            document.write("20이상 입니다.");
+        }
+        if(n>10){
+            document.write("10이상 입니다.");
+        }
+        else{
+            document.write("10이하 입니다.");
+        }
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

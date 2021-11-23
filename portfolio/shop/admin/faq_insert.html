@@ -1,0 +1,53 @@
+<meta charset="UTF-8">
+<article class="adm_main">
+    <span>FAQ 신규등록</span>
+    <ol class="admin_main_ul">
+        <li onclick="fontclass('1');"><img src="../image/ts01.gif" alt="../img/ts01.gif" title="보통"></li>
+        <li onclick="fontclass('2');"><img src="../image/ts02.gif" alt="../img/ts02.gif" title="크게"></li>
+        <li onclick="fontclass('3');"><img src="../image/ts03.gif" alt="../img/ts03.gif" title="더크게"></li>
+    </ol>
+</article>
+<article class="insert_faq">
+    <form name="frm_faq" name="frm_faq" method="POST" enctype="application/x-www-form-urlencoded">
+        <input type="hidden" name="fid" value="<?php echo $aid ?>">
+        <input type="hidden" name="fsubject" value="faq_insert">
+        <table class="insert_faq_tb" border="1" cellpadding="0" cellspacing="0">
+            <tbody>
+                <tr style="height: 50px;">
+                    <td style="width: 15%;">카테고리</td>
+                    <td style="width: 85%;">
+                        <select name="fcate">
+                            <option value="">카테고리를 선택하세요</option>
+                            <option value="1">배송문의</option>
+                            <option value="2">반품/교환/환불</option>
+                            <option value="3">주문/결제</option>
+                            <option value="4">회원서비스</option>
+                            <option value="5">안전거래</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr style="height: 50px;">
+                    <td>질문</td>
+                    <td>
+                        <input type="text" name="fqtext">
+                    </td>
+                </tr>
+                <tr style="height: 300px;">
+                    <td>답변</td>
+                    <td>
+                        <textarea name="fatext" style="resize: none;"></textarea>
+                    </td>
+                    <script>
+                        CKEDITOR.replace("fatext", { height: 300 })
+                    </script>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <div class="faq_btns">
+        <input type="button" value="FAQ등록" id="faq_inok">
+        <input type="button" value="FAQ목록" id="faq_list">
+        <input type="hidden" id="faq_modifyok">
+        <input type="hidden" id="faq_delok">
+    </div>
+</article>

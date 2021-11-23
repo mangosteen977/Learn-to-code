@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <meta http-equiv="imagetoolbar" content="no">
+        <title>Jquery 중급 ( 메일폼 인증 확인 페이지 (메일 인증번호 발송) )</title>
+        <script src="./jquery.js"></script>
+        <script>
+            $(function(){
+                let $url_data = location.search;
+                let $mailck = $url_data.split("?mailid=")[1];
+                console.log($mailck)
+                if($mailck=="mosubin977@naver.com"){
+                    alert("인증에 성공했습니다.");
+                }
+                else{
+                    alert("인증에 실패했습니다.");
+                }
+            });
+        </script>
+        <style>
+            *{box-sizing: border-box; font-size: 12px;}
+            body{margin: 0; padding: 10px;}
+            ul,ol{list-style: none; margin: 0; padding: 0;}
+        </style>
+    </head>
+    <body>
+
+    </body>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/jq/middle22.html -->

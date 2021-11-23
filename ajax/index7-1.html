@@ -1,0 +1,150 @@
+<?php
+    $date = date("YMDHis");
+?>
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <title>Ajax 3일차(1) - Javascript (json-회원가입)</title>
+        <link rel="stylesheet" type="text/css" href="./index7-1.css?v=<?=$date?>">
+        <script>
+            /*입력사항 검토 조건문을 if/else로 나눠서 넣어야 중간에 오류로 멈추는 걸 방지함*/
+            function member_ship(){
+                if(fm.user_id.value==""){alert("아이디를 입력하세요.")}
+                else if(fm.user_pw.value==""){alert("패스워드를 입력하세요.")}
+                else if(fm.user_tel.value==""){alert("전화번호를 입력하세요.")}
+                else{
+                    //전화번호 입력상태를 확인하는 2차 작업
+                    var tels = Number(fm.user_tel.value);
+                    if(isNaN(tels)==true){alert("전화번호는 숫자로 입력하세요")}
+                    else if(isNaN(tels)==false){
+                        if(tels.length>=10){alert("10자리 이상의 전화번호를 입력하세요")}
+                        else{
+                            //관심분야 체크
+                            let ea = fm.user_field.length;
+                            let w = 0;
+                            do{
+                                let ck = document.getElementById("ck"+w).checked;
+                                if(ck==true){
+                                    var ff;
+                                    //1개 이상의 체크박스 false로 만들기
+                                    for(ff=w+1; ff<ea; ff++){
+                                        document.getElementById("ck"+ff).checked = false;
+                                    };
+                                    break;
+                                }
+                                w++;
+                            }while(w<ea)
+                            fm.method = "POST";
+                            fm.action="./nhiss_memberok.php";
+                            fm.submit();
+                        }
+                    }
+                    
+                }
+            };
+        </script>
+    </head>
+    <body>
+        <form id="fm" name="fm" enctype="application/x-www-form-urlencoded">
+        <section class="sbody">
+            <div class="member_view">
+                <table cellpadding="0" cellspacing="0">
+                    <thead>
+                        <tr class="thead_tr">
+                            <td colspan="2" align="center;">건강보험 회원가입</td>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody_tr">
+                        <tr>
+                            <td>아이디</td>
+                            <td>
+                                <input type="text" name="user_id" id="user_id" class="input1">
+                                <input type="button" value="중복확인" class="idbtn">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>패스워드</td>
+                            <td><input type="password" name="user_pw" id="user_pw" class="input1"></td>
+                        </tr>
+                        <tr>
+                            <td>이메일</td>
+                            <td><input type="email" name="user_email" id="user_email" class="input2"></td>
+                        </tr>
+                        <tr>
+                            <td>전화번호</td>
+                            <td><input type="tel" name="user_tel" id="user_tel" class="input2"></td>
+                        </tr>
+                        <tr>
+                            <td>거주지역</td>
+                            <td><select name="user_area" id="user_area" class="input3"></select></td>
+                        </tr>
+                        <tr>
+                            <td>관심분야<br>(한가지만 선택)</td>
+                            <td class="td_flex">
+                                <span>
+                                    <label><input type="checkbox" name="user_field" id="ck0" value="악성신생물(각종 암)">악성신생물(각종 암)</label>
+                                    <label><input type="checkbox" name="user_field" id="ck1" value="정신 및 행동장애">정신 및 행동장애</label>
+                                </span>
+                                <span style="margin-top: 10px;">
+                                    <label><input type="checkbox" name="user_field" id="ck2" value="순환계통 질환">순환계통 질환</label>
+                                    <label><input type="checkbox" name="user_field" id="ck3" value="소화계통 질환">소화계통 질환</label>
+                                    <label><input type="checkbox" name="user_field" id="ck4" value="호흡계통 질환">호흡계통 질환</label>
+                                </span>
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>현재연령</td>
+                            <td><select name="user_age" id="user_age" class="input3"></select></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <span style="margin: 20px;">   
+                    <button type="button" class="btn" onclick="member_ship();">회원가입</button>
+                    <button type="reset" class="btn btn1">가입취소</button>
+                </span>
+            </div>
+        </section>
+        </form>
+    </body>
+    <script>
+        let m;
+        function windowck(){
+            if(window.XMLHttpRequest){
+                return new XMLHttpRequest();
+            }
+        };
+        function optionget(){
+            if(m.readyState==XMLHttpRequest.DONE && m.status==200){
+                // console.log(this)
+                html_write(this);
+            }
+        };
+        m = windowck();
+        m.onreadystatechange = optionget;
+        m.open("GET","./member_ship.json",true);
+        m.send();
+        //option 출력
+        function html_write(data){
+            const json = JSON.parse(data.response);
+            let html1 = "<option value=''>지역선택</option>";
+            json["area"].forEach(function(val,node,whole){
+                html1 += "<option value='"+val+"'>"+val+"</option>";
+            });
+            document.getElementById("user_area").innerHTML = html1;
+            
+            let html2 = "<option value=''>연령선택</option>";
+            json["age"].forEach(function(val,node,whole){
+                html2 += "<option value='"+val+"'>"+val+"</option>";
+            });
+            document.getElementById("user_age").innerHTML = html2;
+        };
+        /*append/appendchild = createElement처럼 node형태만 출력.
+        innerhtml = DOM 객체로 출력*/
+
+    </script>
+</html>
+<!-- http://mangsteen977.dothome.co.kr/ajax/index7-1.html -->
+<!-- 데이터 전송 방식: Form => POST/GET,  Ajax => POST/GET  -->

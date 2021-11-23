@@ -1,0 +1,46 @@
+<?php
+    $data = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECMA Script 3일차(3) - 포폴 모바일 회원가입 B화면 </title>
+    <link rel="stylesheet" type="text/css" href="./index70.css?v=<?=$data?>">
+</head>
+<!-- 340~480 -->
+
+<body>
+    <article class="part_B">
+        <div class="title_join">MEMBERSHIP</div>
+        <form name="frm_join" class="frm_join" enctype="application/x-www-form-urlencoded">
+            <input type="text" name="mid" placeholder="아이디를 입력하세요">
+            <input type="password" id="pass" name="mpass" readonly placeholder="패스워드를 입력하세요">
+            <div id="keypads" class="keypads">
+                <span class="num_button">1</span><span class="num_button">2</span><span class="num_button">3</span>
+                <span class="num_button">4</span><span class="num_button">5</span><span class="num_button">6</span>
+                <span class="num_button">7</span><span class="num_button">8</span><span class="num_button">9</span>
+                <span class="num_button">*</span><span class="num_button">0</span><span class="num_button">!</span>
+                <span class="num_button">_</span><span class="num_button">-</span><span class="num_button">.</span>
+            </div>
+            <input type="text" name="mname" placeholder="고객명을 입력하세요">
+            <input type="email" name="memail" placeholder="이메일을 입력하세요">
+            <input type="tel" name="mhp" maxlength="11" placeholder="연락처를 입력하세요">
+            <input type="text" name="mnick" placeholder="닉네임을 입력하세요">
+            <input type="hidden" name="mlevel" value="1">
+            <input type="hidden" name="mcerti" value="Y">
+            <input type="hidden" name="magree1" value="Y">
+            <input type="hidden" name="magree2" value="Y">
+        </form>
+        <input type="button" value="회원가입" id="btn_join" class="btn_join">
+    </article>
+</body>
+<!-- ES용 Script -->
+<script type="module">
+    import { keypad, keypad2, login } from "./index70.js?v=<?=$data?>";
+</script>
+
+</html>

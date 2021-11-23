@@ -1,0 +1,142 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+/*font-family: 'Noto Sans KR', sans-serif; 100;300;400;500;700;900*/
+body{margin: 0; padding: 0; font-size: 12px; font-family: 'Noto Sans KR', sans-serif;}
+ul, ol, dl{list-style: none; margin: 0; padding: 0;}
+span, label, main{display: block;}
+/* 문제.1 */
+.no_1{
+    width: 600px;
+    height: auto;
+    margin: 0 auto;
+}
+.no_1 > textarea{
+    width: 600px;
+    height: 100px;
+    margin-bottom: 10px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+}
+.no_1 > span{
+    text-align: right;
+}
+.personal_check{
+    display: inline-block;
+}
+/* 문제.2 */
+.no_2{
+    width: 300px;
+    height: 300px;
+    background-color: blue;
+    position: relative;
+    margin-bottom: 30px;
+}
+.no_2 > span{
+    width: 60px;
+    height: 60px;
+    background-color: orange;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -30px;
+}
+/* 문제.3 */
+.no_3{
+    width: 500px;
+    height: 60px;
+    background-color: blue;
+    position: relative;
+    margin-bottom: 30px;
+}
+.no_3 > ul{
+    width: 175px;
+    height: 40px;
+    position: absolute;
+    left: 50%;
+    margin-left: -87.5px;
+    top: 50%;
+    margin-top: -20px;
+}
+.no_3 > ul li{
+    width: 80px;
+    height: 40px;
+    float: left;
+    background-color: orange;
+}
+.no_3 > ul li:last-child{
+    margin-left: 15px;
+}
+/* 문제.4 */
+.no_4{
+    width: 60px;
+    height: 30px;
+    background-color: greenyellow;
+    border-radius: 30px;
+    padding: 1px;
+    box-sizing: border-box;
+    position: relative;
+    margin: 30px;
+}
+.no_4 > span{
+    width: 28px;
+    height: 28px;
+    border-radius: 100%;
+    background-color: white;
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+}
+.no_4:hover > span{
+    left: 0;
+}
+.no_4:hover{
+    background-color: gray;
+}
+/* 문제.5 */
+/* border가 막 여러줄로 나타난다. 이거 조정 어떻게 하는거지....ㅜ.ㅜ
+다 몰라 다 어떡하니.....^ㅇT */
+.no_5{
+    width: 600px;
+    height: 120px;
+    text-align: center;
+    color: gray;
+    border: none;
+
+    margin: 30px;
+}
+.tb_5{
+    width: 150px;
+    height: 30px;
+}
+/*  > 의 유무에 따른 차이를 아직도 모르겠다...^_T
+ 아래 셀렉터는 되는데, 여기에 >를 추가하면 안된다. 근데 nth of type(1)하면
+ 객체가 1개만 골라지는게 맞는데 왜 선택이 안되는거야......!!!!!! */
+.no_5 tr:nth-of-type(1) td:only-child{
+    background-color: blue;
+    color: white;
+}
+.no_5 td:nth-of-type(4){
+    background-color: red;
+}
+/* 문제.6 */
+.no_6{
+    width: 264px;
+    height: 40px;
+    margin: 30px;
+}
+.no_6 > li{
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin: 0 2px 0 2px;
+    box-sizing: border-box;
+    float: left;
+    border-radius: 10px;
+    background-color: lightgray;
+}
+.no_6 > li:hover{
+    color: white;
+    background-color: lightskyblue;
+}
+/* 문제.7 */

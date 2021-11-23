@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="imagetoolbar" content="no">
+        <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HTML&CSS 4일차(3) 중급 반응형 (flex 응용) </title>
+        <script src="../jq/jquery.js"></script>
+        <script>
+
+        </script>
+        <style>
+            /*내 버전_부모 padding으로 조절*/
+            .box{
+                width: 350px; height: 400px; background-color: dimgray;
+                padding: 95px 15px 95px 15px; box-sizing: border-box;
+                display: flex; flex-wrap: wrap; flex-direction: row;
+                align-content: space-between;
+                justify-content: space-between;
+            }
+            .sbox{width: 100px; height: 100px; background-color: deeppink;}
+            /*선생님 버전_자식 margin-bottom으로 조절*/
+            .box2{
+                width: 350px; height: 400px; background-color: black;
+                display: flex;
+                flex-wrap: wrap;
+                align-content: center;
+                align-items: center;
+                justify-content: space-around;
+            }
+            .box2>div{ margin-bottom: 15px;}
+        /* [display : flex] 정리
+        *IE에서 세로 정렬은 가능(O) 가로는 (X)
+        0. align-content/items : 세로기준 위치 조정, justify-content : 가로기준 위치 조정
+        1. align-content : flex-wrap과 함께 사용해야 함.
+                           1줄 이상일 때 사용한다. (==vertical-align)
+        2. align-items : flex-wrap과 관계없이 작동
+                            1줄일 때만 사용. (==line-height)
+        3. justify-content : 가로기준 위치 조정
+                            flex-start = left;
+                            center = text-align:center or margin:0 auto;
+                            flex-end = right or bottom;
+                            space-around : 객체들 공백을 균등히 함. IE(X)
+                            space-between : 양 끝은 공백(X), 중앙 객체는 균등히 공백. IE(X)
+        4. flex-direction : 자식객체 정렬방식, IE작동안함(X)
+                            row : 자식객체 가로정렬(float:left;)
+                            column : 자식객체 세로정렬(float:none;)
+        5. flex-wrap : 줄바꿈 설정.
+                            wrap : 줄바꿈 (O), nowrap : 줄바꿈(X)
+                            nowrap; = 화면을 줄이면 자식 객체 width값이 줄어듬
+                            wrap; = 화면을 줄이면 자식 객체 width값이 유지되며 줄바꿈이 됨
+        */
+            .ulcss{
+                list-style: none; margin: 0; padding: 0;display: flex;
+                height: inherit; /*=header width/height*/ 
+                max-width: 1000px; min-width: 500px;
+                /* 1000~500px 까지는 공백이 줄다가, 500px이하는 li가 잘려나가게 함.
+                혹은 width: 100%; min-widht: 500px해도 결과 같음. */
+                flex-wrap: nowrap;
+                justify-content: space-around;
+                align-content: center;
+                /* align-items: center; */
+            }
+            .ulcss>li{width: 100px;height: 50px; background-color: black;}
+            .ulcss>li:nth-child(odd){background-color: khaki;}
+        /*flex-wrap: nowrap; = 화면을 줄이면 자식 객체 width값이 줄어듬= width가 100%일 때,
+                                width가 정해져 있을 땐 화면에서 잘려나감.*/
+        /*flex-wrap: wrap; = 화면을 줄이면 자식 객체 width값이 유지되며 줄바꿈이 됨,
+                            부모객체 height: auto;로 둔다.(줄바꿈이 될 수 있게)*/
+
+        </style>    
+    </head>
+    <body>
+        <p>내 답안</p>
+        <div class="box">
+            <div class="sbox"></div>
+            <div class="sbox"></div>
+            <div class="sbox"></div>
+            <div class="sbox"></div>
+            <div class="sbox"></div>
+            <div class="sbox"></div>
+        </div>
+        <br>
+        <p>선생님 답</p>
+        <div class="box2">
+            <div class="sbox"></div>
+            <div class="sbox"></div>
+            <div class="sbox"></div>
+            <div class="sbox"></div>
+            <div class="sbox"></div>
+            <div class="sbox"></div>
+        </div>
+        <br><br>
+        <header style="height: auto; border: 1px solid black;">
+            <ul class="ulcss">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </header>
+    </body>
+</html>

@@ -1,0 +1,98 @@
+<?php
+    $v = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="Ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <title> Vue ,vuejs 5일차 (1) vue 복습 뷰 정리 ?????????</title>
+        <script src="../jq/jquery.js"></script>
+        <!-- vue 버전 1.6.4 ???????? -->
+        <script src="http://cdn.jsdelivr.net/npm/vue"></script>
+        <!-- <link rel="stylesheet" type="text/css" href="./index.css?v=<?=$v?>"> -->
+        <style>
+        </style>
+    </head>
+    <body> <!--body 태그에는 Vue를 쓸 수 없다.-->
+        <div id="box"><!--Vue는 태그에 걸어서 사용-->
+
+            <!-- 클릭해서 input에 값 출력 -->
+            <button v-bind:type="b" @click="[abc(),bbb()]">{{btn}}</button>
+            <!-- Vue 함수 두 개를 사용할 때는 []대괄호 안에 쓰되, ()를 붙인다. -->
+            <input type="text" id="mid" v-model="mid">
+            <div>{{msg}}</div>
+
+            <!-- 숫자 카운트 만들기 -->
+            <input type="button" @click="ccc(1)" value="+">
+            <input type="button" @click="ccc(2)" value="-">
+            <span>{{count}}</span>
+            <br>
+
+            <!-- select 값 input에 출력 -->
+            <select v-model="sel_val" v-on:change="ddd()" multiple>
+                <!-- select의 multiple 셀렉트의 모든 option 옵션들을 한 번에 보여준다. -->
+                <option value="">[선택항목을 지정하세요]</option>
+                <option value="반품/취소">반품/취소</option>
+                <option value="결제오류">결제오류</option>
+                <option value="배송안내">배송안내</option>
+                <option value="상품가격">상품가격</option>
+                <option value="이벤트">이벤트</option>
+            </select>
+            <input type="text" v-model="print_sel_val" readonly>
+        </div>
+    </body>
+    <script>
+        let data = "회원등록 현황";
+        let num = 0;
+        let a = new Vue({ //뷰 변수
+            el:"#box", //뷰 객체 선택
+            data:{ //뷰 함수 데이터값 입력
+                b:"button",
+                btn:"click",
+                mid:"",
+                msg:data,
+                count:num,
+                sel_val:"",
+                print_sel_val:""
+            },
+            methods:{ //뷰 함수
+                //본래 뷰함수
+                // abc:function(){
+                //     alert("D");
+                // }
+                //간략화 뷰함수
+                abc(){
+                    alert("D");
+                },
+                bbb(){
+                   return this.mid="123";
+                },
+                ccc(what){ //count
+                    if(what==1){
+                        if(num<10){
+                            num++;
+                        }
+                        this.count = num;
+                    }
+                    if(what==2){
+                        if(num>0){
+                            num--;
+                        }
+                        this.count = num;
+                    }
+                },
+                ddd(){//select값 출력
+                    this.print_sel_val = this.sel_val;
+                }
+
+            },
+            components:{ //지역 컴퍼넌트 (객체 찍어내기)
+
+            },
+            computed:{
+
+            }
+        })
+    </script>
+</html>

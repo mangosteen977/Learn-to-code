@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="Ko">
+
+<head>
+    <!-- array 배열 정렬 추가 변경 prototype 메소드 push 푸쉬 설정 프로토타입 ???????????????????? -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+    <title> Ajax 3일차(3) - Javascript ( 배열 객체 재설청 (값추가) )</title>
+    <!-- 
+            Ajaz method 종류(4)
+            GET :데이터 가져오기(JSON,XML등)
+            POST :데이터 보내기
+            PUT :추가
+            DELETE :삭제
+
+            array ( 배열 값 추가 삭제)
+            .push(""); : 배열에 마지막 값 추가
+            .unshift(""); : 배열에 0번으로 값 추가
+            .pop(); : 배열의 마지막 값 삭제
+            .shift(); : 배열의 0번 째 값 삭제
+            .splice(집어넣을노드위치값,삭제갯수,"값");
+            ex) array.splice(1,0,"A") : 1번 노드자리에 아무것도 삭제하지않고 값"A" 추가
+            ex) array.splice(1,1,"A") : 1번 노드자리에 있던 값 1개를 삭제하고 값"A" 추가
+         -->
+    <script>
+        function abc() {
+            let array = ["1", "2", "3", "4"];
+            //array.push("5");
+            //array.unshift("5")
+            //array.pop();
+            //array.shift();
+            array.splice(2, 0, "5");
+            console.log(array)
+        };
+        function abc2() {
+            /*응용문제 1. CSS를 HTML~JAVASCRIPT사이에 넣으시오*/
+            let sarray = { "member": ["HTML", "JAVASCRIPT", "JQUERY", "AJAX"] };
+            //sarray["member"].splice(1,0,"CSS");
+            //console.log(sarray["member"]);
+
+            /*응용문제 2. sarray안에 Ajax 다음에 indata의 모든 값을 추가하시오.*/
+            let indata = ["CSS", "SCSS", "Vue", "node.js"];
+            indata.forEach(function (val, no, arr) {
+                sarray["member"].push(val);
+            });
+            console.log(sarray["member"]);
+        };
+    </script>
+</head>
+
+<body>
+    <input type="button" value="배열값_추가삭제" onclick="abc();">
+    <input type="button" value="응용문제" onclick="abc2();">
+</body>
+
+</html>
